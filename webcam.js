@@ -200,8 +200,10 @@
                     canvas.width = img.width;
                     canvas.height = img.height;
                 } else {
-                    canvas.width = img.height;
-                    canvas.height = img.width;
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    //canvas.width = img.height;
+                    //canvas.height = img.width;
                 }
     
                 // transform (rotate) image - see link at beginning this method
@@ -395,6 +397,7 @@
                         var fileReader = new FileReader();
                         fileReader.addEventListener('load', function(e) {
                             var orientation = self.exifOrientation(e.target.result);
+
                             if (orientation > 1) {
                                 // image need to rotate (see comments on fixOrientation method for more information)
                                 // transform image and load to image object
