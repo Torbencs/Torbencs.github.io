@@ -40,7 +40,7 @@
         //window.location.href = url;
       } else {
         console.log(url);
-        window.alert(url);
+        window.alert(text);
       };
       });
     });
