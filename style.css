@@ -35,3 +35,7 @@ body {
 #face-container {
   text-align: center;
 }
+#results {
+  margin-right: auto;
+  margin-left: auto;
+}
