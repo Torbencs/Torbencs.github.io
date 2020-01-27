@@ -31,7 +31,7 @@ var cam_width = ninja_face_element_info.width + (ninja_face_element_info.width *
 var cam_height = ninja_face_element_info.width / 5.3846 - (ninja_face_element_info.width * 0.006); //Aspect ratio
 
 //Setup camera properties
-Webcam.set('constraints', {
+Webcam.set({
   width: 854,
   height: 480,
   crop_width: cam_width,
