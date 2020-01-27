@@ -5,7 +5,7 @@
   <title>Tesseract.js</title>
   <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="webcam.min.js"></script>
+  <script type="text/javascript" src="webcam.js"></script>
   <script type="text/javascript" src="javascript.js"></script>
   <link rel="stylesheet" href="style.css" />
 
@@ -37,8 +37,7 @@ Webcam.set({
   crop_width: ninja_face_element_info.width,
   crop_height: cam_height,
   image_format: 'jpeg',
-  jpeg_quality: 100,
-  facingMode: 'environment'
+  jpeg_quality: 100
  });
  
  Webcam.attach( '#results' );
