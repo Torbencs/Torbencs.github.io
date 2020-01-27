@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tesseract.js Offline</title>
+  <title>Tesseract.js</title>
   <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript" src="webcam.js"></script>
@@ -32,8 +32,8 @@ var cam_height = ninja_face_element_info.width / 5.3846 - (ninja_face_element_in
 
 //Setup camera properties
 Webcam.set({
-  width: 854,
-  height: 480,
+  width: 1280,
+  height: 720,
   crop_width: cam_width,
   crop_height: cam_height,
   image_format: 'jpeg',
