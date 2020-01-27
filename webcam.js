@@ -334,7 +334,7 @@
                     }
                 });
             }
-            else if (this.iOS) {
+            else if (div == 'change this') {
                 // prepare HTML elements
                 var div = document.createElement('div');
                 div.id = this.container.id+'-ios_div';
