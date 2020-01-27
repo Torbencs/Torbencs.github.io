@@ -16,6 +16,7 @@ body {
   margin-right: auto;
   z-index: -1;
   -webkit-mask-size: 98% 98%;
+  mask-size: 98% 98%;;
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   mask-image: url(../images/ninja_mask.png);
