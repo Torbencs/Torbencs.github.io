@@ -105,7 +105,7 @@
                 } );
             }
         },
-        /*
+        
         exifOrientation: function(binFile) {
             // extract orientation information from the image provided by iOS
             // algorithm based on exif-js
@@ -221,7 +221,7 @@
             }, false);
             // start transformation by load event
             img.src = origObjURL;
-        }, */
+        },
         
         attach: function(elem) {
             // create webcam preview and attach to DOM element
@@ -395,7 +395,7 @@
                         var fileReader = new FileReader();
                         fileReader.addEventListener('load', function(e) {
                             var orientation = self.exifOrientation(e.target.result);
-                            if (orientation == 'blah') {
+                            if (orientation > 1) {
                                 // image need to rotate (see comments on fixOrientation method for more information)
                                 // transform image and load to image object
                                 self.fixOrientation(objURL, orientation, image);
