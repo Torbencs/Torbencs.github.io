@@ -23,26 +23,13 @@
     </head>
      
     <body>
-    <div id="container">
-      <video autoplay="true" id="videoElement">
-      
-      </video>
-    </div>
+        <input type="file" accept="image/*;capture=camera">
+    </body>
+
 
 
 <script>
 
-  var video = document.querySelector("#videoElement");
-
-  if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(function (stream) {
-        video.srcObject = stream;
-      })
-      .catch(function (err0r) {
-        console.log("Something went wrong!");
-      });
-  }
 
 </script>
 </head>
