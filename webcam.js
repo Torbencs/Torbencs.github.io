@@ -207,7 +207,7 @@
                 }
     
                 // transform (rotate) image - see link at beginning this method
-                switch (orientation) {
+                /*switch (orientation) {
                     case 2: ctx.transform(-1, 0, 0, 1, img.width, 0); break;
                     case 3: ctx.transform(-1, 0, 0, -1, img.width, img.height); break;
                     case 4: ctx.transform(1, 0, 0, -1, 0, img.height); break;
@@ -215,7 +215,7 @@
                     case 6: ctx.transform(0, 1, -1, 0, img.height , 0); break;
                     case 7: ctx.transform(0, -1, -1, 0, img.height, img.width); break;
                     case 8: ctx.transform(0, -1, 1, 0, 0, img.width); break;
-                }
+                } */
     
                 ctx.drawImage(img, 0, 0);
                 // pass rotated image data to the target image container
