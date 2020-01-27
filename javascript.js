@@ -41,6 +41,7 @@
       } else {
         console.log(url);
         window.alert('No URL found');
+        window.alert(url);
       };
       });
     });
