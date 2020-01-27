@@ -16,6 +16,9 @@
 
   Webcam.snap(function(data_uri) {
 
+    document.getElementById('results').innerHTML =
+   '<img src="'+data_uri+'"/>';
+
     //Run Tesseract with data_uri image
     Tesseract.recognize(
       data_uri,
