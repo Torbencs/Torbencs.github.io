@@ -7,38 +7,42 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
 
-
-
-<video id="video" autoplay='true' ></video>
-<button id="snap">Snap Photo</button>
-<canvas id="canvas" width="720" height="200"></canvas>
-
+  <style>
+    #container {
+      margin: 0px auto;
+      width: 500px;
+      height: 375px;
+      border: 10px #333 solid;
+    }
+    #videoElement {
+      width: 500px;
+      height: 375px;
+      background-color: #666;
+    }
+    </style>
+    </head>
+     
+    <body>
+    <div id="container">
+      <video autoplay="true" id="videoElement">
+      
+      </video>
+    </div>
 
 
 <script>
 
-// Grab elements, create settings, etc.
-var video = document.getElementById('video');
-var constraints = {video: {width: 720, height: 200, facingMode: "environment"}};
-// Get access to the camera!
-if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Not adding `{ audio: true }` since we only want video now
-    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-        video.src = window.URL.createObjectURL(stream);
+  var video = document.querySelector("#videoElement");
+
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
         video.srcObject = stream;
-        video.play();
-    });
-}
-
-// Elements for taking the snapshot
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-var video = document.getElementById('video');
-
-// Trigger photo take
-document.getElementById("snap").addEventListener("click", function() {
-	context.drawImage(video, 0, 0, 640, 480);
-});
+      })
+      .catch(function (err0r) {
+        console.log("Something went wrong!");
+      });
+  }
 
 </script>
 </head>
