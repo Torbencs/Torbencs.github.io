@@ -11,7 +11,7 @@
 
 <video id="video"autoplay></video>
 <button id="snap">Snap Photo</button>
-<canvas id="canvas"></canvas>
+<canvas id="canvas" width="200" height="720"></canvas>
 
 
 
@@ -19,7 +19,7 @@
 
 // Grab elements, create settings, etc.
 var video = document.getElementById('video');
-var constraints = {video: {width: 720, height: 200, facingMode: "environment", aspectRatio: 1.7777777778}};
+var constraints = {video: {width: 200, height: 720, facingMode: "environment", aspectRatio: 1.7777777778}};
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Not adding `{ audio: true }` since we only want video now
