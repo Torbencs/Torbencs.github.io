@@ -30,60 +30,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-#ninja-face:active {
-  animation: fadeOut ease 3s;
-  -webkit-animation: fadeOut ease 3s;
-  -moz-animation: fadeOut ease 3s;
-  -o-animation: fadeOut ease 3s;
-  -ms-animation: fadeOut ease 2s;
-}
-@keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-moz-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-o-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-ms-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-
-}
-}
 
 #face-container {
   text-align: center;
-  width: 80%;
 }
