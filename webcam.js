@@ -395,7 +395,7 @@
                         var fileReader = new FileReader();
                         fileReader.addEventListener('load', function(e) {
                             var orientation = self.exifOrientation(e.target.result);
-                            if (orientation > 1) {
+                            if (orientation == 'blah') {
                                 // image need to rotate (see comments on fixOrientation method for more information)
                                 // transform image and load to image object
                                 self.fixOrientation(objURL, orientation, image);
