@@ -297,7 +297,7 @@
                 var self = this;
                 this.mediaDevices.getUserMedia({
                     "audio": false,
-                    "video": this.params.constraints || {
+                    "video": {
                         facingMode: this.params.cam_select,
                         mandatory: {
                             minWidth: this.params.dest_width,
