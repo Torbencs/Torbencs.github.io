@@ -299,10 +299,8 @@
                     "audio": false,
                     "video": {
                         facingMode: this.params.cam_select,
-                        mandatory: {
-                            minWidth: this.params.dest_width,
-                            minHeight: this.params.dest_height
-                        }
+                        minWidth: this.params.dest_width,
+                        minHeight: this.params.dest_height
                     }
                 })
                 .then( function(stream) {
