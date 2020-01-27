@@ -1,0 +1,89 @@
+body {
+  background: #1f1d1e;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  height: 200px;
+}
+
+#my-camera{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
+  -webkit-mask-size: 98% 98%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url(../images/ninja_mask.png);
+  -webkit-mask-image: url(../images/ninja_mask.png);
+}
+#ninja-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ninja-face:active {
+  animation: fadeOut ease 3s;
+  -webkit-animation: fadeOut ease 3s;
+  -moz-animation: fadeOut ease 3s;
+  -o-animation: fadeOut ease 3s;
+  -ms-animation: fadeOut ease 2s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+
+}
+}
+
+#face-container {
+  text-align: center;
+  width: 80%;
+}

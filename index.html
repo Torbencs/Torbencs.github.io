@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tesseract.js Offline</title>
+  <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="webcam.min.js"></script>
+  <script type="text/javascript" src="javascript.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <div id="header">
+
+  </div>
+  <div id="face-container">
+
+    <img id="ninja-face" src="../images/ninja_face.png"/>
+    <div id="my-camera"></div>
+
+  </div>
+  <div id="results" ></div>
+
+
+  <input type=button value="Take Snapshot" onClick="getUrl()">
+
+<script>
+
+var ninja_face_element = document.getElementById('ninja-face');
+var ninja_face_element_info = ninja_face_element.getBoundingClientRect();
+var cam_width = ninja_face_element_info.width + (ninja_face_element_info.width * 0.019);
+var cam_height = ninja_face_element_info.width / 5.3846 - (ninja_face_element_info.width * 0.006); //Aspect ratio
+
+//Setup camera properties
+Webcam.set({
+  width: 854,
+  height: 480,
+  crop_width: cam_width,
+  crop_height: cam_height,
+  image_format: 'jpeg',
+  jpeg_quality: 100
+
+ });
+ Webcam.attach( '#my-camera' );
+
+ $(document).ready(function(){
+  $("#ninja-face").click(function(){
+    $("#ninja-face").fadeOut(2000);
+  });
+});
+</script>
+</head>
+<body>
+</body>
+</html>
