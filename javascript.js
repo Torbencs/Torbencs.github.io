@@ -36,8 +36,8 @@
         };
         //Redirect to new webpage
         console.log(url);
-        window.alert(url);
-        //window.location.href = url;
+        //window.alert(url);
+        window.location.href = url;
       } else {
         console.log(url);
         window.alert(text);
