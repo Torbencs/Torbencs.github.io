@@ -1,18 +1,9 @@
-<!-- include A-Frame obviously -->
-<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-<!-- include ar.js for A-Frame -->
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.5/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
-    <!-- create your content here. just a box for now -->
-    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-    <!-- define a camera which will move according to the marker position -->
-    <a-marker-camera preset='hiro'></a-marker-camera>
-    <a-assets>
-        <a-asset-item id="vtest" src="vtest.gltf"></a-asset-item>
-      </a-assets>
-      <!-- use your gltf model -->
-      <a-entity gltf-model="#vtest" scale="0.1 0.1 0.1"></a-entity>
-  </a-scene>
+    <a-scene embedded arjs='trackingMethod: best;'>
+      <a-gltf-model src="vtest.gltf" scale="0.3 0.3 0.3"></a-gltf-model>
+      <a-marker-camera preset='hiro'></a-marker-camera>
+      <a-camera-static/>
+    </a-scene>
 </body>
-
