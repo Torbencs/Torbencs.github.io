@@ -1,6 +1,6 @@
 <head>
-<script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-<script src="https://github.com/jeromeetienne/AR.js/tree/master/aframe/build/aframe-ar.js"></script>
+<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
     </head>
         <a-scene embedded arjs='trackingMethod: best'>
@@ -8,10 +8,8 @@
                         <a-asset-item id="ship-obj" src="vtest_obj/vobj.obj"></a-asset-item>
                         <a-asset-item id="ship-mtl" src="vtest_obj/vobj.mtl"></a-asset-item>
                 </a-assets>
-                <a-anchor hit-testing-enabled="true">
-                    <a-entity obj-model="obj: #ship-obj; mtl: #ship-mtl" scale="0.03 0.03 0.03"></a-entity>
-                </a-anchor>
                 <!-- Using the asset management system. -->
-                <a-camera-static/>
+                <a-entity obj-model="obj: #ship-obj; mtl: #ship-mtl" scale="0.03 0.03 0.03"></a-entity>
+                <a-marker-camera preset='hiro'></a-marker-camera>
         </a-scene>
 </body>
