@@ -9,16 +9,20 @@
   <script type="text/javascript" src="javascript.js"></script>
   <link rel="stylesheet" href="style.css" />
 
-  <div id="header">
-    <img id="ninja-logo" alt="Website Logo - Ninja URL" src="images/ninja_logo.png"/>
-  </div>
-  <div id="face-container">
+  <div id="container">
+    <div id="header">
+      <img id="ninja-logo" alt="Website Logo - Ninja URL" src="images/ninja_logo.png"/>
+    </div>
+    <div id="face-container">
 
-    <img id="ninja-face" src="../images/ninja_face.png"/>
-    <div id="my-camera"></div>
+      <img id="ninja-face" src="../images/ninja_face.png"/>
+      <div id="my-camera"></div>
 
+    </div>
+    
+    <button id="snap-button" onclick="getUrl()"></button>
   </div>
-  <div id="results" ><input type=button value="Take Snapshot" onClick="getUrl()"></div>
+  <div id="results" ></div>
 
 
   

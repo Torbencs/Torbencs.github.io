@@ -4,6 +4,9 @@ body {
   padding: 0;
 }
 
+#container {
+  height: 60vh;
+}
 #header {
   margin-top: 14em;
   text-align: center;
@@ -39,6 +42,23 @@ body {
   margin-top: 5em;
   position: relative;
   text-align: center;
+}
+#snap-button:after {
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  border-color: white;
+  border-radius: 50%;
+}
+
+#snap-button {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  width: 6em;
+  height: 6em;
+  border-color: blueviolet;
+  border-radius: 50%;
 }
 #results {
   margin-top: 4em;
