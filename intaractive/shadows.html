@@ -144,27 +144,34 @@
                 scene.render();
             });
 
-            //Gyro
-            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            DeviceOrientationEvent.requestPermission()
-                .then(permissionState => {
-                if (permissionState === 'granted') {
-                    window.addEventListener('deviceorientation', (event) => {
-                        document.getElementById("text").innerHTML = event.alpha;
-                        console.log('permission granted');
-                    });
-                }
-                })
-                .catch(console.error);
+            //Gyro 
+            /*
+            if ( window.DeviceOrientationEvent !== undefined && typeof window.DeviceOrientationEvent.requestPermission === 'function' ) {
+                window.DeviceOrientationEvent.requestPermission().then( function ( response ) {
+                    if ( response == 'granted' ) {
+                        window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
+                        window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
+                    }
+                }).catch( function ( error ) {
+                    console.error( 'THREE.DeviceOrientationControls: Unable to use DeviceOrientation API:', error );
+                });
             } else {
-            // handle regular non iOS 13+ devices
-            console.log('no permission');
-            window.addEventListener('deviceorientation', (event) => {
-                        document.getElementById("text").innerHTML = event.alpha;
-                        console.log("alpha is:" + event.alpha);
-                    });
+                window.addEventListener( 'orientationchange', onScreenOrientationChangeEvent, false );
+                window.addEventListener( 'deviceorientation', onDeviceOrientationChangeEvent, false );
             }
-  
+            */
+
+            window.DeviceOrientationEvent.requestPermission()
+            .then(response => {
+            if (response == 'granted') {
+                window.addEventListener('deviceorientation', (e) => {
+                // do something with e
+                console.log(e.alpha)
+                })
+            }
+            })
+            .catch(console.error)
+
 
             // the canvas/window resize event handler
             window.addEventListener('resize', function(){
