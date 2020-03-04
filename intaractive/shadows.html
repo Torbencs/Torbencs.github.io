@@ -29,7 +29,7 @@
 <body>
     <script src="sketch.js"></script>
     <canvas id="renderCanvas"></canvas>
-    <h1 id="text">text</h1>
+    <h1 id="text_h1">text</h1>
     <script>
         window.addEventListener('DOMContentLoaded', function(){
             // get the canvas DOM element
@@ -104,18 +104,18 @@
             BABYLON.SceneLoader.ImportMesh("", "", "AR.babylon", scene, function (mesh) {
                     camera.target = mesh[0];
 
-                    curve = mesh[0];
-                    curve.physicsImpostor = new BABYLON.PhysicsImpostor(curve, BABYLON.PhysicsImpostor.MeshImpostor, {mass: 0, friction: 0.5, restitution: 0.1});
+                    curve_mesh = mesh[0];
+                    curve_mesh.physicsImpostor = new BABYLON.PhysicsImpostor(curve_mesh, BABYLON.PhysicsImpostor.MeshImpostor, {mass: 0, friction: 0.5, restitution: 0.1});
                     
-                    curve_mat = new BABYLON.StandardMaterial("curve_mat", scene);
-                    curve_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
+                    curve_mesh_mat = new BABYLON.StandardMaterial("curve_mesh_mat", scene);
+                    curve_mesh_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
 
-                    curve.material = curve_mat;
+                    curve_mesh.material = curve_mesh_mat;
                     
-                    shadowGenerator.getShadowMap().renderList.push(curve);
-                    curve.receiveShadows = true;
-                    curve.position.x = 5;
-                    curve.position.y = -8;
+                    shadowGenerator.getShadowMap().renderList.push(curve_mesh);
+                    curve_mesh.receiveShadows = true;
+                    curve_mesh.position.x = 5;
+                    curve_mesh.position.y = -8;
                     
 
                 }); 

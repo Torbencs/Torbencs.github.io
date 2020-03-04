@@ -21,8 +21,8 @@ function setup() {
       })
   } else {
     // it's up to you how to handle non ios 13 devices
-    text("non ios 13 devices", 50, 50);
-    nonios13device = true;
+    
+    console.log("Hit else on other device");
   };
 };
 
@@ -43,6 +43,7 @@ function draw() {
   // but you can still continue to show sketch without access to sensors.
   if (!permissionGranted) return
   
-  document.getElementById('text').innerHTML = rotationY;
+  document.getElementById('text_h1').innerHTML = rotationY;
+
 
 };
