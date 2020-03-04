@@ -1,5 +1,5 @@
-let permissionGranted;
-//let nonios13device = false
+let permissionGranted = false;
+let nonios13device = false
 //let cx, cy    
 
 function setup() {
@@ -21,7 +21,7 @@ function setup() {
       })
   } else {
     // it's up to you how to handle non ios 13 devices
-    
+    permissionGranted = true
     console.log("Hit else on other device");
   };
 };
@@ -45,7 +45,7 @@ function draw() {
   
   document.getElementById('text_1').innerHTML = rotationY;
   document.getElementById('text_2').innerHTML = rotationX;
-  scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY))
+  //scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY))
 
 
 };

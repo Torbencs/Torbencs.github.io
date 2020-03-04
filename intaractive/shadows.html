@@ -44,7 +44,7 @@
 
             // This creates a basic Babylon Scene object (non-mesh)
             var scene = new BABYLON.Scene(engine);
-            var gravityVector = new BABYLON.Vector3(1,-10, 0);
+            var gravityVector = new BABYLON.Vector3(0,-10, 0);
             var physicsPlugin = new BABYLON.CannonJSPlugin();
             scene.enablePhysics(gravityVector, physicsPlugin);
 
@@ -136,6 +136,8 @@
             sphere.position.y = 4;
             sphere.position.x = -3;
             
+            scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY))
+
             return scene;
 
             };
