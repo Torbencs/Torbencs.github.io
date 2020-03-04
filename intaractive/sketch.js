@@ -43,7 +43,8 @@ function draw() {
   // but you can still continue to show sketch without access to sensors.
   if (!permissionGranted) return
   
-  document.getElementById('text_h1').innerHTML = rotationY;
+  document.getElementById('text_1').innerHTML = rotationY;
+  document.getElementById('text_2').innerHTML = rotationX;
   scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY));
 
 
