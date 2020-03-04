@@ -44,6 +44,7 @@ function draw() {
   if (!permissionGranted) return
   
   document.getElementById('text_h1').innerHTML = rotationY;
+  scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY));
 
 
 };
