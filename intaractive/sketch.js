@@ -1,5 +1,7 @@
 let permissionGranted = false;
-let nonios13device = false
+let nonios13device = false;
+let gravityY;
+let gravityX;
 //let cx, cy    
 
 function setup() {
@@ -45,7 +47,7 @@ function draw() {
   
   document.getElementById('text_1').innerHTML = rotationY;
   document.getElementById('text_2').innerHTML = rotationX;
-  //scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(rotationX,-10, rotationY))
-
+  gravityX = rotationX;
+  gravityY = rotationY;
 
 };
