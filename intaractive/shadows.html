@@ -19,7 +19,7 @@
 
         #renderCanvas {
             width   : 100%;
-            height  : 50%;
+            height  : 40%;
             touch-action: none;
         }
     </style>
@@ -145,17 +145,26 @@
             });
 
             //Gyro
-            function deviceOrientationListener (event){
-                document.getElementById("text").innerHTML = event.alpha;
-                //console.log(event.alpha);
-                //console.log(event.beta);
-
-            };
-            if (window.DeviceOrientationEvent) {
-                window.addEventListener("deviceorientation", deviceOrientationListener);
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+                .then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener('deviceorientation', (event) => {
+                        document.getElementById("text").innerHTML = event.alpha;
+                        console.log('permission granted');
+                    });
+                }
+                })
+                .catch(console.error);
             } else {
-            console.log("Sorry, your browser doesn't support Device Orientation");
+            // handle regular non iOS 13+ devices
+            console.log('no permission');
+            window.addEventListener('deviceorientation', (event) => {
+                        document.getElementById("text").innerHTML = event.alpha;
+                        console.log("alpha is:" + event.alpha);
+                    });
             }
+  
 
             // the canvas/window resize event handler
             window.addEventListener('resize', function(){
