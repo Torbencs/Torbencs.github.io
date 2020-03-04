@@ -19,13 +19,14 @@
 
         #renderCanvas {
             width   : 100%;
-            height  : 100%;
+            height  : 90%;
             touch-action: none;
         }
     </style>
 </head>
 <body>
     <canvas id="renderCanvas"></canvas>
+    <h1 id="text">text</h1>
     <script>
         window.addEventListener('DOMContentLoaded', function(){
             // get the canvas DOM element
@@ -145,8 +146,9 @@
 
             //Gyro
             function deviceOrientationListener (event){
-                console.log(event.alpha);
-                console.log(event.beta);
+                document.getElementById("text").innerHTML = event.alpha;
+                //console.log(event.alpha);
+                //console.log(event.beta);
 
             };
             if (window.DeviceOrientationEvent) {
