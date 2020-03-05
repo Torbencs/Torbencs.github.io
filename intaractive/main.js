@@ -29,6 +29,7 @@ window.addEventListener('DOMContentLoaded', function(){
         };
     };
 
+    // will handle first time visiting to grant access
     function onAskButtonClicked() {
     DeviceOrientationEvent.requestPermission().then(response => {
         if (response === 'granted') {
@@ -37,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function(){
         permissionGranted = false;
         }
         this.remove()
-        }).catch(console.error)
+    }).catch(console.error)
     };
    
     // get the canvas DOM element
@@ -154,7 +155,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
     //Call the createScene function
     var scene = createScene();
-    setup();
 
     //Run the render loop
     engine.runRenderLoop(function(){
@@ -165,5 +165,8 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('resize', function(){
         engine.resize();
     });
+
+    document.getElementById('text_1').innerHTML = rotationY;
+    document.getElementById('text_2').innerHTML = rotationX;
 
 });
