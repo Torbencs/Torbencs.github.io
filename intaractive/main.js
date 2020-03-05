@@ -43,9 +43,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
-        var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
+        //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
         var physicsPlugin = new BABYLON.CannonJSPlugin();
-        scene.enablePhysics(gravityVector, physicsPlugin);
+        scene.enablePhysics(physicsPlugin);
 
         // Camera
         var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
@@ -157,4 +157,5 @@ window.addEventListener('DOMContentLoaded', function(){
         engine.resize();
     });
 
+    scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
 });
