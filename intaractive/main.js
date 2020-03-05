@@ -25,8 +25,8 @@
         document.getElementById('text_2').innerHTML = event.beta; //z
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
-        console.log("hit orientation event")
-      
+        console.log("hit orientation event");
+        return gravityX;
         // Do stuff with the new orientation data
     }
 
