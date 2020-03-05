@@ -11,6 +11,14 @@
     }).catch(console.error)
     };
 
+    let handleOrientation = function (event) {
+        document.getElementById('text_1').innerHTML = event.alpha;
+        document.getElementById('text_1').innerHTML = event.beta;
+        console.log("hit orientation event")
+      
+        // Do stuff with the new orientation data
+    }
+
 window.addEventListener('DOMContentLoaded', function(){
 
     let permissionGranted = false;
@@ -144,13 +152,5 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('resize', function(){
         engine.resize();
     });
-
-    function handleOrientation(event) {
-        document.getElementById('text_1').innerHTML = event.alpha;
-        document.getElementById('text_1').innerHTML = event.beta;
-        console.log("hit orientation event")
-      
-        // Do stuff with the new orientation data
-      }
 
 });
