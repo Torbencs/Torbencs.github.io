@@ -12,10 +12,10 @@
     };
 
     let handleOrientation = function (event) {
-        document.getElementById('text_1').innerHTML += event.alpha;
-        document.getElementById('text_2').innerHTML += event.beta;
-        document.getElementById('text_3').innerHTML += event.gamma;
-        document.getElementById('text_4').innerHTML += event.absolute;
+        document.getElementById('text_1').innerHTML = event.alpha;
+        document.getElementById('text_2').innerHTML = event.beta;
+        document.getElementById('text_3').innerHTML = event.gamma;
+        document.getElementById('text_4').innerHTML = event.absolute;
         console.log("hit orientation event")
       
         // Do stuff with the new orientation data
