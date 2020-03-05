@@ -26,7 +26,6 @@
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
         console.log("hit orientation event");
-        return gravityX;
         // Do stuff with the new orientation data
     }
 
@@ -39,14 +38,14 @@ window.addEventListener('DOMContentLoaded', function(){
     var engine = new BABYLON.Engine(canvas, true);
 
     // createScene function that creates and return the scene
-    var createScene = function () {
+    var createScene = function (gravX,gravY,gravZ) {
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
         //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
         var physicsPlugin = new BABYLON.CannonJSPlugin();
         scene.enablePhysics(physicsPlugin);
-        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
+        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravX, gravY, gravZ));
 
         // Camera
         var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
@@ -146,7 +145,7 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
     //Call the createScene function
-    var scene = createScene();
+    var scene = createScene(gravityX,gravityY,gravityZ);
 
     //Run the render loop
     engine.runRenderLoop(function(){
