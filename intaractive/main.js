@@ -1,3 +1,16 @@
+ // will handle first time visiting to grant access
+ let onAskButtonClicked = function () {
+    DeviceOrientationEvent.requestPermission().then(response => {
+        if (response === 'granted') {
+        permissionGranted = true;
+        window.addEventListener("deviceorientation", handleOrientation, true);
+        } else {
+        permissionGranted = false;
+        }
+        this.remove()
+    }).catch(console.error)
+    };
+
 window.addEventListener('DOMContentLoaded', function(){
 
     let permissionGranted = false;
@@ -5,41 +18,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let gravityY;
     let gravityX;
   
-
-    function setup() {
-  
-        if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
-            DeviceOrientationEvent.requestPermission()
-            .catch(() => {
-                // show permission dialog only the first time
-                let askButton = createButton("Allow acess to sensors");
-                askButton.style("font-size", "24px");
-                askButton.position(0, 0);
-                askButton.mousePressed(onAskButtonClicked);
-                throw error // keep the promise chain as rejected
-            })
-            .then(() => {
-                // this runs on subsequent visits
-                permissionGranted = true
-            })
-        } else {
-            // it's up to you how to handle non ios 13 devices
-            permissionGranted = true
-            console.log("Hit else catch on other device");
-        };
-    };
-
-    // will handle first time visiting to grant access
-    function onAskButtonClicked() {
-    DeviceOrientationEvent.requestPermission().then(response => {
-        if (response === 'granted') {
-        permissionGranted = true;
-        } else {
-        permissionGranted = false;
-        }
-        this.remove()
-    }).catch(console.error)
-    };
+   
    
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -166,7 +145,12 @@ window.addEventListener('DOMContentLoaded', function(){
         engine.resize();
     });
 
-    document.getElementById('text_1').innerHTML = rotationY;
-    document.getElementById('text_2').innerHTML = rotationX;
+    function handleOrientation(event) {
+        document.getElementById('text_1').innerHTML = event.alpha;
+        document.getElementById('text_1').innerHTML = event.beta;
+        console.log("hit orientation event")
+      
+        // Do stuff with the new orientation data
+      }
 
 });
