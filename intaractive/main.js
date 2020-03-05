@@ -1,4 +1,8 @@
  let gravityX, gravityY, gravityZ;
+ let permissionGranted = false;
+ let nonios13device = false;
+
+
  
  // will handle first time visiting to grant access
  let onAskButtonClicked = function () {
@@ -27,11 +31,6 @@
     }
 
 window.addEventListener('DOMContentLoaded', function(){
-
-    let permissionGranted = false;
-    let nonios13device = false;
-  
-   
    
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
