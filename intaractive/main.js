@@ -1,3 +1,5 @@
+ let gravityX, gravityZ;
+ 
  // will handle first time visiting to grant access
  let onAskButtonClicked = function () {
     DeviceOrientationEvent.requestPermission().then(response => {
@@ -13,8 +15,10 @@
 
     let handleOrientation = function (event) {
         document.getElementById('text_1').innerHTML = event.alpha;
-        document.getElementById('text_2').innerHTML = event.beta;
-        document.getElementById('text_3').innerHTML = event.gamma;
+        gravityX = event.gamma;
+        gravityZ = event.beta;
+        document.getElementById('text_2').innerHTML = event.beta; //z
+        document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
         console.log("hit orientation event")
       
@@ -41,7 +45,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
-        var gravityVector = new BABYLON.Vector3(0,-10, 0);
+        var gravityVector = new BABYLON.Vector3(gravityX,-10, gravityZ);
         var physicsPlugin = new BABYLON.CannonJSPlugin();
         scene.enablePhysics(gravityVector, physicsPlugin);
 
