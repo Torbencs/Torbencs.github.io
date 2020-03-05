@@ -5,9 +5,6 @@ window.addEventListener('DOMContentLoaded', function(){
     let gravityY;
     let gravityX;
   
-
-    function setup() {
-  
         if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
             DeviceOrientationEvent.requestPermission()
             .catch(() => {
@@ -27,7 +24,6 @@ window.addEventListener('DOMContentLoaded', function(){
             permissionGranted = true
             console.log("Hit else catch on other device");
         };
-    };
 
     function onAskButtonClicked() {
     DeviceOrientationEvent.requestPermission().then(response => {
