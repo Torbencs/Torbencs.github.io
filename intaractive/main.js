@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', function(){
         //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
         var physicsPlugin = new BABYLON.CannonJSPlugin();
         scene.enablePhysics(physicsPlugin);
-        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravX, gravY, gravZ));
+        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
 
         // Camera
         var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
