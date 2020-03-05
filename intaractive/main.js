@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function(){
     var engine = new BABYLON.Engine(canvas, true);
 
     // createScene function that creates and return the scene
-    var createScene = function (gravX,gravY,gravZ) {
+    var createScene = function () {
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
@@ -145,11 +145,11 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
     //Call the createScene function
-    var scene = createScene(gravityX,gravityY,gravityZ);
+    var scene = createScene();
 
     //Run the render loop
     engine.runRenderLoop(function(){
-        scene.render();
+        scene.render(gravityX,gravityY,gravityZ);
     });
 
     //Add the canvas/window resize event handler
