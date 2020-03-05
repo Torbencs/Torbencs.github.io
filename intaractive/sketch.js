@@ -43,11 +43,14 @@ function onAskButtonClicked() {
 function draw() {
   // I am just skipping sketch entirely for demonstration purpose,
   // but you can still continue to show sketch without access to sensors.
-  if (!permissionGranted) return
+  if (!permissionGranted || !rotationX) {
+      return
+  } else {
+    document.getElementById('text_1').innerHTML = rotationY;
+    document.getElementById('text_2').innerHTML = rotationX;
+    gravityX = rotationX;
+    gravityY = rotationY;
+  }
   
-  document.getElementById('text_1').innerHTML = rotationY;
-  document.getElementById('text_2').innerHTML = rotationX;
-  gravityX = rotationX;
-  gravityY = rotationY;
 
 };
