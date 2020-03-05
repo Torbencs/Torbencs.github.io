@@ -1,4 +1,4 @@
- let gravityX, gravityZ;
+ let gravityX, gravityY, gravityZ;
  
  // will handle first time visiting to grant access
  let onAskButtonClicked = function () {
@@ -17,6 +17,7 @@
         document.getElementById('text_1').innerHTML = event.alpha;
         gravityX = event.gamma;
         gravityZ = event.beta;
+        gravityY = -10;
         document.getElementById('text_2').innerHTML = event.beta; //z
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
@@ -29,8 +30,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let permissionGranted = false;
     let nonios13device = false;
-    let gravityY;
-    let gravityX;
   
    
    
@@ -45,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
-        var gravityVector = new BABYLON.Vector3(gravityX,-10, gravityZ);
+        var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
         var physicsPlugin = new BABYLON.CannonJSPlugin();
         scene.enablePhysics(gravityVector, physicsPlugin);
 
