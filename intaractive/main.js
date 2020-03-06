@@ -9,25 +9,14 @@
     DeviceOrientationEvent.requestPermission().then(response => {
         if (response === 'granted') {
         permissionGranted = true;
-        window.addEventListener("deviceorientation", handleOrientation, true);
+        addListener();
+        
         } else {
         permissionGranted = false;
         }
         this.remove()
     }).catch(console.error)
     };
-
-    let handleOrientation = function (event) {
-        document.getElementById('text_1').innerHTML = event.alpha;
-        gravityX = event.gamma;
-        gravityZ = event.beta;
-        gravityY = -10;
-        document.getElementById('text_2').innerHTML = event.beta; //z
-        document.getElementById('text_3').innerHTML = event.gamma; //x
-        document.getElementById('text_4').innerHTML = event.absolute;
-        console.log("hit orientation event");
-        // Do stuff with the new orientation data
-    }
 
 window.addEventListener('DOMContentLoaded', function(){
    
@@ -39,6 +28,24 @@ window.addEventListener('DOMContentLoaded', function(){
 
     // createScene function that creates and return the scene
     var createScene = function () {
+
+        //Event listener
+        let addListener = function () {
+            window.addEventListener("deviceorientation", handleOrientation, true);
+        };
+
+        let handleOrientation = function (event) {
+            document.getElementById('text_1').innerHTML = event.alpha;
+            gravityX = event.gamma;
+            gravityZ = event.beta;
+            gravityY = -10;
+            document.getElementById('text_2').innerHTML = event.beta; //z
+            document.getElementById('text_3').innerHTML = event.gamma; //x
+            document.getElementById('text_4').innerHTML = event.absolute;
+            console.log("hit orientation event");
+            // Do stuff with the new orientation data
+        };
+    
 
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
