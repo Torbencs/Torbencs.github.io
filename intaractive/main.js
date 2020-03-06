@@ -71,18 +71,20 @@ var createScene = function () {
     });
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
-    camera.lowerRadiusLimit = 2;
-    camera.upperRadiusLimit = 10;
+    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /3, 9, new BABYLON.Vector3(0, 0, 0), scene);
+    //camera.lowerRadiusLimit = 2;
+    //camera.upperRadiusLimit = 14;
 
     // Camera controls
-    camera.attachControl(canvas, true);
+    //camera.attachControl(canvas, true);
 
     //Lights
     var light = new BABYLON.SpotLight("light2", new BABYLON.Vector3(-4, 5, 10), new BABYLON.Vector3(1,-1 ,-1), Math.PI / 1.5, 10, scene);
     var light2 = new BABYLON.SpotLight("light2", new BABYLON.Vector3(10, 2, 10), new BABYLON.Vector3(-1,-1 ,-1), Math.PI / 1.5, 10, scene);
-    light.intensity = 0.8;
-    light2.intensity = .7;
+    var light3 = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(0, 7, 0), scene);
+    light.intensity = 0.6;
+    light2.intensity = .5;
+    light3.intensity = 0.1;
 
     //Light visual helpers
     var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 2, scene);
@@ -94,6 +96,11 @@ var createScene = function () {
     lightSphere2.position = light2.position;
     lightSphere2.material = new BABYLON.StandardMaterial("light2", scene);
     lightSphere2.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
+
+    var lightSphere3 = BABYLON.Mesh.CreateSphere("sphere", 16, 2, scene);
+    lightSphere3.position = light3.position;
+    lightSphere3.material = new BABYLON.StandardMaterial("light2", scene);
+    lightSphere3.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
     //Shadows
     shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
