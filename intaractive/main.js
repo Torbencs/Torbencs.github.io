@@ -16,6 +16,8 @@ var createScene = function () {
     let gravityY;
     let permissionGranted = false;
     let nonios13device = false;
+
+    
     
     
     // will handle first time visiting to grant access
@@ -53,6 +55,21 @@ var createScene = function () {
     var physicsPlugin = new BABYLON.CannonJSPlugin();
     scene.enablePhysics(physicsPlugin);
     scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(0, gravityY, 0));
+
+    //Button
+    let button = document.createElement("button");
+    button.textContent = "Press me!!!";
+    button.style.position = "absolute";
+    button.style.zIndex = 1000;
+    button.addEventListener("click",function () {
+        onAskButtonClicked();
+    });
+    canvas.parentElement.appendChild(button);
+
+    // cleanup
+    scene.onDisposeObservable.add(()=> {
+        button.remove();
+    });
 
     // Camera
     var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
