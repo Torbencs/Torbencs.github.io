@@ -33,11 +33,19 @@ var createScene = function () {
         this.remove()
     }).catch(console.error)
     };
+   
+
+    // Scene and Physics
+    var scene = new BABYLON.Scene(engine);
+    //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
+    var physicsPlugin = new BABYLON.CannonJSPlugin();
+    scene.enablePhysics(physicsPlugin);
+    
+
     let handleOrientation = function (event) {
         document.getElementById('text_1').innerHTML = event.alpha;
         gravityX = event.gamma;
         gravityZ = event.beta;
-        gravityY = -10;
         document.getElementById('text_2').innerHTML = event.beta; //z
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
@@ -46,15 +54,6 @@ var createScene = function () {
     };
 
 
-
-
-
-    // Scene and Physics
-    var scene = new BABYLON.Scene(engine);
-    //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
-    var physicsPlugin = new BABYLON.CannonJSPlugin();
-    scene.enablePhysics(physicsPlugin);
-    
 
     //Button
     let button = document.createElement("button");
