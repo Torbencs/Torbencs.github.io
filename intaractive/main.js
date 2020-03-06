@@ -42,7 +42,7 @@ var createScene = function () {
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
         console.log("hit orientation event");
-        // Do stuff with the new orientation data
+        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
     };
 
 
@@ -54,7 +54,7 @@ var createScene = function () {
     //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
     var physicsPlugin = new BABYLON.CannonJSPlugin();
     scene.enablePhysics(physicsPlugin);
-    scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
+    
 
     //Button
     let button = document.createElement("button");
