@@ -138,7 +138,9 @@ var createScene = function () {
             //Add material to imported model
             curve_mesh_mat = new BABYLON.StandardMaterial("curve_mesh_mat", scene);
             curve_mesh_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
-            //curve_mesh_mat.roughness = 5;
+            //curve_mesh_mat.diffuseTexture = new BABYLON.Texture("matt_texture.png", scene);
+            //curve_mesh_mat.diffuseTexture.uScale = 10;
+            //curve_mesh_mat.diffuseTexture.vScale = 10;
             curve_mesh.material = curve_mesh_mat;
             curve_mesh.material.specularColor = new BABYLON.Color3(0.01, 0.01, 0.01);
             curve_mesh.material.roughness = 5;
@@ -171,7 +173,11 @@ var createScene = function () {
     //Add shadows to sphere model
     shadowGenerator.getShadowMap().renderList.push(sphere);
     
-
+    //Post processing
+    var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
+    pipeline.samples = 4;
+    pipeline.grainEnabled = true;
+    pipeline.grain.intensity = 3;
 
     return scene;
 
