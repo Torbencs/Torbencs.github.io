@@ -48,13 +48,8 @@ var createScene = function () {
     
 
     let handleOrientation = function (event) {
-        document.getElementById('text_1').innerHTML = event.alpha;
         gravityX = event.gamma * 0.8;
         gravityZ = event.beta * -0.8;
-        document.getElementById('text_2').innerHTML = event.beta; //z
-        document.getElementById('text_3').innerHTML = event.gamma; //x
-        document.getElementById('text_4').innerHTML = event.absolute;
-        console.log("hit orientation event");
         scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
     };
 
@@ -77,6 +72,8 @@ var createScene = function () {
 
     // Camera
     var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 80, new BABYLON.Vector3(0, 0, 0), scene);
+    camera.lowerRadiusLimit = 2;
+    camera.upperRadiusLimit = 10;
 
     // Camera controls
     camera.attachControl(canvas, true);
@@ -120,6 +117,8 @@ var createScene = function () {
 
     };
 
+   
+
     //Add imported model
     BABYLON.SceneLoader.ImportMesh("", "", "AR.babylon", scene, function (mesh) {
             
@@ -139,7 +138,10 @@ var createScene = function () {
             //Add material to imported model
             curve_mesh_mat = new BABYLON.StandardMaterial("curve_mesh_mat", scene);
             curve_mesh_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
+            //curve_mesh_mat.roughness = 5;
             curve_mesh.material = curve_mesh_mat;
+            curve_mesh.material.specularColor = new BABYLON.Color3(0.01, 0.01, 0.01);
+            curve_mesh.material.roughness = 5;
             
             //Add shadows to imported model
             shadowGenerator.getShadowMap().renderList.push(curve_mesh);
@@ -159,9 +161,12 @@ var createScene = function () {
     sphere.physicsImpostor = new BABYLON.PhysicsImpostor(sphere, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1}, scene)
 
     //Add material to sphere model
+    
     sphere_mat = new BABYLON.StandardMaterial("sphere", scene);
     sphere_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
     sphere.material = sphere_mat;
+    sphere.material.specularColor = new BABYLON.Color3(0.01, 0.01, 0.01);
+    sphere.material.roughness = 5;
 
     //Add shadows to sphere model
     shadowGenerator.getShadowMap().renderList.push(sphere);
