@@ -9,7 +9,7 @@
     DeviceOrientationEvent.requestPermission().then(response => {
         if (response === 'granted') {
         permissionGranted = true;
-        addListener();
+        window.addEventListener("deviceorientation", handleOrientation, true);
         
         } else {
         permissionGranted = false;
@@ -29,10 +29,7 @@ window.addEventListener('DOMContentLoaded', function(){
     // createScene function that creates and return the scene
     var createScene = function () {
 
-        //Event listener
-        let addListener = function () {
-            window.addEventListener("deviceorientation", handleOrientation, true);
-        };
+       
 
         let handleOrientation = function (event) {
             document.getElementById('text_1').innerHTML = event.alpha;
