@@ -13,7 +13,7 @@ var createScene = function () {
 
 
 
-    let gravityY;
+    let gravityY, gravityX, gravityZ;
     let permissionGranted = false;
     let nonios13device = false;
 
@@ -35,9 +35,9 @@ var createScene = function () {
     };
     let handleOrientation = function (event) {
         document.getElementById('text_1').innerHTML = event.alpha;
-        //gravityX = event.gamma;
-        //gravityZ = event.beta;
-        //gravityY = -10;
+        gravityX = event.gamma;
+        gravityZ = event.beta;
+        gravityY = -10;
         document.getElementById('text_2').innerHTML = event.beta; //z
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
@@ -54,7 +54,7 @@ var createScene = function () {
     //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
     var physicsPlugin = new BABYLON.CannonJSPlugin();
     scene.enablePhysics(physicsPlugin);
-    scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(0, gravityY, 0));
+    scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
 
     //Button
     let button = document.createElement("button");
