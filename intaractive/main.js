@@ -13,7 +13,9 @@ var createScene = function () {
 
 
 
-    let gravityY, gravityX, gravityZ;
+    let gravityY = 0;
+    let gravityX = 0;
+    let gravityZ = 0;
     let permissionGranted = false;
     let nonios13device = false;
 
@@ -37,9 +39,9 @@ var createScene = function () {
 
     // Scene and Physics
     var scene = new BABYLON.Scene(engine);
-    //var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
+    var gravityVector = new BABYLON.Vector3(gravityX, gravityY, gravityZ);
     var physicsPlugin = new BABYLON.CannonJSPlugin();
-    scene.enablePhysics(physicsPlugin);
+    scene.enablePhysics(gravityVector, physicsPlugin);
     
 
     let handleOrientation = function (event) {
