@@ -24,6 +24,7 @@ var createScene = function () {
     
     // will handle first time visiting to grant access
     let onAskButtonClicked = function () {
+        if (permissionGranted == false) {
     DeviceOrientationEvent.requestPermission().then(response => {
         if (response === 'granted') {
         permissionGranted = true;
@@ -34,6 +35,9 @@ var createScene = function () {
         }
         this.remove()
     }).catch(console.error)
+    } else {
+        permissionGranted = false;
+    };
     };
    
 
