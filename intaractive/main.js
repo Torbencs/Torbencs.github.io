@@ -22,7 +22,6 @@ var createScene = function () {
     
     // will handle first time visiting to grant access
     let onAskButtonClicked = function () {
-        if (permissionGranted == false) {
     DeviceOrientationEvent.requestPermission().then(response => {
         if (response === 'granted') {
         permissionGranted = true;
@@ -33,10 +32,6 @@ var createScene = function () {
         }
         this.remove()
     }).catch(console.error)
-    } else {
-        permissionGranted = true;
-        window.addEventListener("deviceorientation", handleOrientation, true);
-    };
     };
    
 
@@ -59,6 +54,8 @@ var createScene = function () {
     let button = document.createElement("button");
     button.textContent = "Press me!!!";
     button.style.position = "absolute";
+    button.style.left = "0";
+    button.style.top = "0";
     button.style.zIndex = 1000;
     button.addEventListener("click",function () {
         onAskButtonClicked();
@@ -71,7 +68,7 @@ var createScene = function () {
     });
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /3, 9, new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /3, 11, new BABYLON.Vector3(0, 0, 0), scene);
     //camera.lowerRadiusLimit = 2;
     //camera.upperRadiusLimit = 14;
 
