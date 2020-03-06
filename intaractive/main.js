@@ -36,7 +36,8 @@ var createScene = function () {
         this.remove()
     }).catch(console.error)
     } else {
-        permissionGranted = false;
+        permissionGranted = true;
+        window.addEventListener("deviceorientation", handleOrientation, true);
     };
     };
    
