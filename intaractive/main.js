@@ -13,7 +13,7 @@ var createScene = function () {
 
 
 
-    let gravityY = -10;
+    let gravityY = -100;
     let gravityX = 0;
     let gravityZ = 0;
     let permissionGranted = false;
