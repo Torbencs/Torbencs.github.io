@@ -52,7 +52,7 @@ var createScene = function () {
         document.getElementById('text_3').innerHTML = event.gamma; //x
         document.getElementById('text_4').innerHTML = event.absolute;
         console.log("hit orientation event");
-        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(gravityX, gravityY, gravityZ));
+        scene.getPhysicsEngine().setGravity(new BABYLON.Vector3(-gravityX, gravityY, gravityZ));
     };
 
 
