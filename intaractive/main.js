@@ -68,55 +68,51 @@ var createScene = function () {
     });
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 15, new BABYLON.Vector3(0, 0, 0), scene);
+    //var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 15, new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), scene);
     //camera.lowerRadiusLimit = 2;
     //camera.upperRadiusLimit = 14;
 
     // Camera controls
-    //camera.attachControl(canvas, true);
+    camera.attachControl(canvas, true);
 
     //Lights
-    var light = new BABYLON.SpotLight("light2", new BABYLON.Vector3(-4, 5, 10), new BABYLON.Vector3(1,-1 ,-1), Math.PI / 1.5, 10, scene);
-    var light2 = new BABYLON.SpotLight("light2", new BABYLON.Vector3(10, 2, 10), new BABYLON.Vector3(-1,-1 ,-1), Math.PI / 1.5, 10, scene);
-    var light3 = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(0, 7, 0), scene);
-    light.intensity = 0.6;
-    light2.intensity = .5;
-    light3.intensity = 0.1;
+    var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-4, 1.5, 15), new BABYLON.Vector3(5, -1 ,-10), Math.PI / 1.5, 10, scene);
+    var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 20, 0), scene);
+
+    light_spot.intensity = 0.7;
+    light_hemi.intensity = 0.8;
+
+    light_hemi.diffuse = new BABYLON.Color3.FromHexString("#f87060");
+	light_hemi.specular = new BABYLON.Color3.FromHexString("#f87060");
+    light_hemi.groundColor = new BABYLON.Color3.FromHexString("#4d231e");
+    
 
     //Light visual helpers
     var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 2, scene);
-    lightSphere1.position = light.position;
+    lightSphere1.position = light_spot.position;
     lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
     lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
 
-    var lightSphere2 = BABYLON.Mesh.CreateSphere("sphere", 16, 2, scene);
-    lightSphere2.position = light2.position;
-    lightSphere2.material = new BABYLON.StandardMaterial("light2", scene);
-    lightSphere2.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
-
-    var lightSphere3 = BABYLON.Mesh.CreateSphere("sphere", 16, 2, scene);
-    lightSphere3.position = light3.position;
-    lightSphere3.material = new BABYLON.StandardMaterial("light2", scene);
-    lightSphere3.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
-    
+   
     //Shadows
-    shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
+    shadowGenerator = new BABYLON.ShadowGenerator(1024, light_spot);
     //Switch to test different shadow configs
     let shadow_options = 2;
     switch (shadow_options) {
         case 1:
-            shadowGenerator.bias = 0.0001;
-            shadowGenerator.usePoissonSampling = true;
-            //shadowGenerator.useBlurExponentialShadowMap = true;
-            //shadowGenerator.usePercentageCloserFiltering = true;
-            shadowGenerator.frustumEdgeFalloff = 5;
-            break;
-        case 2:
             shadowGenerator.bias = 0.0009;
             //shadowGenerator.usePoissonSampling = true;
             //shadowGenerator.useBlurExponentialShadowMap = true;
             shadowGenerator.usePercentageCloserFiltering = true;
             shadowGenerator.frustumEdgeFalloff = 4;
+            break;
+        case 2:
+            shadowGenerator.bias = 0.001;
+            //shadowGenerator.usePoissonSampling = true;
+            //shadowGenerator.useBlurExponentialShadowMap = true;
+            shadowGenerator.usePercentageCloserFiltering = true;
+            shadowGenerator.frustumEdgeFalloff = 5.6;
             break;
 
     };
@@ -124,7 +120,7 @@ var createScene = function () {
    
 
     //Add imported model
-    BABYLON.SceneLoader.ImportMesh("", "", "AR.babylon", scene, function (mesh) {
+    BABYLON.SceneLoader.ImportMesh("", "", "plane.babylon", scene, function (mesh) {
             
             //Assign meshes to model variable
             let curve_mesh = mesh[0];
@@ -141,12 +137,12 @@ var createScene = function () {
             
             //Add material to imported model
             curve_mesh_mat = new BABYLON.StandardMaterial("curve_mesh_mat", scene);
-            curve_mesh_mat.diffuseColor = new BABYLON.Color3(0.5, 0.6, 0.87);
+            //curve_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#f87060");
             //curve_mesh_mat.diffuseTexture = new BABYLON.Texture("matt_texture.png", scene);
             //curve_mesh_mat.diffuseTexture.uScale = 10;
             //curve_mesh_mat.diffuseTexture.vScale = 10;
             curve_mesh.material = curve_mesh_mat;
-            curve_mesh.material.specularColor = new BABYLON.Color3(0.01, 0.01, 0.01);
+            //curve_mesh.material.specularColor = new BABYLON.Color3(0.01, 0.01, 0.01);
             curve_mesh.material.roughness = 5;
             
             //Add shadows to imported model
@@ -182,6 +178,9 @@ var createScene = function () {
     pipeline.samples = 4;
     pipeline.grainEnabled = true;
     pipeline.grain.intensity = 3;
+
+    var kernel = 5;	
+    var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
 
     return scene;
 
