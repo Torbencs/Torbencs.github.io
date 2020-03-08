@@ -68,8 +68,8 @@ var createScene = function () {
     });
 
     // Camera
-    //var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 15, new BABYLON.Vector3(0, 0, 0), scene);
-    var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 15, new BABYLON.Vector3(0, 0, 0), scene);
+    //var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), scene);
     //camera.lowerRadiusLimit = 2;
     //camera.upperRadiusLimit = 14;
 
