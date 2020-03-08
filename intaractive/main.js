@@ -68,7 +68,7 @@ var createScene = function () {
     });
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.5, Math.PI /4, 15, new BABYLON.Vector3(0, 0, 0), scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.8, Math.PI /2.3, 15, new BABYLON.Vector3(10, 0, 10), scene);
     //var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), scene);
     //camera.lowerRadiusLimit = 2;
     //camera.upperRadiusLimit = 14;
@@ -77,15 +77,21 @@ var createScene = function () {
     camera.attachControl(canvas, true);
 
     //Lights
-    var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-4, 1.5, 15), new BABYLON.Vector3(5, -1 ,-10), Math.PI / 1.5, 10, scene);
-    var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 20, 0), scene);
+    // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
 
-    light_spot.intensity = 0.7;
-    light_hemi.intensity = 0.8;
+    var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(35, 20, 19), new BABYLON.Vector3(-10, -9 ,-9), Math.PI, 20, scene);
+    var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(10, 20, -20), scene);
+
+    light_spot.intensity = 0.4;
+    light_hemi.intensity = 0.9;
 
     light_hemi.diffuse = new BABYLON.Color3.FromHexString("#f87060");
-	light_hemi.specular = new BABYLON.Color3.FromHexString("#f87060");
+	light_hemi.specular = new BABYLON.Color3.FromHexString("#ff7566");
     light_hemi.groundColor = new BABYLON.Color3.FromHexString("#4d231e");
+
+    light_spot.diffuse = new BABYLON.Color3.FromHexString("#f87060");
+	light_spot.specular = new BABYLON.Color3.FromHexString("#ff7566");
+    light_spot.groundColor = new BABYLON.Color3.FromHexString("#4d231e");
     
 
     //Light visual helpers
@@ -109,10 +115,10 @@ var createScene = function () {
             break;
         case 2:
             shadowGenerator.bias = 0.001;
-            //shadowGenerator.usePoissonSampling = true;
-            //shadowGenerator.useBlurExponentialShadowMap = true;
+            shadowGenerator.usePoissonSampling = true;
+            shadowGenerator.useBlurExponentialShadowMap = true;
             shadowGenerator.usePercentageCloserFiltering = true;
-            shadowGenerator.frustumEdgeFalloff = 5.6;
+            shadowGenerator.frustumEdgeFalloff = 1.7;
             break;
 
     };
@@ -177,9 +183,9 @@ var createScene = function () {
     var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
     pipeline.samples = 4;
     pipeline.grainEnabled = true;
-    pipeline.grain.intensity = 3;
+    pipeline.grain.intensity = 4.5;
 
-    var kernel = 5;	
+    var kernel = 7;	
     var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
 
     return scene;
