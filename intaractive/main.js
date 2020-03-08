@@ -128,7 +128,7 @@ var createScene = function () {
    
 
     //Add imported model
-    BABYLON.SceneLoader.ImportMesh("", "", "plane.babylon", scene, function (mesh) {
+    BABYLON.SceneLoader.ImportMesh("", "", "plane1.babylon", scene, function (mesh) {
             
             //Assign meshes to model variable
             let curve_mesh = mesh[0];
@@ -165,7 +165,7 @@ var createScene = function () {
     
     //Sphere model positioning
     sphere.position.y = 10;
-    sphere.position.x = 27.7;
+    sphere.position.x = 27;
     sphere.position.z = -6
 
     //Add physics to sphere model
