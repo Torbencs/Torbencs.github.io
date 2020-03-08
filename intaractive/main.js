@@ -166,7 +166,7 @@ var createScene = function () {
     //Sphere model positioning
     sphere.position.y = 10;
     sphere.position.x = 27;
-    sphere.position.z = -6
+    sphere.position.z = -4
 
     //Add physics to sphere model
     sphere.physicsImpostor = new BABYLON.PhysicsImpostor(sphere, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1}, scene)
