@@ -14,10 +14,10 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
 	processing begun of mesh:  Cube
 		processing begun of material:  Material
-		num positions      :  8788
-		num normals        :  8788
+		num positions      :  8822
+		num normals        :  8822
 		num tangents       :  0
-		num uvs            :  17576
+		num uvs            :  17644
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  11160
@@ -25,4 +25,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Cube
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.5725 secs
+elapsed time:  0 min, 1.0707 secs
