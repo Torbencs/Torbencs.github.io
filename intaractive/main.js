@@ -11,7 +11,7 @@ var createScene = function () {
 
 
 
-    let gravityY = -23;
+    let gravityY = -3;
     let gravityX = 0;
     let gravityZ = 0;
     let permissionGranted = false;
@@ -68,7 +68,9 @@ var createScene = function () {
     });
 
     // Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.8, Math.PI /2.3, 15, new BABYLON.Vector3(10, 0, 10), scene);
+    //var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.8, Math.PI /2.3, 15, new BABYLON.Vector3(10, 0, 10), scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI * 1.8, Math.PI /2.3, 15, new BABYLON.Vector3(0, -30, 10), scene);
+    camera.setPosition(new BABYLON.Vector3(30, -3, -9));
     //var camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), scene);
     //camera.lowerRadiusLimit = 2;
     //camera.upperRadiusLimit = 14;
@@ -136,7 +138,7 @@ var createScene = function () {
             curve_mesh.position.y = -8;
 
             //Look at imported model
-            camera.target = mesh[0];
+            //camera.target = mesh[0];
 
             //Add physics to imported model
             curve_mesh.physicsImpostor = new BABYLON.PhysicsImpostor(curve_mesh, BABYLON.PhysicsImpostor.MeshImpostor, {mass: 0, friction: 0.5, restitution: 0.1});
@@ -162,8 +164,9 @@ var createScene = function () {
     var sphere = BABYLON.Mesh.CreateSphere("sphere1", 36, 0.5, scene);
     
     //Sphere model positioning
-    sphere.position.y = 4;
-    sphere.position.x = -3;
+    sphere.position.y = 10;
+    sphere.position.x = 27.7;
+    sphere.position.z = -6
 
     //Add physics to sphere model
     sphere.physicsImpostor = new BABYLON.PhysicsImpostor(sphere, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1}, scene)
