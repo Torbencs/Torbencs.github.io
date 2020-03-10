@@ -81,11 +81,11 @@ var createScene = function () {
     //Lights
     // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
 
-    var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(35, 20, 19), new BABYLON.Vector3(-10, -9 ,-9), Math.PI, 20, scene);
+    var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(35, 14, 19), new BABYLON.Vector3(-10, -7 ,-9), Math.PI/2, 20, scene);
     var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(10, 20, -20), scene);
 
-    light_spot.intensity = 0.4;
-    light_hemi.intensity = 0.9;
+    light_spot.intensity = 0.5;
+    light_hemi.intensity = .4;
 
     light_hemi.diffuse = new BABYLON.Color3.FromHexString("#f87060");
 	light_hemi.specular = new BABYLON.Color3.FromHexString("#ff7566");
@@ -116,11 +116,11 @@ var createScene = function () {
             shadowGenerator.frustumEdgeFalloff = 4;
             break;
         case 2:
-            shadowGenerator.bias = 0.001;
+            shadowGenerator.bias = 0.0006444;
             shadowGenerator.usePoissonSampling = true;
-            shadowGenerator.useBlurExponentialShadowMap = true;
+            //shadowGenerator.useBlurExponentialShadowMap = true;
             shadowGenerator.usePercentageCloserFiltering = true;
-            shadowGenerator.frustumEdgeFalloff = 1.7;
+            shadowGenerator.frustumEdgeFalloff = .8;
             break;
 
     };
