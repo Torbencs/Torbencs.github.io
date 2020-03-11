@@ -13,7 +13,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
 	processing begun of mesh:  Plane
-		processing begun of material:  Material.003
+		WARNING: No materials have been assigned: 
 		num positions      :  4
 		num normals        :  4
 		num tangents       :  0
@@ -22,7 +22,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num colors         :  0
 		num indices        :  6
 	processing begun of mesh:  Text
-		processing begun of material:  Material.004
+		WARNING: No materials have been assigned: 
 		num positions      :  1557
 		num normals        :  1557
 		num tangents       :  0
@@ -36,4 +36,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Text
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1197 secs
+elapsed time:  0 min, 0.1147 secs
