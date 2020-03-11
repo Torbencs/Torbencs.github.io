@@ -1,0 +1,135 @@
+/* Greetings traveler.. while you're lurking here you may as well make yourself 
+useful and take this sword incase you find any bugs on your journey */
+
+@font-face {
+    font-family: 'poppinssemibold';
+    src: url('../fonts/poppins-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/poppins-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'extended';
+    src: url('../fonts/Untitled2.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.font {
+    position: absolute;
+    left: -0.56em;
+    font-family: 'extended';
+    font-size: 5em;
+}
+.font2 {
+    font-family: 'extended';
+    font-size: 30em;
+    
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #ff5245;
+    overflow: hidden;
+}
+
+.scene-wrapper {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    min-height: 30em;
+    margin: auto;
+}
+
+.menu-wrapper {
+    right: 0;
+    position: absolute;
+    top: 3em;
+}
+
+.menu {
+    width: 3.2em;
+    height: 3.4em;
+    margin-top: 2em;
+    margin-right: 5em;
+    
+}
+
+.menu__icon {
+    position: relative;
+    content: '';
+    width: 3.2em;
+    height: 0.5em;
+    background: rgba(255, 82, 69, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #802121;
+    -webkit-box-shadow: inset 2px -2px 5px #802121;
+    box-shadow:         inset 2px -2px 5px #802121;
+}
+
+.menu__icon:before {
+    position: absolute;
+    content: '';
+    width: 3.2em;
+    height: 0.5em;
+    left: 0;
+    bottom: 0.8em;
+    background: rgba(255, 82, 69, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #802121;
+    -webkit-box-shadow: inset 2px -2px 5px #802121;
+    box-shadow:         inset 2px -2px 5px #802121;
+   
+}
+.menu__icon:after {
+    position: absolute;
+    content: '';
+    width: 3.2em;
+    height: 0.5em;
+    top: 0.8em;
+    left: 0;
+    background: rgba(255, 82, 69, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #802121;
+    -webkit-box-shadow: inset 2px -2px 5px #802121;
+    box-shadow:         inset 2px -2px 5px #802121;
+}
+
+
+.main-content {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+}
+
+.section-heading {
+    position: fixed;
+    bottom: -100em;
+    left: -27em;
+    transform-origin: 0% 30%;
+    transform: rotate(270deg);
+}
+
+.section-heading__text--extended {
+    position: relative;
+    display: inline-block;
+    font-family: 'extended';
+    font-size: 40em;
+    top: 0.68em;
+    color: rgba(229, 60, 61, 0.35);
+    text-shadow: -5px -4px 5px #ff5245, 0px 0px 0px #661b1b, 0px 0px 3px #ff5245;
+}
+
+.section-heading__text--regular {
+    position: relative;
+    display: inline-block;
+    left: -2.8em;
+    font-family: 'poppinssemibold';
+    font-size: 6.5em;
+    color: rgba(229, 60, 61, 0.35);
+    text-shadow: -5px -4px 5px #ff5245, 0px 0px 0px #661b1b, 0px 0px 3px #ff5245;    
+}
+
+/* Don't show shadows when selecting text */
+
+.section-heading__text::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+.section-heading__text::selection { background: #5af; color: #fff; text-shadow: none; }
