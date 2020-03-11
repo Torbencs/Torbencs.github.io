@@ -33,19 +33,9 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
         light_spot.intensity = 0.7;
-        light_hemi.intensity = 0.9;
+        light_hemi.intensity = .9;
 
-        light_spot.specular = new BABYLON.Color3.FromHexString("#5dece2");
-    /*
-        light_hemi.diffuse = new BABYLON.Color3.FromHexString("#f87060");
-        light_hemi.specular = new BABYLON.Color3.FromHexString("#ff7566");
-        light_hemi.groundColor = new BABYLON.Color3.FromHexString("#4d231e");
-    
-        light_spot.diffuse = new BABYLON.Color3.FromHexString("#f87060");
-        light_spot.specular = new BABYLON.Color3.FromHexString("#ff7566");
-        light_spot.groundColor = new BABYLON.Color3.FromHexString("#4d231e");
-        
-    */
+   
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 0.3, scene);
         lightSphere1.position = light_spot.position;
@@ -90,6 +80,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#4ecdc4");
                 hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 hey_mesh.material = hey_mesh_mat;
+    
+               
 
                 let plane_mesh = mesh[0];
                 
@@ -102,8 +94,8 @@ window.addEventListener('DOMContentLoaded', function(){
         }); 
     
         
-        var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
-        pipeline.samples = 10;
+        //var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
+        //pipeline.samples = 5;
      
     
     
@@ -121,6 +113,7 @@ window.addEventListener('DOMContentLoaded', function(){
     engine.runRenderLoop(function(){
         scene.render();
     });
+    engine.setHardwareScalingLevel(0.5)
     
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
