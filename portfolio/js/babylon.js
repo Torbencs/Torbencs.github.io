@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot.intensity = 0.7;
         light_hemi.intensity = 0.9;
 
-        light_spot.specular = new BABYLON.Color3.FromHexString("#5dece2");
+        //light_spot.specular = new BABYLON.Color3.FromHexString("#5dece2");
     /*
         light_hemi.diffuse = new BABYLON.Color3.FromHexString("#f87060");
         light_hemi.specular = new BABYLON.Color3.FromHexString("#ff7566");
