@@ -16,7 +16,7 @@
 
 </head>
 <body>
-  <div class="container">
+  <div id="change" class="container">
       <div class="scene-wrapper">
         
         <div class="menu-wrapper">
@@ -34,7 +34,7 @@
   </div>
   <script>
   window.onresize = function() {
-      document.body.height = window.innerHeight;
+      document.getElementById("change").style.height = window.innerHeight + 'px';
   }
   window.onresize(); // called to initially set the height.
   </script>
