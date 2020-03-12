@@ -95,12 +95,11 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
         //var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
-        //pipeline.samples = 5;
-     
+        //pipeline.samples = 3;
+        
     
-    
-        var kernel = 4;	
-        var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
+        //var kernel = 4;	
+        //var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
     
         return scene;
     
@@ -113,7 +112,10 @@ window.addEventListener('DOMContentLoaded', function(){
     engine.runRenderLoop(function(){
         scene.render();
     });
-    engine.setHardwareScalingLevel(0.5)
+    //Mobile quality
+    //engine.setHardwareScalingLevel(0.7)
+
+    
     
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
