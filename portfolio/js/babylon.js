@@ -58,12 +58,12 @@ window.addEventListener('DOMContentLoaded', function(){
                 shadowGenerator.darkness = 0;
                 break;
             case 2:
-                shadowGenerator.bias = 0.01;
-                //shadowGenerator.usePoissonSampling = true;
+                shadowGenerator.bias = 0.0000001;
+                shadowGenerator.usePoissonSampling = true;
                 //shadowGenerator.useBlurExponentialShadowMap = true;
-                shadowGenerator.usePercentageCloserFiltering = true;
-                shadowGenerator.frustumEdgeFalloff = 2;
-                shadowGenerator.darkness = 0.3;
+                //shadowGenerator.usePercentageCloserFiltering = true;
+                shadowGenerator.frustumEdgeFalloff = 0;
+                //shadowGenerator.darkness = 0.3;
                 break;
     
         };
