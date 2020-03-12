@@ -50,19 +50,17 @@ window.addEventListener('DOMContentLoaded', function(){
         let shadow_options = 2;
         switch (shadow_options) {
             case 1:
-                shadowGenerator.bias = 0.0000001;
-                //shadowGenerator.usePoissonSampling = true;
-                //shadowGenerator.useBlurExponentialShadowMap = true;
-                shadowGenerator.usePercentageCloserFiltering = true;
-                shadowGenerator.frustumEdgeFalloff = 5;
-                shadowGenerator.darkness = 0;
+                shadowGenerator.bias = 0.035;
+                shadowGenerator.usePoissonSampling = true;
+                shadowGenerator.useBlurExponentialShadowMap = true;
+                shadowGenerator.frustumEdgeFalloff = 0;
+                //shadowGenerator.darkness = 0.3;
                 break;
             case 2:
-                shadowGenerator.bias = 0.0000001;
+                shadowGenerator.bias = 0.001;
                 shadowGenerator.usePoissonSampling = true;
-                //shadowGenerator.useBlurExponentialShadowMap = true;
-                //shadowGenerator.usePercentageCloserFiltering = true;
-                shadowGenerator.frustumEdgeFalloff = 0;
+                shadowGenerator.useBlurExponentialShadowMap = true;
+                shadowGenerator.frustumEdgeFalloff = 3;
                 //shadowGenerator.darkness = 0.3;
                 break;
     
