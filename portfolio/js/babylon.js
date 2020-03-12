@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 //shadowGenerator.useBlurExponentialShadowMap = true;
                 shadowGenerator.usePercentageCloserFiltering = true;
                 shadowGenerator.frustumEdgeFalloff = 2;
-                shadowGenerator.darkness = 0.7;
+                shadowGenerator.darkness = 0.3;
                 break;
     
         };
