@@ -113,7 +113,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.render();
     });
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.7)
+    engine.setHardwareScalingLevel(0.5)
 
     
     
