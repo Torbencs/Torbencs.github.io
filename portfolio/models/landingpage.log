@@ -12,16 +12,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
-	processing begun of mesh:  Plane
-		WARNING: No materials have been assigned: 
-		num positions      :  4
-		num normals        :  4
-		num tangents       :  0
-		num uvs            :  8
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  6
-	processing begun of mesh:  Text
+	processing begun of mesh:  hey
 		WARNING: No materials have been assigned: 
 		num positions      :  1557
 		num normals        :  1557
@@ -31,9 +22,39 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num colors         :  0
 		num indices        :  2148
 	WARNING: The following object (type - FONT) is not currently exportable thus ignored: hey-copy
+	processing begun of mesh:  i'm
+		WARNING: No materials have been assigned: 
+		num positions      :  977
+		num normals        :  977
+		num tangents       :  0
+		num uvs            :  1954
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1344
+	processing begun of mesh:  hey-plane
+		WARNING: No materials have been assigned: 
+		num positions      :  4
+		num normals        :  4
+		num tangents       :  0
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
+	processing begun of mesh:  i'm-plane
+		WARNING: No materials have been assigned: 
+		num positions      :  4
+		num normals        :  4
+		num tangents       :  0
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: i'm-copy
 ========= Writing of JSON file started =========
-	writing mesh:  Plane
-	writing mesh:  Text
+	writing mesh:  hey
+	writing mesh:  i'm
+	writing mesh:  hey-plane
+	writing mesh:  i'm-plane
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1103 secs
+elapsed time:  0 min, 0.2742 secs

@@ -78,26 +78,65 @@ window.addEventListener('DOMContentLoaded', function(){
         BABYLON.SceneLoader.ImportMesh("", "", "models/landingpage.babylon", scene, function (mesh) {
                 
                 //setTimeout( () => mesh[1].setEnabled(false), 3000);
+           /*
+                const isLargeNumber = (element) => element > 13;
+
+                console.log(array1.findIndex(isLargeNumber));
+
+                let findMesh = function (mesh_name) {
+                  return function (element) {
+                      return element.id == 
+                  }
+                }
                 
+
+                let hey_plane_mesh = findMesh('hey_plane'); 
+                console.log(hey_plane_mesh);
+               */
                 //Assign meshes to model variable
-                hey_mesh = mesh[1];
+                hey_mesh = mesh[0];
     
                 hey_mesh_mat = new BABYLON.StandardMaterial("hey_mesh_mat", scene);
                 hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#4ecdc4");
                 hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 hey_mesh.material = hey_mesh_mat;
+                hey_mesh.receiveShadows = true;
+
+
+                im_mesh = mesh[1];
+    
+                im_mesh_mat = new BABYLON.StandardMaterial("im_mesh_mat", scene);
+                im_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#4ecdc4");
+                im_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
+                im_mesh.material = im_mesh_mat;
+                im_mesh.receiveShadows = true;
     
                
 
-                let plane_mesh = mesh[0];
+                let hey_plane_mesh = mesh[2];
                 
-                plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnly', scene);
+                hey_plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnlyMat', scene);
+                hey_plane_mesh.receiveShadows = true;
+                
+                
+                let im_plane_mesh = mesh[3];
+                
+                im_plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnlyMat2', scene);
+                im_plane_mesh.receiveShadows = true;
+                
+                
                 
                 //Add shadows to imported model
                 shadowGenerator.addShadowCaster(hey_mesh);
+                shadowGenerator.addShadowCaster(im_mesh);
 
-                hey_mesh.receiveShadows = true;
-                plane_mesh.receiveShadows = true;
+                
+                
+
+                let m;
+                for (m=0; m < mesh.length; m++) {
+                    console.log(mesh[m].id);
+                };
         }); 
     
         
