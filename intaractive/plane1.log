@@ -12,17 +12,38 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\intaractive\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
-	processing begun of mesh:  Cube
-		processing begun of material:  Material
-		num positions      :  11034
-		num normals        :  11034
+	processing begun of mesh:  Plane
+		WARNING: No materials have been assigned: 
+		num positions      :  4
+		num normals        :  4
 		num tangents       :  0
-		num uvs            :  22068
+		num uvs            :  8
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  14838
+		num indices        :  6
+	processing begun of mesh:  Text
+		WARNING: No materials have been assigned: 
+		num positions      :  1557
+		num normals        :  1557
+		num tangents       :  0
+		num uvs            :  3114
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2148
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: hey-copy
+	processing begun of mesh:  Plane.001
+		WARNING: No materials have been assigned: 
+		num positions      :  4
+		num normals        :  4
+		num tangents       :  0
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
 ========= Writing of JSON file started =========
-	writing mesh:  Cube
+	writing mesh:  Plane
+	writing mesh:  Text
+	writing mesh:  Plane.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.2756 secs
+elapsed time:  0 min, 0.4045 secs

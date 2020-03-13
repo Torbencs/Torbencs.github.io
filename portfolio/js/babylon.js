@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
             
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 1.4, new BABYLON.Vector3(0, 0, 0), scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 1.4, new BABYLON.Vector3(0, 0, -0.03), scene);
         //camera.setPosition(new BABYLON.Vector3(1.2, 1.2, -0.4));
         
     
@@ -28,24 +28,24 @@ window.addEventListener('DOMContentLoaded', function(){
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
     
-        var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 2, -2), new BABYLON.Vector3(1, -1 ,1), Math.PI/2, 2, scene);
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-2, 2, 2), new BABYLON.Vector3(1, -1,-1), Math.PI/2, 2, scene);       
+        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(-2, 2, -2), new BABYLON.Vector3(1, -1, 1), Math.PI/2, 2, scene);
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(20, 20, 0), scene);
         
-    
-        light_spot.intensity = 0.7;
-        light_hemi.intensity = .9;
+        light_spot_r.intensity = 0.8;
+        light_spot_l.intensity = 0.6
+        light_hemi.intensity = 0.5;
 
    
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 0.3, scene);
-        lightSphere1.position = light_spot.position;
+        lightSphere1.position = light_spot_l.position;
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
-    
-  
+   
     
         //Shadows
-        shadowGenerator = new BABYLON.ShadowGenerator(1024, light_spot);
+        shadowGenerator = new BABYLON.ShadowGenerator(1024, light_spot_r);
         //Switch to test different shadow configs
         let shadow_options = 2;
         switch (shadow_options) {
@@ -65,8 +65,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 break;
     
         };
-    
-    
+       
     
         //Add imported model
         BABYLON.SceneLoader.ImportMesh("", "", "models/landingpage.babylon", scene, function (mesh) {
@@ -83,10 +82,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
                 let plane_mesh = mesh[0];
                 
-                plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnly', scene)
+                plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnly', scene);
                 
                 //Add shadows to imported model
-                shadowGenerator.getShadowMap().renderList.push(hey_mesh);
+                shadowGenerator.addShadowCaster(hey_mesh);
+
                 hey_mesh.receiveShadows = true;
                 plane_mesh.receiveShadows = true;
         }); 
