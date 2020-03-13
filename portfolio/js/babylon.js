@@ -5,6 +5,13 @@ window.addEventListener('DOMContentLoaded', function(){
     
     // load the 3D engine
     var engine = new BABYLON.Engine(canvas, true);
+
+    BABYLON.ArcRotateCamera.prototype.spinTo = function (whichprop, targetval, speed) {
+        var ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('at4', this, whichprop, speed, 120, this[whichprop], targetval, 0, ease);
+    }
+    
     
     // createScene function that creates and return the scene
     var createScene = function () {
@@ -70,6 +77,8 @@ window.addEventListener('DOMContentLoaded', function(){
         //Add imported model
         BABYLON.SceneLoader.ImportMesh("", "", "models/landingpage.babylon", scene, function (mesh) {
                 
+                //setTimeout( () => mesh[1].setEnabled(false), 3000);
+                
                 //Assign meshes to model variable
                 hey_mesh = mesh[1];
     
@@ -98,6 +107,8 @@ window.addEventListener('DOMContentLoaded', function(){
     
         //var kernel = 4;	
         //var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
+        setTimeout(()=>camera.spinTo("beta", (Math.PI / 2), 20), 3000);
+        setTimeout(()=>camera.spinTo("radius", 5, 20), 3000);
     
         return scene;
     
