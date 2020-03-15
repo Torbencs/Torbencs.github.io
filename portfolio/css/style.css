@@ -33,9 +33,9 @@ p {
 }
 .container {
     width: 100%;
-    /*background-color: #ff5245; 
-    */
-    background-color: #f34135;
+    background-color: #68e8ff; 
+    
+    /*background-color: #f34135;*/
     overflow: hidden;
 }
 .container--interactive {
@@ -70,10 +70,10 @@ p {
     height: 0.34vw;
     min-width: 43px;
     min-height: 6px;
-    background: rgba(255, 82, 69, 0.1);
-    -moz-box-shadow:    inset 2px -2px 5px #f34135;
-    -webkit-box-shadow: inset 2px -2px 5px #f34135;
-    box-shadow:         inset 2px -2px 5px #f34135;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
 }
 
 .menu__icon:before {
@@ -85,10 +85,10 @@ p {
     min-height: 6px;
     left: 0;
     bottom: 0.8em;
-    background: rgba(255, 82, 69, 0.1);
-    -moz-box-shadow:    inset 2px -2px 5px #f34135;
-    -webkit-box-shadow: inset 2px -2px 5px #f34135;
-    box-shadow:         inset 2px -2px 5px #f34135;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
    
 }
 .menu__icon:after {
@@ -100,10 +100,10 @@ p {
     min-height: 6px;
     top: 0.8em;
     left: 0;
-    background: rgba(255, 82, 69, 0.1);
-    -moz-box-shadow:    inset 2px -2px 5px #f34135;
-    -webkit-box-shadow: inset 2px -2px 5px #f34135;
-    box-shadow:         inset 2px -2px 5px #f34135;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
 }
 
 
@@ -126,8 +126,8 @@ p {
     display: inline-block;
     font-family: 'extended';
     font-size: 37vw;
-    color: rgba(229, 60, 61, 0.35);
-    text-shadow: -5px -4px 5px #f34135, 0px 0px 0px #661b1b, 0px 0px 3px #f34135;
+    color: rgba(82, 229, 255, 0.1);
+    text-shadow: -5px -4px 5px #53e5ff, 0px 0px 0px #216593, 0px 0px 3px #53e5ff;
 }
 
 .section-heading__text--regular {
@@ -137,13 +137,13 @@ p {
     top: -4.6em;
     font-family: 'poppinssemibold';
     font-size: 5.5vw;
-    color: rgba(229, 60, 61, 0.35);
-    text-shadow: -5px -4px 5px #f34135, 0px 0px 0px #661b1b, 0px 0px 3px #f34135;    
+    color: rgba(82, 229, 255, 0.1);
+    text-shadow: -5px -4px 5px #53e5ff, 0px 0px 0px #216593, 0px 0px 3px #53e5ff;    
 }
 
 .text--blue {
     color: rgba(55, 64, 81, 0.35);
-    text-shadow: -5px -4px 5px #374051, 0px 0px 0px #16191e, 0px 0px 3px #374051;
+    text-shadow: -5px -4px 5px #374051, 0px 0px 0px #216593, 0px 0px 3px #374051;
 }
 
 /* Don't show shadows when selecting text */
