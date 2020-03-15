@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Your page title here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="js/scene_interactive.js"></script>
+  <script src="js/babylon.shadowOnlyMaterial.js"></script>
+  <script src="js/page_animations.js"></script>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+  <div id="change" class="container--interactive">
+      <div class="scene-wrapper">
+        
+        <div class="menu-wrapper">
+            <a href="#" onclick="openNav()"><div class="menu"><div class="menu__icon"></div></div></a>
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+        </div>
+
+        
+        <canvas id="renderCanvas"></canvas>
+        
+        <div class="section-heading">
+          <p class="section-heading__text--extended text--blue">T</p>
+          <p class="section-heading__text--regular text--blue">nteractive</p>
+        </div>
+    </div>
+  </div>
+  <script>
+  window.onresize = function() {
+      document.getElementById("change").style.height = window.innerHeight + 'px';
+  }
+  window.onresize(); // called to initially set the height.
+  </script>
+</body>
+</html>
