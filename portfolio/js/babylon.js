@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot_r.intensity = 0.8;
         light_spot_l.intensity = 0.35
         light_spot_r2.intensity = 0.3;
-        light_hemi.intensity = 0.55;
+        light_hemi.intensity = 0.54;
    
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 0.3, scene);
@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 hey_mesh = mesh[0];
     
                 hey_mesh_mat = new BABYLON.StandardMaterial("hey_mesh_mat", scene);
-                hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#ff6161");
+                hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#2fdfdc");
                 hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 hey_mesh.material = hey_mesh_mat;
                 hey_mesh.receiveShadows = true;
@@ -120,7 +120,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 im_mesh = mesh[4];
     
                 im_mesh_mat = new BABYLON.StandardMaterial("im_mesh_mat", scene);
-                im_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#ff6161");
+                im_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#2fdfdc");
                 im_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 im_mesh.material = im_mesh_mat;
                 im_mesh.receiveShadows = true;
@@ -128,7 +128,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 arrow_mesh = mesh[3];
     
                 arrow_mesh_mat = new BABYLON.StandardMaterial("im_mesh_mat", scene);
-                arrow_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#ff6161");
+                arrow_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#2fdfdc");
                 arrow_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 arrow_mesh.material = arrow_mesh_mat;
                 arrow_mesh.receiveShadows = true;

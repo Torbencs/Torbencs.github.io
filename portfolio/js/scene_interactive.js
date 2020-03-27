@@ -18,8 +18,8 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
             
-        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 2, new BABYLON.Vector3(0, 0, 0), scene);
-        camera.setPosition(new BABYLON.Vector3(1.8, 1.12, 0.8));
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
+        camera.setPosition(new BABYLON.Vector3(1.8, 2.12, 0.8));
         
     
         // Camera controls
@@ -27,9 +27,9 @@ window.addEventListener('DOMContentLoaded', function(){
     
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(2, 3, 3.4), new BABYLON.Vector3(-2, -1, -1), Math.PI/2, 2, scene);
+        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(2, 3, 3.4), new BABYLON.Vector3(-2, -1, -1), Math.PI, 5, scene);
 
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-4, 6, 1.2), new BABYLON.Vector3(1, -1,-1), Math.PI/2, 2, scene);       
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-4, 6, 1.2), new BABYLON.Vector3(1, -1,-1), Math.PI, 5, scene);       
 
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(20, 20, 0), scene);
         
@@ -78,18 +78,18 @@ window.addEventListener('DOMContentLoaded', function(){
         BABYLON.SceneLoader.ImportMesh("", "", "models/interactive.babylon", scene, function (mesh) {
                 
             
-                hi_mesh = mesh[1];
+                hi_mesh = mesh[0];
     
                 hi_mesh_mat = new BABYLON.StandardMaterial("hi_mesh_mat", scene);
                 hi_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#374051");
                 hi_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
                 hi_mesh.material = hi_mesh_mat;
                 hi_mesh.receiveShadows = true;
-                camera.setTarget(hi_mesh.position);
+                //camera.setTarget(hi_mesh.position);
 
 
 
-                hi_plane_mesh = mesh[0];
+                hi_plane_mesh = mesh[1];
                 
                 hi_plane_mesh.material = new BABYLON.ShadowOnlyMaterial('shadowOnlyMat', scene);
                 hi_plane_mesh.receiveShadows = true;
@@ -109,15 +109,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         }); 
         
-        var sphere = BABYLON.Mesh.CreateSphere("sphere1", 36, 0.2, scene);
-        sphere_mesh_mat = new BABYLON.StandardMaterial("hi_mesh_mat", scene);
-        sphere_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#4ecdc4");
-        sphere.material = sphere_mesh_mat;
-        sphere.receiveShadows = true;
-        sphere.material.roughness = 5;
-        sphere.material.specularColor = new BABYLON.Color3.FromHexString("#000000");
-        shadowGenerator.addShadowCaster(sphere);
-        sphere.position.y = 0.1;
+       
     
         //Sphere model positioning
         

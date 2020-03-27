@@ -33,13 +33,13 @@ p {
 }
 .container {
     width: 100%;
-    background-color: #68e8ff; 
+    background-color: #ed4441; 
     
     /*background-color: #f34135;*/
     overflow: hidden;
 }
 .container--interactive {
-    background-color: #374051;
+    background-color: #fff;
     overflow: hidden;
 }
 

@@ -15,7 +15,7 @@
   <script src="https://cdn.babylonjs.com/babylon.js"></script>
   <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
   <script src="https://cdn.babylonjs.com/cannon.js"></script>
-  <script src="js/scene_landing.js"></script>
+  <script src="js/babylon.js"></script>
   <script src="js/babylon.shadowOnlyMaterial.js"></script>
   <script src="js/page_animations.js"></script>
 
@@ -24,11 +24,28 @@
 </head>
 <body>
   <div id="change" class="container">
-      
+      <div class="scene-wrapper">
+        
+        <div class="menu-wrapper">
+            <a href="#" onclick="openNav()"><div class="menu"><div class="menu__icon"></div></div></a>
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+        </div>
+
+        
         <canvas id="renderCanvas"></canvas>
         
+        <div class="section-heading">
+          <p class="section-heading__text--extended">T</p>
+          <p class="section-heading__text--regular">orben</p>
+        </div>
     </div>
-  
+  </div>
   <script>
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';

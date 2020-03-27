@@ -12,51 +12,48 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
-	processing begun of mesh:  hey-plane
-		WARNING: No materials have been assigned: 
-		num positions      :  27
-		num normals        :  27
-		num tangents       :  0
-		num uvs            :  54
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  36
-		WARNING: # of 0 area faces found:  4
-	processing begun of mesh:  Text
-		WARNING: No materials have been assigned: 
-		num positions      :  667
-		num normals        :  667
-		num tangents       :  0
-		num uvs            :  1334
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  900
-	WARNING: The following object (type - FONT) is not currently exportable thus ignored: Text.002
-	WARNING: The following object (type - FONT) is not currently exportable thus ignored: Text.003
-	processing begun of mesh:  Text.001
-		WARNING: No materials have been assigned: 
-		num positions      :  188
-		num normals        :  188
-		num tangents       :  0
-		num uvs            :  376
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  276
-		WARNING: # of 0 area faces found:  24
 	processing begun of mesh:  Text.004
 		WARNING: No materials have been assigned: 
-		num positions      :  146
-		num normals        :  146
+		num positions      :  8843
+		num normals        :  8843
 		num tangents       :  0
-		num uvs            :  292
+		num uvs            :  17686
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  204
+		num indices        :  12264
+	processing begun of mesh:  stairs
+		WARNING: No materials have been assigned: 
+		num positions      :  241
+		num normals        :  241
+		num tangents       :  0
+		num uvs            :  482
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  303
+	processing begun of mesh:  Plane
+		WARNING: No materials have been assigned: 
+		num positions      :  11003
+		num normals        :  11003
+		num tangents       :  0
+		num uvs            :  22006
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  14742
+	processing begun of mesh:  arrow
+		WARNING: No materials have been assigned: 
+		num positions      :  218
+		num normals        :  218
+		num tangents       :  0
+		num uvs            :  436
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  288
+		WARNING: # of 0 area faces found:  22
 ========= Writing of JSON file started =========
-	writing mesh:  hey-plane
-	writing mesh:  Text
-	writing mesh:  Text.001
 	writing mesh:  Text.004
+	writing mesh:  stairs
+	writing mesh:  Plane
+	writing mesh:  arrow
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1013 secs
+elapsed time:  0 min, 2.437 secs

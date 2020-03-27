@@ -1,0 +1,472 @@
+Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
+	processing begun of mesh:  ground
+		processing begun of material:  bg
+		num positions      :  4
+		num normals        :  4
+		num tangents       :  0
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: ben
+	processing begun of mesh:  tor
+		processing begun of material:  Torben
+		num positions      :  1410
+		num normals        :  1410
+		num tangents       :  0
+		num uvs            :  2820
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2004
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: hey
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: im
+	processing begun of mesh:  button
+		processing begun of material:  mountain
+		num positions      :  186
+		num normals        :  186
+		num tangents       :  0
+		num uvs            :  372
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  228
+	processing begun of mesh:  road
+		processing begun of material:  road
+		processing begun of material:  dark
+		processing begun of material:  Material.002
+		processing begun of material:  skirting
+			processing texture road
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  city_merged.Multimaterial#0
+		num positions      :  136
+		num normals        :  136
+		num tangents       :  0
+		num uvs            :  272
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  180
+	processing begun of mesh:  pine_1
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#1
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_2
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#2
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_3
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#3
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_4
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#4
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_5
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#5
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_6
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#6
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_7
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#7
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  pine_8
+		processing begun of material:  pine
+		processing begun of material:  trunk
+		registered as also a user of material:  trunk
+		processing begun of multimaterial:  city_merged.Multimaterial#8
+		num positions      :  405
+		num normals        :  405
+		num tangents       :  0
+		num uvs            :  810
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  468
+	processing begun of mesh:  billdboard
+		processing begun of material:  dark metal
+		processing begun of material:  metal
+		processing begun of material:  white
+		processing begun of multimaterial:  city_merged.Multimaterial#9
+		num positions      :  430
+		num normals        :  430
+		num tangents       :  0
+		num uvs            :  860
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  636
+		WARNING: # of 0 area faces found:  88
+	processing begun of mesh:  street_light_1
+		processing begun of material:  street light
+		num positions      :  133
+		num normals        :  133
+		num tangents       :  0
+		num uvs            :  266
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  162
+	processing begun of mesh:  street_light_2
+		processing begun of material:  street light
+		registered as also a user of material:  street light
+		num positions      :  133
+		num normals        :  133
+		num tangents       :  0
+		num uvs            :  266
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  162
+	processing begun of mesh:  street_light_3
+		processing begun of material:  street light
+		registered as also a user of material:  street light
+		num positions      :  133
+		num normals        :  133
+		num tangents       :  0
+		num uvs            :  266
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  162
+	processing begun of mesh:  back_building_2
+		processing begun of material:  building base
+		processing begun of material:  windows
+		processing begun of multimaterial:  city_merged.Multimaterial#10
+		num positions      :  324
+		num normals        :  324
+		num tangents       :  0
+		num uvs            :  648
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  408
+		WARNING: # of 0 area faces found:  8
+	processing begun of mesh:  back_building_1
+		processing begun of material:  skirting
+		processing begun of material:  railing
+		processing begun of material:  building base
+		processing begun of material:  windows
+		processing begun of material:  roof
+		processing begun of material:  dark metal
+		registered as also a user of material:  windows
+		processing begun of multimaterial:  city_merged.Multimaterial#11
+		num positions      :  493
+		num normals        :  493
+		num tangents       :  0
+		num uvs            :  986
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  630
+	processing begun of mesh:  back_building_3
+		processing begun of material:  building base
+		processing begun of material:  windows
+		processing begun of material:  roof
+		processing begun of material:  skirting
+		registered as also a user of material:  windows
+		registered as also a user of material:  roof
+		registered as also a user of material:  skirting
+		processing begun of multimaterial:  city_merged.Multimaterial#12
+		num positions      :  1306
+		num normals        :  1306
+		num tangents       :  0
+		num uvs            :  2612
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2064
+		WARNING: # of 0 area faces found:  144
+	processing begun of mesh:  coffee_building
+		processing begun of material:  Torben
+		processing begun of material:  dark
+		processing begun of material:  skirting
+		processing begun of material:  metal
+		processing begun of material:  white
+		processing begun of material:  windows
+		processing begun of material:  coffee building
+		processing begun of material:  roof
+		processing begun of material:  cup
+		processing begun of material:  dark metal
+		processing begun of material:  Material.008
+		registered as also a user of material:  dark
+		registered as also a user of material:  skirting
+		registered as also a user of material:  metal
+		registered as also a user of material:  white
+		registered as also a user of material:  windows
+		registered as also a user of material:  roof
+		registered as also a user of material:  dark metal
+			processing texture coffee_cup
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  city_merged.Multimaterial#13
+		num positions      :  1967
+		num normals        :  1967
+		num tangents       :  0
+		num uvs            :  3934
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2556
+	processing begun of mesh:  skyscraper
+		processing begun of material:  snow
+		processing begun of material:  building base
+		processing begun of material:  windows
+		processing begun of material:  skirting
+		processing begun of material:  roof
+		processing begun of material:  metal
+		processing begun of material:  white
+		processing begun of material:  road
+		processing begun of material:  helipad
+		registered as also a user of material:  building base
+		registered as also a user of material:  windows
+		registered as also a user of material:  skirting
+		registered as also a user of material:  roof
+		registered as also a user of material:  metal
+		registered as also a user of material:  white
+			processing texture helipad
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		processing begun of multimaterial:  city_merged.Multimaterial#14
+		num positions      :  2763
+		num normals        :  2763
+		num tangents       :  0
+		num uvs            :  5526
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  3621
+		WARNING: # of 0 area faces found:  65
+	processing begun of mesh:  planter_box_1
+		processing begun of material:  bush
+		processing begun of material:  planter box
+		processing begun of multimaterial:  city_merged.Multimaterial#15
+		num positions      :  369
+		num normals        :  369
+		num tangents       :  0
+		num uvs            :  738
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  planter_box_2
+		processing begun of material:  bush
+		processing begun of material:  planter box
+		registered as also a user of material:  planter box
+		processing begun of multimaterial:  city_merged.Multimaterial#16
+		num positions      :  368
+		num normals        :  368
+		num tangents       :  0
+		num uvs            :  736
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  planter_box_3
+		processing begun of material:  bush
+		processing begun of material:  planter box
+		registered as also a user of material:  planter box
+		processing begun of multimaterial:  city_merged.Multimaterial#17
+		num positions      :  368
+		num normals        :  368
+		num tangents       :  0
+		num uvs            :  736
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  384
+	processing begun of mesh:  back_trees
+		processing begun of material:  tree light
+		processing begun of material:  trunk light
+		processing begun of multimaterial:  city_merged.Multimaterial#18
+		num positions      :  2288
+		num normals        :  2288
+		num tangents       :  0
+		num uvs            :  4576
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2592
+		WARNING: # of 0 area faces found:  48
+	processing begun of mesh:  soccer_pitch
+		processing begun of material:  white
+		processing begun of material:  Material.001
+		processing begun of material:  dark
+			processing texture soccer
+				texture type:  diffuseTexture, mapped using: "UVMap"
+		registered as also a user of material:  dark
+		processing begun of multimaterial:  city_merged.Multimaterial#19
+		num positions      :  459
+		num normals        :  459
+		num tangents       :  0
+		num uvs            :  918
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  612
+		WARNING: # of 0 area faces found:  32
+	processing begun of mesh:  stadium_light_1
+		processing begun of material:  metal
+		processing begun of material:  lights
+		processing begun of multimaterial:  city_merged.Multimaterial#20
+		num positions      :  867
+		num normals        :  867
+		num tangents       :  0
+		num uvs            :  1734
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1032
+	processing begun of mesh:  stadium_light_2
+		processing begun of material:  metal
+		processing begun of material:  lights
+		registered as also a user of material:  lights
+		processing begun of multimaterial:  city_merged.Multimaterial#21
+		num positions      :  867
+		num normals        :  867
+		num tangents       :  0
+		num uvs            :  1734
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1032
+	processing begun of mesh:  stadium_chairs_2
+		processing begun of material:  railing
+		processing begun of material:  dark
+		processing begun of material:  seating
+		registered as also a user of material:  dark
+		processing begun of multimaterial:  city_merged.Multimaterial#22
+		num positions      :  1382
+		num normals        :  1382
+		num tangents       :  0
+		num uvs            :  2764
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  5592
+	processing begun of mesh:  stadium_chairs_1
+		processing begun of material:  railing
+		processing begun of material:  seating
+		processing begun of material:  dark
+		registered as also a user of material:  seating
+		registered as also a user of material:  dark
+		processing begun of multimaterial:  city_merged.Multimaterial#23
+		num positions      :  1443
+		num normals        :  1443
+		num tangents       :  0
+		num uvs            :  2886
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  5592
+	processing begun of mesh:  stadium_trees
+		processing begun of material:  tree light
+		processing begun of material:  trunk light
+		registered as also a user of material:  trunk light
+		processing begun of multimaterial:  city_merged.Multimaterial#24
+		num positions      :  1716
+		num normals        :  1716
+		num tangents       :  0
+		num uvs            :  3432
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1944
+		WARNING: # of 0 area faces found:  36
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: Text
+	processing begun of mesh:  mountains
+		processing begun of material:  snow
+		processing begun of material:  mountain
+		registered as also a user of material:  mountain
+		processing begun of multimaterial:  city_merged.Multimaterial#25
+		num positions      :  345
+		num normals        :  345
+		num tangents       :  0
+		num uvs            :  690
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  495
+========= Writing of JSON file started =========
+	writing mesh:  ground
+	writing mesh:  tor
+	writing mesh:  button
+	writing mesh:  road
+	writing mesh:  pine_1
+	writing mesh:  pine_2
+	writing mesh:  pine_3
+	writing mesh:  pine_4
+	writing mesh:  pine_5
+	writing mesh:  pine_6
+	writing mesh:  pine_7
+	writing mesh:  pine_8
+	writing mesh:  billdboard
+	writing mesh:  street_light_1
+	writing mesh:  street_light_2
+	writing mesh:  street_light_3
+	writing mesh:  back_building_2
+	writing mesh:  back_building_1
+	writing mesh:  back_building_3
+	writing mesh:  coffee_building
+	writing mesh:  skyscraper
+	writing mesh:  planter_box_1
+	writing mesh:  planter_box_2
+	writing mesh:  planter_box_3
+	writing mesh:  back_trees
+	writing mesh:  soccer_pitch
+	writing mesh:  stadium_light_1
+	writing mesh:  stadium_light_2
+	writing mesh:  stadium_chairs_2
+	writing mesh:  stadium_chairs_1
+	writing mesh:  stadium_trees
+	writing mesh:  mountains
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 2.5459 secs
