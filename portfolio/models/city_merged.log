@@ -350,13 +350,13 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 				texture type:  diffuseTexture, mapped using: "UVMap"
 		registered as also a user of material:  dark
 		processing begun of multimaterial:  city_merged.Multimaterial#19
-		num positions      :  459
-		num normals        :  459
+		num positions      :  358
+		num normals        :  358
 		num tangents       :  0
-		num uvs            :  918
+		num uvs            :  716
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  612
+		num indices        :  492
 		WARNING: # of 0 area faces found:  32
 	processing begun of mesh:  stadium_light_1
 		processing begun of material:  metal
@@ -469,4 +469,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  mountains
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 2.5459 secs
+elapsed time:  0 min, 2.7687 secs

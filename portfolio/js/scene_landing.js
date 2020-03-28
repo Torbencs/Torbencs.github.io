@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
         var camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(0, 0, 0), scene);
         //camera.minZ = 1;
-        //camera.maxZ = 20;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
+        //camera.maxZ = 100;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
         
         
         
@@ -69,13 +69,13 @@ window.addEventListener('DOMContentLoaded', function(){
 
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
         
-        light_spot_r.intensity = 0.25;
-        light_spot_l.intensity = 0.5
-        light_spot_r2.intensity = 0.5;
-        light_hemi.intensity = 0.4;
+        light_spot_r.intensity = 1;
+        light_spot_l.intensity = 1
+        light_spot_r2.intensity = 1.4;
+        light_hemi.intensity = 1.2;
    
         //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 0.3, scene);
+        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
         lightSphere1.position = light_spot_r2.position;
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
@@ -103,14 +103,14 @@ window.addEventListener('DOMContentLoaded', function(){
     
         };
 
-        
+        let button = null;
     
         //Add imported model
-        BABYLON.SceneLoader.ImportMesh("", "", "models/city_merged.babylon", scene, function (mesh) {
+        BABYLON.SceneLoader.ImportMesh("", "", "models/city_merged.glb", scene, function (mesh) {
                 
+            
+                button = mesh[2];
             /*
-                hey_mesh = mesh[0];
-    
                 hey_mesh_mat = new BABYLON.StandardMaterial("hey_mesh_mat", scene);
                 hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#0d84c4");
                 hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
@@ -159,6 +159,13 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
+       scene.beforeRender = function() {
+        if (button) {
+            scene.getMeshByName('button').position.y +=0.007;
+        }
+    };
+        
+        
 
         return scene;
     
