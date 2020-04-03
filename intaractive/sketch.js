@@ -5,7 +5,7 @@ let gravityX;
 //let cx, cy    
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
+  createCanvas(720, 400);
   
   if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
     DeviceOrientationEvent.requestPermission()
