@@ -42,7 +42,8 @@ function onAskButtonClicked() {
 };
 
 function draw() {
-  let positionX, positionY;
+  let positionX = 20;
+  let positionY = 20;
 
   // I am just skipping sketch entirely for demonstration purpose,
   // but you can still continue to show sketch without access to sensors.
@@ -52,8 +53,8 @@ function draw() {
   } else {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
-     positionX += rotationY;
-     positionY += rotationX;
+     positionX += 0.1 * rotationY;
+     positionY += 0.1 * rotationX;
 
     ellipse(positionX, positionY, 80, 80);
     
