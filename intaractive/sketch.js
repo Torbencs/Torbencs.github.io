@@ -2,10 +2,14 @@ let permissionGranted = false;
 let nonios13device = false;
 let gravityY;
 let gravityX;
+let positionX = 20;
+let positionY = 20;
+let sizeX = window.innerWidth;
+let sizeY = window.innerHeight;
 //let cx, cy    
 
 function setup() {
-  createCanvas(720, 400);
+  createCanvas(sizeX, sizeY);
   
   if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
     DeviceOrientationEvent.requestPermission()
@@ -42,8 +46,7 @@ function onAskButtonClicked() {
 };
 
 function draw() {
-  let positionX = 20;
-  let positionY = 20;
+  
 
   // I am just skipping sketch entirely for demonstration purpose,
   // but you can still continue to show sketch without access to sensors.
