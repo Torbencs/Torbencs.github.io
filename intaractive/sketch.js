@@ -58,7 +58,7 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
      positionX += 0.1 * rotationY;
      positionY += 0.1 * rotationX;
-
+    background(0);
     ellipse(positionX, positionY, 80, 80);
     
   };
