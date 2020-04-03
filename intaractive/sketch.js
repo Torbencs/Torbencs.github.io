@@ -46,10 +46,11 @@ function draw() {
   if (!permissionGranted || !rotationX) {
       return
   } else {
-    document.getElementById('text_1').innerHTML = rotationY;
-    document.getElementById('text_2').innerHTML = rotationX;
     gravityX = rotationX;
     gravityY = rotationY;
+    document.getElementById('text_1').innerHTML = rotationY;
+    document.getElementById('text_2').innerHTML = rotationX;
+    
   }
   
 
