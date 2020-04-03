@@ -42,6 +42,7 @@ function onAskButtonClicked() {
 };
 
 function draw() {
+  let positionX, positionY;
 
   // I am just skipping sketch entirely for demonstration purpose,
   // but you can still continue to show sketch without access to sensors.
@@ -49,11 +50,12 @@ function draw() {
   if (!permissionGranted || !rotationX) {
       return
   } else {
-    gravityX = rotationX;
-    gravityY = rotationY;
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
-    ellipse(rotationX, rotationY, 80, 80);
+     positionX += rotationY;
+     positionY += rotationX;
+
+    ellipse(positionX, positionY, 80, 80);
     
   };
   
