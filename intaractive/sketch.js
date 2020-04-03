@@ -5,6 +5,7 @@ let gravityX;
 //let cx, cy    
 
 function setup() {
+  createCanvas(1020, 800);
   
   if (typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
     DeviceOrientationEvent.requestPermission()
@@ -41,8 +42,10 @@ function onAskButtonClicked() {
 };
 
 function draw() {
+
   // I am just skipping sketch entirely for demonstration purpose,
   // but you can still continue to show sketch without access to sensors.
+  
   if (!permissionGranted || !rotationX) {
       return
   } else {
@@ -50,8 +53,10 @@ function draw() {
     gravityY = rotationY;
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
+    ellipse(rotationX, rotationY, 80, 80);
     
-  }
+  };
   
 
 };
+
