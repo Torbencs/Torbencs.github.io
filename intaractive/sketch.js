@@ -67,6 +67,10 @@ function draw() {
 };
 
 let smooth = function(value) {
-  return Math.pow(value, 3)/6;
+  return (Math.pow(value, 3) / 6) + (value / 4)  
 }
 
+//No idea
+let norm = function(value) {
+  return value - smooth(value)
+}
