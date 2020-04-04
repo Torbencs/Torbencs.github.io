@@ -8,6 +8,9 @@ let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
 let newPosX;
 let newPosY;
+let calibrateGyroX;
+let calibrateGyroY;
+let modeX, modeY;
 //let cx, cy    
 
 function setup() {
@@ -26,7 +29,9 @@ function setup() {
       })
       .then(() => {
         // this runs on subsequent visits
-        permissionGranted = true
+        permissionGranted = true;
+        modeX = findMode(rotationY);
+        modeY = findMode(rotationX);
       })
   } else {
     // it's up to you how to handle non ios 13 devices
@@ -49,61 +54,99 @@ function onAskButtonClicked() {
 
 function draw() {
   
-
-  // I am just skipping sketch entirely for demonstration purpose,
-  // but you can still continue to show sketch without access to sensors.
-  
   if (!permissionGranted || !rotationX) {
       return
   } else {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-   newPosX = positionX + ( 0.1 * rotationY);
-   newPosY = positionY + ( 0.1 * rotationX);
+    calibrateGyroX = modeX + rotationY;
+    calibrateGyroY = modeY + rotationX;
 
+    document.getElementById('text_3').innerHTML = calibrateGyroX;
+    document.getElementById('text_4').innerHTML = calibrateGyroY;
+
+
+    newPosX = positionX + ( 0.1 * calibrateGyroX);
+    newPosY = positionY + ( 0.1 * calibrateGyroY);
+   
     newPosX <= 0 ? positionX = 0 
-    :newPosX >= sizeX ? positionX = sizeX
-    : positionX = newPosX;
+      : newPosX >= sizeX ? positionX = sizeX
+      : positionX = newPosX;
     
     newPosY <= 0 ? positionY = 0 
-    :newPosY >= sizeY ? positionY = sizeY
-    : positionY = newPosY;
-    
-/*
-    if (positionX >= 0 && positionX <= sizeX) {
-      positionX += 0.1 * rotationY
-    } else if (positionX < 0 || (positionX = 0 && rotationY < 0)) {
-      positionX = 0;
-      rotationY = 0;
-    } else if (positionX > sizeX || (positionX = sizeX && rotationY > 0)) {
-      positionX = sizeX;
-      rotationY = 0;
-    };
-
-    if (positionY >= 0 && positionY <= sizeY) {
-      positionY += 0.1 * rotationX
-    } else if (positionY < 0 || (positionY = 0 && rotationX < 0)) {
-      positionY = 0;
-      rotationX = 0;
-    } else if (positionY > sizeY || (positionY = sizeY && rotationX > 0)) {
-      positionY = sizeY;
-      rotationX = 0;
-    };
-*/
+      : newPosY >= sizeY ? positionY = sizeY
+      : positionY = newPosY;
+   
     background(0);
     ellipse(positionX, positionY, 80, 80);
-    
   };
-  
-
 };
+
+
+function findMode(rotationData) {
+
+  let tempArray = [];
+  
+  let id = setInterval(()=> {
+    tempArray.push(Math.floor(rotationData));
+    },500);
+  
+  setTimeout(()=> {
+    clearInterval(id);
+    return mode(tempArray);
+  },5000);    
+};
+
+
+function mode(numbers) {
+  var mode = 0, count = [], i, number, maxIndex = 0;
+
+  for (i = 0; i < numbers.length; i += 1) {
+      number = numbers[i];
+      count[number] = (count[number] || 0) + 1;
+      if (count[number] > maxIndex) {
+          maxIndex = count[number];
+      };
+  };
+
+  for (i in count)
+      if (count.hasOwnProperty(i)) {
+          if (count[i] === maxIndex) {
+              mode = i;
+          };
+      };
+
+  return mode;
+};
+
+
+
+
+//------------------------ TEST CODE ---------------------
 
 let smooth = function(value) {
   return (Math.pow(value, 3) / 6) + (value / 4)  
 }
 
-//No idea
-let norm = function(value) {
-  return value - smooth(value)
-}
+
+
+/*
+
+function calibrateGyro() {
+
+  let tempArrayX = [];
+  let tempArrayY = [];
+  
+  let id = setInterval(()=> {
+    tempArrayX.push(Math.floor(rotationY));
+    tempArrayY.push(Math.floor(rotationX));
+    },500);
+  
+  setTimeout(()=> {
+    clearInterval(id);
+    
+
+  },5000);    
+};
+*/
