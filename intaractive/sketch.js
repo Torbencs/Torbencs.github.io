@@ -51,10 +51,10 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-if (permissionGranted == true) {
+
   modeX = findMode(rotationY);
   modeY = findMode(rotationX);
-}
+
 function draw() {
   
   if (!permissionGranted || !rotationX) {
@@ -66,8 +66,8 @@ function draw() {
     calibrateGyroX = modeX + rotationY;
     calibrateGyroY = modeY + rotationX;
 
-    document.getElementById('text_3').innerHTML = calibrateGyroX;
-    document.getElementById('text_4').innerHTML = calibrateGyroY;
+    document.getElementById('text_3').innerHTML = modeX;
+    document.getElementById('text_4').innerHTML = modeY;
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
