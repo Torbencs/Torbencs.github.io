@@ -56,8 +56,13 @@ function draw() {
   } else {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
-    
-    if (positionX < 0) {
+    /*
+    positionX < 0       ? positionX = 0
+    : positionX > sizeX ? positionX = sizeX
+                        : positionX += 0.1 * rotationY;
+
+*/
+    if (positionX <= 0) {
       positionX = 0
     } else if ( positionX > sizeX) {
       positionX = sizeX
@@ -65,7 +70,7 @@ function draw() {
       positionX += 0.1 * rotationY
     }
 
-    if (positionY < 0) {
+    if (positionY <= 0) {
       positionY = 0
     } else if ( positionY > sizeY) {
       positionY = sizeY
