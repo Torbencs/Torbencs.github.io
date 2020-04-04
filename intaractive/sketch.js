@@ -6,6 +6,8 @@ let positionX = 20;
 let positionY = 20;
 let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
+let newPosX;
+let newPosY;
 //let cx, cy    
 
 function setup() {
@@ -57,6 +59,18 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
+   newPosX = positionX + ( 0.1 * rotationY);
+   newPosY = positionY + ( 0.1 * rotationX);
+
+    newPosX <= 0 ? positionX = 0 
+    :newPosX >= sizeX ? positionX = sizeX
+    : positionX = newPosX;
+    
+    newPosY <= 0 ? positionY = 0 
+    :newPosY >= sizeY ? positionY = sizeY
+    : positionY = newPosY;
+    
+/*
     if (positionX >= 0 && positionX <= sizeX) {
       positionX += 0.1 * rotationY
     } else if (positionX < 0 || (positionX = 0 && rotationY < 0)) {
@@ -76,7 +90,7 @@ function draw() {
       positionY = sizeY;
       rotationX = 0;
     };
-
+*/
     background(0);
     ellipse(positionX, positionY, 80, 80);
     
