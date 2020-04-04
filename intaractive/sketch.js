@@ -30,8 +30,6 @@ function setup() {
       .then(() => {
         // this runs on subsequent visits
         permissionGranted = true;
-        modeX = findMode(rotationY);
-        modeY = findMode(rotationX);
       })
   } else {
     // it's up to you how to handle non ios 13 devices
@@ -40,11 +38,12 @@ function setup() {
   };
 };
 
-// will handle first time visiting to grant access
 function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
+      modeX = findMode(rotationY);
+      modeY = findMode(rotationX);
     } else {
       permissionGranted = false;
     }
