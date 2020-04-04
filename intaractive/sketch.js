@@ -56,27 +56,27 @@ function draw() {
   } else {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
-    /*
-    positionX < 0       ? positionX = 0
-    : positionX > sizeX ? positionX = sizeX
-                        : positionX += 0.1 * rotationY;
-
-*/
-    if (positionX <= 0) {
-      positionX = 0
-    } else if ( positionX > sizeX) {
-      positionX = sizeX
-    } else {
+   
+    if (positionX >= 0 && positionX <= sizeX) {
       positionX += 0.1 * rotationY
-    }
+    } else if (positionX < 0 || (positionX = 0 && rotationY < 0)) {
+      positionX = 0;
+      rotationY = 0;
+    } else if (positionX > sizeX || (positionX = sizeX && rotationY > 0)) {
+      positionX = sizeX;
+      rotationY = 0;
+    };
 
-    if (positionY <= 0) {
-      positionY = 0
-    } else if ( positionY > sizeY) {
-      positionY = sizeY
-    } else {
+    if (positionY >= 0 && positionY <= sizeY) {
       positionY += 0.1 * rotationX
-    }
+    } else if (positionY < 0 || (positionY = 0 && rotationX < 0)) {
+      positionY = 0;
+      rotationX = 0;
+    } else if (positionY > sizeY || (positionY = sizeY && rotationX > 0)) {
+      positionY = sizeY;
+      rotationX = 0;
+    };
+
     background(0);
     ellipse(positionX, positionY, 80, 80);
     
