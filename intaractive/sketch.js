@@ -57,16 +57,20 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
     
-    if (positionX >= 0 && positionX < sizeX) {
+    if (positionX < 0) {
+      positionX = 0
+    } else if ( positionX > sizeX) {
+      positionX = sizeX
+    } else {
       positionX += 0.1 * rotationY
-    } else {
-      positionX = -0.03 * rotationY 
-    };
+    }
 
-    if (positionY > 0 && positionY < sizeY) {
-      positionY += 0.1 * rotationX
+    if (positionY < 0) {
+      positionY = 0
+    } else if ( positionY > sizeY) {
+      positionY = sizeY
     } else {
-      positionY += -0.03 * rotationX
+      positionY += 0.1 * rotationX
     }
     background(0);
     ellipse(positionX, positionY, 80, 80);
