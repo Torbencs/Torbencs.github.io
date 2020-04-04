@@ -52,8 +52,7 @@ function onAskButtonClicked() {
 };
 
 
-  modeX = findMode(rotationY);
-  modeY = findMode(rotationX);
+  findMode(rotationY);
 
 function draw() {
   
@@ -120,7 +119,7 @@ function mode(numbers) {
           };
       };
 
-  return mode;
+  modeX = mode;
 };
 
 
