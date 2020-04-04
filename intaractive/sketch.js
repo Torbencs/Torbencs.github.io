@@ -36,8 +36,7 @@ function setup() {
     permissionGranted = true
     console.log("Hit else on other device");
   };
-  modeX = findMode(rotationY);
-  modeY = findMode(rotationX);
+ 
 };
 
 function onAskButtonClicked() {
@@ -52,6 +51,10 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
+if (permissionGranted == true) {
+  modeX = findMode(rotationY);
+  modeY = findMode(rotationX);
+}
 function draw() {
   
   if (!permissionGranted || !rotationX) {
