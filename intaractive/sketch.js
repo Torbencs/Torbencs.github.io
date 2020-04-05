@@ -51,13 +51,18 @@ function onAskButtonClicked() {
      
     } else {
       permissionGranted = false;
+      setMode();
     }
     this.remove()
   }).catch(console.error)
 };
 
-
-  
+function setMode() {
+  setTimeout(()=> {
+    modeX = findMode(rotationY);
+    modeY = findMode(rotationX);
+  },4000)
+}
 
 function draw() {
   
@@ -68,13 +73,7 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     //findMode(4);
-    if (modeX == 0) {
-    modeX = mode([2,3,4,4]);
-    }
-    if (modeY == 0) {
-    modeY = mode([-2,-2,-2,-2,3,4,4]);
-    }
-
+   
     document.getElementById('text_3').innerHTML = rotationY + modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
