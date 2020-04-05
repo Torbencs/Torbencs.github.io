@@ -75,7 +75,7 @@ function draw() {
     modeY = mode([-2,-2,-2,-2,3,4,4]);
     }
 
-    document.getElementById('text_3').innerHTML = modeX;
+    document.getElementById('text_3').innerHTML = rotationY + modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
 
