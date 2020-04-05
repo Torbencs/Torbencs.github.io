@@ -67,7 +67,7 @@ function draw() {
    
     calibrateGyroY = modeY + rotationX;
 
-    document.getElementById('text_3').innerHTML = mode([5]);
+    document.getElementById('text_3').innerHTML = mode([7]);
     document.getElementById('text_4').innerHTML = modeY;
 
 
