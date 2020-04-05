@@ -91,24 +91,12 @@ function draw() {
   };
 };
 
-function findMode(rotationData) {
-  
-  if (hasRun == false) {
-    
+function findMode(rotationData) {   
     let tempArray = [];
-    let full = false;
-    while (full == false) {
-      if (tempArray.length < 20000) {
-        tempArray.push(Math.floor(rotationData))
-      } else {
-        full = true;
-      }
+    while (tempArray.length < 20000) {
+      tempArray.push(Math.floor(rotationData))
     }
-    hasRun = true;
     return mode(tempArray);
-  } else {
-    return 66;
-  }
 }
 /*
 function findMode(rotationData) {
