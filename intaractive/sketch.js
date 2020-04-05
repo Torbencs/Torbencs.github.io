@@ -65,10 +65,10 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    calibrateGyroX = modeX + rotationY;
+    calibrateGyroX = findMode();
     calibrateGyroY = modeY + rotationX;
 
-    document.getElementById('text_3').innerHTML = findMode(3);
+    document.getElementById('text_3').innerHTML = calibrateGyroX;
     document.getElementById('text_4').innerHTML = modeY;
 
 
