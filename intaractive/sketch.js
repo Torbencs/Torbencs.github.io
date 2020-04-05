@@ -68,10 +68,10 @@ function draw() {
     if (!modeY) {
       findMode();
     }
-    let display = (modeY + rotationX)
+    let display = modeY;
     //findMode(4);
     document.getElementById('text_3').innerHTML = modeY;
-    document.getElementById('text_4').innerHTML = display;
+    document.getElementById('text_4').innerHTML = display + rotationX;
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
