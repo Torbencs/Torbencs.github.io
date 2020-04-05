@@ -55,8 +55,7 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-modeX = findMode(rotationY);
-modeY = findMode(rotationX);
+findMode();
 
 function draw() {
   
@@ -87,12 +86,12 @@ function draw() {
   };
 };
 
-let findMode = function(rotationData) {
+let findMode = function() {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(rotationData))
+      tempArray.push(Math.floor(rotationX))
     }
-    return mode(tempArray);
+    modeY = mode(tempArray);
     
 }
 /*
