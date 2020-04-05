@@ -39,13 +39,14 @@ function setup() {
     console.log("Hit else on other device");
   };
 
+  findMode();
 };
 
 function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
-      findMode();
+      
     } else {
       permissionGranted = false;
       
@@ -89,7 +90,7 @@ function draw() {
 let findMode = function() {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(4))
+      tempArray.push(Math.floor(rotationX))
     }
     modeY = mode(tempArray);
     
