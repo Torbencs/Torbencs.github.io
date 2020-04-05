@@ -32,15 +32,12 @@ function setup() {
       .then(() => {
         // this runs on subsequent visits
         permissionGranted = true;
-       
       })
   } else {
     // it's up to you how to handle non ios 13 devices
     permissionGranted = true
     console.log("Hit else on other device");
   };
-  
-  findMode();
 
 };
 
@@ -48,7 +45,6 @@ function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
-      findMode();
     } else {
       permissionGranted = false;
       
@@ -57,7 +53,7 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-
+findMode(rotationX);
 
 function draw() {
   
@@ -89,10 +85,10 @@ function draw() {
   };
 };
 
-let findMode = function() {
+let findMode = function(rotationData) {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(rotationX))
+      tempArray.push(Math.floor(rotationData))
     }
     modeY = mode(tempArray);
     
