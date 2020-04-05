@@ -98,7 +98,8 @@ function findMode(rotationData) {
       } else {
         full = true;
         hasRun = true;
-        return mode(tempArray);
+        modeX = mode(tempArray)
+        return modeX;
       }
     }
   } else {
