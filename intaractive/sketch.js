@@ -60,7 +60,7 @@ function onAskButtonClicked() {
 function setMode() {
   setTimeout(()=> {
     modeX = findMode(rotationY);
-    modeY = findMode(rotationX);
+    modeY = 20;
   },4000)
 }
 
