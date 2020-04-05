@@ -52,9 +52,7 @@ function onAskButtonClicked() {
       
     }
     this.remove()
-  }).catch(console.error).then(() => {
-    findMode();
-  })
+  }).catch(console.error)
 };
 
 
@@ -92,7 +90,7 @@ function draw() {
 let findMode = function() {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(7))
+      tempArray.push(Math.floor(rotationX))
     }
     modeY = mode(tempArray);
     
