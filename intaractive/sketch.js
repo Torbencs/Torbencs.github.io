@@ -92,7 +92,7 @@ function draw() {
 let findMode = function() {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(2))
+      tempArray.push(Math.floor(rotationX))
     }
     modeY = mode(tempArray);
     
