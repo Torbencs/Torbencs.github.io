@@ -105,7 +105,7 @@ function findMode(rotationData) {
         hasRun = true;
         mode = mode(tempArray)
       }
-      return 44;
+      return mode;
     }
   } else {
     return 66;
