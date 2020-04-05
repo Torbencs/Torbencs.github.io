@@ -66,7 +66,9 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     //findMode(4);
-   
+   if (!modeY) {
+     findMode();
+   }
     document.getElementById('text_3').innerHTML = rotationY + modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
