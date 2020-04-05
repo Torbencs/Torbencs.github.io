@@ -10,7 +10,8 @@ let newPosX;
 let newPosY;
 let calibrateGyroX;
 let calibrateGyroY;
-let modeX, modeY;
+let modeX = 0;
+let modeY = 0;
 let hasRun = false;
 //let cx, cy    
 
@@ -67,10 +68,10 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     //findMode(4);
-    if (!modeX) {
+    if (modeX == 0) {
     modeX = findMode(rotationY);
     }
-    if (!modeY) {
+    if (modeY == 0) {
     modeY = findMode(rotationX);
     }
 
