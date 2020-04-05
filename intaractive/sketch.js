@@ -93,7 +93,7 @@ function findMode(rotationData) {
     let tempArray = [];
     let full = false;
     while (full === false) {
-      if (tempArray.length < 200) {
+      if (tempArray.length < 20) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
