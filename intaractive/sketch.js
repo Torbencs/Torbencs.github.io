@@ -58,10 +58,7 @@ function onAskButtonClicked() {
 };
 
 function setMode() {
-  setTimeout(()=> {
-    modeX = findMode(rotationY);
-    modeY = 20;
-  },4000)
+ modeY = 21;
 }
 
 function draw() {
