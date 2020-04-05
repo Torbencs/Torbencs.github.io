@@ -90,10 +90,10 @@ function draw() {
 
 function findMode(rotationData) {
   
-  if (!modeX) {
+  if (hasRun == false && !modeX) {
     let tempArray = [];
     let full = false;
-    while (full === false) {
+    while (full == false) {
       if (tempArray.length < 20000) {
         tempArray.push(Math.floor(rotationData))
       } else {
