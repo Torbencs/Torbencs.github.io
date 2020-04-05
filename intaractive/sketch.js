@@ -59,7 +59,7 @@ function onAskButtonClicked() {
 };
 
 function setMode() {
- modeY = 22;
+ modeY = findMode(rotationX);
 }
 
 function draw() {
@@ -109,7 +109,7 @@ function findMode(rotationData) {
       }
     }
   } else {
-    return
+    return 66;
   }
 }
 /*
