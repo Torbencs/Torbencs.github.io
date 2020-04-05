@@ -48,7 +48,7 @@ function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
-      setMode();
+      
     } else {
       permissionGranted = false;
       
@@ -57,9 +57,7 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-function setMode() {
- modeY = findMode(1);
-}
+
 
 function draw() {
   
@@ -72,7 +70,7 @@ function draw() {
     //findMode(4);
    
     document.getElementById('text_3').innerHTML = rotationY + modeX;
-    document.getElementById('text_4').innerHTML = modeY;
+    document.getElementById('text_4').innerHTML = findMode(rotationX);
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
@@ -91,10 +89,10 @@ function draw() {
   };
 };
 
-function findMode(rotationData) {
+let findMode = function(rotationData) {
     let tempArray = [];
     let mode;
-    while (tempArray.length < 4) {
+    while (tempArray.length < 200) {
       tempArray.push(Math.floor(rotationData))
       
     }
@@ -117,7 +115,7 @@ function findMode(rotationData) {
 };
 
 */
-function mode(numbers) {
+let mode = function(numbers) {
   var mode = 0, count = [], i, number, maxIndex = 0;
 
   for (i = 0; i < numbers.length; i += 1) {
