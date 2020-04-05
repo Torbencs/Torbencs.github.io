@@ -122,7 +122,7 @@ function mode(numbers) {
           };
       };
 
-  return mode;
+  return "mode";
 };
 
 
