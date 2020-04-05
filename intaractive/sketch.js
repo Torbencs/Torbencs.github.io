@@ -102,7 +102,7 @@ function findMode(rotationData) {
       }
     }
   } else {
-    return 'has run else catch'
+    modeX = 'hit else mode';
   }
 }
 /*
