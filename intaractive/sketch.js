@@ -93,12 +93,12 @@ function draw() {
 
 function findMode(rotationData) {
     let tempArray = [];
-    let flag = ''
+    let mode;
     while (tempArray.length < 20000) {
       tempArray.push(Math.floor(rotationData))
-      flag = "while"
+      mode = mode(tempArray);
     }
-    return flag;
+    return mode;
 }
 /*
 function findMode(rotationData) {
