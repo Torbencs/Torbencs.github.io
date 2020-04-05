@@ -48,12 +48,11 @@ function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
-      
+      setMode();
     } else {
       permissionGranted = false;
       
     }
-    setMode();
     this.remove()
   }).catch(console.error)
 };
