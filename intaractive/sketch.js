@@ -68,8 +68,8 @@ function draw() {
    
     //findMode(4);
 
-    document.getElementById('text_3').innerHTML = findMode(rotationY);
-    document.getElementById('text_4').innerHTML = modeY;
+    document.getElementById('text_3').innerHTML = rotationY + findMode(rotationY);
+    document.getElementById('text_4').innerHTML = rotationX + findMode(rotationX);
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
@@ -90,7 +90,8 @@ function draw() {
 
 function findMode(rotationData) {
   
-  if (hasRun == false && !modeX) {
+  if (hasRun == false) {
+    let mode;
     let tempArray = [];
     let full = false;
     while (full == false) {
@@ -99,12 +100,12 @@ function findMode(rotationData) {
       } else {
         full = true;
         hasRun = true;
-        modeX = mode(tempArray)
-        return modeX;
+        mode = mode(tempArray)
+        return mode;
       }
     }
   } else {
-    return modeX;
+    return
   }
 }
 /*
