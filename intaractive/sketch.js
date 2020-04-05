@@ -90,7 +90,7 @@ function draw() {
 
 function findMode(rotationData) {
   
-  if (hasRun === false) {
+  if (hasRun === false && modeX) {
     let tempArray = [];
     let full = false;
     while (full === false) {
