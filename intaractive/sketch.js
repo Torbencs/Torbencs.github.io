@@ -98,11 +98,11 @@ function findMode(rotationData) {
       } else {
         full = true;
         hasRun = true;
-        modeX = mode(tempArray);
+        return mode(tempArray);
       }
     }
   } else {
-    modeX = modeX;
+    return modeX;
   }
 }
 /*
