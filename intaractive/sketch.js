@@ -96,8 +96,9 @@ function findMode(rotationData) {
     let mode;
     while (tempArray.length < 4) {
       tempArray.push(Math.floor(rotationData))
-      mode = mode(tempArray);
+      
     }
+    mode = mode(tempArray);
     return mode;
 }
 /*
