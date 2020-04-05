@@ -10,7 +10,7 @@ let newPosX;
 let newPosY;
 let calibrateGyroX;
 let calibrateGyroY;
-let modeX, modeY;
+let modeX, modeY, hasRun;
 //let cx, cy    
 
 function setup() {
