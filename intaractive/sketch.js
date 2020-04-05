@@ -94,7 +94,7 @@ function draw() {
 function findMode(rotationData) {
   
   if (hasRun == false) {
-    let mode;
+    
     let tempArray = [];
     let full = false;
     while (full == false) {
@@ -105,8 +105,7 @@ function findMode(rotationData) {
       }
     }
     hasRun = true;
-    mode = mode(tempArray)
-    return mode;
+    return mode(tempArray);
   } else {
     return 66;
   }
