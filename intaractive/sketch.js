@@ -65,9 +65,9 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    findMode(rotationY);
+    modeX = findMode(rotationY);
 
-    document.getElementById('text_3').innerHTML = findMode(8);
+    document.getElementById('text_3').innerHTML = modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
 
@@ -88,13 +88,20 @@ function draw() {
 };
 
 function findMode(rotationData) {
-  let tempArray = [];
-  while (tempArray.length < 4) {
-  tempArray.push(Math.floor(rotationData));
-  };
-  if (tempArray >= 4) {
-    return mode(tempArray)
-  };
+  if (hasRun = false) {
+    let tempArray = [];
+    let id = setInterval(()=> {
+      if (tempArray.length < 4) {
+      tempArray.push(Math.floor(rotationData))
+      } else { 
+        clearInterval(id);
+        hasRun = true;
+        return mode(tempArray);
+      }
+    },500);
+  } else {
+    return
+  }
 }
 /*
 function findMode(rotationData) {
