@@ -58,7 +58,7 @@ function onAskButtonClicked() {
 };
 
 function setMode() {
- modeY = findMode(rotationX);
+ modeY = findMode([1,2,3,4,4,4,4,0]);
 }
 
 function draw() {
