@@ -89,16 +89,16 @@ function draw() {
 };
 
 function findMode(rotationData) {
-  if (hasRun = false) {
+  if (hasRun === false) {
     let tempArray = [];
     let full = false;
-    while (full = false) {
+    while (full === false) {
       if (tempArray.length < 20) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
         hasRun = true;
-        modeX = 'hit modex set';
+        modeX = mode(tempArray);
       }
     }
   } else {
