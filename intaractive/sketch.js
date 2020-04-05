@@ -65,7 +65,7 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    calibrateGyroY = modeY + rotationX;
+    findMode(rotationY);
 
     document.getElementById('text_3').innerHTML = findMode(8);
     document.getElementById('text_4').innerHTML = modeY;
@@ -87,7 +87,16 @@ function draw() {
   };
 };
 
-
+function findMode(rotationData) {
+  let tempArray = [];
+  while (tempArray.length < 4) {
+  tempArray.push(Math.floor(rotationData));
+  };
+  if (tempArray >= 4) {
+    return mode(tempArray)
+  };
+}
+/*
 function findMode(rotationData) {
 
   let tempArray = [];
@@ -102,7 +111,7 @@ function findMode(rotationData) {
   },5000);    
 };
 
-
+*/
 function mode(numbers) {
   var mode = 0, count = [], i, number, maxIndex = 0;
 
