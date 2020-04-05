@@ -55,7 +55,8 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-
+modeX = findMode(rotationY);
+modeY = findMode(rotationX);
 
 function draw() {
   
@@ -66,10 +67,6 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     //findMode(4);
-   if (!modeY) {
-     modeX = findMode(rotationY);
-     modeY = findMode(rotationX);
-   }
     document.getElementById('text_3').innerHTML = rotationY + modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
