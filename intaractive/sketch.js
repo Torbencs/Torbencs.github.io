@@ -45,6 +45,7 @@ function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
+      findMode();
     } else {
       permissionGranted = false;
       
@@ -53,7 +54,7 @@ function onAskButtonClicked() {
   }).catch(console.error)
 };
 
-findMode();
+
 
 function draw() {
   
