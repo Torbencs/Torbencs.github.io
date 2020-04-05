@@ -37,13 +37,15 @@ function setup() {
     console.log("Hit else on other device");
   };
   
+  findMode(rotationY);
+
 };
 
 function onAskButtonClicked() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
-      findMode(rotationY);
+     
     } else {
       permissionGranted = false;
     }
