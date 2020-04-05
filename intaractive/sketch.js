@@ -66,9 +66,9 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    findMode(4);
+    //findMode(4);
 
-    document.getElementById('text_3').innerHTML = modeX;
+    document.getElementById('text_3').innerHTML = findMode(rotationY);
     document.getElementById('text_4').innerHTML = modeY;
 
 
@@ -93,7 +93,7 @@ function findMode(rotationData) {
     let tempArray = [];
     let full = false;
     while (full === false) {
-      if (tempArray.length < 20) {
+      if (tempArray.length < 200) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
