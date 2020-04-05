@@ -30,7 +30,7 @@ function setup() {
       .then(() => {
         // this runs on subsequent visits
         permissionGranted = true;
-        findMode(rotationY);
+        findMode();
       })
   } else {
     // it's up to you how to handle non ios 13 devices
@@ -89,12 +89,12 @@ function draw() {
 };
 
 
-function findMode(rotationData) {
+function findMode() {
 
   let tempArray = [];
   
   let id = setInterval(()=> {
-    tempArray.push(Math.floor(rotationData));
+    tempArray.push(Math.floor(rotationY));
     },500);
   
   setTimeout(()=> {
