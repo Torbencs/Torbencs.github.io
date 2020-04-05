@@ -102,10 +102,11 @@ function findMode(rotationData) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
-        hasRun = true;
-        mode = mode(tempArray)
       }
-    } return mode;
+    }
+    hasRun = true;
+    mode = mode(tempArray)
+    return mode;
   } else {
     return 66;
   }
