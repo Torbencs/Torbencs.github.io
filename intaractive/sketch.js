@@ -100,7 +100,7 @@ function findMode(rotationData) {
       }
     },500);
   } else {
-    return
+    return modeX;
   }
 }
 /*
