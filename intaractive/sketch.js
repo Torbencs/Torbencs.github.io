@@ -68,7 +68,7 @@ function draw() {
     calibrateGyroX = modeX + rotationY;
     calibrateGyroY = modeY + rotationX;
 
-    document.getElementById('text_3').innerHTML = modeX;
+    document.getElementById('text_3').innerHTML = findMode();
     document.getElementById('text_4').innerHTML = modeY;
 
 
@@ -122,7 +122,7 @@ function mode(numbers) {
           };
       };
 
-  modeX = mode;
+  return mode;
 };
 
 
