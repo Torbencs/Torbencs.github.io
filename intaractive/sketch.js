@@ -10,7 +10,8 @@ let newPosX;
 let newPosY;
 let calibrateGyroX;
 let calibrateGyroY;
-let modeX, modeY, hasRun;
+let modeX, modeY;
+let hasRun = false;
 //let cx, cy    
 
 function setup() {
@@ -65,9 +66,9 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    modeX = findMode(rotationY);
+    findMode(rotationY);
 
-    document.getElementById('text_3').innerHTML = findMode(rotationY);
+    document.getElementById('text_3').innerHTML = modeX;
     document.getElementById('text_4').innerHTML = modeY;
 
 
@@ -96,11 +97,12 @@ function findMode(rotationData) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
-        return tempArray;
+        hasRun = true;
+        modeX = mode(tempArray);
       }
     }
   } else {
-    return 'has run else loop'
+    return 'has run else catch'
   }
 }
 /*
