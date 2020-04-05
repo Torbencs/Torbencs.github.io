@@ -65,7 +65,6 @@ function draw() {
     document.getElementById('text_1').innerHTML = rotationY;
     document.getElementById('text_2').innerHTML = rotationX;
    
-    calibrateGyroX = ;
     calibrateGyroY = modeY + rotationX;
 
     document.getElementById('text_3').innerHTML = 5;
