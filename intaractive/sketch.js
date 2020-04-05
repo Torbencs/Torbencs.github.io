@@ -32,7 +32,7 @@ function setup() {
       .then(() => {
         // this runs on subsequent visits
         permissionGranted = true;
-        findMode();
+       
       })
   } else {
     // it's up to you how to handle non ios 13 devices
@@ -40,7 +40,7 @@ function setup() {
     console.log("Hit else on other device");
   };
   
-  
+  findMode();
 
 };
 
