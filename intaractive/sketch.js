@@ -39,7 +39,7 @@ function setup() {
     console.log("Hit else on other device");
   };
 
-  findMode();
+  
 };
 
 function onAskButtonClicked() {
@@ -52,7 +52,9 @@ function onAskButtonClicked() {
       
     }
     this.remove()
-  }).catch(console.error)
+  }).catch(console.error).then(() => {
+    findMode();
+  })
 };
 
 
@@ -90,7 +92,7 @@ function draw() {
 let findMode = function() {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(rotationX))
+      tempArray.push(Math.floor(7))
     }
     modeY = mode(tempArray);
     
