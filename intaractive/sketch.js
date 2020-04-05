@@ -58,7 +58,7 @@ function onAskButtonClicked() {
 };
 
 function setMode() {
- modeY = findMode([4,4,4,4,0]);
+ modeY = findMode(1);
 }
 
 function draw() {
