@@ -89,11 +89,12 @@ function draw() {
 };
 
 function findMode(rotationData) {
+  
   if (hasRun === false) {
     let tempArray = [];
     let full = false;
     while (full === false) {
-      if (tempArray.length < 20) {
+      if (tempArray.length < 200) {
         tempArray.push(Math.floor(rotationData))
       } else {
         full = true;
