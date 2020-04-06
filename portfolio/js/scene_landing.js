@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-5, 17, 5), scene);
         camera.minZ = 0.1;
         camera.setTarget(BABYLON.Vector3.Zero());
-        //camera.maxZ = 100;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
+        camera.maxZ = 50;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
         //Models
         let city_imported, model_heli;
@@ -105,91 +105,21 @@ window.addEventListener('DOMContentLoaded', function(){
                 break;
     
         };
-
-    
+    //Import Models
+       
         //Add imported model
-        BABYLON.SceneLoader.ImportMesh("", "", "models/city_merged.glb", scene, function (mesh) {
-                
-            /*
-                hey_mesh_mat = new BABYLON.StandardMaterial("hey_mesh_mat", scene);
-                hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#0d84c4");
-                hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
-                hey_mesh.material = hey_mesh_mat;
-                hey_mesh.receiveShadows = true;
-                shadowGenerator.addShadowCaster(hey_mesh);
-                hey_mesh = mesh[1];
-    
-            */  
-           
-               
 
-           
-                
-                let m;
-                let count = 0;
-                for (m=0; m < mesh.length; m++) {
-                    console.log(mesh[m].id);
-                    count ++;
-                };
-                console.log(count);
-               
-/*
-              
-                setTimeout(()=> {
-                    camera.movePosiTo({ x: (im_mesh.position.x + 0.001), y: 1.4, z: camera.position.z}, 100);
-                    camera.moveTargetTo({x: im_mesh.position.x, y: (hey_mesh.position.y), z: camera.position.z}, 160);
-                    //camera.moveRadiusTo(5, 5);
-                    //console.log(im_mesh.position.z);
-                    //console.log(hey_mesh.position.z);
-                }, 3000);
-
-*/          
-
-        }); 
-
-        BABYLON.SceneLoader.ImportMesh("", "", "models/helicopter.glb", scene, function (mesh) {
-                
-        /*
-            hey_mesh_mat = new BABYLON.StandardMaterial("hey_mesh_mat", scene);
-            hey_mesh_mat.diffuseColor = new BABYLON.Color3.FromHexString("#0d84c4");
-            hey_mesh.specularColor = new BABYLON.Color3.FromHexString("#000000");
-            hey_mesh.material = hey_mesh_mat;
-            hey_mesh.receiveShadows = true;
-            shadowGenerator.addShadowCaster(hey_mesh);
-            hey_mesh = mesh[1];
-
-        */  
-            model_heli = mesh[0];
-
+        var assetsManager = new BABYLON.AssetsManager(scene);
+        var meshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
+        var heliTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
+        heliTask.onSuccess = task => { 
             scene.registerBeforeRender(function () {
-                mesh[0].position.x += 0.01;
-            });
-           
-
-       
-            /*
-            let m;
-            let count = 0;
-            for (m=0; m < mesh.length; m++) {
-                console.log(mesh[m].id);
-                count ++;
-            };
-            console.log(count);
-           */
-/*
-          
-            setTimeout(()=> {
-                camera.movePosiTo({ x: (im_mesh.position.x + 0.001), y: 1.4, z: camera.position.z}, 100);
-                camera.moveTargetTo({x: im_mesh.position.x, y: (hey_mesh.position.y), z: camera.position.z}, 160);
-                //camera.moveRadiusTo(5, 5);
-                //console.log(im_mesh.position.z);
-                //console.log(hey_mesh.position.z);
-            }, 3000);
-
-*/          
-
-    }); 
-       
+        });
+       } 
+        
+    
+        
+      
     
     /* GRAIN and ANTI ALI        
         
@@ -210,19 +140,7 @@ window.addEventListener('DOMContentLoaded', function(){
             //scene.getMeshByName('back rotor').position.y +=0.007;
         }
     };
-        
-    setTimeout(()=> {
-        
-       
-
-
-        
-
-
-              
-
-    }, 4000);
-
+    
         return scene;
     
         };
@@ -236,8 +154,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     //Mobile quality
     //engine.setHardwareScalingLevel(0.5)
-
-    
+    assetsManager.load();
     
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
@@ -245,3 +162,4 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     });
+
