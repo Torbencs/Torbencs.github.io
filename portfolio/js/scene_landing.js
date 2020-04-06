@@ -138,7 +138,7 @@ window.addEventListener('DOMContentLoaded', function(){
         if (rotationY) {
         document.getElementById('text_1').innerHTML = rotationY;
         }
-        
+
         return scene;
     
         };
@@ -164,6 +164,10 @@ window.addEventListener('DOMContentLoaded', function(){
         engine.resize();
     });
 
+   
+    
+    });
+
     let onAskButtonClicked = function() {
         DeviceOrientationEvent.requestPermission().then(response => {
           if (response === 'granted') {
@@ -175,6 +179,3 @@ window.addEventListener('DOMContentLoaded', function(){
           }
         }).catch(console.error)
       };
-    
-    });
-
