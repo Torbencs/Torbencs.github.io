@@ -125,9 +125,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
         
-       if (permissionGranted == true) {
-        document.getElementById('text_1').innerHTML = 'rotationY -inside scene with if loop';
-       } 
+       
        return scene;
     
         };
@@ -136,7 +134,9 @@ window.addEventListener('DOMContentLoaded', function(){
     var scene = createScene();
     //Run the render loop
     engine.runRenderLoop(function(){
-        
+        if (permissionGranted == true) {
+            document.getElementById('text_1').innerHTML = 'rotationY -inside run render loop';
+        } 
         scene.render();
     });
     
