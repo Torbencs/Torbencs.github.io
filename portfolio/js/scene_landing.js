@@ -125,9 +125,10 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
         
-       
-       document.getElementById('text_1').innerHTML = 'rotationY -inside scene';
-        return scene;
+       if (permissionGranted == true) {
+        document.getElementById('text_1').innerHTML = 'rotationY -inside scene with if loop';
+       } 
+       return scene;
     
         };
     
