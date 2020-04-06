@@ -1,6 +1,21 @@
 window.addEventListener('DOMContentLoaded', function(){
     let permissionGranted;
 
+    let askPermission = function() {
+        // feature detect
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+          DeviceMotionEvent.requestPermission()
+            .then(permissionState => {
+              if (permissionState === 'granted') {
+                window.addEventListener('devicemotion', () => {});
+              }
+            })
+            .catch(console.error);
+        } else {
+          // handle regular non iOS 13+ devices
+        }
+      }
+
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
     
@@ -135,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
     engine.runRenderLoop(function(){
         
-            document.getElementById('text_1').innerHTML = rotationY;
+            document.getElementById('text_1').innerHTML = 'rotationY';
         
         scene.render();
     });
