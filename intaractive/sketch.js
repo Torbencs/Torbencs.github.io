@@ -27,7 +27,7 @@ function setup() {
 
 function draw() {
   
-  if (!permissionGranted || !rotationX) {
+  if (!rotationX) {
       return
   } else {
     document.getElementById('text_1').innerHTML = rotationY;
