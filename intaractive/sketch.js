@@ -70,7 +70,7 @@ function draw() {
     }
     //findMode(4);
     document.getElementById('text_3').innerHTML = modeY;
-    document.getElementById('text_4').innerHTML = findCal(modeY, rotationX)
+    document.getElementById('text_4').innerHTML = findCal(modeY, rotationX);
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
@@ -98,7 +98,7 @@ let findMode = function() {
     
 }
 let findCal = function(mode, rotationData) {
-  return (mode + parseFloat(rotationX))
+  return (mode + parseFloat(rotationData))
 }
 /*
 function findMode(rotationData) {
