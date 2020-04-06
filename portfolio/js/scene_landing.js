@@ -124,8 +124,15 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
-       
-        
+        if (permissionGranted == true) {
+            document.getElementById('text_1').innerHTML = 'rotationY';
+        }
+    
+        scene.registerBeforeRender(function () {
+            if (permissionGranted == true) {
+                document.getElementById('text_2').innerHTML = 'rotationY2';
+            }
+        });
         return scene;
     
         };
@@ -165,10 +172,6 @@ window.addEventListener('DOMContentLoaded', function(){
           if (response === 'granted') {
             permissionGranted = true;
             
-           
-            document.getElementById('text_1').innerHTML = rotationY;
-                   
-
           } else {
             permissionGranted = false;
             
