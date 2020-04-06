@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
+    let permissionGranted;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -140,6 +141,8 @@ window.addEventListener('DOMContentLoaded', function(){
             //scene.getMeshByName('back rotor').position.y +=0.007;
         }
     };
+
+        document.getElementById('text_1').innerHTML = rotationY;
     
         return scene;
     
@@ -152,6 +155,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
         scene.render();
     });
+    
     //Mobile quality
     //engine.setHardwareScalingLevel(0.5)
     assetsManager.load();
@@ -160,6 +164,18 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('resize', function(){
         engine.resize();
     });
+
+    let onAskButtonClicked = function() {
+        DeviceOrientationEvent.requestPermission().then(response => {
+          if (response === 'granted') {
+            permissionGranted = true;
+            
+          } else {
+            permissionGranted = false;
+            
+          }
+        }).catch(console.error)
+      };
     
     });
 
