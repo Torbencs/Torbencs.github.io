@@ -77,8 +77,8 @@ function draw() {
     document.getElementById('text_4').innerHTML = calibrateGyroY;
 
 
-    newPosX = positionX + ( 0.1 * calibrateGyroX);
-    newPosY = positionY + ( 0.1 * calibrateGyroY);
+    newPosX = positionX + ( 0.1 * calibrateGyroY);
+    newPosY = positionY + ( 0.1 * calibrateGyroX);
    
     newPosX <= 0 ? positionX = 0 
       : newPosX >= sizeX ? positionX = sizeX
@@ -103,7 +103,7 @@ let findMode = function(rotationData) {
 }
 let findCal = function(mode, rotationData) {
   let calibrated;
-  calibrated = Number(mode) - Number(rotationData);
+  calibrated = Number(rotationData) - Number(mode);
   return calibrated
 }
 /*
