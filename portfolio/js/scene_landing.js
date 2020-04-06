@@ -125,12 +125,8 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
         
-    
-        scene.registerBeforeRender(function () {
-            if (permissionGranted == true) {
-                document.getElementById('text_1').innerHTML = 'rotationY2';
-            }
-        });
+       
+       
         return scene;
     
         };
@@ -161,7 +157,7 @@ window.addEventListener('DOMContentLoaded', function(){
         engine.resize();
     });
 
-   
+    document.getElementById('text_1').innerHTML = 'rotationY2';
     
     });
 
@@ -178,4 +174,4 @@ window.addEventListener('DOMContentLoaded', function(){
       };
       
 
-    
+      
