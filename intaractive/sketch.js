@@ -98,7 +98,9 @@ let findMode = function() {
     
 }
 let findCal = function(mode, rotationData) {
-  return modeY;
+  let calibrated;
+  calibrated = mode + parseFloat(rotationData);
+  return calibrated
 }
 /*
 function findMode(rotationData) {
