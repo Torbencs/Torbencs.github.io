@@ -134,9 +134,9 @@ window.addEventListener('DOMContentLoaded', function(){
     var scene = createScene();
     //Run the render loop
     engine.runRenderLoop(function(){
-        if (permissionGranted == true) {
+        
             document.getElementById('text_1').innerHTML = 'rotationY -inside run render loop';
-        } 
+        
         scene.render();
     });
     
