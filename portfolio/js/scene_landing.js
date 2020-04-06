@@ -149,10 +149,11 @@ window.addEventListener('DOMContentLoaded', function(){
     var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
     var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
     
-    heliMeshTask.onSuccess( (task) => {
+    heliMeshTask.onSuccess = task => {
         const heliMesh = task.loadedMeshes[0]
-    });
+    };
     
+
     assetsManager.load();
     
     //Add the canvas/window resize event handler
