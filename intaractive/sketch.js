@@ -120,7 +120,6 @@ let smooth = function(value) {
   return (Math.pow(value, 3) / 6) + (value / 4)  
 }
 
-document.getElementById('text_5').innerHTML = rotationY;
 
 /*
 
@@ -142,7 +141,7 @@ function calibrateGyro() {
 };
 */
 
-function onAskButtonClicked() {
+let onAskButtonClicked = function() {
   DeviceOrientationEvent.requestPermission().then(response => {
     if (response === 'granted') {
       permissionGranted = true;
@@ -151,6 +150,5 @@ function onAskButtonClicked() {
       permissionGranted = false;
       
     }
-    this.remove()
   }).catch(console.error)
 };
