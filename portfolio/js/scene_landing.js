@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
-    let permissionGranted, rotationY;
+    let permissionGranted;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -149,10 +149,10 @@ window.addEventListener('DOMContentLoaded', function(){
     var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
     var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
     
-    /*heliMeshTask.onSuccess( (task) => {
-        task.loadedMeshes[0].position.x = ;
+    heliMeshTask.onSuccess( (task) => {
+        const heliMesh = task.loadedMeshes[0]
     });
-    */
+    
     assetsManager.load();
     
     //Add the canvas/window resize event handler
