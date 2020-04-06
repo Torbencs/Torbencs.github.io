@@ -66,7 +66,7 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     if (!modeY) {
-      findMode();
+      modeY = findMode(rotationX);
     }
     //findMode(4);
     document.getElementById('text_3').innerHTML = modeY;
@@ -89,12 +89,12 @@ function draw() {
   };
 };
 
-let findMode = function() {
+let findMode = function(rotationData) {
     let tempArray = [];
     while (tempArray.length < 200) {
-      tempArray.push(Math.floor(rotationX))
+      tempArray.push(Math.floor(rotationData))
     }
-    modeY = mode(tempArray);
+    return mode(tempArray);
     
 }
 let findCal = function(mode, rotationData) {
