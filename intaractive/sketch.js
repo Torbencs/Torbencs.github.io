@@ -66,16 +66,19 @@ function draw() {
     document.getElementById('text_2').innerHTML = rotationX;
    
     if (!modeY) {
-      modeY = findMode(rotationX);
-      modeX = findMode(rotationY);
+      modeX = findMode(rotationX);
+      modeY = findMode(rotationY);
     }
-    //findMode(4);
-    document.getElementById('text_3').innerHTML = findCal(modeX, rotationY);
-    document.getElementById('text_4').innerHTML = findCal(modeY, rotationX);
+
+    calibrateGyroX = findCal(modeX, rotationX);
+    calibrateGyroY = findCal(modeY, rotationY);
+
+    document.getElementById('text_3').innerHTML = calibrateGyroX;
+    document.getElementById('text_4').innerHTML = calibrateGyroY;
 
 
-    newPosX = positionX + ( 0.1 * calibrateGyroX);
-    newPosY = positionY + ( 0.1 * calibrateGyroY);
+    newPosX = positionX + ( 0.1 * calibrateGyroY);
+    newPosY = positionY + ( 0.1 * calibrateGyroX);
    
     newPosX <= 0 ? positionX = 0 
       : newPosX >= sizeX ? positionX = sizeX
@@ -86,7 +89,7 @@ function draw() {
       : positionY = newPosY;
    
     background(0);
-    ellipse(positionX, positionY, 80, 80);
+    ellipse(positionX, positionY, 120, 120);
   };
 };
 
