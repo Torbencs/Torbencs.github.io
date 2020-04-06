@@ -68,10 +68,9 @@ function draw() {
     if (!modeY) {
       findMode();
     }
-    let display = modeY;
     //findMode(4);
     document.getElementById('text_3').innerHTML = modeY;
-    document.getElementById('text_4').innerHTML = display + rotationX;
+    document.getElementById('text_4').innerHTML = modeY + rotationX;
 
 
     newPosX = positionX + ( 0.1 * calibrateGyroX);
@@ -144,7 +143,7 @@ let smooth = function(value) {
   return (Math.pow(value, 3) / 6) + (value / 4)  
 }
 
-
+document.getElementById('text_5').innerHTML = rotationY;
 
 /*
 
