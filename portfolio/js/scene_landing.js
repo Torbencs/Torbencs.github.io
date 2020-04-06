@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
-    let rotationY;
+    
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');

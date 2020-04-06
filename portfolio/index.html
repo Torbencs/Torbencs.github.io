@@ -33,6 +33,7 @@
     </div>
   
   <script>
+  let rotationY;
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
@@ -43,9 +44,9 @@
           DeviceMotionEvent.requestPermission()
             .then(permissionState => {
               if (permissionState === 'granted') {
-                window.addEventListener('devicemotion', (event) => {
+                window.addEventListener('deviceorientation', (event) => {
                   rotationY = event.beta;
-                });
+                },true);
               }
             })
             .catch(console.error);
