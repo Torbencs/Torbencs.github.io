@@ -52,10 +52,7 @@ window.addEventListener('DOMContentLoaded', function(){
         camera.setTarget(BABYLON.Vector3.Zero());
         camera.maxZ = 50;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
-        //Models
-        let city_imported, model_heli;
-        
-        
+       
         //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
         
     
@@ -128,6 +125,9 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
        scene.beforeRender = function() {
+        if (rotationY) {
+            document.getElementById('text_1').innerHTML = rotationY;
+            }
         if (city_imported) {
             //scene.getMeshByName('model_heli').position.y +=0.007;
             //scene.getMeshByName('ben').freezeWorldMatrix();
@@ -135,9 +135,7 @@ window.addEventListener('DOMContentLoaded', function(){
             //scene.getMeshByName('back rotor').position.y +=0.007;
         }
     };
-        if (rotationY) {
-        document.getElementById('text_1').innerHTML = rotationY;
-        }
+        
         return scene;
     
         };
