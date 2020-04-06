@@ -165,12 +165,9 @@ window.addEventListener('DOMContentLoaded', function(){
           if (response === 'granted') {
             permissionGranted = true;
             
-            scene.beforeRender = function() {
-                if (rotationY) {
-                   document.getElementById('text_1').innerHTML = rotationY;
-                   }
-               
-           };
+           
+            document.getElementById('text_1').innerHTML = rotationY;
+                   
 
           } else {
             permissionGranted = false;
