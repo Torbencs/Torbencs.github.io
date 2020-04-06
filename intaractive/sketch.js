@@ -99,7 +99,7 @@ let findMode = function() {
 }
 let findCal = function(mode, rotationData) {
   let calibrated;
-  calibrated = mode + parseFloat(rotationData);
+  calibrated = Number(mode) + Number(rotationData);
   return calibrated
 }
 /*
