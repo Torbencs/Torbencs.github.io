@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
-    let permissionGranted;
+    let permissionGranted, rotationY;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -135,8 +135,9 @@ window.addEventListener('DOMContentLoaded', function(){
             //scene.getMeshByName('back rotor').position.y +=0.007;
         }
     };
-        
-
+        if (rotationY) {
+        document.getElementById('text_1').innerHTML = rotationY;
+        }
         return scene;
     
         };
@@ -177,6 +178,6 @@ window.addEventListener('DOMContentLoaded', function(){
           }
         }).catch(console.error)
       };
-      if (rotationY) {
-        document.getElementById('text_1').innerHTML = rotationY;
-        };
+      
+
+    
