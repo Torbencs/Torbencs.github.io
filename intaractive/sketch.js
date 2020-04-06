@@ -16,9 +16,6 @@ let hasRun = false;
 //let cx, cy    
 
 
-  createCanvas(sizeX, sizeY);
-  
-
 
   
 
