@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function(){
         */
         
        
-       
+       document.getElementById('text_1').innerHTML = 'rotationY -inside scene';
         return scene;
     
         };
@@ -157,7 +157,7 @@ window.addEventListener('DOMContentLoaded', function(){
         engine.resize();
     });
 
-    document.getElementById('text_1').innerHTML = 'rotationY2';
+    
     
     });
 
