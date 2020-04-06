@@ -128,12 +128,7 @@ window.addEventListener('DOMContentLoaded', function(){
         if (rotationY) {
             document.getElementById('text_1').innerHTML = rotationY;
             }
-        if (city_imported) {
-            //scene.getMeshByName('model_heli').position.y +=0.007;
-            //scene.getMeshByName('ben').freezeWorldMatrix();
-            //scene.model_heli.position.x += 1;
-            //scene.getMeshByName('back rotor').position.y +=0.007;
-        }
+        
     };
         
         return scene;
@@ -151,9 +146,13 @@ window.addEventListener('DOMContentLoaded', function(){
     //Mobile quality
     //engine.setHardwareScalingLevel(0.5)
     var assetsManager = new BABYLON.AssetsManager(scene);
-    var meshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
-    var heliTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
+    var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
+    var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
     
+    /*heliMeshTask.onSuccess( (task) => {
+        task.loadedMeshes[0].position.x = ;
+    });
+    */
     assetsManager.load();
     
     //Add the canvas/window resize event handler
