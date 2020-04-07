@@ -134,14 +134,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     newPosX = positionX + ( -0.001 * calibrateGyroY);
                     newPosY = positionY + ( -0.001 * calibrateGyroX);
                    
-                    newPosX <= 0 ? positionX = 0 
-                      : newPosX >= sizeX ? positionX = sizeX
-                      : positionX = newPosX;
                     
-                    newPosY <= 0 ? positionY = 0 
-                      : newPosY >= sizeY ? positionY = sizeY
-                      : positionY = newPosY;
-
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
                     
