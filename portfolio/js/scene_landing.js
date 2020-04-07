@@ -123,8 +123,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
-                    newPosX = positionX + ( 0.1 * rotationY);
-                    newPosY = positionY + ( 0.1 * rotationX);
+                    newPosX = positionX + ( 0.01 * rotationY);
+                    newPosY = positionY + ( 0.01 * rotationX);
                    
                     newPosX <= 0 ? positionX = 0 
                       : newPosX >= sizeX ? positionX = sizeX
