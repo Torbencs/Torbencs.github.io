@@ -58,10 +58,14 @@
         } else {
           // handle regular non iOS 13+ devices
         }
-    // Removes an element from the document
-    var element = document.getElementById('btn-permission');
-    element.parentNode.removeChild(element);
+    removeElement("btn-permission")
   }
+
+  function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
   
   </script>
 </body>
