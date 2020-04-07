@@ -121,7 +121,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
-/*
+
                     if (!modeY) {
                         modeX = findMode(rotationX);
                         modeY = findMode(rotationY);
@@ -129,7 +129,10 @@ window.addEventListener('DOMContentLoaded', function(){
                   
                     calibrateGyroX = findCal(modeX, rotationX);
                     calibrateGyroY = findCal(modeY, rotationY);
-*/
+
+                    document.getElementById('text_1').innerHTML = rotationX;
+                    document.getElementById('text_2').innerHTML = calibrateGyroX;
+
                     newPosX = positionX + ( -0.001 * rotationY);
                     newPosY = positionY + ( -0.001 * rotationX);
                    
@@ -170,7 +173,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
     engine.runRenderLoop(function(){
         
-            document.getElementById('text_1').innerHTML = rotationY;
+            
             
             
         
