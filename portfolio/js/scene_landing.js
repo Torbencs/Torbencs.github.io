@@ -2,8 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX;
-    let newPosY;
+    let newPosX,newPosY,modeX,modeY;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -122,7 +121,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
-
+/*
                     if (!modeY) {
                         modeX = findMode(rotationX);
                         modeY = findMode(rotationY);
@@ -130,9 +129,9 @@ window.addEventListener('DOMContentLoaded', function(){
                   
                     calibrateGyroX = findCal(modeX, rotationX);
                     calibrateGyroY = findCal(modeY, rotationY);
-
-                    newPosX = positionX + ( -0.001 * calibrateGyroY);
-                    newPosY = positionY + ( -0.001 * calibrateGyroX);
+*/
+                    newPosX = positionX + ( -0.001 * rotationY);
+                    newPosY = positionY + ( -0.001 * rotationX);
                    
                     
                     heliMesh.position.x = newPosX;
