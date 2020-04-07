@@ -131,10 +131,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     calibrateGyroY = findCal(modeY, rotationY);
 
                     document.getElementById('text_1').innerHTML = rotationX;
-                    document.getElementById('text_2').innerHTML = calibrateGyroX;
 
-                    newPosX = positionX + ( -0.001 * rotationY);
-                    newPosY = positionY + ( -0.001 * rotationX);
+                    newPosX = positionX + ( -0.001 * calibrateGyroY);
+                    newPosY = positionY + ( -0.001 * calibrateGyroX);
                    
                     
                     heliMesh.position.x = newPosX;
