@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY;
+    let newPosX,newPosY,modeX,modeY,theta;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis, rotationDataX, rotationDataY
-                    const theta = 57.443;
+                    theta = 57.443;
                     newPosX = positionX + findOffset(theta, x, calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset(theta, y, calibrateGyroX, calibrateGyroY);
                    
