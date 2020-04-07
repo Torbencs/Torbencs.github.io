@@ -268,18 +268,20 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     let findOffset = function(theta, axis, rotationDataX, rotationDataY) {
+        let offset;
         switch (axis) {
             case x:
                 //Fall-through
             case X: 
-                return (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
+                offset = (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
                 break;
             case y:
                 //Fall-through
             case Y:
-                return (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
+                offset = (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
                 break;
             default:
                 console.log("Missing or incorrect axis argument in findOffset function call");
         }
+        return offset;
     }
