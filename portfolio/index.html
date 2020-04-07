@@ -24,6 +24,7 @@
 </head>
 <body>
   <p>V1.391</p>
+  <button onclick="askPermission()"></button>
   <div id="text_1">Empty</div>
   <div id="change" class="container">
       
@@ -38,10 +39,7 @@
   }
   window.onresize(); // called to initially set the height.
 
-  var btn = document.createElement("BUTTON");   // Create a <button> element
-  btn.innerHTML = "CLICK ME";
-  btn.onclick = askPermission();
-  document.body.appendChild(btn);     
+    
 
   let askPermission = function() {
         // feature detect
