@@ -123,6 +123,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
+                  
+
                     newPosX = positionX + ( -0.001 * rotationY);
                     newPosY = positionY + ( -0.001 * rotationX);
                    
@@ -178,7 +180,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.5)
+    engine.setHardwareScalingLevel(0.5)
     
     
     
@@ -209,4 +211,3 @@ window.addEventListener('DOMContentLoaded', function(){
       };
       
 
-      
