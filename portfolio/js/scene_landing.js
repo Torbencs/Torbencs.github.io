@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
-    
+    let heliMesh;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -105,14 +105,19 @@ window.addEventListener('DOMContentLoaded', function(){
         };
         
         //Model positioning
-        
+       
         var assetsManager = new BABYLON.AssetsManager(scene);
         var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
         var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
         heliMeshTask.onSuccess = task => {
             heliMesh = task.loadedMeshes[0];
-            heliMesh.position.x = rotationY;
-            
+            heliMesh.position.x = 0;
+                   
+            scene.registerBeforeRender( () => {
+                if (heliMesh && rotationY){
+                    heliMesh.position.x = rotationY;
+                }
+            });
         };
         assetsManager.load();
 
@@ -145,6 +150,8 @@ window.addEventListener('DOMContentLoaded', function(){
     engine.runRenderLoop(function(){
         
             document.getElementById('text_1').innerHTML = rotationY;
+            
+            
         
         scene.render();
     });
