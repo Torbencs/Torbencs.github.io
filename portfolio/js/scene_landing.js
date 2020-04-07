@@ -128,14 +128,16 @@ window.addEventListener('DOMContentLoaded', function(){
                         modeX = findMode(rotationX);
                         modeY = findMode(rotationY);
                     }
-                  
-                    calibrateGyroX = findCal(modeX, rotationX);
-                    calibrateGyroY = findCal(modeY, rotationY);
+                    
+                    //Adust gyro data so zero is natural hand help position and apply dampening
+                    calibrateGyroX = findCal(modeX, rotationX) * -0.001;
+                    calibrateGyroY = findCal(modeY, rotationY) * -0.001;
 
                    
-
-                    newPosX = positionX + ( -0.001 * calibrateGyroY);
-                    newPosY = positionY + ( -0.001 * calibrateGyroX);
+                    //Find new coords adjusted for camera offset. Args: theta, axis, rotationDataX, rotationDataY
+                    const theta = 57.443;
+                    newPosX = positionX + findOffset(theta, x, calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset(theta, y, calibrateGyroX, calibrateGyroY);
                    
                     
                     heliMesh.position.x = newPosX;
@@ -264,3 +266,20 @@ window.addEventListener('DOMContentLoaded', function(){
     
       return mode;
     };
+
+    let findOffset = function(theta, axis, rotationDataX, rotationDataY) {
+        switch (axis) {
+            case x:
+                //Fall-through
+            case X: 
+                return (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
+                break;
+            case y:
+                //Fall-through
+            case Y:
+                return (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
+                break;
+            default:
+                console.log("Missing or incorrect axis argument in findOffset function call");
+        }
+    }
