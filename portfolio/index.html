@@ -23,9 +23,9 @@
 
 </head>
 <body>
-  <p>V1.43</p>
-  <button onclick="askPermission()">Butttton1</button>
-  <div id="text_1">Empty</div>
+  
+  <button id="btn-permission" onclick="askPermission()">Butttton1</button>
+  
 
   <div id="change" class="container">
       
@@ -58,7 +58,10 @@
         } else {
           // handle regular non iOS 13+ devices
         }
-      }
+    // Removes an element from the document
+    var element = document.getElementById('btn-permission');
+    element.parentNode.removeChild(element);
+  }
   
   </script>
 </body>
