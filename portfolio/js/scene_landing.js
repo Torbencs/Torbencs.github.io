@@ -123,10 +123,16 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
+                    if (!modeY) {
+                        modeX = findMode(rotationX);
+                        modeY = findMode(rotationY);
+                    }
                   
+                    calibrateGyroX = findCal(modeX, rotationX);
+                    calibrateGyroY = findCal(modeY, rotationY);
 
-                    newPosX = positionX + ( -0.001 * rotationY);
-                    newPosY = positionY + ( -0.001 * rotationX);
+                    newPosX = positionX + ( -0.001 * calibrateGyroY);
+                    newPosY = positionY + ( -0.001 * calibrateGyroX);
                    
                     newPosX <= 0 ? positionX = 0 
                       : newPosX >= sizeX ? positionX = sizeX
@@ -210,4 +216,55 @@ window.addEventListener('DOMContentLoaded', function(){
         }).catch(console.error)
       };
       
+    let findMode = function(rotationData) {
+        let tempArray = [];
+        while (tempArray.length < 2000) {
+            tempArray.push(Math.floor(rotationData))
+        }
+        return mode(tempArray);
+        
+    }
 
+    //Returns calibrated rotation 
+    let findCal = function(mode, rotationData) {
+      let calibrated;
+      calibrated = Number(rotationData) - Number(mode);
+      return calibrated
+    }
+    /*
+    function findMode(rotationData) {
+    
+      let tempArray = [];
+      
+      let id = setInterval(()=> {
+        tempArray.push(Math.floor(rotationData));
+        },500);
+      
+      setTimeout(()=> {
+        clearInterval(id);
+        return mode(tempArray);
+      },5000);    
+    };
+    
+    */
+    //Finds mode from array
+    let mode = function(numbers) {
+      var mode = 0, count = [], i, number, maxIndex = 0;
+    
+      for (i = 0; i < numbers.length; i += 1) {
+          number = numbers[i];
+          count[number] = (count[number] || 0) + 1;
+          if (count[number] > maxIndex) {
+              maxIndex = count[number];
+          };
+      };
+    
+      for (i in count)
+          if (count.hasOwnProperty(i)) {
+              if (count[i] === maxIndex) {
+                  mode = i;
+              };
+          };
+    
+      return mode;
+    };
