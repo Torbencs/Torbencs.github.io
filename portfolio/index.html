@@ -23,7 +23,6 @@
 
 </head>
 <body>
-  <button onclick="askPermission()">Press</button>
   <p>V1.391</p>
   <div id="text_1">Empty</div>
   <div id="change" class="container">
@@ -38,6 +37,13 @@
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
   window.onresize(); // called to initially set the height.
+
+  if (window.DeviceOrientationEvent){
+  var btn = document.createElement("BUTTON");   // Create a <button> element
+  btn.innerHTML = "CLICK ME";
+  btn.onclick = askPermission();
+  document.body.appendChild(btn);     
+
   let askPermission = function() {
         // feature detect
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -54,6 +60,7 @@
           // handle regular non iOS 13+ devices
         }
       }
+  }
   </script>
 </body>
 </html>
