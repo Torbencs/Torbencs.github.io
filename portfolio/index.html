@@ -38,7 +38,6 @@
   }
   window.onresize(); // called to initially set the height.
 
-  if (window.DeviceOrientationEvent){
   var btn = document.createElement("BUTTON");   // Create a <button> element
   btn.innerHTML = "CLICK ME";
   btn.onclick = askPermission();
@@ -60,7 +59,7 @@
           // handle regular non iOS 13+ devices
         }
       }
-  }
+  
   </script>
 </body>
 </html>

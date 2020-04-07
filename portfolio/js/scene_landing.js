@@ -103,11 +103,20 @@ window.addEventListener('DOMContentLoaded', function(){
                 break;
     
         };
-    //Import Models
-       
-        //Add imported model
+        
+        //Model positioning
+        
+        var assetsManager = new BABYLON.AssetsManager(scene);
+        var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
+        var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
+        heliMeshTask.onSuccess = task => {
+            heliMesh = task.loadedMeshes[0];
+            heliMesh.position.x = rotationY;
+            
+        };
+        assetsManager.load();
 
-       
+        
         
     
         
@@ -142,16 +151,13 @@ window.addEventListener('DOMContentLoaded', function(){
     
     //Mobile quality
     //engine.setHardwareScalingLevel(0.5)
-    var assetsManager = new BABYLON.AssetsManager(scene);
-    var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
-    var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
     
-    heliMeshTask.onSuccess = task => {
-        const heliMesh = task.loadedMeshes[0]
-    };
+    
+    
+    
     
 
-    assetsManager.load();
+    
     
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
