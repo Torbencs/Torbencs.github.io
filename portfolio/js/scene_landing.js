@@ -268,6 +268,14 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     let findOffset = function(theta, axis, rotationDataX, rotationDataY) {
+        if (axis == x) {
+            return (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
+        } else if (axis == y) {
+            return (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
+        } else {
+            console.log("Missing or incorrect axis argument in findOffset function call");
+        }
+        /*
         let offset;
         switch (axis) {
             case x:
@@ -284,4 +292,5 @@ window.addEventListener('DOMContentLoaded', function(){
                 console.log("Missing or incorrect axis argument in findOffset function call");
         }
         return offset;
+        */
     }
