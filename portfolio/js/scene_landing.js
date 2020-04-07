@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
-                    heliMesh.position.x = rotationY;
+                    heliMesh.position.x = -10;
                 }
             });
         };
