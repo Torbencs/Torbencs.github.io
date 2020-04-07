@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionY = heliMesh.position.y;
 
                     newPosX = positionX + ( 0.1 * rotationY);
-                    newPosY = positionY + ( 0.1 * calibrateGyroX);
+                    newPosY = positionY + ( 0.1 * rotationX);
                    
                     newPosX <= 0 ? positionX = 0 
                       : newPosX >= sizeX ? positionX = sizeX
@@ -136,6 +136,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     heliMesh.position.x = newPosX;
                     heliMesh.position.y = newPosY; 
+                    
                 }
             });
         };

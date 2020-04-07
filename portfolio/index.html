@@ -49,6 +49,7 @@
               if (permissionState === 'granted') {
                 window.addEventListener('deviceorientation', (event) => {
                   rotationY = event.beta;
+                  rotationX = event.gamma;
                 },true);
               }
             })
