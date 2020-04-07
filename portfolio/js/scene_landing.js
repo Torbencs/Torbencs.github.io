@@ -132,7 +132,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     calibrateGyroX = findCal(modeX, rotationX);
                     calibrateGyroY = findCal(modeY, rotationY);
 
-                    document.getElementById('text_1').innerHTML = rotationX;
+                   
 
                     newPosX = positionX + ( -0.001 * calibrateGyroY);
                     newPosY = positionY + ( -0.001 * calibrateGyroX);
