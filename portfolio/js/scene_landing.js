@@ -138,7 +138,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY) ;
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY) ;
-                   
+
+                    document.getElementById('1').innerHTML = calibrateGyroX;
+                    document.getElementById('2').innerHTML = calibrateGyroY;
                     
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
