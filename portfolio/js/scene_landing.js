@@ -117,8 +117,8 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
-            
-                   
+            heliMesh.rotationQuaternion = null;
+
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
 
@@ -143,8 +143,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     document.getElementById('1').innerHTML = calibrateGyroX;
                     document.getElementById('2').innerHTML = calibrateGyroY;
                     
-                    heliMesh.rotation.x = 100 * calibrateGyroY;
-                    heliMesh.rotation.z = 100 * calibrateGyroX;
+                    heliMesh.rotation.x = 10 * calibrateGyroX;
+                    heliMesh.rotation.z = 10 * calibrateGyroY;
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
                     
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
+    //engine.setHardwareScalingLevel(0.5)
     
     
     
