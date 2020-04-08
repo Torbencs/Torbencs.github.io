@@ -135,9 +135,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
-                    theta = 122.557;
-                    newPosX = positionX + findOffset(theta, 'x', calibrateGyroX, calibrateGyroY);
-                    newPosY = positionY + findOffset(theta, 'y', calibrateGyroX, calibrateGyroY);
+                    
+                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
                    
                     
                     heliMesh.position.x = newPosX;
@@ -267,11 +267,11 @@ window.addEventListener('DOMContentLoaded', function(){
       return mode;
     };
 
-    let findOffset = function(theta, axis, rotationDataX, rotationDataY) {
+    let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
+            return (Math.cos(57.443) * rotationDataY) + (Math.cos(theta) * rotationDataX);
         } else if (axis == 'y') {
-            return (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
+            return (Math.sin(32.557) * rotationDataY) + (Math.sin(theta) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }
