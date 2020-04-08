@@ -119,7 +119,6 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.y = 7;
                    
             scene.registerBeforeRender( () => {
-                heliMesh.position.z += 0.001;
                 if (heliMesh && rotationY){
 
                     positionX = heliMesh.position.x;
