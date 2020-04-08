@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     document.getElementById('2').innerHTML = calibrateGyroY;
                     
                     heliMesh.rotation.x = 10 * calibrateGyroX;
-                    heliMesh.rotation.z = 10 * calibrateGyroY;
+                    heliMesh.rotation.z = 10 * (-calibrateGyroY);
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
                     
