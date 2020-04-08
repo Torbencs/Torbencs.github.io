@@ -269,9 +269,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.443) * rotationDataY) + (Math.cos(theta) * rotationDataX);
+            return (Math.cos(57.443) * rotationDataY) + (Math.cos(57.443) * rotationDataX);
         } else if (axis == 'y') {
-            return (Math.sin(32.557) * rotationDataY) + (Math.sin(theta) * rotationDataX);
+            return (Math.sin(32.557) * rotationDataY) + (Math.sin(32.557) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }
