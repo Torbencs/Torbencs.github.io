@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-5, 13, 2), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(3.3,-1, -11));
+        camera.setTarget(new BABYLON.Vector3(3.3,0, -11));
         camera.maxZ = 50;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
        
