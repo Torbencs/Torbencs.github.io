@@ -136,8 +136,8 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    //newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    //newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
                    
                     
                     heliMesh.position.x = newPosX;
