@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     calibrateGyroY = findCal(modeY, rotationY) * -0.001;
 
                    
-                    //Find new coords adjusted for camera offset. Args: theta, axis, rotationDataX, rotationDataY
+                    //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     theta = 57.443;
                     newPosX = positionX + findOffset(theta, x, calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset(theta, y, calibrateGyroX, calibrateGyroY);
@@ -268,9 +268,9 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     let findOffset = function(theta, axis, rotationDataX, rotationDataY) {
-        if (axis == x) {
+        if (axis == 'x') {
             return (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
-        } else if (axis == y) {
+        } else if (axis == 'y') {
             return (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
