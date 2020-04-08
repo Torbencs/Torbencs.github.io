@@ -269,28 +269,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.443) * rotationDataY) + (Math.sin(32.557) * rotationDataX) ;
+            return (Math.cos(57.443) * rotationDataY) + (Math.sin(57) * rotationDataX) ;
         } else if (axis == 'y') {
-            return (-(Math.sin(57.443)) * rotationDataY) + (Math.cos(32.557) * rotationDataX);
+            return (-(Math.sin(57.443)) * rotationDataY) + (Math.cos(57) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }
-        /*
-        let offset;
-        switch (axis) {
-            case x:
-                //Fall-through
-            case X: 
-                offset = (Math.cos(theta) * rotationDataY) + (Math.cos(theta) * rotationDataX);
-                break;
-            case y:
-                //Fall-through
-            case Y:
-                offset = (Math.sin(theta) * rotationDataY) + (Math.sin(theta) * rotationDataX);
-                break;
-            default:
-                console.log("Missing or incorrect axis argument in findOffset function call");
-        }
-        return offset;
-        */
+    
     }
