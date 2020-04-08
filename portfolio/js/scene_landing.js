@@ -130,8 +130,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adust gyro data so zero is natural hand help position and apply dampening
-                    calibrateGyroX = findCal(modeX, rotationX) * -0.0004;
-                    calibrateGyroY = findCal(modeY, rotationY) * -0.0004;
+                    calibrateGyroX = findCal(modeX, rotationX) * -0.0001;
+                    calibrateGyroY = findCal(modeY, rotationY) * -0.0001;
 
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
@@ -269,9 +269,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.4433342078932) * rotationDataY) + (Math.sin(32.557) * rotationDataX) ;
+            return (Math.cos(57.4433342078932) * rotationDataY) + (Math.sin(57.4433342078932) * rotationDataX) ;
         } else if (axis == 'y') {
-            return (-(Math.sin(57.4433342078932) * rotationDataY)) + (Math.cos(32.557) * rotationDataX);
+            return (-(Math.sin(57.4433342078932) * rotationDataY)) + (Math.cos(57.4433342078932) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }
