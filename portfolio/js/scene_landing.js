@@ -269,7 +269,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.4433342078932) * rotationDataY) + (Math.sin(237.4433342078932) * rotationDataX) ;
+            return (Math.cos(57.4433342078932) * rotationDataY) + (-(Math.sin(237.4433342078932)) * rotationDataX) ;
         } else if (axis == 'y') {
             return (Math.sin(57.4433342078932) * rotationDataY) + (Math.cos(237.4433342078932) * rotationDataX);
         } else {
