@@ -136,7 +136,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    //newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY) + findOffset( 'y', calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY) + findOffset( 'x', calibrateGyroX, calibrateGyroY);
                    
                     
@@ -269,7 +269,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.443) * rotationDataY) + (Math.cos(57.443) * rotationDataX);
+            return (Math.cos(57.443) * rotationDataY) + (Math.cos(57.443) * -(rotationDataX));
         } else if (axis == 'y') {
             return (Math.sin(57.443) * -(rotationDataY)) + (Math.sin(57.443) * rotationDataX);
         } else {
