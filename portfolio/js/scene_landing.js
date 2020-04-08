@@ -119,6 +119,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.y = 7;
                    
             scene.registerBeforeRender( () => {
+                heliMesh.position.z += 0.001;
                 if (heliMesh && rotationY){
 
                     positionX = heliMesh.position.x;
@@ -271,7 +272,7 @@ window.addEventListener('DOMContentLoaded', function(){
         if (axis == 'x') {
             return (Math.cos(57.443) * rotationDataY) + (Math.sin(302) * rotationDataX) ;
         } else if (axis == 'y') {
-            return (Math.sin(57.443) * rotationDataY) + (Math.cos(302) * rotationDataX);
+            return (-(Math.sin(57.443)) * rotationDataY) + (Math.cos(302) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }
