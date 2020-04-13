@@ -136,10 +136,10 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     //Find new coords adjusted for camera offset. Args: theta, axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY) ;
-                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY) ;
+                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
-                    pitch = calibrateGyroX;
+                    pitch = findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     
 
                     heliMesh.rotate(BABYLON.Axis.X, pitch, BABYLON.Space.LOCAL);
