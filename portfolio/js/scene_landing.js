@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,theta;
+    let newPosX,newPosY,modeX,modeY,roll,pitch;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -117,7 +117,6 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
-            //heliMesh.rotationQuaternion = null;
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
@@ -140,7 +139,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY) ;
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY) ;
 
-                    
+                    pitch = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    roll = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
+
+                    heliMesh.rotate(BABYLON.Axis.X, pitch, BABYLON.Space.LOCAL);
+                    heliMesh.rotate(BABYLON.Axis.Z, ROLL, BABYLON.Space.LOCAL);
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                     heliMesh.position.x = newPosX;
