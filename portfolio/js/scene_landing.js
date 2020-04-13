@@ -143,7 +143,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     roll = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
 
                     heliMesh.rotate(BABYLON.Axis.X, pitch, BABYLON.Space.LOCAL);
-                    heliMesh.rotate(BABYLON.Axis.Z, ROLL, BABYLON.Space.LOCAL);
+                    heliMesh.rotate(BABYLON.Axis.Z, roll, BABYLON.Space.LOCAL);
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                     heliMesh.position.x = newPosX;
