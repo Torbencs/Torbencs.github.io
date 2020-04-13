@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY) ;
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY) ;
 
-                    pitch += 0.001
+                    pitch = 0.01
                     
 
                     heliMesh.rotate(BABYLON.Axis.X, pitch, BABYLON.Space.LOCAL);
