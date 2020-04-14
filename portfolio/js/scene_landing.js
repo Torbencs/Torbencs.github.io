@@ -2,7 +2,9 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,rotationXAxis,rotationYAxis;
+    let newPosX,newPosY,modeX,modeY;
+    rotationXAxis = 0;
+    rotationYAxis = 0;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -122,13 +124,13 @@ window.addEventListener('DOMContentLoaded', function(){
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
                     
-                    if (rotationY < 58 && rotationY > -58) {
+                    if (rotationY < 28 && rotationY > -28) {
                         rotationYAxis = rotationY
                     } else {
                         rotationYAxis = rotationYAxis
                     };
 
-                    if (rotationX < 58 && rotationX > -58) {
+                    if (rotationX < 28 && rotationX > -28) {
                         rotationXAxis = rotationX
                     } else {
                         rotationXAxis = rotationXAxis
