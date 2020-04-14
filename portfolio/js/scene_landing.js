@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', function(){
         heliMeshTask.onSuccess = task => {
             heliMesh = task.loadedMeshes[0];
             heliMesh.position.x = -1;
-            heliMesh.position.z = 5;
+            heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.rotationQuaternion = null;
 
