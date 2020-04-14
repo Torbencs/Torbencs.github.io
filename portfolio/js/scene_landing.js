@@ -142,7 +142,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     
 
-                    heliMesh.rotation.z = 0.5 * calibrateGyroX ;
+                    heliMesh.rotation.z = 2 * calibrateGyroX ;
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
