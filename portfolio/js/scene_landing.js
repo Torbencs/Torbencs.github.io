@@ -121,6 +121,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
+
+                    positionX = heliMesh.position.x;
+                    positionY = heliMesh.position.y;
                     
                     
                     if (!modeY) {
