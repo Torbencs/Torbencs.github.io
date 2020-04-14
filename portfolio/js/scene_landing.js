@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,roll,pitch;
+    let newPosX,newPosY,modeX,modeY,rotationXAxis,rotationYAxis;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -121,7 +121,18 @@ window.addEventListener('DOMContentLoaded', function(){
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
+                    
+                    if (rotationY < 58 && rotationY > -58) {
+                        rotationYAxis = rotationY
+                    } else {
+                        rotationYAxis = rotationYAxis
+                    };
 
+                    if (rotationX < 58 && rotationX > -58) {
+                        rotationXAxis = rotationX
+                    } else {
+                        rotationXAxis = rotationXAxis
+                    }
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
@@ -130,9 +141,9 @@ window.addEventListener('DOMContentLoaded', function(){
                         modeY = findMode(rotationY);
                     }
                     
-                    //Adust gyro data so zero is natural hand help position and apply dampening
-                    calibrateGyroX = findCal(modeX, rotationX) * -0.0008;
-                    calibrateGyroY = findCal(modeY, rotationY) * -0.0008;
+                    //Adjust gyro data so zero is natural hand help position and then apply dampening
+                    calibrateGyroX = findCal(modeX, rotationXAxis) * -0.0008;
+                    calibrateGyroY = findCal(modeY, rotationYAxis) * -0.0008;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
