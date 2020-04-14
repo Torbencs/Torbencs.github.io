@@ -124,28 +124,15 @@ window.addEventListener('DOMContentLoaded', function(){
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
                     
-                    if (rotationY < 28 && rotationY > -28) {
-                        rotationYAxis = rotationY
-                    } else {
-                        rotationYAxis = rotationYAxis
-                    };
-
-                    if (rotationX < 28 && rotationX > -28) {
-                        rotationXAxis = rotationX
-                    } else {
-                        rotationXAxis = rotationXAxis
-                    }
-                    positionX = heliMesh.position.x;
-                    positionY = heliMesh.position.z;
-
+                    
                     if (!modeY) {
                         modeX = findMode(rotationX);
                         modeY = findMode(rotationY);
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, rotationXAxis) * -0.0008;
-                    calibrateGyroY = findCal(modeY, rotationYAxis) * -0.0008;
+                    calibrateGyroX = findCal(modeX, rotationX) * -0.0003; //-0.0008
+                    calibrateGyroY = findCal(modeY, rotationY) * -0.0003;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
