@@ -141,13 +141,12 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     
 
-                    //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    //heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
-                    document.getElementById("text").innerHTML = findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    heliMesh.position.x = 0;
+                    heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
                     
                 }
