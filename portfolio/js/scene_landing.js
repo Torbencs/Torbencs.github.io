@@ -146,7 +146,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
-                    document.getElementById("text").innerHTML = findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    document.getElementById("text").innerHTML = findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     heliMesh.position.x = 0;
                     heliMesh.position.z = newPosY; 
                     
@@ -276,9 +276,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
     let findOffset = function(axis, rotationDataX, rotationDataY) {
         if (axis == 'x') {
-            return (Math.cos(57.4433342078932) * rotationDataY) - (Math.sin(57.4433342078932) * rotationDataX) ;
+            return (Math.cos(57.4433342078932) * rotationDataY) + (Math.sin(57.4433342078932) * rotationDataX) ;
         } else if (axis == 'y') {
-            return (Math.sin(57.4433342078932) * rotationDataY) + (Math.cos(57.4433342078932) * rotationDataX);
+            return ((Math.sin(57.4433342078932) * -rotationDataY)) + (Math.cos(57.4433342078932) * rotationDataX);
         } else {
             console.log("Missing or incorrect axis argument in findOffset function call");
         }

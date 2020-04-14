@@ -77,8 +77,8 @@ function draw() {
     document.getElementById('text_4').innerHTML = calibrateGyroY;
 
 
-    newPosX = positionX + ( 0.1 * calibrateGyroY);
-    newPosY = positionY + ( 0.1 * calibrateGyroX);
+    newPosX = positionX + ( 0.02 * calibrateGyroY);
+    newPosY = positionY + ( 0.02 * calibrateGyroX);
    
     newPosX <= 0 ? positionX = 0 
       : newPosX >= sizeX ? positionX = sizeX
