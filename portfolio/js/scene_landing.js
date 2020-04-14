@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
-                    document.getElementById("text").innerHTML = findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    document.getElementById("text").innerHTML = findOffset( 'x', rotationXAxis, rotationYAxis);
                     heliMesh.position.x = 0;
                     heliMesh.position.z = newPosY; 
                     
