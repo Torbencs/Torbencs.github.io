@@ -117,6 +117,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
+            heliMesh.rotationQuaternion = null;
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
@@ -142,7 +143,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     
 
-                    heliMesh.rotation.z = 2 * calibrateGyroX ;
+                    heliMesh.rotation.z = 0.01 ;
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
