@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY;
+    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -124,7 +124,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.y;
-                    
+
+                    if (rotationX < -20){newRotationX = -20} else if (rotationX > 20){newRotationX = 20} else {newRotationX = rotationX};
+                    if (rotationY < -20){newRotationY = -20} else if (rotationY > 20){newRotationY = 20} else {newRotationY = rotationY};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
@@ -132,8 +134,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, rotationX) * -0.0003; //-0.0008
-                    calibrateGyroY = findCal(modeY, rotationY) * -0.0003;
+                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0003; //-0.0008
+                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0003;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
@@ -144,8 +146,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     
 
-                    heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    //heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
