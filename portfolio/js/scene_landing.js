@@ -137,8 +137,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                    
                     
-                    newRotationX = 0.01;
-                    newRotationY = 0.03;
+                    newRotationX = 0.0;
+                    newRotationY = 0.0;
                     //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
                     //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
