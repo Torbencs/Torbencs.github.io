@@ -153,8 +153,8 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    newPosX = positionX + findOffset( 'x', newRotationX, newRotationY);
+                    newPosY = positionY + findOffset( 'y', newRotationX, newRotationY);
 
                     
                     
