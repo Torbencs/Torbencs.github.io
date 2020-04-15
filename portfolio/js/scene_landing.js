@@ -136,8 +136,10 @@ window.addEventListener('DOMContentLoaded', function(){
                     setTimeout(()=>{
                         alert(euler.x)
                     },2000);
-                    if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
-                    if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
+                    newRotationX = 0.01;
+                    newRotationY = 0.01;
+                    //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
+                    //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
