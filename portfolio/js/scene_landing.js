@@ -132,11 +132,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     euler = quat.toEulerAngles();
                    
                     setTimeout(()=>{
-                        alert(euler.x);
+                        //alert(euler.x);
                     },3000);
 
-                    if (rotationX < -40){newRotationX = -40} else if (rotationX > 40){newRotationX = 40} else {newRotationX = rotationX};
-                    if (rotationY < -40){newRotationY = -40} else if (rotationY > 40){newRotationY = 40} else {newRotationY = rotationY};
+                    if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
+                    if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
@@ -144,8 +144,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0008; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0008;
+                    calibrateGyroX = findCal(modeX, newRotationX) * -0.08; //-0.0008
+                    calibrateGyroY = findCal(modeY, newRotationY) * -0.08;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
