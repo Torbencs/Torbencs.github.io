@@ -147,14 +147,14 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0008; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0008;
+                    calibrateGyroX = euler.x * -0.0008;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
+                    calibrateGyroY = euler.y * -0.0008; //findCal(modeY, newRotationY) * -0.0008;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    newPosX = positionX + findOffset( 'x', newRotationX, newRotationY);
-                    newPosY = positionY + findOffset( 'y', newRotationX, newRotationY);
+                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
                     
                     
