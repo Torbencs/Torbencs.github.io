@@ -24,7 +24,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 2.7</button>
+  <button id="btn-permission" onclick="askPermission()">Button 2.8</button>
   <div id="text"></div>
  
 
@@ -51,8 +51,8 @@
               if (permissionState === 'granted') {
                 window.addEventListener('deviceorientation', (event) => {
 
-                  rotationY = event.beta;
-                  rotationX = event.gamma;
+                  rotationX = event.beta;
+                  rotationY = event.gamma;
                   rotationZ = event.alpha;
                   
                 },true);
