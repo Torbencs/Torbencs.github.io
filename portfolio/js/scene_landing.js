@@ -2,7 +2,8 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,euler,rotationY;
+    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,euler;
+    let rotationY = 1;
   
 
     // get the canvas DOM element
