@@ -147,8 +147,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = euler.z * -0.0008;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
-                    calibrateGyroY = euler.x * -0.0008; //findCal(modeY, newRotationY) * -0.0008;
+                    calibrateGyroX = euler.x ;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
+                    calibrateGyroY = euler.y ; //findCal(modeY, newRotationY) * -0.0008;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
@@ -158,8 +158,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     document.getElementById("text_1").innerHTML = newPosX;
                     document.getElementById("text_2").innerHTML = newPosY;
-                    document.getElementById("text_3").innerHTML = euler.z;
-                    document.getElementById("text_4").innerHTML = euler.x;
+                    document.getElementById("text_3").innerHTML = euler.x;
+                    document.getElementById("text_4").innerHTML = euler.y;
                     
 
                     //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
