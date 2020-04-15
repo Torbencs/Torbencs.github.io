@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY;
+  
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -133,8 +134,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0003; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0003;
+                    calibrateGyroX = findCal(modeX, rotationX) * -0.0003; //-0.0008
+                    calibrateGyroY = findCal(modeY, rotationY) * -0.0003;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
