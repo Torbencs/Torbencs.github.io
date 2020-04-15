@@ -119,7 +119,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.enableQuaternions = null;
-            quat = new BABYLON.Quaternion.FromEulerAngles(rotationY, rotationX, rotationZ);
+           
             
 
             scene.registerBeforeRender( () => {
@@ -128,6 +128,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
+                    quat = new BABYLON.Quaternion.FromEulerAngles(rotationY, rotationX, rotationZ);
                     euler = quat.toEulerAngles();
                    
                     setTimeout(()=>{
