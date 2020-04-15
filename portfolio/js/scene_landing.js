@@ -120,7 +120,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.y = 7;
             heliMesh.enableQuaternions = null;
             quat = new BABYLON.Quaternion();
-            euler = new BABYLON.Vector3(1,0,1);
+            euler = new BABYLON.Vector3.Zero();
             
 
             scene.registerBeforeRender( () => {
@@ -133,9 +133,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     BABYLON.Quaternion.toEulerAnglesToRef(euler);
                     
                    
-
-                    if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
-                    if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
+                    setTimeout(()=>{
+                        alert(euler.x)
+                    },2000);
+                    //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
+                    //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
