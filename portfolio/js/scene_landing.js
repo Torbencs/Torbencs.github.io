@@ -133,7 +133,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionY = heliMesh.position.z;
 
                     BABYLON.Quaternion.FromEulerAnglesToRef(rotationX, rotationY, rotationZ, quat);
-                    BABYLON.Quaternion.toEulerAnglesToRef(euler);
+                    quat.toEulerAnglesToRef(euler);
                     
                    
                     
