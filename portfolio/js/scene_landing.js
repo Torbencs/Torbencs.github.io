@@ -133,10 +133,15 @@ window.addEventListener('DOMContentLoaded', function(){
                     BABYLON.Quaternion.FromEulerAnglesToRef(rotationX, rotationY, rotationZ, quat);
                     quat.toEulerAnglesToRef(euler);
                     
-                   
+                    newRotationX = 0;
+                    newRotationY = 0;
+
+                    setTimeout(()=>{
+                        alert(euler.x)
+                    }, 3000);
                     
-                    if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
-                    if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
+                    //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
+                    //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
