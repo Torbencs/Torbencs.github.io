@@ -147,7 +147,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = euler.y * -0.0008;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
+                    calibrateGyroX = euler.z * -0.0008;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
                     calibrateGyroY = euler.x * -0.0008; //findCal(modeY, newRotationY) * -0.0008;
 
                    
