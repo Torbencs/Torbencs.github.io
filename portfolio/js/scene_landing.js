@@ -119,7 +119,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.enableQuaternions = null;
-            euler = new BABYLON.Vector3(0,0,0);
+            //euler = new BABYLON.Vector3(0,0,0);
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
