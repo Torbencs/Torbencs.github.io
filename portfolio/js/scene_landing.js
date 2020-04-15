@@ -124,8 +124,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.y;
 
-                    if (rotationX < -20){newRotationX = -20} else if (rotationX > 20){newRotationX = 20} else {newRotationX = rotationX};
-                    if (rotationY < -20){newRotationY = -20} else if (rotationY > 20){newRotationY = 20} else {newRotationY = rotationY};
+                   // if (rotationX < -20){newRotationX = -20} else if (rotationX > 20){newRotationX = 20} else {newRotationX = rotationX};
+                    //if (rotationY < -20){newRotationY = -20} else if (rotationY > 20){newRotationY = 20} else {newRotationY = rotationY};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
