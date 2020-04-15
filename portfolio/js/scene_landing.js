@@ -119,8 +119,8 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.enableQuaternions = null;
-            //quat = new BABYLON.Quaternion();
-            //euler = new BABYLON.Vector3.Zero();
+            quat = new BABYLON.Quaternion();
+            euler = new BABYLON.Vector3.Zero();
             
 
             scene.registerBeforeRender( () => {
