@@ -131,7 +131,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     euler = quat.toEulerAngles();
                    
                     setTimeout(()=>{
-                        alert(euler);
+                        alert(euler.x);
                     },3000);
 
                     if (rotationX < -40){newRotationX = -40} else if (rotationX > 40){newRotationX = 40} else {newRotationX = rotationX};
