@@ -123,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function(){
             euler = new BABYLON.Vector3.Zero();
             
             setTimeout(()=>{
-                alert(euler.x)
+                alert(quat)
             },6000);
 
             scene.registerBeforeRender( () => {
@@ -138,7 +138,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     
                     newRotationX = 0.01;
-                    newRotationY = 0.01;
+                    newRotationY = 0.0;
                     //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
                     //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
                     
