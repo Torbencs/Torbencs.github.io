@@ -24,7 +24,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 1.8</button>
+  <button id="btn-permission" onclick="askPermission()">Button 1.9</button>
   <div id="text"></div>
  
 
@@ -52,7 +52,7 @@
                 window.addEventListener('deviceorientation', (event) => {
                   
 
-                  //quat = new BABYLON.Quaternion.FromEulerAngles(event.beta, event.gamma, event.alpha);
+                  quat = new BABYLON.Quaternion.FromEulerAngles(event.beta, event.gamma, event.alpha);
                   
                 },true);
               }
