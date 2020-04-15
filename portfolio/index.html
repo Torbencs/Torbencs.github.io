@@ -24,7 +24,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 2</button>
+  <button id="btn-permission" onclick="askPermission()">Button 2.1</button>
   <div id="text"></div>
  
 
@@ -35,7 +35,7 @@
     </div>
   
   <script>
-  let quat;
+    let rotationX,rotationY,rotationZ;
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
@@ -50,9 +50,10 @@
             .then(permissionState => {
               if (permissionState === 'granted') {
                 window.addEventListener('deviceorientation', (event) => {
-                  
 
-                  quat = new BABYLON.Quaternion.FromEulerAngles(event.beta, event.gamma, event.alpha);
+                  rotationX = event.beta;
+                  rotationY = event.gamma;
+                  rotationZ = event.alpha;
                   
                 },true);
               }

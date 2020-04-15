@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,euler;
-    let rotationY = 1;
   
 
     // get the canvas DOM element
@@ -127,11 +126,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
-                    
+                    /*
                     quat.toEulerAnglesToRef(euler);
                     setTimeout(()=>{
                         alert(euler);
-                    },3000);
+                    },3000);*/
 
                     if (rotationX < -40){newRotationX = -40} else if (rotationX > 40){newRotationX = 40} else {newRotationX = rotationX};
                     if (rotationY < -40){newRotationY = -40} else if (rotationY > 40){newRotationY = 40} else {newRotationY = rotationY};
