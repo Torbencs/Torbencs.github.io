@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             setTimeout(()=>{
                 alert(euler.x)
-            },2000);
+            },6000);
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
