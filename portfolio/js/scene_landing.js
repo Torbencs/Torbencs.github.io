@@ -131,25 +131,6 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     
                 
-                    if (rotationX > -88){
-                        oldRotationX = rotationX;
-                        newRotationX = rotationX;
-                    } else if (rotationX < 88) {
-                        oldRotationX = rotationX;
-                        newRotationX = rotationX;
-                    } else {
-                        newRotationX = oldRotationX
-                    };
-
-                    if (rotationY > -88){
-                        oldRotationY = rotationY;
-                        newRotationY = rotationY;
-                    } else if (rotationY < 88) {
-                        oldRotationY = rotationY;
-                        newRotationY = rotationY;
-                    } else {
-                        newRotationY = oldRotationY
-                    };
 
                     //if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
                     //if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
@@ -161,8 +142,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0002; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0002;
+                    calibrateGyroX = findCal(modeX, rotationX) * -0.0002; //-0.0008
+                    calibrateGyroY = findCal(modeY, rotationY) * -0.0002;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
