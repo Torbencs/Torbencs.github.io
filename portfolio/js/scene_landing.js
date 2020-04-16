@@ -118,7 +118,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
-            
+            heliMesh.rotationQuaternion = null;
             
 
             scene.registerBeforeRender( () => {
