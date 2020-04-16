@@ -168,7 +168,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     } else {
                         heliMesh.position.x = newPosX;
                         heliMesh.position.z = newPosY; 
-                    }
+                    };
+
+                    setTimeout(()=>{
+                        landSwitch()
+                    },7000);
                     
                 }
             });
