@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
+    let landSwitch;
   
 
     // get the canvas DOM element
@@ -161,6 +162,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
+
+                    if (landSwitch == 1){
+                        BABYLON.Animation.CreateAndStartAnimation("anim", helimish, "position", 30, 120,
+                        helimesh.position, helimesh.position.add(new BABYLON.Vector3(-8, -10, 10)));                        
+                    }
                     
                 }
             });
