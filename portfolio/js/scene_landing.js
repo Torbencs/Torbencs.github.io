@@ -119,8 +119,6 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.enableQuaternions = null;
-            quat = new BABYLON.Quaternion();
-            euler = new BABYLON.Vector3.Zero();
             
             
 
@@ -130,16 +128,13 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
-                    BABYLON.Quaternion.FromEulerAnglesToRef(rotationX, rotationY, rotationZ, quat);
-                    quat.toEulerAnglesToRef(euler);
+                   
                     
-                    newRotationX = euler.x;
-                    newRotationY = euler.y;
-
+                
                     
                     
-                    //if (euler.x < -40){newRotationX = -40} else if (euler.x > 40){newRotationX = 40} else {newRotationX = euler.x};
-                    //if (euler.y < -40){newRotationY = -40} else if (euler.y > 40){newRotationY = 40} else {newRotationY = euler.y};
+                    if (rotationX < -40){newRotationX = -40} else if (rotationX > 40){newRotationX = 40} else {newRotationX = rotationX};
+                    if (rotationY < -40){newRotationY = -40} else if (rotationY > 40){newRotationY = 40} else {newRotationY = rotationY};
                     
                     if (!modeY) {
                         modeX = findMode(rotationX);
@@ -147,14 +142,14 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = euler.x ;//findCal(modeX, newRotationX) * -0.0008; //-0.0008
-                    calibrateGyroY = euler.y ; //findCal(modeY, newRotationY) * -0.0008;
+                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0008; //-0.0008
+                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0008;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
-                    newPosX = positionX + calibrateGyroX //positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    newPosY = positionX + calibrateGyroY // positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
                     document.getElementById("text_1").innerHTML = newPosX;
                     document.getElementById("text_2").innerHTML = newPosY;
