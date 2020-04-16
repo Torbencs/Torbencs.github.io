@@ -304,7 +304,7 @@ window.addEventListener('DOMContentLoaded', function(){
     };
 
     let smooth = function(value){
-        let x = value/40; 
+        let x = value/8; 
         let inversePoly = (1/(Math.pow(2,(2/3)) * Math.cbrt(3) * Math.cbrt((Math.sqrt(3/2)) * Math.sqrt(54 * Math.pow(x,2) + 1) -9 * x))) - (Math.cbrt((Math.sqrt(3/2)) * Math.sqrt(54 * Math.pow(x,2) + 1) -9 * x) / (Math.cbrt(2) * Math.pow(3,(2/3))));
-        return inversePoly*40;
+        return inversePoly*8;
     };
