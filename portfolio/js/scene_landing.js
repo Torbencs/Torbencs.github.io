@@ -136,8 +136,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     //if (rotationX < -75 || rotationX > 75){newRotationY = 0; newRotationX = rotationX} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
                     //if (rotationY < -75 || rotationY > 75){newRotationX = 0; newRotationY = rotationY} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
 
-                    if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = rotationY/10; newRotationX = 88} else {newRotationX = rotationX};
-                    if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = rotationX/10; newRotationY = 88} else {newRotationY = rotationY};
+                    if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationX); newRotationX = 88} else {newRotationX = rotationX};
+                    if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
 
                     
                     if (!modeY) {
@@ -157,7 +157,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     document.getElementById("text_1").innerHTML = newRotationX;
                     document.getElementById("text_2").innerHTML = newRotationY;
-                    document.getElementById("text_3").innerHTML = smooth(newRotationX);
+                    document.getElementById("text_3").innerHTML = smooth(rotationX);
                     
 
                     //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
