@@ -136,7 +136,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     //if (rotationX < -75 || rotationX > 75){newRotationY = 0; newRotationX = rotationX} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
                     //if (rotationY < -75 || rotationY > 75){newRotationX = 0; newRotationY = rotationY} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
 
-                    if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationX); newRotationX = 88} else {newRotationX = rotationX};
+                    if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
                     if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
 
                     
