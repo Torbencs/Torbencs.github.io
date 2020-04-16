@@ -161,17 +161,14 @@ window.addEventListener('DOMContentLoaded', function(){
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                    
-
-                    if (landSwitch == 1){
+                    heliMesh.position.x = newPosX;
+                    heliMesh.position.z = newPosY; 
+                  
+                    setTimeout(()=>{
                         BABYLON.Animation.CreateAndStartAnimation("anim", helimish, "position", 30, 120,
                         helimesh.position, helimesh.position.add(new BABYLON.Vector3(-8, -10, 10)));                        
-                    } else {
-                        heliMesh.position.x = newPosX;
-                        heliMesh.position.z = newPosY; 
-                    };
-
-                    setTimeout(()=>{
-                        landSwitch()
+                    
+                        
                     },7000);
                     
                 }
