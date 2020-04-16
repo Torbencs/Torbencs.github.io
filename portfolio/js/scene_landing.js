@@ -118,7 +118,6 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
-            heliMesh.enableQuaternions = null;
             
             
 
@@ -151,9 +150,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
-                    document.getElementById("text_1").innerHTML = newRotationX;
-                    document.getElementById("text_2").innerHTML = newRotationY;
-                    document.getElementById("text_3").innerHTML = oldRotationX;
+                    //document.getElementById("text_1").innerHTML = newRotationX;
+                    
                     
 
                     heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
