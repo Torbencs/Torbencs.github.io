@@ -2,7 +2,7 @@ let permissionGranted = false;
 let nonios13device = false;
 let gravityY;
 let gravityX;
-let positionX = 20;
+let positionX = 60;
 let positionY = 20;
 let sizeX = window.innerWidth;
 let sizeY = window.innerHeight;
@@ -77,7 +77,7 @@ function draw() {
     document.getElementById('text_4').innerHTML = calibrateGyroY;
 
 
-    newPosX = positionX + ( 0.02 * calibrateGyroY);
+    newPosX = positionX;
     newPosY = positionY + ( 0.02 * calibrateGyroX);
    
     newPosX <= 0 ? positionX = 0 
