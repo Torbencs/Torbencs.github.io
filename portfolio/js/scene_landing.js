@@ -136,8 +136,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     //if (rotationX < -75 || rotationX > 75){newRotationY = 0; newRotationX = rotationX} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
                     //if (rotationY < -75 || rotationY > 75){newRotationX = 0; newRotationY = rotationY} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
 
-                    if (rotationX < -88){newRotationY = rotationY/10; newRotationX = -88} else if (rotationX > 88){newRotationY = 0; newRotationX = 88} else {newRotationX = rotationX};
-                    if (rotationY < -88){newRotationX = rotationX/10; newRotationY = -88} else if (rotationY > 88){newRotationX = 0; newRotationY = 88} else {newRotationY = rotationY};
+                    if (rotationX < -88){newRotationY = rotationY/10; newRotationX = -88} else if (rotationX > 88){newRotationY = rotationY/10; newRotationX = 88} else {newRotationX = rotationX};
+                    if (rotationY < -88){newRotationX = rotationX/10; newRotationY = -88} else if (rotationY > 88){newRotationX = rotationX/10; newRotationY = 88} else {newRotationY = rotationY};
 
                     if (!modeY) {
                         modeX = findMode(rotationX);
