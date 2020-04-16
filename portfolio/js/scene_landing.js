@@ -133,8 +133,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                     
                     
-                    if (rotationX < -85 || rotationX > 85){newRotationY = 0} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
-                    if (rotationY < -85 || rotationY > 85){newRotationX = 0} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
+                    if (rotationX < -75 || rotationX > 75){newRotationY = 0} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
+                    if (rotationY < -75 || rotationY > 75){newRotationX = 0} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
 
                     
                     if (!modeY) {
@@ -152,8 +152,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
-                    document.getElementById("text_1").innerHTML = newPosX;
-                    document.getElementById("text_2").innerHTML = newPosY;
+                    document.getElementById("text_1").innerHTML = rotationX;
+                    document.getElementById("text_2").innerHTML = rotationY;
                     
 
                     //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
