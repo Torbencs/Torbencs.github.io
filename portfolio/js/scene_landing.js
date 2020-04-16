@@ -132,12 +132,11 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                 
                     
-                    
-                    //if (rotationX < -75 || rotationX > 75){newRotationY = 0; newRotationX = rotationX} else if (rotationX < -50){newRotationX = -50} else if (rotationX > 50){newRotationX = 50} else {newRotationX = rotationX};
-                    //if (rotationY < -75 || rotationY > 75){newRotationX = 0; newRotationY = rotationY} else if (rotationY < -50){newRotationY = -50} else if (rotationY > 50){newRotationY = 50} else {newRotationY = rotationY};
+                    newRotationX = smooth(rotationX);
+                    newRotationY = smooth(rotationY);
 
-                    if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
-                    if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
+                    //if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
+                    //if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
 
                     
                     if (!modeY) {
@@ -146,8 +145,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0001; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0003;
+                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0007; //-0.0008
+                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0007;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
