@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let heliMesh;
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
-    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,euler;
+    let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
   
 
     // get the canvas DOM element
@@ -131,9 +131,25 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     
                 
-                    
-                    newRotationX = smooth(rotationX);
-                    newRotationY = smooth(rotationY);
+                    if (rotationX > -88){
+                        oldRotationX = rotationX;
+                        newRotationX = rotationX;
+                    } else if (rotationX < 88) {
+                        oldRotationX = rotationX;
+                        newRotationX = rotationX;
+                    } else {
+                        newRotationX = oldRotationX
+                    };
+
+                    if (rotationY > -88){
+                        oldRotationY = rotationY;
+                        newRotationY = rotationY;
+                    } else if (rotationY < 88) {
+                        oldRotationY = rotationY;
+                        newRotationY = rotationY;
+                    } else {
+                        newRotationY = oldRotationY
+                    };
 
                     //if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
                     //if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
@@ -145,8 +161,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }
                     
                     //Adjust gyro data so zero is natural hand help position and then apply dampening
-                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0007; //-0.0008
-                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0007;
+                    calibrateGyroX = findCal(modeX, newRotationX) * -0.0002; //-0.0008
+                    calibrateGyroY = findCal(modeY, newRotationY) * -0.0002;
 
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
@@ -156,11 +172,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     document.getElementById("text_1").innerHTML = newRotationX;
                     document.getElementById("text_2").innerHTML = newRotationY;
-                    document.getElementById("text_3").innerHTML = smooth(rotationX);
+                    document.getElementById("text_3").innerHTML = oldRotationX;
                     
 
-                    //heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    //heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
+                    heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
+                    heliMesh.rotation.x = 8 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
                    
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
