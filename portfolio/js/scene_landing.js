@@ -264,7 +264,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         keysLandingRot.push({
             frame: 130,
-            value: new BABYLON.Vector3.Zero(),
+            value: new BABYLON.Vector3(0,0,0),
         });
         
         animLandingRot.setKeys(keysLandingRot);
