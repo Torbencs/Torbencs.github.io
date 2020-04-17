@@ -252,19 +252,19 @@ window.addEventListener('DOMContentLoaded', function(){
         animLandingPos.setEasingFunction(bezierEase);
 
         //Landing rotation animation
-        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
     
         var keysLandingRot = []; 
     
         keysLandingRot.push({
             frame: 0,
-            value: heliMesh.rotation,
+            value: heliMesh.rotation.x,
         });
         
 
         keysLandingRot.push({
             frame: 130,
-            value: new BABYLON.Vector3(0,0,0),
+            value: 0,
         });
         
         animLandingRot.setKeys(keysLandingRot);
