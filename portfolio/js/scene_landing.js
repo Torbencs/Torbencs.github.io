@@ -228,31 +228,52 @@ window.addEventListener('DOMContentLoaded', function(){
     let landingAnimFunc = function(){
         landSwitch = 1;
         
-        let rotor = scene.getMeshByName("work");
-        var animationLanding = new BABYLON.Animation("landingAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+        let helicopterMesh = scene.getMeshByName("work");
+        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
+        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
     
-        var keys = []; 
+        //Landing position animation
+        var keysLandingPos = []; 
     
-        keys.push({
+        keysLandingPos.push({
             frame: 0,
             value: heliMesh.position,
         });
         
 
-        keys.push({
+        keysLandingPos.push({
             frame: 150,
             value: new BABYLON.Vector3(1.4,4.26,-5.33),
         });
         
-        animationLanding.setKeys(keys);
+        animLandingPos.setKeys(keysLandingPos);
+        animLandingPos.setEasingFunction(bezierEase);
 
-        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
-        animationLanding.setEasingFunction(bezierEase);
-
-        rotor.animations = [];
-        rotor.animations.push(animationLanding);
+        //Landing rotation animation
+        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+    
+        var keysLandingRot = []; 
+    
+        keysLandingRot.push({
+            frame: 0,
+            value: heliMesh.rotation,
+        });
         
-        scene.beginAnimation(rotor, 0, 150, false);
+
+        keysLandingRot.push({
+            frame: 130,
+            value: new BABYLON.Vector3.Zero(),
+        });
+        
+        animLandingRot.setKeys(keysLandingRot);
+        animLandingRot.setEasingFunction(bezierEase);
+
+
+        helicopterMesh.animations = [];
+        helicopterMesh.animations.push(animLandingPos);
+        helicopterMesh.animations.push(animLandingRot);
+        
+        scene.beginAnimation(helicopterMesh, 0, 150, false);
    
      };
     
