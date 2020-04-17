@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             setTimeout(()=>{
                landingAnimFunc();
-            },6000); 
+            },9000); 
             
 
             scene.registerBeforeRender( () => {
@@ -238,16 +238,19 @@ window.addEventListener('DOMContentLoaded', function(){
         
 
         keys.push({
-            frame: 100,
+            frame: 150,
             value: new BABYLON.Vector3(1.4,4.26,-5.33),
         });
         
         animationLanding.setKeys(keys);
-      
+
+        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
+        animationLanding.setEasingFunction(bezierEase);
+
         rotor.animations = [];
         rotor.animations.push(animationLanding);
         
-        scene.beginAnimation(rotor, 0, 100, false);
+        scene.beginAnimation(rotor, 0, 150, false);
    
      };
     
