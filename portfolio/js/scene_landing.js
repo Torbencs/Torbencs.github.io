@@ -109,22 +109,28 @@ window.addEventListener('DOMContentLoaded', function(){
     
         };
         
+
         //Model positioning
        
         var assetsManager = new BABYLON.AssetsManager(scene);
         var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
-        var heliMeshTask = assetsManager.addMeshTask("", "", "models/helicopter.glb");
+        var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
         heliMeshTask.onSuccess = task => {
             heliMesh = task.loadedMeshes[0];
+            heliMesh.name = "work";
+            heliMesh.alwaysSelectAsActiveMesh = true;
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
             heliMesh.position.y = 7;
             heliMesh.rotationQuaternion = null;
 
-            //Landing Animation
+            
+                console.log(heliMesh.name);
+            
             setTimeout(()=>{
                 landingAnimFunc();
-            },5000);
+            },6000); 
+            
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
@@ -132,6 +138,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
+                    //Landing Animation
+            
                    
                     
                 
@@ -216,26 +224,35 @@ window.addEventListener('DOMContentLoaded', function(){
     
     let landingAnimFunc = function(){
         landSwitch = 1;
-        var animationLanding = new BABYLON.Animation("landingAnimation", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
- 
+        
+        let rotor = scene.getMeshByName("work");
+        var animationLanding = new BABYLON.Animation("landingAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+    
         var keys = []; 
- 
+    
         keys.push({
-          frame: 0,
-          value: 3,
+            frame: 0,
+            value: new BABYLON.Vector3(-1,7,-5),
         });
-      
+        
         keys.push({
-          frame: 100,
-          value: 10,
+            frame: 50,
+            value: new BABYLON.Vector3(-1,7,-8),
+            });
+
+        keys.push({
+            frame: 100,
+            value: new BABYLON.Vector3(-1,7,-12),
         });
         
         animationLanding.setKeys(keys);
-        heliMesh.animations = [];
-        heliMesh.animations.push(animationLanding);
-      
-        scene.beginAnimation(helimesh, 0, 100, false);
-         
+        
+
+        rotor.animations = [];
+        rotor.animations.push(animationLanding);
+        
+        scene.beginAnimation(rotor, 0, 100, false);
+   
      };
     
     
@@ -279,23 +296,7 @@ window.addEventListener('DOMContentLoaded', function(){
       calibrated = Number(rotationData) - Number(mode);
       return calibrated
     }
-    /*
-    function findMode(rotationData) {
-    
-      let tempArray = [];
-      
-      let id = setInterval(()=> {
-        tempArray.push(Math.floor(rotationData));
-        },500);
-      
-      setTimeout(()=> {
-        clearInterval(id);
-        return mode(tempArray);
-      },5000);    
-    };
-    
-    */
-    //Finds mode from array
+  
     let mode = function(numbers) {
       var mode = 0, count = [], i, number, maxIndex = 0;
     
