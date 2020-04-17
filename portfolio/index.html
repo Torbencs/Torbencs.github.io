@@ -24,7 +24,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 2.7</button>
+  <button id="btn-permission" onclick="askPermission()">Button 2.8</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -38,7 +38,7 @@
     </div>
   
   <script>
-    let rotationX,rotationY,rotationZ;
+    let rotationX,rotationY,rotationZ,accelerationX,accelerationY,accelerationZ;
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
@@ -58,6 +58,19 @@
                   rotationX = event.gamma;
                   rotationZ = event.alpha;
                   
+                },true);
+
+                window.addEventListener('devicemotion', (event) => {
+
+                  accelerationX = event.acceleration.x;
+                  accelerationY = event.acceleration.y;
+                  accelerationZ = event.acceleration.z;
+                  
+                  document.getElementById('text_1').innerHTML = accelerationX;
+                  document.getElementById('text_1').innerHTML = accelerationX;
+                  document.getElementById('text_1').innerHTML = accelerationX;
+
+
                 },true);
               }
             })
