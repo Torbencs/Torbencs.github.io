@@ -24,7 +24,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 2.9</button>
+  <button id="btn-permission" onclick="askPermission()">Button 3</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -66,9 +66,9 @@
                   accelerationY = event.acceleration.y;
                   accelerationZ = event.acceleration.z;
                   
-                  document.getElementById('text_1').innerHTML = accelerationX;
-                  document.getElementById('text_2').innerHTML = accelerationX;
-                  document.getElementById('text_3').innerHTML = accelerationX;
+                  document.getElementById('text_1').innerHTML = Math.floor(accelerationX * 100);
+                  document.getElementById('text_2').innerHTML = Math.floor(accelerationY * 100);
+                  document.getElementById('text_3').innerHTML = Math.floor(accelerationZ * 100);
 
 
                 },true);
