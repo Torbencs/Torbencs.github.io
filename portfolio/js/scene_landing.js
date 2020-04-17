@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.animations = [];
             heliMesh.animations.push(animationLanding);
           
-            
+            scene.beginAnimation(helimesh, 0, 100, false);
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
@@ -210,8 +210,8 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
        setTimeout(()=>{
-        landSwitch = 1;
-        scene.beginAnimation(helimesh, 0, 100, false);
+       // landSwitch = 1;
+        
         
     },7000);
        
