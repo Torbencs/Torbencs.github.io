@@ -230,7 +230,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
         let helicopterMesh = scene.getMeshByName("work");
         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
-        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.12,1.95);
+        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
 
         var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
     
@@ -252,13 +252,13 @@ window.addEventListener('DOMContentLoaded', function(){
         animLandingPos.setEasingFunction(bezierEase);
 
         //Landing rotation animation
-        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
     
         var keysLandingRot = []; 
     
         keysLandingRot.push({
             frame: 0,
-            value: heliMesh.rotation.x,
+            value: heliMesh.rotation.z,
         });
         
 
