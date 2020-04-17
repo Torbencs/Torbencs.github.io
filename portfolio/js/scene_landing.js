@@ -122,25 +122,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotationQuaternion = null;
 
             //Landing Animation
-            var animationLanding = new BABYLON.Animation("landingAnimation", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-
-            var keys = []; 
-
-            keys.push({
-              frame: 0,
-              value: 3,
-            });
-          
-            keys.push({
-              frame: 100,
-              value: 10,
-            });
             
-            animationLanding.setKeys(keys);
-            heliMesh.animations = [];
-            heliMesh.animations.push(animationLanding);
-          
-            scene.beginAnimation(helimesh, 0, 100, false);
 
             scene.registerBeforeRender( () => {
                 if (heliMesh && rotationY){
