@@ -121,12 +121,25 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.y = 7;
             heliMesh.rotationQuaternion = null;
 
-            setTimeout(()=>{
-                landSwitch = 1;
-                BABYLON.Animation.CreateAndStartAnimation("anim", helimish, "position", 30, 120,helimesh.position, helimesh.position.add(new BABYLON.Vector3(-8, -10, 10)));                        
+            //Landing Animation
+            var animationLanding = new BABYLON.Animation("landingAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+
+            var keys = []; 
+
+            keys.push({
+              frame: 0,
+              value: heliMesh.position,
+            });
+          
+            keys.push({
+              frame: 100,
+              value: new BABYLON.Vector3(1, 1, 1),
+            });
             
-                
-            },7000);
+            animationLanding.setKeys(keys);
+            heliMesh.animations = [];
+            heliMesh.animations.push(animationLanding);
+          
             
 
             scene.registerBeforeRender( () => {
@@ -196,7 +209,11 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
+       setTimeout(()=>{
+        landSwitch = 1;
+        scene.beginAnimation(helimesh, 0, 100, false);
         
+    },7000);
        
        return scene;
     
