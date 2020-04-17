@@ -119,16 +119,17 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh = task.loadedMeshes[0];
             heliMesh.name = "work";
             heliMesh.alwaysSelectAsActiveMesh = true;
+           
             heliMesh.position.x = -1;
             heliMesh.position.z = -5;
-            heliMesh.position.y = 7;
+            heliMesh.position.y = 7; 
             heliMesh.rotationQuaternion = null;
 
             
                 console.log(heliMesh.name);
             
             setTimeout(()=>{
-                landingAnimFunc();
+               landingAnimFunc();
             },6000); 
             
 
@@ -232,22 +233,17 @@ window.addEventListener('DOMContentLoaded', function(){
     
         keys.push({
             frame: 0,
-            value: new BABYLON.Vector3(-1,7,-5),
+            value: heliMesh.position,
         });
         
-        keys.push({
-            frame: 50,
-            value: new BABYLON.Vector3(-1,7,-8),
-            });
 
         keys.push({
             frame: 100,
-            value: new BABYLON.Vector3(-1,7,-12),
+            value: new BABYLON.Vector3(1.4,4.26,-5.33),
         });
         
         animationLanding.setKeys(keys);
-        
-
+      
         rotor.animations = [];
         rotor.animations.push(animationLanding);
         
