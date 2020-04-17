@@ -230,7 +230,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
         let helicopterMesh = scene.getMeshByName("work");
         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
-        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.48,1.47);
+        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.12,1.95);
 
         var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
     
