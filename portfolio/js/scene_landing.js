@@ -161,15 +161,11 @@ window.addEventListener('DOMContentLoaded', function(){
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                    
+                    if (landSwitch !== 1){
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
-                  
-                    setTimeout(()=>{
-                        BABYLON.Animation.CreateAndStartAnimation("anim", helimish, "position", 30, 120,
-                        helimesh.position, helimesh.position.add(new BABYLON.Vector3(-8, -10, 10)));                        
+                    };
                     
-                        
-                    },7000);
                     
                 }
             });
@@ -194,7 +190,12 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
         
-       
+       setTimeout(()=>{
+        landSwitch = 1;
+        BABYLON.Animation.CreateAndStartAnimation("anim", helimish, "position", 30, 120,helimesh.position, helimesh.position.add(new BABYLON.Vector3(-8, -10, 10)));                        
+    
+        
+    },7000);
        return scene;
     
         };
@@ -312,6 +313,4 @@ window.addEventListener('DOMContentLoaded', function(){
         return inversePoly*8;
     };
 
-    let landSwitch = function(){
-        landSwitch = 1;
-    }
+    
