@@ -52,10 +52,10 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.enablePhysics(gravityVector, physicsPlugin);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-5, 13, 2), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23, 51, 6.5), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(3.3,0, -11));
-        camera.maxZ = 50;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
+        camera.setTarget(new BABYLON.Vector3(25.85,29.02,-3.4));
+        camera.maxZ = 500;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
        
         //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
@@ -113,17 +113,22 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
        
         var assetsManager = new BABYLON.AssetsManager(scene);
-        var cityMeshTask = assetsManager.addMeshTask("", "", "models/city_merged.glb");
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged.glb");
         var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
+
+        mountainMeshTask.onSuccess = task => {
+            mountainMesh = task.loadedMeshes[0];
+            //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
+        }
         heliMeshTask.onSuccess = task => {
             heliMesh = task.loadedMeshes[0];
             heliMesh.name = "work";
             heliMesh.alwaysSelectAsActiveMesh = true;
-           
-            heliMesh.position.x = -1;
-            heliMesh.position.z = -5;
-            heliMesh.position.y = 5.5; 
+            heliMesh.position.x = 18.8;
+            heliMesh.position.z = 1;
+            heliMesh.position.y = 33.02; 
             heliMesh.rotationQuaternion = null;
+            heliMesh.rotation.y = 0.58;     
 
             
                 console.log(heliMesh.name);
@@ -245,8 +250,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
         keysLandingPos.push({
             frame: 150,
-            value: new BABYLON.Vector3(1.4,4.26,-5.33),
+            value: new BABYLON.Vector3(22.8,29.02,-4.1),
         });
+        
         
         animLandingPos.setKeys(keysLandingPos);
         animLandingPos.setEasingFunction(bezierEase);
