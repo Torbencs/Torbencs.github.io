@@ -143,9 +143,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     //Landing Animation
             
-                   if (heliMesh.position.z < -4){
-                       landingAnimFunc();
-                   };
+                   
                     
                 
 
@@ -209,8 +207,11 @@ window.addEventListener('DOMContentLoaded', function(){
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
        
-       
-       return scene;
+       if (heliMesh && heliMesh.position.z < -4){
+        landingAnimFunc();
+        };
+    
+    return scene;
     
         };
     
