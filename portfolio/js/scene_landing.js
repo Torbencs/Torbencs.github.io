@@ -206,11 +206,11 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
-       
-       if (heliMesh && heliMesh.position.z < -4){
-        landingAnimFunc();
-        };
-    
+       scene.registerBeforeRender(()=>{
+        if (heliMesh && heliMesh.position.z < -4){
+            landingAnimFunc();
+            };
+        });
     return scene;
     
         };
