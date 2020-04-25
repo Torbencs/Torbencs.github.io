@@ -231,6 +231,8 @@ window.addEventListener('DOMContentLoaded', function(){
     
     let landingAnimFunc = function(){
         landSwitch = 1;
+
+        scene.registerBeforeRender(()=>{
         
         let helicopterMesh = scene.getMeshByName("work");
         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
@@ -281,6 +283,8 @@ window.addEventListener('DOMContentLoaded', function(){
         helicopterMesh.animations.push(animLandingRot);
         
         scene.beginAnimation(helicopterMesh, 0, 150, false);
+
+     });
    
      };
     
