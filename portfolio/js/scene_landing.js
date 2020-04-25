@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.enablePhysics(gravityVector, physicsPlugin);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23, 51, 6.5), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23, 45, 5), scene);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(25.85,29.02,-3.4));
         camera.maxZ = 500;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
@@ -228,7 +228,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.5)
+    engine.setHardwareScalingLevel(0.5)
     
     let landingAnimFunc = function(){
         landSwitch = 1;
