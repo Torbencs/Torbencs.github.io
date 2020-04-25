@@ -231,8 +231,8 @@ window.addEventListener('DOMContentLoaded', function(){
     engine.setHardwareScalingLevel(0.5)
     
     let landingAnimFunc = function(){
-        landSwitch = 1;
-
+        
+        if (landSwitch != 1){
         scene.registerBeforeRender(()=>{
         
         let helicopterMesh = scene.getMeshByName("work");
@@ -285,9 +285,10 @@ window.addEventListener('DOMContentLoaded', function(){
         
         scene.beginAnimation(helicopterMesh, 0, 150, false);
 
+        landSwitch = 1;
      });
-   
-     };
+    } 
+    };
     
     
     
