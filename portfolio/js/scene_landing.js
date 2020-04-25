@@ -143,7 +143,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     //Landing Animation
             
-                   
+                   if (heliMesh.position.z > -4){
+                       landingAnimFunc();
+                   };
                     
                 
 
