@@ -140,7 +140,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     if (heliMesh.position.z < -4 && !landSwitch){
 
-                        var helicopterMesh = scene.getMeshByName("work");
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
                 
@@ -184,14 +183,14 @@ window.addEventListener('DOMContentLoaded', function(){
                         animLandingRot.setEasingFunction(bezierBounce);
                 
                 
-                        helicopterMesh.animations = [];
-                        helicopterMesh.animations.push(animLandingPos);
-                        helicopterMesh.animations.push(animLandingRot);
+                        heliMesh.animations = [];
+                        heliMesh.animations.push(animLandingPos);
+                        heliMesh.animations.push(animLandingRot);
                         
-                        scene.beginAnimation(helicopterMesh, 0, 150, false);
+                        scene.beginAnimation(heliMesh, 0, 150, false);
                         landSwitch = 1;
                         
-                    } else {
+                    } else if (!landSwitch){
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
