@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.name = "work";
             heliMesh.alwaysSelectAsActiveMesh = true;
             heliMesh.position.x = 18.8;
-            heliMesh.position.z = 1;
+            heliMesh.position.z = 0.11;
             heliMesh.position.y = 33.02; 
             heliMesh.rotationQuaternion = null;
             heliMesh.rotation.y = 0.58;     
@@ -136,7 +136,12 @@ window.addEventListener('DOMContentLoaded', function(){
           
 
             scene.registerBeforeRender( () => {
+                
                 if (heliMesh && rotationY){
+
+                    if (heliMesh.position.z < -4){
+                        landingAnimFunc();
+                    } else {
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
@@ -175,7 +180,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
                    
-                    if (landSwitch !== 1){
+                    
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
 
@@ -206,11 +211,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
-       scene.registerBeforeRender(()=>{
-        if (heliMesh && heliMesh.position.z < -4){
-            landingAnimFunc();
-            };
-        });
+       
     return scene;
     
         };
@@ -235,7 +236,7 @@ window.addEventListener('DOMContentLoaded', function(){
         if (landSwitch != 1){
         scene.registerBeforeRender(()=>{
         
-        let helicopterMesh = scene.getMeshByName("work");
+        var helicopterMesh = scene.getMeshByName("work");
         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
 
