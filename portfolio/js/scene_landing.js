@@ -131,7 +131,6 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotation.y = 0.58;     
 
             
-                console.log(heliMesh.name);
             
           
 
@@ -139,7 +138,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 if (heliMesh && rotationY){
 
-                    if (heliMesh.position.z < -4){
+                    if (heliMesh.position.z < -4 && !landSwitch){
 
                         var helicopterMesh = scene.getMeshByName("work");
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
@@ -190,8 +189,9 @@ window.addEventListener('DOMContentLoaded', function(){
                         helicopterMesh.animations.push(animLandingRot);
                         
                         scene.beginAnimation(helicopterMesh, 0, 150, false);
+                        landSwitch = 1;
                         
-                    } else {
+                    } else if (!landSwitch) {
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
