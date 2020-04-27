@@ -128,8 +128,9 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.position.z = 0.11;
             heliMesh.position.y = 33.02; 
             heliMesh.rotationQuaternion = null;
-            heliMesh.rotation.y = 0.58;     
-
+            heliMesh.rotation.y = 0.58;
+            
+            let landingPad = {x:23.3,y:29.02,z:-4.5};
             
             
           
@@ -138,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 if (heliMesh && rotationY){
 
-                    if (heliMesh.position.z < -4 && !landSwitch){
+                    if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8 && !landSwitch){
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
@@ -245,7 +246,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         
-    
+        scene.onPointerObservable.add((pointerInfo) => {
+            switch (pointerInfo.type) {
+                case BABYLON.PointerEventTypes.POINTERDOWN:
+                    
+                        console.log(pointerInfo.pickInfo.pickedPoint);
+                    
+            }
+    });
         
       
     
@@ -361,5 +369,14 @@ window.addEventListener('DOMContentLoaded', function(){
         let inversePoly = (1/(Math.pow(2,(2/3)) * Math.cbrt(3) * Math.cbrt((Math.sqrt(3/2)) * Math.sqrt(54 * Math.pow(x,2) + 1) -9 * x))) - (Math.cbrt((Math.sqrt(3/2)) * Math.sqrt(54 * Math.pow(x,2) + 1) -9 * x) / (Math.cbrt(2) * Math.pow(3,(2/3))));
         return inversePoly*8;
     };
-
-   
+    
+    // Pythag to find distance from specified point (x,y), in this case the center of the helicopter landing pad
+    /**
+     * @param {number} a - Helicopter position x
+     * @param {number} b - Helicopter position z
+     * @param {number} x - Center of helipad x axis
+     * @param {number} y - Center of helipad z axis
+     */
+    let pythagorean = function(a,b,x,y) {
+        return Math.sqrt(Math.pow(a - x, 2) + Math.pow(b - y, 2))
+    };
