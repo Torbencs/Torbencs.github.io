@@ -378,5 +378,5 @@ window.addEventListener('DOMContentLoaded', function(){
      * @param {number} y - Center of helipad z axis
      */
     let pythagorean = function(a,b,x,y) {
-        return Math.sqrt(Math.pow(a - x, 2) + Math.pow(b - y, 2))
+        return Math.sqrt(Math.pow((a - x), 2) + Math.pow((b - y), 2))
     };
