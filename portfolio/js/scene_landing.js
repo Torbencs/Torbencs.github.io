@@ -243,8 +243,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     //calibrateGyroX = findCal(modeX, rotationX) * -0.0007; //-0.0008
                     //calibrateGyroY = findCal(modeY, rotationY) * -0.0007;
 
-                    calibrateGyroX = rotationX;
-                    calibrateGyroY = rotationY;
+                    calibrateGyroX = rotationX * -0.0007;
+                    calibrateGyroY = rotationY * -0.0007;
                    
                     //Find new coords adjusted for camera offset. Args: axis ( 'x' || 'y'), rotationDataX, rotationDataY
                     
