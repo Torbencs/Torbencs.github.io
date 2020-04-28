@@ -210,7 +210,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     //Landing Animation
             
-                   
+                    if (rotationY > 85 && rotationY < 95) {
+                        return;
+                    }
                     
                 
 
