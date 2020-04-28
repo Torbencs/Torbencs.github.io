@@ -16,16 +16,15 @@
   <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
   <script src="https://cdn.babylonjs.com/cannon.js"></script>
   <script src="js/scene_landing.js"></script>
+  <script src="js/o9n.js"></script>
   <script src="js/fulltilt.min.js"></script>
-  <script src="js/babylon.shadowOnlyMaterial.js"></script>
-  <script src="js/page_animations.js"></script>
 
   <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 2</button>
+  <button id="btn-permission" onclick="askPermission()">Button 1</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -46,6 +45,8 @@
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
   window.onresize(); // called to initially set the height.
+
+  window.o9n.orientation.lock('landscape');
 
     
 
