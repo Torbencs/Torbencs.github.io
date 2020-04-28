@@ -139,9 +139,10 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 if (heliMesh && rotationY){
 
+                    /*
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8 && !landSwitch){
-                        document.getElementById
-                        /*
+                        
+                        
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
                 
@@ -191,12 +192,18 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         scene.beginAnimation(heliMesh, 0, 150, false);
                         landSwitch = 1;
-                        */
+                        
 
                        document.getElementById('text_4').innerHTML = "OVER";
                         
-                    } else if (!landSwitch){
-                        document.getElementById('text_4').innerHTML = "";
+                    } else*/ if (!landSwitch){
+
+                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
+                            document.getElementById('text_4').innerHTML = "OVER";
+                        } else {
+                            document.getElementById('text_4').innerHTML = "";
+                        }
+                        
 
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
