@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotationQuaternion = null;
             heliMesh.rotation.y = 0.58;
             
-            let landingPad = {x:22.724,y:29.02,z:-3.414};
+            let landingPad = {x:22.749,y:29.02,z:-2.516};
             
             
           
