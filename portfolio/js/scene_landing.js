@@ -208,16 +208,30 @@ window.addEventListener('DOMContentLoaded', function(){
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
-                    //Landing Animation
+                   
             
+                    if (rotationX > 85 && rotationX < 95) {
+                        return;
+                    }
+                    
                     if (rotationY > 85 && rotationY < 95) {
                         return;
                     }
                     
-                
+                    const TILT_LIMIT = 40;
 
-                    //if (rotationX < -88){newRotationY = smooth(rotationY); newRotationX = -88} else if (rotationX > 88){newRotationY = smooth(rotationY); newRotationX = 88} else {newRotationX = rotationX};
-                    //if (rotationY < -88){newRotationX = smooth(rotationX); newRotationY = -88} else if (rotationY > 88){newRotationX = smooth(rotationX); newRotationY = 88} else {newRotationY = rotationY};
+                    if (rotationX > 0) {
+                        rotationX = Math.min(rotationX, TILT_LIMIT);
+                    } else {
+                        rotationX = Math.max(rotationX, TILT_LIMIT * -1);
+                    }
+
+                    if (rotationY > 0) {
+                        rotationY = Math.min(rotationY, TILT_LIMIT);
+                    } else {
+                        rotationY = Math.max(rotationY, TILT_LIMIT * -1);
+                    }
+                
 
                     
                     if (!modeY) {
