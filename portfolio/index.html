@@ -17,8 +17,6 @@
   <script src="https://cdn.babylonjs.com/cannon.js"></script>
   <script src="js/scene_landing.js"></script>
   <script src="js/fulltilt.min.js"></script>
-  <script src="js/babylon.shadowOnlyMaterial.js"></script>
-  <script src="js/page_animations.js"></script>
 
   <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -30,6 +28,8 @@
   <div id="text_2"></div>
   <div id="text_3"></div>
   <div id="text_4"></div>
+  <div id="text_5"></div>
+  <div id="text_6"></div>
  
 
   <div id="change" class="container">
@@ -45,6 +45,8 @@
   }
   window.onresize(); // called to initially set the height.
 
+
+
     
 
   let askPermission = function() {
@@ -53,27 +55,32 @@
           DeviceMotionEvent.requestPermission()
             .then(permissionState => {
               if (permissionState === 'granted') {
-                window.addEventListener('deviceorientation', (event) => {
+                
 
-                  rotationY = event.beta;
-                  rotationX = event.gamma;
-                  rotationZ = event.alpha;
-                  
-                },true);
+                var promise = FULLTILT.getDeviceOrientation({'type': 'game'});
 
-                window.addEventListener('devicemotion', (event) => {
+                promise
+                .then(
+                    function(deviceOrientation) {
+                    // Use `deviceOrientation` object to interact with device orientation sensors
+                    deviceOrientation.listen(function() {
 
-                  accelerationX = event.acceleration.x;
-                  accelerationY = event.acceleration.y;
-                  accelerationZ = event.acceleration.z;
-                  
-                  document.getElementById('text_1').innerHTML = Math.floor(accelerationX * 100);
-                  document.getElementById('text_2').innerHTML = Math.floor(accelerationY * 100);
-                  document.getElementById('text_3').innerHTML = Math.floor(accelerationZ * 100);
+                    let euler = deviceOrientation.getScreenAdjustedEuler();
+                    
+                    rotationX = euler.gamma;
+                    rotationY = euler.beta;
 
-
-                },true);
-              }
+                    })
+                    }
+                ).catch(
+                    function(message) {
+                    // Device Orientation Events are not supported
+                    alert("Not supported")
+                    // Implement manual fallback controls instead...
+                    }
+                );
+                
+              }     
             })
             .catch(console.error);
         } else {
@@ -87,7 +94,7 @@
     var element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
 }
-  
+
   </script>
 </body>
 </html>

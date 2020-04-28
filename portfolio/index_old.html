@@ -15,7 +15,8 @@
   <script src="https://cdn.babylonjs.com/babylon.js"></script>
   <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
   <script src="https://cdn.babylonjs.com/cannon.js"></script>
-  <script src="js/babylon.js"></script>
+  <script src="js/scene_landing.js"></script>
+  <script src="js/fulltilt.min.js"></script>
   <script src="js/babylon.shadowOnlyMaterial.js"></script>
   <script src="js/page_animations.js"></script>
 
@@ -23,34 +24,70 @@
 
 </head>
 <body>
-  <div id="change" class="container">
-      <div class="scene-wrapper">
-        
-        <div class="menu-wrapper">
-            <a href="#" onclick="openNav()"><div class="menu"><div class="menu__icon"></div></div></a>
-            <div id="mySidenav" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Clients</a>
-              <a href="#">Contact</a>
-            </div>
-        </div>
+  
+  <button id="btn-permission" onclick="askPermission()">Button 1</button>
+  <div id="text_1"></div>
+  <div id="text_2"></div>
+  <div id="text_3"></div>
+  <div id="text_4"></div>
+ 
 
-        
+  <div id="change" class="container">
+      
         <canvas id="renderCanvas"></canvas>
         
-        <div class="section-heading">
-          <p class="section-heading__text--extended">T</p>
-          <p class="section-heading__text--regular">orben</p>
-        </div>
     </div>
-  </div>
+  
   <script>
+    let rotationX,rotationY,rotationZ,accelerationX,accelerationY,accelerationZ;
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
   window.onresize(); // called to initially set the height.
+
+    
+
+  let askPermission = function() {
+        // feature detect
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+          DeviceMotionEvent.requestPermission()
+            .then(permissionState => {
+              if (permissionState === 'granted') {
+                window.addEventListener('deviceorientation', (event) => {
+
+                  rotationY = event.beta;
+                  rotationX = event.gamma;
+                  rotationZ = event.alpha;
+                  
+                },true);
+
+                window.addEventListener('devicemotion', (event) => {
+
+                  accelerationX = event.acceleration.x;
+                  accelerationY = event.acceleration.y;
+                  accelerationZ = event.acceleration.z;
+                  
+                  document.getElementById('text_1').innerHTML = Math.floor(accelerationX * 100);
+                  document.getElementById('text_2').innerHTML = Math.floor(accelerationY * 100);
+                  document.getElementById('text_3').innerHTML = Math.floor(accelerationZ * 100);
+
+
+                },true);
+              }
+            })
+            .catch(console.error);
+        } else {
+          // handle regular non iOS 13+ devices
+        }
+    removeElement("btn-permission")
+  }
+
+  function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
+  
   </script>
 </body>
 </html>
