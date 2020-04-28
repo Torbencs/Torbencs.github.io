@@ -25,7 +25,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 3.6</button>
+  <button id="btn-permission" onclick="askPermission()">Button 1.1</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -61,12 +61,12 @@
                 .then(
                     function(deviceOrientation) {
                     // Use `deviceOrientation` object to interact with device orientation sensors
-                    console.log(deviceOrientation)
+                    alert(deviceOrientation)
                     }
                 ).catch(
                     function(message) {
                     // Device Orientation Events are not supported
-                    console.log("Not supported")
+                    alert("Not supported")
                     // Implement manual fallback controls instead...
                     }
                 );
