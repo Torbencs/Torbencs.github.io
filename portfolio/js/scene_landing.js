@@ -52,9 +52,9 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.enablePhysics(gravityVector, physicsPlugin);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(22.5, 40, 4), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23, 40, 2), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(24.85,29.02,-2.4));
+        camera.setTarget(new BABYLON.Vector3(25.25,29.02,-4.8));
         camera.maxZ = 500;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
        
