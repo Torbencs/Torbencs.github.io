@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotationQuaternion = null;
             heliMesh.rotation.y = 0.58;
             
-            let landingPad = {x:22.749,y:29.02,z:-2.516};
+            let landingPad = {x:22.849,y:29.02,z:-2.216};
             
             
           
@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                     } else*/ if (!landSwitch){
 
-                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
+                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.6){
                             document.getElementById('text_4').innerHTML = "OVER";
                         } else {
                             document.getElementById('text_4').innerHTML = "";
