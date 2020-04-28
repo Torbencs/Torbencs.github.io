@@ -25,7 +25,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 1</button>
+  <button id="btn-permission" onclick="askPermission()">Button 3.6</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -53,27 +53,25 @@
           DeviceMotionEvent.requestPermission()
             .then(permissionState => {
               if (permissionState === 'granted') {
-                window.addEventListener('deviceorientation', (event) => {
+                
 
-                  rotationY = event.beta;
-                  rotationX = event.gamma;
-                  rotationZ = event.alpha;
-                  
-                },true);
+                var promise = FULLTILT.getDeviceOrientation({'type': 'game'});
 
-                window.addEventListener('devicemotion', (event) => {
-
-                  accelerationX = event.acceleration.x;
-                  accelerationY = event.acceleration.y;
-                  accelerationZ = event.acceleration.z;
-                  
-                  document.getElementById('text_1').innerHTML = Math.floor(accelerationX * 100);
-                  document.getElementById('text_2').innerHTML = Math.floor(accelerationY * 100);
-                  document.getElementById('text_3').innerHTML = Math.floor(accelerationZ * 100);
-
-
-                },true);
-              }
+                promise
+                .then(
+                    function(deviceOrientation) {
+                    // Use `deviceOrientation` object to interact with device orientation sensors
+                    console.log(deviceOrientation)
+                    }
+                ).catch(
+                    function(message) {
+                    // Device Orientation Events are not supported
+                    console.log("Not supported")
+                    // Implement manual fallback controls instead...
+                    }
+                );
+                
+              }     
             })
             .catch(console.error);
         } else {
