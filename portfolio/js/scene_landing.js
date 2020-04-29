@@ -132,14 +132,16 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:22.536,y:29.02,z:-2.14};
             
-            
-          
+            var landingTimer = new Timer(5000, scene, ()=>{
+                alert('1.2')
+            });
+            if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) > 0.8){
+                landingTimer.start();
+            }
 
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
-                var landingTimer = new Timer(5000, scene, ()=>{
-                    alert('afh')
-                });
+                
                                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
