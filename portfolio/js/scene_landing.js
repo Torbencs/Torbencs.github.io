@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
         // Camera controls
-        camera.attachControl(canvas, false);
+        //camera.attachControl(canvas, true);
         
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
@@ -142,8 +142,6 @@ window.addEventListener('DOMContentLoaded', function(){
             var landingTimer = new Timer(5000, scene, ()=>{
                 landingStarted = true;
             });
-            
-
 
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -210,7 +208,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     } else if (landingStarted && !landingAnimStarted){
                         camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 27);
-                        camera.moveTargetTo(new BABYLON.Vector3(23.03,29.02,-4.12),27);
+                        camera.setTarget(new BABYLON.Vector3(23.03,29.02,-4.12));
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
