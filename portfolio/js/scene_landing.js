@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
-    let landSwitch;
+    let landingStarted;
   
 
     // get the canvas DOM element
@@ -133,7 +133,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let landingPad = {x:22.536,y:29.02,z:-2.14};
             
             var landingTimer = new Timer(5000, scene, ()=>{
-                alert('1.3')
+                landingStarted = true;
             });
             
 
@@ -143,7 +143,7 @@ window.addEventListener('DOMContentLoaded', function(){
                                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
-                    if (!landSwitch){
+                    if (!landingStarted){
                     
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
@@ -197,7 +197,58 @@ window.addEventListener('DOMContentLoaded', function(){
                         document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
                     } else {
                         landingTimer.reset();
-                    }
+                    };
+
+                    } else if (landingStarted && !heliMesh.animations){
+
+                        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
+                        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
+                    
+                        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                    
+                        //Landing position animation
+                        var keysLandingPos = []; 
+                    
+                        keysLandingPos.push({
+                            frame: 0,
+                            value: heliMesh.position,
+                        });
+                        
+                    
+                        keysLandingPos.push({
+                            frame: 150,
+                            value: new BABYLON.Vector3(22.8,29.02,-4.1),
+                        });
+                        
+                        
+                        animLandingPos.setKeys(keysLandingPos);
+                        animLandingPos.setEasingFunction(bezierEase);
+                    
+                        //Landing rotation animation
+                        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                    
+                        var keysLandingRot = []; 
+                    
+                        keysLandingRot.push({
+                            frame: 0,
+                            value: heliMesh.rotation.z,
+                        });
+                        
+                    
+                        keysLandingRot.push({
+                            frame: 130,
+                            value: 0,
+                        });
+                        
+                        animLandingRot.setKeys(keysLandingRot);
+                        animLandingRot.setEasingFunction(bezierBounce);
+                    
+                    
+                        heliMesh.animations = [];
+                        heliMesh.animations.push(animLandingPos);
+                        heliMesh.animations.push(animLandingRot);
+                        
+                        scene.beginAnimation(heliMesh, 0, 150, false);
                     };
                 }
             });
