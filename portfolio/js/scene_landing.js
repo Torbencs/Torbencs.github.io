@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
-                
+               
                                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
@@ -194,7 +194,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     //Check if heli is over the landing pad
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
-                        document.getElementById('text_1').innerHTML = 'Over';
+                        document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
                     } else {
                         landingTimer.reset();
                     }
