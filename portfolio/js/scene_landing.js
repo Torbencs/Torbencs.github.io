@@ -139,7 +139,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 landingStarted = true;
             });
 
-            
+           camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
+           camera.moveTargetTo(new BABYLON.Vector3(22.5, 30, -3.95), 30);
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
 
