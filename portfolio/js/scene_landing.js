@@ -199,7 +199,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         landingTimer.reset();
                     };
 
-                    } else if (landingStarted && !heliMesh.animations){
+                    } else if (landingStarted && !bezierEase){
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
