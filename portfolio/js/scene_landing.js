@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
         // Camera controls
-        camera.attachControl(canvas, true);
+        camera.attachControl(canvas, false);
         
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
@@ -136,12 +136,18 @@ window.addEventListener('DOMContentLoaded', function(){
           
 
             scene.registerBeforeRender( () => {
+                //Initiate landing timer
+                
+                let landingTimer = new Timer(2000, scene, ()=>{
+                    alert('still working')
+                });
+                
                 
                 if (heliMesh && rotationY){
-
-                    /*
+                    //If heli is over landing pad start timer 
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8 && !landSwitch){
                         
+                        landingTimer.start();
                         
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
@@ -190,19 +196,13 @@ window.addEventListener('DOMContentLoaded', function(){
                         heliMesh.animations.push(animLandingPos);
                         heliMesh.animations.push(animLandingRot);
                         
-                        scene.beginAnimation(heliMesh, 0, 150, false);
-                        landSwitch = 1;
+                        //scene.beginAnimation(heliMesh, 0, 150, false);
+                        //landSwitch = 1;
                         
-
-                       document.getElementById('text_4').innerHTML = "OVER";
                         
-                    } else*/ if (!landSwitch){
-
-                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.6){
-                            document.getElementById('text_4').innerHTML = "OVER";
-                        } else {
-                            document.getElementById('text_4').innerHTML = "";
-                        }
+                    } else if (!landSwitch){
+                    //Else if heli not over landing pad and landing animation hasn't started reset timer and use gyro for position 
+                    landingTimer.reset();
                         
 
                     positionX = heliMesh.position.x;
@@ -295,6 +295,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var kernel = 4;	
         var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
         */
+     
        
     return scene;
     
@@ -407,3 +408,50 @@ window.addEventListener('DOMContentLoaded', function(){
     let pythagorean = function(a,b,x,y) {
         return Math.sqrt(Math.pow((a - x), 2) + Math.pow((b - y), 2))
     };
+
+    //Timer object
+    Timer = function(time, scene, callback) {
+
+        this.maxTime = this.currentTime = time;
+        this.isOver = false;
+        this.paused = false;
+        this.started = false;
+        this.callback = callback;
+        this.scene  = scene;
+    
+        var _this = this;
+        scene.registerBeforeRender(function() {
+            if (_this.started && !_this.isOver && !_this.paused) {
+                _this._update();
+            }
+        });
+    };
+    
+    Timer.prototype.reset = function() {
+        this.currentTime = this.maxTime;
+        this.isOver = false;
+        this.started = false;
+    };
+    
+    Timer.prototype.start = function() {
+        this.started = true;
+    };
+    
+    Timer.prototype.pause = function() {
+        this.paused = true;
+    };
+    
+    Timer.prototype.resume = function() {
+        this.paused = false;
+    };
+    
+    Timer.prototype._update = function() {
+        this.currentTime -= this.scene.getEngine().getDeltaTime();
+        if (this.currentTime <= 0) {
+            this.isOver = true;
+            this.callback();
+        }
+    };
+    
+    
+    
