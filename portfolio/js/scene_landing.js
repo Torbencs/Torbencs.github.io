@@ -139,8 +139,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 landingStarted = true;
             });
 
-           camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
-           camera.moveTargetTo(new BABYLON.Vector3(22.5, 30, -3.95), 30);
+           
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
 
@@ -205,8 +204,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     };
 
                     } else if (landingStarted && !landingAnimStarted){
-                        camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 27);
-                        camera.moveTargetTo(new BABYLON.Vector3(22.1, 30, -4), 37);
+                        camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
+                        camera.moveTargetTo(new BABYLON.Vector3(22.5, 30, -3.95), 30);
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
