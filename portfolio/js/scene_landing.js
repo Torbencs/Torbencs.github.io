@@ -144,7 +144,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
                     if (!landSwitch){
-                    landingTimer.reset();
                     
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
@@ -195,6 +194,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     //Check if heli is over the landing pad
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
+                        document.getElementById('text_1').innerHTML = 'Over';
+                    } else {
+                        landingTimer.reset();
                     }
                     };
                 }
