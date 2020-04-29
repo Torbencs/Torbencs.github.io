@@ -148,7 +148,7 @@ window.addEventListener('DOMContentLoaded', function(){
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
 
-                camera.setTarget(new BABYLON.Vector3(23.03,29.02,-4.12));
+                
                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
@@ -210,6 +210,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     } else if (landingStarted && !landingAnimStarted){
                         camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 27);
+                        camera.moveTargetTo(new BABYLON.Vector3(23.03,29.02,-4.12),27);
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
