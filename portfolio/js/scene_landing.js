@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function(){
             BABYLON.Animation.CreateAndStartAnimation('at4', this, whichprop, speed, 120, this[whichprop], targetval, 0, ease);
         };
 
-        BABYLON.UniversalCamera.prototype.moveTargetTo = function (newPos, speed) {
+        BABYLON.ArcRotateCamera.prototype.moveTargetTo = function (newPos, speed) {
             var ease = new BABYLON.CubicEase();
             ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
             BABYLON.Animation.CreateAndStartAnimation('at5', this, 'target', speed, 120, this.target, newPos, 0, ease);
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function(){
             BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease);
         }
     
-        BABYLON.UniversalCamera.prototype.movePosiTo = function (newPos, speed) {
+        BABYLON.ArcRotateCamera.prototype.movePosiTo = function (newPos, speed) {
             var ease = new BABYLON.CubicEase();
             ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
             BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease);
@@ -58,10 +58,11 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.enablePhysics(gravityVector, physicsPlugin);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.1, 42, 1.5), scene);
+        var camera = new BABYLON.ArcRotateCamera("Camera", 1.8, 0.5, 15, new BABYLON.Vector3(25.25,29.02,-4.8), scene);
+        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.1, 42, 1.5), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(25.25,29.02,-4.8));
+        //camera.setTarget(new BABYLON.Vector3(25.25,29.02,-4.8));
         camera.maxZ = 500;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
 
        
@@ -143,6 +144,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 landingStarted = true;
             });
 
+            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
 
@@ -208,7 +210,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     } else if (landingStarted && !landingAnimStarted){
                         camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 27);
-                        camera.setTarget(new BABYLON.Vector3(23.03,29.02,-4.12));
+                        camera.moveTargetTo(new BABYLON.Vector3(22.1, 30, -4), 27);
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
