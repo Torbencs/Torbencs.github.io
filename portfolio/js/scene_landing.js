@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
-    let landingStarted;
+    let landingStarted,landingAnimStarted;
   
 
     // get the canvas DOM element
@@ -199,7 +199,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         landingTimer.reset();
                     };
 
-                    } else if (landingStarted && !bezierEase){
+                    } else if (landingStarted && !landingAnimStarted){
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
@@ -248,7 +248,9 @@ window.addEventListener('DOMContentLoaded', function(){
                         heliMesh.animations.push(animLandingPos);
                         heliMesh.animations.push(animLandingRot);
                         
+                        landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false);
+
                     };
                 }
             });
