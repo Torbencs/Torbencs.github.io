@@ -23,7 +23,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 1.3</button>
+  <button id="btn-permission" onclick="askPermission()">Button 1</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -54,7 +54,7 @@
           DeviceMotionEvent.requestPermission()
             .then(permissionState => {
               if (permissionState === 'granted') {
-                /*
+                
 
                 var promise = FULLTILT.getDeviceOrientation({'type': 'game'});
 
@@ -78,7 +78,7 @@
                     // Implement manual fallback controls instead...
                     }
                 );
-                */
+                
               }     
             })
             .catch(console.error);
