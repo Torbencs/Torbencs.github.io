@@ -24,8 +24,8 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         BABYLON.ArcRotateCamera.prototype.moveTargetTo = function (newPos, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+            var ease = new BABYLON.SineEase();
+            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
             BABYLON.Animation.CreateAndStartAnimation('at5', this, 'target', speed, 120, this.target, newPos, 0, ease);
         };
 
@@ -36,17 +36,12 @@ window.addEventListener('DOMContentLoaded', function(){
         }
 
         BABYLON.ArcRotateCamera.prototype.movePosiTo = function (newPos, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+            var ease = new BABYLON.SineEase();
+            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
             BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease);
         }
     
-        BABYLON.ArcRotateCamera.prototype.movePosiTo = function (newPos, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease);
-        }
-    
+        
 
     
         // Scene and Physics
@@ -210,7 +205,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     } else if (landingStarted && !landingAnimStarted){
                         camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 27);
-                        camera.moveTargetTo(new BABYLON.Vector3(22.1, 30, -4), 27);
+                        camera.moveTargetTo(new BABYLON.Vector3(22.1, 30, -4), 37);
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
