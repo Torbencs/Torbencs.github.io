@@ -137,79 +137,18 @@ window.addEventListener('DOMContentLoaded', function(){
 
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
-                
-                let landingTimer = new Timer(2000, scene, ()=>{
-                    alert('still working')
+                var landingTimer = new Timer(5000, scene, ()=>{
+                    alert('afh')
                 });
-                
-                
-                if (heliMesh && rotationY){
-                    //If heli is over landing pad start timer 
-                    if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8 && !landSwitch){
-                        
-                        landingTimer.start();
-                        
-                        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
-                        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
-                
-                        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-                    
-                        //Landing position animation
-                        var keysLandingPos = []; 
-                    
-                        keysLandingPos.push({
-                            frame: 0,
-                            value: heliMesh.position,
-                        });
-                        
-                
-                        keysLandingPos.push({
-                            frame: 150,
-                            value: new BABYLON.Vector3(22.8,29.02,-4.1),
-                        });
-                        
-                        
-                        animLandingPos.setKeys(keysLandingPos);
-                        animLandingPos.setEasingFunction(bezierEase);
-                
-                        //Landing rotation animation
-                        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-                    
-                        var keysLandingRot = []; 
-                    
-                        keysLandingRot.push({
-                            frame: 0,
-                            value: heliMesh.rotation.z,
-                        });
-                        
-                
-                        keysLandingRot.push({
-                            frame: 130,
-                            value: 0,
-                        });
-                        
-                        animLandingRot.setKeys(keysLandingRot);
-                        animLandingRot.setEasingFunction(bezierBounce);
-                
-                
-                        heliMesh.animations = [];
-                        heliMesh.animations.push(animLandingPos);
-                        heliMesh.animations.push(animLandingRot);
-                        
-                        //scene.beginAnimation(heliMesh, 0, 150, false);
-                        //landSwitch = 1;
-                        
-                        
-                    } else if (!landSwitch){
-                    //Else if heli not over landing pad and landing animation hasn't started reset timer and use gyro for position 
+                                
+                if (rotationY){
+                    //Can remove this outer if statement when not supporting desktop
+                    if (!landSwitch){
                     landingTimer.reset();
-                        
-
+                    
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
 
-                   
-            
                     if (rotationX > 85 && rotationX < 95) {
                         return;
                     }
@@ -231,9 +170,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     } else {
                         rotationY = Math.max(rotationY, TILT_LIMIT * -1);
                     }
-                
-
-                    
+                                    
                     if (!modeY) {
                         modeX = findMode(rotationX);
                         modeY = findMode(rotationY);
@@ -247,25 +184,19 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                     newPosX = positionX + findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     newPosY = positionY + findOffset( 'y', calibrateGyroX, calibrateGyroY);
-
-                    //document.getElementById("text_1").innerHTML = newRotationX;
-                    
-                    
-
-                    
-                   
-                   // heliMesh.rotation.x = 2 * findOffset( 'x', calibrateGyroX, calibrateGyroY);
-                    //heliMesh.rotation.z = 2 * -(findOffset( 'y', calibrateGyroX, calibrateGyroY));
-                   
                     
                     heliMesh.position.x = newPosX;
                     heliMesh.position.z = newPosY; 
 
+                    //Model rotation effect
                     heliMesh.rotation.z = 13 * -findOffset( 'x', calibrateGyroX, calibrateGyroY);
                     heliMesh.rotation.x = 9.3 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
+
+                    //Check if heli is over the landing pad
+                    if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
+                        landingTimer.start();
+                    }
                     };
-                    
-                    
                 }
             });
         };
