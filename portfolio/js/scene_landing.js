@@ -493,7 +493,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-        if (currentScene === 1){
+        if (currentScene === 1 && scene1Started){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();
