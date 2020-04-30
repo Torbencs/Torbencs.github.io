@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
        
         var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged.glb");
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_1.glb");
         //var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
 
         mountainMeshTask.onSuccess = task => {
@@ -124,26 +124,59 @@ window.addEventListener('DOMContentLoaded', function(){
         let ease = new BABYLON.SineEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
         
-      keysTarget.push({
+    keysTarget.push({
         frame: 0,
+        value: new BABYLON.Vector3(14.57387,12.615,9.7957)
+        });  
+
+    keysTarget.push({
+        frame: 300,
+        value: new BABYLON.Vector3(0,25,0)
+        });
+
+    keysTarget.push({
+        frame: 350,
+        value: new BABYLON.Vector3(0,25,0)
+        });
+
+      keysTarget.push({
+        frame: 400,
         value: new BABYLON.Vector3(41.034,18.40,11.383)
       });
      
       keysTarget.push({
-        frame: 100,
+        frame: 470,
         value: new BABYLON.Vector3(25.25,29.02,-4.8)
       });
-    
-    
-       keysPosition.push({
+
+      keysPosition.push({
         frame: 0,
+        value: new BABYLON.Vector3(3.33016,14, -7.457)
+      });
+
+      keysPosition.push({
+        frame: 300,
+        value: new BABYLON.Vector3(7,45,67)
+      });
+
+      keysPosition.push({
+        frame: 350,
+        value: new BABYLON.Vector3(7,45,67)
+      });
+    
+      keysPosition.push({
+        frame: 400,
+        value: new BABYLON.Vector3(33.458,16, 13.243)
+      });
+
+      keysPosition.push({
+        frame: 405,
         value: new BABYLON.Vector3(33.458,16, 13.243)
       });
     
-         
      
       keysPosition.push({
-        frame: 100,
+        frame: 500,
         value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
       });
         var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
@@ -158,7 +191,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
     
-        scene.beginAnimation(camera, 0, maxFrame, false, 0.5, ()=>{
+        scene.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
             currentScene = 2;
         });
        
@@ -452,7 +485,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-        if (currentScene === 1){
+        if (currentScene === 1 && scene1Started){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();

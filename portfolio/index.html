@@ -23,7 +23,7 @@
 </head>
 <body>
   
-  <button id="btn-permission" onclick="askPermission()">Button 1.1</button>
+  <button id="btn-permission" onclick="askPermission()">Button 1.2</button>
   <div id="text_1"></div>
   <div id="text_2"></div>
   <div id="text_3"></div>
@@ -38,7 +38,7 @@
     </div>
   
   <script>
-    let rotationX,rotationY,rotationZ,accelerationX,accelerationY,accelerationZ;
+    let rotationX,rotationY,rotationZ,accelerationX,accelerationY,accelerationZ,scene1Started;
   window.onresize = function() {
       document.getElementById("change").style.height = window.innerHeight + 'px';
   }
@@ -68,6 +68,7 @@
                     
                     rotationX = euler.gamma;
                     rotationY = euler.beta;
+                    scene1Started = true;
 
                     })
                     }
