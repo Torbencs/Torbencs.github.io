@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', function(){
         BABYLON.UniversalCamera.prototype.moveTargetTo = function (newPos, speed) {
             var ease = new BABYLON.CubicEase();
             ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at5', this, 'setTarget', speed, 120, this.setTarget, newPos, 0, ease);
+            BABYLON.Animation.CreateAndStartAnimation('at5', this, 'cameraDirection', speed, 120, this.cameraDirection, newPos, 0, ease);
         };
 
         BABYLON.ArcRotateCamera.prototype.moveRadiusTo = function (newVal, speed) {
@@ -50,15 +50,15 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,40, 40), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(32.70,10, 24.137), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(25.25,29.02,-4.8));
+        camera.setTarget(new BABYLON.Vector3(40.06,29.02,8.89));
         camera.maxZ = 500;      
 
         
     
         // Camera controls
-        //camera.attachControl(canvas, true);
+        camera.attachControl(canvas, true);
         
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
@@ -109,9 +109,56 @@ window.addEventListener('DOMContentLoaded', function(){
             }
          });
         
-        camera.lockedTarget = (new BABYLON.Vector3(25.25,29.02,-4.8));
+        //camera.lockedTarget = (new BABYLON.Vector3(25.25,29.02,-4.8));
+        //camera.moveTargetTo(new BABYLON.Vector3(23.616, 42.1837, 2.203311), 15,);
+        /*camera.cameraDirection = new BABYLON.Vector3(0,0,0);
         camera.movePosiTo(new BABYLON.Vector3(23.616, 42.1837, 2.203311), 15, ()=>{
             
+            currentScene = 2;
+        });
+        */
+
+        //Animation
+        var keysTarget = [];
+        var keysPosition = [];
+        let ease = new BABYLON.SineEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        
+      keysTarget.push({
+        frame: 0,
+        value: new BABYLON.Vector3(41.034,18.40,11.383)
+      });
+     
+      keysTarget.push({
+        frame: 100,
+        value: new BABYLON.Vector3(25.25,29.02,-4.8)
+      });
+    
+    
+       keysPosition.push({
+        frame: 0,
+        value: new BABYLON.Vector3(33.458,16, 13.243)
+      });
+    
+         
+     
+      keysPosition.push({
+        frame: 100,
+        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
+      });
+        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationTarget.setKeys(keysTarget);
+        animationTarget.setEasingFunction(ease);
+        camera.animations.push(animationTarget);
+    
+        var animationPosition = new BABYLON.Animation("animationPosition", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationPosition.setKeys(keysPosition);
+        animationPosition.setEasingFunction(ease);
+        camera.animations.push(animationPosition);
+    
+        var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
+    
+        scene.beginAnimation(camera, 0, maxFrame, false, 0.5, ()=>{
             currentScene = 2;
         });
        
@@ -172,7 +219,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
     
         // Camera controls
-        //camera.attachControl(canvas, true);
+        camera.attachControl(canvas, true);
         
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
@@ -414,7 +461,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
+    //engine.setHardwareScalingLevel(0.5)
     
   
     
