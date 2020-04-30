@@ -121,64 +121,72 @@ window.addEventListener('DOMContentLoaded', function(){
         //Animation
         var keysTarget = [];
         var keysPosition = [];
-        let ease = new BABYLON.SineEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        let ease = new BABYLON.BezierCurveEase(.54,0,.66,1);
         
-    keysTarget.push({
+        keysPosition.push({
+        frame: 0,
+        value: new BABYLON.Vector3(3.33016,14, -7.457)
+        });
+
+        keysTarget.push({
         frame: 0,
         value: new BABYLON.Vector3(14.57387,12.615,9.7957)
         });  
 
-    keysTarget.push({
-        frame: 300,
+        keysPosition.push({
+        frame: 200,
+        value: new BABYLON.Vector3(7,45,67)
+        });
+
+        keysTarget.push({
+        frame: 200,
         value: new BABYLON.Vector3(0,25,0)
         });
 
-    keysTarget.push({
-        frame: 350,
+        keysPosition.push({
+        frame: 250,
+        value: new BABYLON.Vector3(7,45,67)
+        });
+
+        keysTarget.push({
+        frame: 250,
         value: new BABYLON.Vector3(0,25,0)
         });
 
-      keysTarget.push({
+        keysPosition.push({
         frame: 400,
-        value: new BABYLON.Vector3(41.034,18.40,11.383)
-      });
-     
-      keysTarget.push({
+        value: new BABYLON.Vector3(29.258,18, 15.243)
+        });
+
+
+        keysTarget.push({
+        frame: 400,
+        value: new BABYLON.Vector3(38.211,18.40,8.0507)
+        });
+
+
+        keysPosition.push({
+        frame: 405,
+        value: new BABYLON.Vector3(29.258,18, 15.243)
+        });
+
+        keysTarget.push({
         frame: 470,
         value: new BABYLON.Vector3(25.25,29.02,-4.8)
-      });
+        });
 
-      keysPosition.push({
-        frame: 0,
-        value: new BABYLON.Vector3(3.33016,14, -7.457)
-      });
-
-      keysPosition.push({
-        frame: 300,
-        value: new BABYLON.Vector3(7,45,67)
-      });
-
-      keysPosition.push({
-        frame: 350,
-        value: new BABYLON.Vector3(7,45,67)
-      });
-    
-      keysPosition.push({
-        frame: 400,
-        value: new BABYLON.Vector3(33.458,16, 13.243)
-      });
-
-      keysPosition.push({
-        frame: 405,
-        value: new BABYLON.Vector3(33.458,16, 13.243)
-      });
-    
-     
-      keysPosition.push({
+        keysPosition.push({
         frame: 500,
         value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
-      });
+        });
+
+     
+
+      
+      
+
+     
+     
         var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationTarget.setKeys(keysTarget);
         animationTarget.setEasingFunction(ease);
@@ -485,7 +493,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-        if (currentScene === 1 && scene1Started){
+        if (currentScene === 1){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();
