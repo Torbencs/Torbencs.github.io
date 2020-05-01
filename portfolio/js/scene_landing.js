@@ -502,7 +502,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.5)
+    engine.setHardwareScalingLevel(0.5)
     
   
     
