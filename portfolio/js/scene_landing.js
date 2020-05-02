@@ -390,17 +390,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
                         
-                        let lastTime;
                         
-                        if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
-                            /*let mesh = scene.getMeshByName(meshNumber);
-                            
-                            var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
-                            myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
-                            mesh.material = myMaterial;
-                            meshNumber++;
-                            */
-                        }
                         
                         
                     } else {
