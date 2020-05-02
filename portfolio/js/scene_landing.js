@@ -331,7 +331,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
-                    if (scene2Started && !landingStarted){
+                    if (0=1 && !landingStarted){
                     
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
