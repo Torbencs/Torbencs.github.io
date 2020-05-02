@@ -93,10 +93,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
-            let i;
-            for (i=0; i < task.loadedMeshes.length; i++){
-                console.log(task.loadedMeshes[i].name)
-            };
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
         
@@ -309,7 +305,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
-            
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
         heliMeshTask.onSuccess = task => {
@@ -327,8 +322,6 @@ window.addEventListener('DOMContentLoaded', function(){
             var landingTimer = new Timer(5000, scene, ()=>{
                 landingStarted = true;
             });
-
-            
 
            
             scene.registerBeforeRender( () => {
@@ -389,7 +382,6 @@ window.addEventListener('DOMContentLoaded', function(){
                     //Check if heli is over the landing pad
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
-                        
                         document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
                     } else {
                         landingTimer.reset();
