@@ -387,12 +387,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         landingTimer.reset();
                     };
 
-                    } else if (landingStarted && !landingAnimStarted){
-                       
-
-                        
-
-                    };
+                    }
                 }
             });
         };
