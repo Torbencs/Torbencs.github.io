@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeX = window.innerWidth;
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
-    let landingStarted,landingAnimStarted,currentScene;
+    let landingStarted,landingAnimStarted,currentScene,scene2Started;
   
 
     // get the canvas DOM element
