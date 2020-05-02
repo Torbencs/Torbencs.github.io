@@ -33,9 +33,9 @@ p {
 }
 .container {
     width: 100%;
-    background-color: #fff; 
+    /*background-color: #fff;*/ 
     
-    /*background-color: #f34135;*/
+    background-color: #acdef3;
     overflow: hidden;
 }
 .container--interactive {

@@ -93,6 +93,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
+            let i;
+            for (i=0; i < task.loadedMeshes.length; i++){
+                console.log(task.loadedMeshes[i].name)
+            };
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
         
@@ -122,7 +126,9 @@ window.addEventListener('DOMContentLoaded', function(){
         var keysTarget = [];
         var keysPosition = [];
         let ease = new BABYLON.BezierCurveEase(.54,0,.66,1);
-        
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
+
+
         keysPosition.push({
         frame: 0,
         value: new BABYLON.Vector3(3.33016,14, -7.457)
@@ -134,53 +140,42 @@ window.addEventListener('DOMContentLoaded', function(){
         });  
 
         keysPosition.push({
-        frame: 200,
+        frame: 350,
         value: new BABYLON.Vector3(7,45,67)
         });
 
         keysTarget.push({
-        frame: 200,
-        value: new BABYLON.Vector3(0,25,0)
-        });
-
-        keysPosition.push({
-        frame: 250,
-        value: new BABYLON.Vector3(7,45,67)
-        });
-
-        keysTarget.push({
-        frame: 250,
-        value: new BABYLON.Vector3(0,25,0)
+        frame: 350,
+        value: new BABYLON.Vector3(0,21,0)
         });
 
         keysPosition.push({
         frame: 400,
+        value: new BABYLON.Vector3(7,45,67)
+        });
+
+        keysTarget.push({
+        frame: 400,
+        value: new BABYLON.Vector3(0,21,0)
+        });
+
+        keysTarget.push({
+        frame: 410,
+        value: new BABYLON.Vector3(0,21,0)
+        });
+
+        keysPosition.push({
+        frame: 470,
         value: new BABYLON.Vector3(29.258,18, 15.243)
         });
 
 
         keysTarget.push({
-        frame: 400,
+        frame: 470,
         value: new BABYLON.Vector3(38.211,18.40,8.0507)
         });
 
 
-        keysPosition.push({
-        frame: 405,
-        value: new BABYLON.Vector3(29.258,18, 15.243)
-        });
-
-        keysTarget.push({
-        frame: 470,
-        value: new BABYLON.Vector3(25.25,29.02,-4.8)
-        });
-
-        keysPosition.push({
-        frame: 500,
-        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
-        });
-
-     
 
       
       
@@ -247,14 +242,12 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.enablePhysics(gravityVector, physicsPlugin);
     
             
-        var camera = new BABYLON.ArcRotateCamera("Camera", 1.8, 0.5, 15, new BABYLON.Vector3(25.25,29.02,-4.8), scene);
-        console.log(camera.position);
-        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.1, 42, 1.5), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
-        //camera.setTarget(new BABYLON.Vector3(25.25,29.02,-4.8));
-        camera.maxZ = 500;        //camera.position = new BABYLON.Vector3(13.3, 15.3, 3);
-
+        camera.setTarget(new BABYLON.Vector3(38.211,18.40,8.0507));
+        camera.maxZ = 500;        
+        
        
         //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
         
@@ -311,11 +304,12 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
        
         var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged.glb");
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_2.glb");
         var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
+            
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
         heliMeshTask.onSuccess = task => {
@@ -334,6 +328,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 landingStarted = true;
             });
 
+            
+            let meshNumber = 0;
            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -342,7 +338,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 if (rotationY){
                     //Can remove this outer if statement when not supporting desktop
-                    if (!landingStarted){
+                    if (!scene2Started && !landingStarted){
                     
                     positionX = heliMesh.position.x;
                     positionY = heliMesh.position.z;
@@ -393,14 +389,25 @@ window.addEventListener('DOMContentLoaded', function(){
                     //Check if heli is over the landing pad
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
-                        document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
+                        
+                        let lastTime;
+                        
+                        if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
+                            let mesh = scene.getMeshByName(meshNumber);
+                            
+                            var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
+                            myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+                            mesh.material = myMaterial;
+                            meshNumber++;
+                        }
+                        
+                        
                     } else {
                         landingTimer.reset();
                     };
 
                     } else if (landingStarted && !landingAnimStarted){
-                        camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
-                        camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
+                       
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
@@ -458,7 +465,55 @@ window.addEventListener('DOMContentLoaded', function(){
         };
         assetsManager.load();
 
+        //Camera Animation
+        var keysTarget = [];
+        var keysPosition = [];
+        let ease = new BABYLON.BezierCurveEase(.54,0,.66,1);
         
+        
+        keysTarget.push({
+        frame: 0,
+        value: new BABYLON.Vector3(38.211,18.40,8.0507)
+        });
+
+        keysTarget.push({
+        frame: 8,
+        value: new BABYLON.Vector3(38.211,18.40,8.0507)
+        });
+
+
+        keysPosition.push({
+        frame: 0,
+        value: new BABYLON.Vector3(29.258,18, 15.243)
+        });
+
+       
+
+        keysTarget.push({
+        frame: 85,
+        value: new BABYLON.Vector3(25.25,29.02,-4.8)
+        });
+
+        keysPosition.push({
+        frame: 115,
+        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
+        });
+        
+        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationTarget.setKeys(keysTarget);
+        animationTarget.setEasingFunction(ease);
+        camera.animations.push(animationTarget);
+    
+        var animationPosition = new BABYLON.Animation("animationPosition", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationPosition.setKeys(keysPosition);
+        animationPosition.setEasingFunction(ease);
+        camera.animations.push(animationPosition);
+    
+        var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
+    
+        scene.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
+            scene2Started = true;
+        });
         
         scene.onPointerObservable.add((pointerInfo) => {
             switch (pointerInfo.type) {
@@ -493,16 +548,17 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-        if (currentScene === 1 && scene1Started){
+    if (currentScene === 1 ){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();
             scene2.render();
-        }
+        } 
+        //scene2.render();
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
+    //engine.setHardwareScalingLevel(0.5)
     
   
     
