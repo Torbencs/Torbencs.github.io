@@ -387,7 +387,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         let mesh = scene.getMeshByName(meshNumber);
                         
                         var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
-                        myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+                        myMaterial.emissiveColor = new BABYLON.Color3(0.5, 0.6, 0.87);
                         mesh.material = myMaterial;
 
                         lastTime = landingTimer.currentTime;
