@@ -4,6 +4,8 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
     let landingStarted,landingAnimStarted,currentScene,scene2Started;
+    let lastTime = 0;
+    let meshNumber = 0;
   
 
     // get the canvas DOM element
@@ -380,11 +382,22 @@ window.addEventListener('DOMContentLoaded', function(){
                     heliMesh.rotation.x = 9.3 * findOffset( 'y', calibrateGyroX, calibrateGyroY);
 
                     //Check if heli is over the landing pad
-                    if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
-                        landingTimer.start();
-                        document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
-                    } else {
-                        landingTimer.reset();
+                    
+                    if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
+                        let mesh = scene.getMeshByName(meshNumber);
+                        
+                        var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
+                        myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+                        mesh.material = myMaterial;
+
+                        lastTime = landingTimer.currentTime;
+                        meshNumber++;
+                    }
+                    
+                    
+                     else {
+                    landingTimer.reset();
+                    
                     };
 
                     }
