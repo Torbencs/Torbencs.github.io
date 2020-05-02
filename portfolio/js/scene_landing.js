@@ -329,7 +329,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             
-            let meshNumber = 0;
+
            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -390,13 +390,9 @@ window.addEventListener('DOMContentLoaded', function(){
                     if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
                         landingTimer.start();
                         
-                        
-                        
-                        
+                        document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
                     } else {
                         landingTimer.reset();
-                        
-                        
                     };
 
                     } else if (landingStarted && !landingAnimStarted){
@@ -541,13 +537,13 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    /*if (currentScene === 1 ){
+    if (currentScene === 1 ){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();
             scene2.render();
-        } */
-        scene2.render();
+        } 
+        //scene2.render();
     });
     
     //Mobile quality
