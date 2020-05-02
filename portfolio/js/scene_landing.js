@@ -393,17 +393,20 @@ window.addEventListener('DOMContentLoaded', function(){
                         let lastTime;
                         
                         if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
-                            let mesh = scene.getMeshByName(meshNumber);
+                            /*let mesh = scene.getMeshByName(meshNumber);
                             
                             var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
                             myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
                             mesh.material = myMaterial;
                             meshNumber++;
+                            */
                         }
                         
                         
                     } else {
                         landingTimer.reset();
+                        
+                        
                     };
 
                     } else if (landingStarted && !landingAnimStarted){
@@ -548,13 +551,13 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
+    /*if (currentScene === 1 ){
             scene1.render();
         } else if (currentScene === 2){
             scene1.dispose();
             scene2.render();
-        } 
-        //scene2.render();
+        } */
+        scene2.render();
     });
     
     //Mobile quality
