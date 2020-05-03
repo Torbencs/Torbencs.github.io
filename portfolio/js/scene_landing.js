@@ -325,6 +325,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 landingStarted = true;
             });
 
+            var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
+            myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -383,27 +385,82 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     //Check if heli is over the landing pad
                     
-                    if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
-                        let mesh = scene.getMeshByName(meshNumber);
+                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
+                            landingTimer.start();
+                            document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
+
+                            if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
+                                let mesh = scene.getMeshByName(meshNumber);
+                                mesh.material = myMaterial;
+                                meshNumber++;
+                            } else {
+                            landingTimer.reset();
+                            };
                         
-                        var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
-                        myMaterial.emissiveColor = new BABYLON.Color3(0.5, 0.6, 0.87);
-                        mesh.material = myMaterial;
+                        }; //Over landing pad
+                    }; //Landing not started
 
-                        lastTime = landingTimer.currentTime;
-                        meshNumber++;
-                    }
-                    
-                    
-                     else {
-                    landingTimer.reset();
-                    
-                    };
+                     if (landingStarted && !landingAnimStarted){
+                        camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
+                        camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
 
-                    }
-                }
-            });
-        };
+
+                        var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
+                        var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
+                    
+                        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                    
+                        //Landing position animation
+                        var keysLandingPos = []; 
+                    
+                        keysLandingPos.push({
+                            frame: 0,
+                            value: heliMesh.position,
+                        });
+                        
+                    
+                        keysLandingPos.push({
+                            frame: 150,
+                            value: new BABYLON.Vector3(22.8,29.02,-4.1),
+                        });
+                        
+                        
+                        animLandingPos.setKeys(keysLandingPos);
+                        animLandingPos.setEasingFunction(bezierEase);
+                    
+                        //Landing rotation animation
+                        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                    
+                        var keysLandingRot = []; 
+                    
+                        keysLandingRot.push({
+                            frame: 0,
+                            value: heliMesh.rotation.z,
+                        });
+                        
+                    
+                        keysLandingRot.push({
+                            frame: 130,
+                            value: 0,
+                        });
+                        
+                        animLandingRot.setKeys(keysLandingRot);
+                        animLandingRot.setEasingFunction(bezierBounce);
+                    
+                    
+                        heliMesh.animations = [];
+                        heliMesh.animations.push(animLandingPos);
+                        heliMesh.animations.push(animLandingRot);
+                        
+                        landingAnimStarted = true;
+                        scene.beginAnimation(heliMesh, 0, 150, false);
+                    
+                    };//Landing animation
+                }; //If rotation
+            }); //Register before render
+        }; //Mesh success callback
+        
+        
         assetsManager.load();
 
         //Camera Animation
