@@ -389,7 +389,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             landingTimer.start();
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
-                            let mesh = scene.getMeshByName(0);
+                            let mesh = scene.getMeshByName('0');
                             mesh.material = myMaterial;
                             /*if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
                                 let mesh = scene.getMeshByName(meshNumber);
