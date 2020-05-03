@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:23,y:29.02,z:-2.55};
             
-            var landingTimer = new Timer(3000, scene, ()=>{
+            var landingTimer = new Timer(2500, scene, ()=>{
                 landingStarted = true;
             });
 
@@ -413,7 +413,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
-                            lastTime = 3000;
+                            lastTime = 2500;
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
@@ -424,8 +424,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     }; //Landing not started
 
                      if (landingStarted && !landingAnimStarted){
-                        camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
-                        camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
+                        //camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
+                        //camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
 
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
