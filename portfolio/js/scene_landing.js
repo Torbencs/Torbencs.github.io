@@ -338,11 +338,12 @@ window.addEventListener('DOMContentLoaded', function(){
             var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
 
+            /*
             let i;
             for (i=0; i<19; i++){
                 let mesh = scene.getMeshByName(i.toString());
                 mesh.material = matLetterWhite;
-            };
+            }; */
 
            
             scene.registerBeforeRender( () => {
@@ -419,11 +420,11 @@ window.addEventListener('DOMContentLoaded', function(){
                             landingTimer.reset();
                             lastTime = 4000;
                             meshNumber = 0;
-                            /*let i;
+                            let i;
                             for (i=0; i<19; i++){
                                 let mesh = scene.getMeshByName(i.toString());
                                 mesh.material = matLetterWhite;
-                            };*/
+                            };
                         };
                     }; //Landing not started
 
