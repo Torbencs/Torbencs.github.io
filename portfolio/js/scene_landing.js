@@ -333,7 +333,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             var matLetterGreen = new BABYLON.StandardMaterial("myMaterial", scene);                          
-            matLetterGreen.diffuseColor = new BABYLON.Color3(0.061246, 0.158961, 0.016807);
+            matLetterGreen.diffuseColor = new BABYLON.Color3(0.19479, 0.536604, 0.046695);
 
             var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
