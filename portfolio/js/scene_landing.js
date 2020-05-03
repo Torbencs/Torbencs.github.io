@@ -326,7 +326,7 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotationQuaternion = null;
             heliMesh.rotation.y = 0.58;
             
-            let landingPad = {x:21.5,y:29.02,z:-2.55};
+            let landingPad = {x:23,y:29.02,z:-2.55};
             
             var landingTimer = new Timer(3000, scene, ()=>{
                 landingStarted = true;
