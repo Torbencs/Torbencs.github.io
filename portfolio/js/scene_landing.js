@@ -338,9 +338,9 @@ window.addEventListener('DOMContentLoaded', function(){
             var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
 
-            let i;
-            for (i=0; i<20; i++){
-                let mesh = scene.getMeshByName(i.toString());
+            let j;
+            for (j=0; j<20; j++){
+                let mesh = scene.getMeshByName(j.toString());
                 mesh.material = matLetterWhite;
             };
 
