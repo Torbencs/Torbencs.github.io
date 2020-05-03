@@ -307,6 +307,13 @@ window.addEventListener('DOMContentLoaded', function(){
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
+           /* let i;
+            for (i=0; i < task.loadedMeshes.length;i++){
+                console.log(task.loadedMeshes[i].name)
+            }
+*/
+            
+
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
         heliMeshTask.onSuccess = task => {
@@ -389,13 +396,20 @@ window.addEventListener('DOMContentLoaded', function(){
                             landingTimer.start();
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
-                            let mesh = scene.getMeshByName('0');
-                            mesh.material = myMaterial;
+                            //let mesh = scene.getMeshByName('0');
+                            //mesh.material = myMaterial;
                             /*if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
                                 let mesh = scene.getMeshByName(meshNumber);
                                 mesh.material = myMaterial;
                                 meshNumber++;
                             } */
+
+                            let mesh = scene.getMeshByName('2');
+            
+
+                            
+                                mesh.position.x += 0.001;
+                            
                         
                         } else {
                             landingTimer.reset();
