@@ -340,8 +340,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
             let j;
             for (j=0; j<20; j++){
-                let mesh = scene.getMeshByName(j.toString());
-                mesh.material = matLetterWhite;
+                let meshj = scene.getMeshByName(j.toString());
+                meshj.material = matLetterWhite;
             };
 
            
