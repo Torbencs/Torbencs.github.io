@@ -413,12 +413,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             
                         
                         } else {
-                            landingTimer.reset();
-                            let i;
-                            for (i=0; i<19; i++){
-                                let mesh = scene.getMeshByName(i.toString());
-                                mesh.material = matLetterWhite;
-                            };
+                            
                         };
                     }; //Landing not started
 
