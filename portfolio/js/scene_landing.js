@@ -411,6 +411,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
+                            lastTime = 5000;
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
