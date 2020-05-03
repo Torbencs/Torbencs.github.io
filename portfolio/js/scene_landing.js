@@ -419,11 +419,11 @@ window.addEventListener('DOMContentLoaded', function(){
                             landingTimer.reset();
                             lastTime = 4000;
                             meshNumber = 0;
-                            let i;
+                            /*let i;
                             for (i=0; i<19; i++){
                                 let mesh = scene.getMeshByName(i.toString());
                                 mesh.material = matLetterWhite;
-                            };
+                            };*/
                         };
                     }; //Landing not started
 
