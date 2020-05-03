@@ -333,7 +333,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             var matLetterGreen = new BABYLON.StandardMaterial("myMaterial", scene);                          
-            matLetterGreen.diffuseColor = new BABYLON.Color3(0, 1, 0);
+            matLetterGreen.diffuseColor = new BABYLON.Color3(0.061246, 0.158961, 0.016807);
 
             var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
@@ -401,7 +401,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
                            
-                            if (landingTimer.currentTime < lastTime - 270.777 && meshNumber < 19){
+                            if (landingTimer.currentTime < lastTime - 250 && meshNumber < 19){
                                 let mesh = scene.getMeshByName(meshNumber.toString());
                             
                                 mesh.material = matLetterGreen;
