@@ -401,7 +401,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
                            
-                            if (landingTimer.currentTime < lastTime - 27.777 && meshNumber < 19){
+                            if (landingTimer.currentTime < lastTime - 270.777 && meshNumber < 19){
                                 let mesh = scene.getMeshByName(meshNumber.toString());
                             
                                 mesh.material = matLetterGreen;
