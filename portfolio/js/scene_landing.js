@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
     let landingStarted,landingAnimStarted,currentScene,scene2Started;
-    let lastTime = 0;
+    let lastTime = 5000;
     let meshNumber = 0;
   
 
@@ -397,16 +397,16 @@ window.addEventListener('DOMContentLoaded', function(){
                             landingTimer.start();
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
-                            //let mesh = scene.getMeshByName('0');
-                            //mesh.material = myMaterial;
-                            /*if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
-                                let mesh = scene.getMeshByName(meshNumber);
+                           
+                            if (landingTimer.currentTime < lastTime - 0.27777 && meshNumber < 19){
+                                let mesh = scene.getMeshByName(meshNumber.toString());
+                            
                                 mesh.material = myMaterial;
                                 meshNumber++;
-                            } */
+                                lastTime = landingTimer.currentTime;
+                            } 
 
-                            let mesh = scene.getMeshByName('2');
-                            mesh.material = myMaterial; 
+                            
                             
                         
                         } else {
