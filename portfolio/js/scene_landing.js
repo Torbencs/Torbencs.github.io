@@ -326,9 +326,9 @@ window.addEventListener('DOMContentLoaded', function(){
             heliMesh.rotationQuaternion = null;
             heliMesh.rotation.y = 0.58;
             
-            let landingPad = {x:22.536,y:29.02,z:-2.14};
+            let landingPad = {x:22,y:29.02,z:-2.59};
             
-            var landingTimer = new Timer(4000, scene, ()=>{
+            var landingTimer = new Timer(3000, scene, ()=>{
                 landingStarted = true;
             });
 
@@ -398,7 +398,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     //Check if heli is over the landing pad
                     
-                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.8){
+                        if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.6){
                             landingTimer.start();
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
@@ -413,7 +413,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
-                            lastTime = 4000;
+                            lastTime = 3000;
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
