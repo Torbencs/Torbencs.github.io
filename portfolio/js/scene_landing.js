@@ -328,15 +328,21 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:22.536,y:29.02,z:-2.14};
             
-            var landingTimer = new Timer(5000, scene, ()=>{
+            var landingTimer = new Timer(4000, scene, ()=>{
                 landingStarted = true;
             });
 
             var matLetterGreen = new BABYLON.StandardMaterial("myMaterial", scene);                          
-            matLetterGreen.diffuseColor = new BABYLON.Color3(0.19479, 0.536604, 0.046695);
+            matLetterGreen.diffuseColor = new BABYLON.Color3(1, 0.184, 0);
 
             var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
+
+            let i;
+            for (i=0; i<20; i++){
+                let mesh = scene.getMeshByName(i.toString());
+                mesh.material = matLetterWhite;
+            };
 
            
             scene.registerBeforeRender( () => {
@@ -401,7 +407,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
                            
-                            if (landingTimer.currentTime < lastTime - 250 && meshNumber < 19){
+                            if (landingTimer.currentTime < lastTime - 200 && meshNumber < 20){
                                 let mesh = scene.getMeshByName(meshNumber.toString());
                             
                                 mesh.material = matLetterGreen;
@@ -411,10 +417,10 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
-                            lastTime = 5000;
+                            lastTime = 4000;
                             meshNumber = 0;
                             let i;
-                            for (i=0; i<19; i++){
+                            for (i=0; i<20; i++){
                                 let mesh = scene.getMeshByName(i.toString());
                                 mesh.material = matLetterWhite;
                             };
