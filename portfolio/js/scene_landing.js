@@ -393,11 +393,11 @@ window.addEventListener('DOMContentLoaded', function(){
                                 let mesh = scene.getMeshByName(meshNumber);
                                 mesh.material = myMaterial;
                                 meshNumber++;
-                            } else {
-                            landingTimer.reset();
-                            };
+                            } 
                         
-                        }; //Over landing pad
+                        } else {
+                            landingTimer.reset();
+                        };
                     }; //Landing not started
 
                      if (landingStarted && !landingAnimStarted){
