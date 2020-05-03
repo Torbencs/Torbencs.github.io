@@ -425,7 +425,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                      if (landingStarted && !landingAnimStarted){
                         //camera.movePosiTo(new BABYLON.Vector3(25.1, 30, 4), 0.8);
-                        //camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
+                        camera.moveTargetTo(new BABYLON.Vector3(23.5, 30, -3.95), 32);
 
 
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
