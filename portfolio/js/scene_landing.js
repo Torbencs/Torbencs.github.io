@@ -333,7 +333,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
-            myMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+            myMaterial.emissiveColor = new BABYLON.Color3(0.5, 1, 0.1);
            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -408,7 +408,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
 
                             
-                                mesh.position.x += 0.001;
+                                mesh.material = myMaterial;
                             
                         
                         } else {
