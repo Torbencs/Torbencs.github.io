@@ -312,7 +312,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 console.log(task.loadedMeshes[i].name)
             }
 */
-            
+
 
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
@@ -333,7 +333,8 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);                          
-            myMaterial.emissiveColor = new BABYLON.Color3(0.5, 1, 0.1);
+            myMaterial.diffuseColor = new BABYLON.Color3(0, 1, 0);
+
            
             scene.registerBeforeRender( () => {
                 //Initiate landing timer
@@ -405,10 +406,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             } */
 
                             let mesh = scene.getMeshByName('2');
-            
-
-                            
-                                mesh.material = myMaterial;
+                            mesh.material = myMaterial; 
                             
                         
                         } else {
