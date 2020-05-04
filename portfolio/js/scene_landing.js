@@ -180,12 +180,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
      
      
-        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationTarget.setKeys(keysTarget);
         animationTarget.setEasingFunction(ease);
         camera.animations.push(animationTarget);
     
-        var animationPosition = new BABYLON.Animation("animationPosition", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        var animationPosition = new BABYLON.Animation("animationPosition", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationPosition.setKeys(keysPosition);
         animationPosition.setEasingFunction(ease);
         camera.animations.push(animationPosition);
@@ -429,7 +429,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
                         var bezierBounce = new BABYLON.BezierCurveEase(.4,.1,.73,2.40);
                     
-                        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                        var animLandingPos = new BABYLON.Animation("landingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
                     
                         //Landing position animation
                         var keysLandingPos = []; 
@@ -450,7 +450,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         animLandingPos.setEasingFunction(bezierEase);
                     
                         //Landing rotation animation
-                        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                        var animLandingRot = new BABYLON.Animation("landingRotationAnimation", "rotation.z", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
                     
                         var keysLandingRot = []; 
                     
@@ -473,6 +473,26 @@ window.addEventListener('DOMContentLoaded', function(){
                         heliMesh.animations.push(animLandingPos);
                         heliMesh.animations.push(animLandingRot);
                         
+                        //Camera landing animation
+                        let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                        let keysCameraLandingPos = [];
+
+                        keysCameraLandingPosition.push({
+                            frame: 0,
+                            value: camera.position,
+                        });
+
+                        keysCameraLandingPosition.push({
+                            frame: 100,
+                            value: new BABYLON.Vector3(21,29.02,2.55),
+                        });
+
+                        animCameraLandingPos.setKeys(keysCameraLandingPos);
+                        animCameraLandingPos.setEasingFunction(bezierEase);
+
+                        camera.animations.push(animCameraLandingPos);
+                        scene.beginAnimation(camera, 0, 100, false);
+
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false);
                     
@@ -518,12 +538,12 @@ window.addEventListener('DOMContentLoaded', function(){
         value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
         });
         
-        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationTarget.setKeys(keysTarget);
         animationTarget.setEasingFunction(ease);
         camera.animations.push(animationTarget);
     
-        var animationPosition = new BABYLON.Animation("animationPosition", "position", 30, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        var animationPosition = new BABYLON.Animation("animationPosition", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationPosition.setKeys(keysPosition);
         animationPosition.setEasingFunction(ease);
         camera.animations.push(animationPosition);
