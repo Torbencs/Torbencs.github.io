@@ -490,7 +490,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         animCameraLandingPos.setKeys(keysCameraLandingPos);
                         animCameraLandingPos.setEasingFunction(bezierEase);
 
-                        scene.beginDirectAnimation(camera, [animCameraLandingPos], 0, 100, false);
+                        //scene.beginDirectAnimation(camera, [animCameraLandingPos], 0, 100, false);
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false);
                     
