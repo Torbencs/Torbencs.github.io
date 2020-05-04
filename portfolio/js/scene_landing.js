@@ -473,7 +473,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         heliMesh.animations.push(animLandingPos);
                         heliMesh.animations.push(animLandingRot);
                         
-                        //Camera landing animation
+                        //Camera landing position animation
                         let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
                         let keysCameraLandingPos = [];
 
@@ -484,7 +484,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(29,29.7,5)
+                            value: new BABYLON.Vector3(28.3,28, 3)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -514,7 +514,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
-                        scene.beginAnimation(heliMesh, 0, 150, false, 0.7);
+                        scene.beginAnimation(heliMesh, 0, 150, false, 0.5);
                     
                     };//Landing animation
                 }; //If rotation
