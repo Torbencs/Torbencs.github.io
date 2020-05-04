@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
     let landingStarted,landingAnimStarted,currentScene,scene2Started;
-    let lastTime = 2500;
+    let lastTime = 2200;
     let meshNumber = 0;
   
 
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:23,y:29.02,z:-2.55};
             
-            var landingTimer = new Timer(2500, scene, ()=>{
+            var landingTimer = new Timer(2200, scene, ()=>{
                 landingStarted = true;
             });
 
@@ -413,7 +413,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
-                            lastTime = 2500;
+                            lastTime = 2200;
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
@@ -484,7 +484,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(28.3,28, 3)
+                            value: new BABYLON.Vector3(29.3,28, 2)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -514,7 +514,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
-                        scene.beginAnimation(heliMesh, 0, 150, false, 0.5);
+                        scene.beginAnimation(heliMesh, 0, 150, false, 0.4);
                     
                     };//Landing animation
                 }; //If rotation
