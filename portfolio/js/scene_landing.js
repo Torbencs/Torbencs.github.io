@@ -479,7 +479,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 0,
-                            value: camera.position,
+                            value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
                         });
 
                         keysCameraLandingPos.push({
