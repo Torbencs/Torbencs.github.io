@@ -483,8 +483,8 @@ window.addEventListener('DOMContentLoaded', function(){
                         });
 
                         keysCameraLandingPos.push({
-                            frame: 170,
-                            value: new BABYLON.Vector3(27,29.02,5.55),
+                            frame: 200,
+                            value: new BABYLON.Vector3(29,29.02,9.55),
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.18,.45,.38,.99);
@@ -503,7 +503,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         });
 
                         keysCameraLandingTarget.push({
-                            frame: 70,
+                            frame: 100,
                             value: new BABYLON.Vector3(23,29.02,-2.55),
                         });
 
@@ -514,7 +514,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
-                        scene.beginAnimation(heliMesh, 0, 150, false);
+                        scene.beginAnimation(heliMesh, 0, 150, false, 0.7);
                     
                     };//Landing animation
                 }; //If rotation
