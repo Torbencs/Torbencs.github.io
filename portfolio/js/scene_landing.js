@@ -484,10 +484,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(25,29.02,2.55),
+                            value: new BABYLON.Vector3(22,29.02,5.55),
                         });
+
+                        let bezierEase2 = new BABYLON.BezierCurveEase(.18,.45,.38,.99);
                         animCameraLandingPos.setKeys(keysCameraLandingPos);
-                        animCameraLandingPos.setEasingFunction(bezierEase);
+                        animCameraLandingPos.setEasingFunction(bezierEase2);
 
 
                         //Target animation
