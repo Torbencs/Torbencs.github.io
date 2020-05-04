@@ -473,7 +473,24 @@ window.addEventListener('DOMContentLoaded', function(){
                         heliMesh.animations.push(animLandingPos);
                         heliMesh.animations.push(animLandingRot);
                         
-                        scene.beginAnimation(camera, 115, 165, false);
+                        //Camera landing animation
+                        let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+                        let keysCameraLandingPos = [];
+
+                        keysCameraLandingPosition.push({
+                            frame: 0,
+                            value: camera.position,
+                        });
+
+                        keysCameraLandingPosition.push({
+                            frame: 100,
+                            value: new BABYLON.Vector3(21,29.02,2.55),
+                        });
+
+                        animCameraLandingPos.setKeys(keysCameraLandingPos);
+                        animCameraLandingPos.setEasingFunction(bezierEase);
+
+                        scene.beginDirectAnimation(camera, [animCameraLandingPos], 0, 100, false);
 
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false);
@@ -522,17 +539,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
         //Landing and end of scene
 
-        keysPosition.push({
-        frame: 115,
-        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
-        });
-
-        keysPosition.push({
-        frame: 165,
-        value: new BABYLON.Vector3(21,29.02,2.55)
-        });
-
-
         
         
         var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
@@ -545,9 +551,9 @@ window.addEventListener('DOMContentLoaded', function(){
         animationPosition.setEasingFunction(ease);
         camera.animations.push(animationPosition);
     
-        //var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
+        var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
     
-        scene.beginAnimation(camera, 0, 115, false, 0.35, ()=>{
+        scene.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
             scene2Started = true;
         });
         
