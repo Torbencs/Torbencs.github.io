@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeY = window.innerHeight;
     let newPosX,newPosY,modeX,modeY,calibrateGyroX,calibrateGyroY,newRotationX, newRotationY,oldRotationX,oldRotationY,euler;
     let landingStarted,landingAnimStarted,currentScene,scene2Started;
-    let lastTime = 3000;
+    let lastTime = 2500;
     let meshNumber = 0;
   
 
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:23,y:29.02,z:-2.55};
             
-            var landingTimer = new Timer(3000, scene, ()=>{
+            var landingTimer = new Timer(2500, scene, ()=>{
                 landingStarted = true;
             });
 
@@ -413,7 +413,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         
                         } else {
                             landingTimer.reset();
-                            lastTime = 3000;
+                            lastTime = 2500;
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
