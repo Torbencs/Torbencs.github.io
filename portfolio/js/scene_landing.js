@@ -491,7 +491,6 @@ window.addEventListener('DOMContentLoaded', function(){
                         animCameraLandingPos.setEasingFunction(bezierEase);
 
                         scene.beginDirectAnimation(camera, [animCameraLandingPos], 0, 100, false);
-
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false);
                     
@@ -544,18 +543,19 @@ window.addEventListener('DOMContentLoaded', function(){
         var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationTarget.setKeys(keysTarget);
         animationTarget.setEasingFunction(ease);
-        camera.animations.push(animationTarget);
+        //camera.animations.push(animationTarget);
     
         var animationPosition = new BABYLON.Animation("animationPosition", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         animationPosition.setKeys(keysPosition);
         animationPosition.setEasingFunction(ease);
-        camera.animations.push(animationPosition);
+        //camera.animations.push(animationPosition);
     
         var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
     
-        scene.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
+        
+        scene.beginDirectAnimation(camera,[animationTarget, animationPosition], 0, maxFrame, false, 0.35, ()=>{
             scene2Started = true;
-        });
+        }); 
         
         scene.onPointerObservable.add((pointerInfo) => {
             switch (pointerInfo.type) {
