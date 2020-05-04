@@ -477,12 +477,12 @@ window.addEventListener('DOMContentLoaded', function(){
                         let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
                         let keysCameraLandingPos = [];
 
-                        keysCameraLandingPosition.push({
+                        keysCameraLandingPos.push({
                             frame: 0,
                             value: camera.position,
                         });
 
-                        keysCameraLandingPosition.push({
+                        keysCameraLandingPos.push({
                             frame: 100,
                             value: new BABYLON.Vector3(21,29.02,2.55),
                         });
