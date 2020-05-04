@@ -483,8 +483,8 @@ window.addEventListener('DOMContentLoaded', function(){
                         });
 
                         keysCameraLandingPos.push({
-                            frame: 200,
-                            value: new BABYLON.Vector3(22,29.02,5.55),
+                            frame: 170,
+                            value: new BABYLON.Vector3(27,29.02,5.55),
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.18,.45,.38,.99);
@@ -503,7 +503,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         });
 
                         keysCameraLandingTarget.push({
-                            frame: 100,
+                            frame: 70,
                             value: new BABYLON.Vector3(23,29.02,-2.55),
                         });
 
