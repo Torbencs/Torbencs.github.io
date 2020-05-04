@@ -502,7 +502,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingTarget.push({
                             frame: 100,
-                            value: new BABYLON.Vector3(25,29.02,2.55),
+                            value: new BABYLON.Vector3(23,29.02,-2.55),
                         });
 
                        
