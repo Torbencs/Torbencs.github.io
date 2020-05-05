@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Torben Schlawe</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="https://cdn.babylonjs.com/cannon.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/fulltilt.min.js"></script>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+  
+  
+  <div id="text_1"></div>
+  <div id="text_2"></div>
+  <div id="text_3"></div>
+  <div id="text_4"></div>
+  
+ 
+
+  <div id="change" class="container">
+      
+        <canvas id="renderCanvas"></canvas>
+        
+    </div>
+  
+  <script>
+    let rotationX,rotationY,rotationZ,accelerationX,accelerationY,accelerationZ,scene1Started;
+  window.onresize = function() {
+      document.getElementById("change").style.height = window.innerHeight + 'px';
+  }
+  window.onresize(); // called to initially set the height.
+
+
+
+ 
+
+  </script>
+</body>
+</html>
