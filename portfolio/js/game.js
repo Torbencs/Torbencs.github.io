@@ -53,25 +53,37 @@ window.addEventListener('DOMContentLoaded', function(){
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
         lightSphere1.position = new BABYLON.Vector3(3,0,0);
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
-        lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
+        lightSphere1.material.emissiveColor = new BABYLON.Color3(0, 0, 0);
 
         var lightSphere2 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
         lightSphere2.position = new BABYLON.Vector3(-3,0,0);
         lightSphere2.material = new BABYLON.StandardMaterial("light2", scene);
-        lightSphere2.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
+        lightSphere2.material.emissiveColor = new BABYLON.Color3(0, 0, 0);
      
         
 
         //Model positioning
        
-      let animation1 = new BABYLON.Animation('player1Animation', 'position.y', 60, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+      let animation1 = new BABYLON.Animation('player1Animation', 'position', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
 
       let keys_anim_1 = [{
             frame : 0,
-            value : 0
+            value : new BABYLON.Vector3(3,0,0)
+        },{
+            frame : 80,
+            value : new BABYLON.Vector3(5,17,0)
         },{
             frame : 160,
-            value : 40
+            value : new BABYLON.Vector3(0,40,0)
+        },{
+            frame : 161,
+            value : new BABYLON.Vector3(-3,0,0)
+        },{
+            frame : 240,
+            value : new BABYLON.Vector3(2,20,0)
+        },{
+            frame : 320,
+            value : new BABYLON.Vector3(-2,40,0)
         }];
     
         animation1.setKeys(keys_anim_1);
@@ -79,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let running_anim1, running_anim2;
         
         running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, );
-        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation1],0,160, false, );
+        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation1],161,320, false, );
         
         running_anim2.pause();
         running_anim1.pause();
@@ -121,13 +133,12 @@ window.addEventListener('DOMContentLoaded', function(){
             
             
             scene.registerBeforeRender(function () {
-
                 setCatenryPath(lightSphere1.position, lightSphere2.position, 12, 10, path);
             
                 BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true, instance: chain }, null);
 
                 var V = lightSphere2.position.subtract(lightSphere1.position);
-                if (V.length() > 11.92){
+                if (V.length() > 11.95){
                     running_anim1.pause();
                     running_anim2.pause();
                 };
@@ -171,6 +182,9 @@ window.addEventListener('DOMContentLoaded', function(){
     
     });
 
+let pythagorean = function(a,b,x,y) {
+    return Math.sqrt(Math.pow((a - x), 2) + Math.pow((b - y), 2))
+};
 
 let game_control = {
     
