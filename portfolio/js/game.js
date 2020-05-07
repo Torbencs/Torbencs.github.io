@@ -75,23 +75,29 @@ window.addEventListener('DOMContentLoaded', function(){
         },{
             frame : 160,
             value : new BABYLON.Vector3(0,40,0)
-        },{
-            frame : 161,
-            value : new BABYLON.Vector3(-3,0,0)
-        },{
-            frame : 240,
-            value : new BABYLON.Vector3(2,20,0)
-        },{
-            frame : 320,
-            value : new BABYLON.Vector3(-2,40,0)
         }];
     
         animation1.setKeys(keys_anim_1);
+
+        let animation2 = new BABYLON.Animation('player1Animation', 'position', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+
+        let keys_anim_2 = [{
+              frame : 0,
+              value : new BABYLON.Vector3(-3,0,0)
+          },{
+              frame : 80,
+              value : new BABYLON.Vector3(-1,20,0)
+          },{
+              frame : 160,
+              value : new BABYLON.Vector3(-2,40,0)
+          }];
+      
+          animation2.setKeys(keys_anim_2);
         
         let running_anim1, running_anim2;
         
         running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, );
-        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation1],161,320, false, );
+        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation2],0,160, false, );
         
         running_anim2.pause();
         running_anim1.pause();
