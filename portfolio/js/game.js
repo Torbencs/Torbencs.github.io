@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function(){
             value : new BABYLON.Vector3(3,0,0)
         },{
             frame : 80,
-            value : new BABYLON.Vector3(5,17,0)
+            value : new BABYLON.Vector3(15,17,0)
         },{
             frame : 160,
             value : new BABYLON.Vector3(0,40,0)
@@ -86,9 +86,12 @@ window.addEventListener('DOMContentLoaded', function(){
               value : new BABYLON.Vector3(-3,0,0)
           },{
               frame : 80,
-              value : new BABYLON.Vector3(-1,20,0)
+              value : new BABYLON.Vector3(5,21,0)
           },{
-              frame : 160,
+            frame : 120,
+            value : new BABYLON.Vector3(4,30,0)
+          },{
+              frame : 180,
               value : new BABYLON.Vector3(-2,40,0)
           }];
       
@@ -97,17 +100,22 @@ window.addEventListener('DOMContentLoaded', function(){
         let running_anim1, running_anim2;
         
         running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, );
-        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation2],0,160, false, );
+        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation2],0,180, false, );
         
         running_anim2.pause();
         running_anim1.pause();
 
         
+   let startTime = 0;
    
         
         scene.onPointerObservable.add((pointerInfo) => {
             if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN) {
                
+                if (startTime == 0){
+                    let d = new Date();
+                    startTime = d.getTime();
+                }
                     
                         
                         running_anim2.pause();
@@ -133,23 +141,29 @@ window.addEventListener('DOMContentLoaded', function(){
          
             var path = [];
             
-            setCatenryPath(lightSphere1.position, lightSphere2.position, 12, 10, path);
+            setCatenryPath(lightSphere1.position, lightSphere2.position, 18, 14, path);
             
             var chain = BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true }, scene);
             
             
             scene.registerBeforeRender(function () {
-                setCatenryPath(lightSphere1.position, lightSphere2.position, 12, 10, path);
+                setCatenryPath(lightSphere1.position, lightSphere2.position, 18, 14, path);
             
                 BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true, instance: chain }, null);
 
                 var V = lightSphere2.position.subtract(lightSphere1.position);
-                if (V.length() > 11.95){
+                if (V.length() > 17.95){
                     running_anim1.pause();
                     running_anim2.pause();
                 };
 
+                
+                if (lightSphere2.position.y == 40 && lightSphere1.position.y == 40){
+                    let d = new Date();
+                    alert(d.getTime() - startTime);
+                }
             });
+
 
         
         return scene;    
