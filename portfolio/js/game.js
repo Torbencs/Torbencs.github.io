@@ -50,12 +50,12 @@ window.addEventListener('DOMContentLoaded', function(){
         light_hemi.intensity = 1.2;
    
         //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
+        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
         lightSphere1.position = new BABYLON.Vector3(3,0,0);
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
 
-        var lightSphere2 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
+        var lightSphere2 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
         lightSphere2.position = new BABYLON.Vector3(-3,0,0);
         lightSphere2.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere2.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
@@ -78,8 +78,8 @@ window.addEventListener('DOMContentLoaded', function(){
         
         let running_anim1, running_anim2;
         
-        running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, 0.8);
-        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation1],0,160, false, 0.8);
+        running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, );
+        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation1],0,160, false, );
         
         running_anim2.pause();
         running_anim1.pause();
@@ -108,12 +108,32 @@ window.addEventListener('DOMContentLoaded', function(){
                             running_anim2.pause();
                             running_anim1.restart();
                         }
-                    },500);
-                    
-                                                   
-                    
+                    },500);                          
             }
          });
+
+         
+            var path = [];
+            
+            setCatenryPath(lightSphere1.position, lightSphere2.position, 12, 10, path);
+            
+            var chain = BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true }, scene);
+            
+            
+            scene.registerBeforeRender(function () {
+
+                setCatenryPath(lightSphere1.position, lightSphere2.position, 12, 10, path);
+            
+                BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true, instance: chain }, null);
+
+                var V = lightSphere2.position.subtract(lightSphere1.position);
+                if (V.length() > 11.92){
+                    running_anim1.pause();
+                    running_anim2.pause();
+                };
+
+            });
+
         
         return scene;    
             };
@@ -172,47 +192,71 @@ let game_control = {
 }
 
 
+function setCatenryPath(v0, v1, l, steps, path) {  //vo and v1 are Vector3 positions, l is length of chain, steps in generating path for tube
+    //Direction from v0 towards v1, V
+    
+    var V = v1.subtract(v0);
 
-Timer = function(time, scene, callback) {
+    //Distance between v0 and v1
+    var D = V.length();
 
-    this.maxTime = this.currentTime = time;
-    this.isOver = false;
-    this.paused = false;
-    this.started = false;
-    this.callback = callback;
-    this.scene  = scene;
-
-    var _this = this;
-    scene.registerBeforeRender(function() {
-        if (_this.started && !_this.isOver && !_this.paused) {
-            _this._update();
+    if(l<D) {
+        l = D;
+        if (path[0]) {
+            path[0].x = v0.x;
+            path[0].y = v0.y;
+            path[0].z = v0.z;
+            path[1].x = v1.x;
+            path[1].y = v1.y;
+            path[1].z = v1.z;
+        } else {
+            path[0] = v0;
+            path[1] = v1;
         }
-    });
-};
-
-Timer.prototype.reset = function() {
-    this.currentTime = this.maxTime;
-    this.isOver = false;
-    this.started = false;
-};
-
-Timer.prototype.start = function() {
-    this.started = true;
-};
-
-Timer.prototype.pause = function() {
-    this.paused = true;
-};
-
-Timer.prototype.resume = function() {
-    this.paused = false;
-};
-
-Timer.prototype._update = function() {
-    this.currentTime -= this.scene.getEngine().getDeltaTime();
-    if (this.currentTime <= 0) {
-        this.isOver = true;
-        this.callback();
+        return;
     }
-};
 
+    //Horizontal direction from v0 towards v1, cx
+    var cx = new BABYLON.Vector2(V.x, V.z);
+    
+    //Horizontal distance between v0 and v1, d
+    var d = cx.length();
+
+    cx.normalize();
+
+    //Height of v0 is v0.y, height of v1 is v1.y
+    var maxH = Math.max(v0.y, v1.y);
+    var minH = Math.min(v0.y, v1.y);
+    var r = 2*Math.sqrt((v1.y-v0.y+l)*(l+v0.y-v1.y)/(d*d));
+    var p = Math.log(r)+Math.log(Math.log(r));
+    var q = Math.log(r);
+    while (Math.abs(p - q) > 0.0000001) {
+        q = Math.log(r*p + Math.exp((-1)*p));
+        p = Math.log(r*q + Math.exp((-1)*q));
+    }
+    var b = (p + q)/d;
+    var c = (1/b)*Math.log((b*(v0.y - v1.y + l))/(1-Math.exp((-1)*b*d)));
+    var a = v0.y - (0.5/b)*(Math.exp(b*c)+Math.exp((-1)*b*c));
+
+    function height(t) {
+         return a + (1/b) * Math.cosh(b *(t - c));
+    }
+
+    var step = d/steps;
+    
+    var j = 0;
+    
+    for (var i = 0; i <= d; i += step) {
+        
+        var y = height(i);
+        var vx = cx.scale(i);
+        if (path[j]) {
+            path[j].x = vx.x + v0.x;
+            path[j].y = y;
+            path[j].z = vx.y + v0.z;
+        } else {
+            path[j] = new BABYLON.Vector3(vx.x + v0.x, y, vx.y + v0.z);
+        }
+        j++;
+    }
+}
