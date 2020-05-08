@@ -54,16 +54,19 @@ window.addEventListener('DOMContentLoaded', function(){
         log.position = new BABYLON.Vector3(-15.758738, 50, -6.740);
         log.rotation.y = 2.6; */
         
-        let terrain,logmove;
+        let terrain,logmove,tree;
+        
 
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
+        var treeMeshTask = assetsManager.addMeshTask("","", "models/tree.babylon");
         var snowboardMeshTask = assetsManager.addMeshTask("","", "models/snowboard.babylon");
         snowboardMeshTask.onSuccess = task => {
         makeLog();
         function makeLog(){
         terrain = task.loadedMeshes[0];
+        
         
         //Terrain
         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
@@ -75,7 +78,7 @@ window.addEventListener('DOMContentLoaded', function(){
        
         terrain.animations = [];
         
-        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 180, false, 0.8, ()=>{
+        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 180, false, 1.3, ()=>{
             makeLog();
         });
         };
@@ -90,6 +93,26 @@ window.addEventListener('DOMContentLoaded', function(){
          
          
         };
+
+        treeMeshTask.onSuccess = task => {
+            makeTree();
+            function makeTree(){
+            tree = task.loadedMeshes[0];
+            
+            //Terrain
+            let anim_tree = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+    
+            let anim_tree_keys = [];
+            anim_tree_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.64807479, 28.972061, -3.41248)});
+            anim_tree_keys.push({ frame: 180, value: new BABYLON.Vector3(-12.384976664, 31.9615294, -9.575506)});
+            anim_tree.setKeys(anim_tree_keys);
+           
+            
+            logmove = scene.beginDirectAnimation(tree, [anim_tree], 0, 180, false, 0.8, ()=>{
+                makeTree();
+            });
+            };
+        }
         
         assetsManager.load();
 
