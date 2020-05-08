@@ -87,7 +87,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.registerBeforeRender(function () {
             
             if(log.intersectsMesh(box, true)){
-                alert.log('hit');
+                alert('hit');
             }
         });
 
