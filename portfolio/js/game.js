@@ -45,38 +45,69 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot_r2.intensity = 1.4;
         light_hemi.intensity = 1.2;
    
-    
-        let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.5, width: 0.2, depth: 0.2} ,scene);
-        box.position = new BABYLON.Vector3(-9.758738, 30, -8.740);
+       
 
-        let log = BABYLON.MeshBuilder.CreateBox("Log",{height: 0.2, width: 0.3, depth: 0.8} ,scene);
+        let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.5, width: 0.2, depth: 0.2} ,scene);
+        box.position = new BABYLON.Vector3(-9.758738, 30, -8.740); 
+
+        /*let log = BABYLON.MeshBuilder.CreateBox("Log",{height: 0.2, width: 0.3, depth: 0.8} ,scene);
         log.position = new BABYLON.Vector3(-15.758738, 50, -6.740);
-        log.rotation.y = 2.6;
+        log.rotation.y = 2.6; */
         
+        let terrain,logmove;
 
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
+        var snowboardMeshTask = assetsManager.addMeshTask("","", "models/snowboard.babylon");
+        snowboardMeshTask.onSuccess = task => {
+        makeLog();
+        function makeLog(){
+        terrain = task.loadedMeshes[0];
+        
+        //Terrain
+        let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+        let anim_terrain_keys = [];
+        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111, 28.1855, -5.3026)}); 
+        anim_terrain_keys.push({ frame: 180, value: new BABYLON.Vector3(-10.84881272,30.39903015, -10.18902)});
+        anim_terrain.setKeys(anim_terrain_keys);
+       
+        terrain.animations = [];
+        
+        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 180, false, 0.8, ()=>{
+            makeLog();
+        });
+        };
+
+        scene.registerBeforeRender(()=>{
+            
+            if (terrain && terrain.intersectsMesh(box, true)) {
+                console.log('touch')
+                 logmove.pause();
+             }
+         })
+         
+         
+        };
+        
         assetsManager.load();
 
-        //Terrain
-         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+       
 
-         let anim_terrain_keys = [];
-         anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-8.0972, 28.858, -6.265)});
-         anim_terrain_keys.push({ frame: 180, value: new BABYLON.Vector3(-10.514, 30.10, -9.270)});
-         anim_terrain.setKeys(anim_terrain_keys);
-
-         scene.beginDirectAnimation(log, [anim_terrain], 0, 180, false, 1);
+         
       
    
-        
+        let anim_jump_ended = true;
         scene.onPointerObservable.add((pointerInfo) => {
-            switch (pointerInfo.type) {
-                case BABYLON.PointerEventTypes.POINTERDOWN:
-                    
+            if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
+
                         console.log(pointerInfo.pickInfo.pickedPoint);
-                        cameraJump();
+                        if(anim_jump_ended == true){
+                            anim_jump_ended = false;
+                            cameraJump();
+                        }
+                        
                     
             }
     });
@@ -84,12 +115,7 @@ window.addEventListener('DOMContentLoaded', function(){
    
 	
         
-        scene.registerBeforeRender(function () {
-            
-            if(log.intersectsMesh(box, true)){
-                alert('hit');
-            }
-        });
+        
 
 
         var cameraJump = function() {
@@ -99,24 +125,25 @@ window.addEventListener('DOMContentLoaded', function(){
             
             var a = new BABYLON.Animation(
                 "a",
-                "position.y", 30,
+                "position.y", 60,
                 BABYLON.Animation.ANIMATIONTYPE_FLOAT,
                 BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
             
             // Animation keys
             var keys = [];
             keys.push({ frame: 0, value: cam.position.y });
-            keys.push({ frame: 18, value: cam.position.y + 0.5 });
-            keys.push({ frame: 30, value: cam.position.y });
+            keys.push({ frame: 13, value: cam.position.y + 0.5 });
+            keys.push({ frame: 25, value: cam.position.y });
             a.setKeys(keys);
             
             var easingFunction = new BABYLON.CircleEase();
             easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
             a.setEasingFunction(easingFunction);
             
-            cam.animations.push(a);
             
-            scene.beginAnimation(cam, 0, 30, false);
+            scene.beginDirectAnimation(cam, [a],0, 25, false, 0.35, ()=>{
+                anim_jump_ended = true;
+            } );
         } 
 
 
