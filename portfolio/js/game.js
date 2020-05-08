@@ -23,13 +23,9 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,20, 50), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-7.929985, 30.7, -9.726), scene); 
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(0,20,0));
-        camera.maxZ = 500;      
-
-        
-    
+        camera.setTarget(new BABYLON.Vector3(-9.933531,29.5,-7.50017)); 
         // Camera controls
         camera.attachControl(canvas, true);
         
@@ -49,120 +45,80 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot_r2.intensity = 1.4;
         light_hemi.intensity = 1.2;
    
-        //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
-        lightSphere1.position = new BABYLON.Vector3(3,0,0);
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
-        lightSphere1.material.emissiveColor = new BABYLON.Color3(0, 0, 0);
+    
+        let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.5, width: 0.2, depth: 0.2} ,scene);
+        box.position = new BABYLON.Vector3(-9.758738, 30, -8.740);
 
-        var lightSphere2 = BABYLON.Mesh.CreateSphere("sphere", 16, 1, scene);
-        lightSphere2.position = new BABYLON.Vector3(-3,0,0);
-        lightSphere2.material = new BABYLON.StandardMaterial("light2", scene);
-        lightSphere2.material.emissiveColor = new BABYLON.Color3(0, 0, 0);
-     
+        let log = BABYLON.MeshBuilder.CreateBox("Log",{height: 0.2, width: 0.3, depth: 0.8} ,scene);
+        log.position = new BABYLON.Vector3(-15.758738, 50, -6.740);
+        log.rotation.y = 2.6;
         
 
         //Model positioning
-       
-      let animation1 = new BABYLON.Animation('player1Animation', 'position', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        var assetsManager = new BABYLON.AssetsManager(scene);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
+        assetsManager.load();
 
-      let keys_anim_1 = [{
-            frame : 0,
-            value : new BABYLON.Vector3(3,0,0)
-        },{
-            frame : 80,
-            value : new BABYLON.Vector3(15,17,0)
-        },{
-            frame : 160,
-            value : new BABYLON.Vector3(0,40,0)
-        }];
-    
-        animation1.setKeys(keys_anim_1);
+        //Terrain
+         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
-        let animation2 = new BABYLON.Animation('player1Animation', 'position', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+         let anim_terrain_keys = [];
+         anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-8.0972, 28.858, -6.265)});
+         anim_terrain_keys.push({ frame: 180, value: new BABYLON.Vector3(-10.514, 30.10, -9.270)});
+         anim_terrain.setKeys(anim_terrain_keys);
 
-        let keys_anim_2 = [{
-              frame : 0,
-              value : new BABYLON.Vector3(-3,0,0)
-          },{
-              frame : 80,
-              value : new BABYLON.Vector3(5,21,0)
-          },{
-            frame : 120,
-            value : new BABYLON.Vector3(4,30,0)
-          },{
-              frame : 180,
-              value : new BABYLON.Vector3(-2,40,0)
-          }];
+         scene.beginDirectAnimation(log, [anim_terrain], 0, 180, false, 1);
       
-          animation2.setKeys(keys_anim_2);
-        
-        let running_anim1, running_anim2;
-        
-        running_anim1 = scene.beginDirectAnimation(lightSphere1, [animation1],0,160, false, );
-        running_anim2 = scene.beginDirectAnimation(lightSphere2, [animation2],0,180, false, );
-        
-        running_anim2.pause();
-        running_anim1.pause();
-
-        
-   let startTime = 0;
    
         
         scene.onPointerObservable.add((pointerInfo) => {
-            if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN) {
-               
-                if (startTime == 0){
-                    let d = new Date();
-                    startTime = d.getTime();
-                }
+            switch (pointerInfo.type) {
+                case BABYLON.PointerEventTypes.POINTERDOWN:
                     
-                        
-                        running_anim2.pause();
-                 
-                       
-                        running_anim1.pause();
+                        console.log(pointerInfo.pickInfo.pickedPoint);
+                        cameraJump();
                     
-                
-                    window.setTimeout(()=>{
-                        click ++;
-
-                        if (click % 2 == 0){
-                            running_anim1.pause();
-                            running_anim2.restart();
-                        } else {
-                            running_anim2.pause();
-                            running_anim1.restart();
-                        }
-                    },500);                          
             }
-         });
+    });
 
-         
-            var path = [];
+   
+	
+        
+        scene.registerBeforeRender(function () {
             
-            setCatenryPath(lightSphere1.position, lightSphere2.position, 18, 14, path);
-            
-            var chain = BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true }, scene);
-            
-            
-            scene.registerBeforeRender(function () {
-                setCatenryPath(lightSphere1.position, lightSphere2.position, 18, 14, path);
-            
-                BABYLON.MeshBuilder.CreateTube("tube", { path: path, radius: 0.05, updatable: true, instance: chain }, null);
+            if(log.intersectsMesh(box, true)){
+                alert.log('hit');
+            }
+        });
 
-                var V = lightSphere2.position.subtract(lightSphere1.position);
-                if (V.length() > 17.95){
-                    running_anim1.pause();
-                    running_anim2.pause();
-                };
 
-                
-                if (lightSphere2.position.y == 40 && lightSphere1.position.y == 40){
-                    let d = new Date();
-                    alert(d.getTime() - startTime);
-                }
-            });
+        var cameraJump = function() {
+		
+            let cam = box;
+            cam.animations = [];
+            
+            var a = new BABYLON.Animation(
+                "a",
+                "position.y", 30,
+                BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+                BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+            
+            // Animation keys
+            var keys = [];
+            keys.push({ frame: 0, value: cam.position.y });
+            keys.push({ frame: 18, value: cam.position.y + 0.5 });
+            keys.push({ frame: 30, value: cam.position.y });
+            a.setKeys(keys);
+            
+            var easingFunction = new BABYLON.CircleEase();
+            easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+            a.setEasingFunction(easingFunction);
+            
+            cam.animations.push(a);
+            
+            scene.beginAnimation(cam, 0, 30, false);
+        } 
+
 
 
         
@@ -188,11 +144,6 @@ window.addEventListener('DOMContentLoaded', function(){
     
   
     
-    
-    
-
-    
-    
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
         engine.resize();
@@ -202,95 +153,4 @@ window.addEventListener('DOMContentLoaded', function(){
     
     });
 
-let pythagorean = function(a,b,x,y) {
-    return Math.sqrt(Math.pow((a - x), 2) + Math.pow((b - y), 2))
-};
-
-let game_control = {
     
- 
-
-    "start" : mesh => {
-        let pause = window.setTimeout(()=>{
-            mesh.position.y += 0.05;
-        },2000)
-    },
-
-    /**
- * @param {string} mesh - Mesh to animate
- */
-    "stop" : mesh => {
-        mesh.position.y = mesh.position.y;
-    },
-
-}
-
-
-function setCatenryPath(v0, v1, l, steps, path) {  //vo and v1 are Vector3 positions, l is length of chain, steps in generating path for tube
-    //Direction from v0 towards v1, V
-    
-    var V = v1.subtract(v0);
-
-    //Distance between v0 and v1
-    var D = V.length();
-
-    if(l<D) {
-        l = D;
-        if (path[0]) {
-            path[0].x = v0.x;
-            path[0].y = v0.y;
-            path[0].z = v0.z;
-            path[1].x = v1.x;
-            path[1].y = v1.y;
-            path[1].z = v1.z;
-        } else {
-            path[0] = v0;
-            path[1] = v1;
-        }
-        return;
-    }
-
-    //Horizontal direction from v0 towards v1, cx
-    var cx = new BABYLON.Vector2(V.x, V.z);
-    
-    //Horizontal distance between v0 and v1, d
-    var d = cx.length();
-
-    cx.normalize();
-
-    //Height of v0 is v0.y, height of v1 is v1.y
-    var maxH = Math.max(v0.y, v1.y);
-    var minH = Math.min(v0.y, v1.y);
-    var r = 2*Math.sqrt((v1.y-v0.y+l)*(l+v0.y-v1.y)/(d*d));
-    var p = Math.log(r)+Math.log(Math.log(r));
-    var q = Math.log(r);
-    while (Math.abs(p - q) > 0.0000001) {
-        q = Math.log(r*p + Math.exp((-1)*p));
-        p = Math.log(r*q + Math.exp((-1)*q));
-    }
-    var b = (p + q)/d;
-    var c = (1/b)*Math.log((b*(v0.y - v1.y + l))/(1-Math.exp((-1)*b*d)));
-    var a = v0.y - (0.5/b)*(Math.exp(b*c)+Math.exp((-1)*b*c));
-
-    function height(t) {
-         return a + (1/b) * Math.cosh(b *(t - c));
-    }
-
-    var step = d/steps;
-    
-    var j = 0;
-    
-    for (var i = 0; i <= d; i += step) {
-        
-        var y = height(i);
-        var vx = cx.scale(i);
-        if (path[j]) {
-            path[j].x = vx.x + v0.x;
-            path[j].y = y;
-            path[j].z = vx.y + v0.z;
-        } else {
-            path[j] = new BABYLON.Vector3(vx.x + v0.x, y, vx.y + v0.z);
-        }
-        j++;
-    }
-}
