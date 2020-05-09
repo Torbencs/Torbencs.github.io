@@ -14,18 +14,16 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
 	processing begun of mesh:  MOUNTAIN backup.001
 		processing begun of material:  snow
-		processing begun of material:  snow shadow
-		processing begun of multimaterial:  landingpagestairs.Multimaterial#0
-		num positions      :  2686
-		num normals        :  2686
+		num positions      :  2342
+		num normals        :  2342
 		num tangents       :  0
 		num uvs            :  0
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  2748
+		num indices        :  2388
 		WARNING: # of 0 area faces found:  2
 ========= Writing of JSON file started =========
 	writing mesh:  MOUNTAIN backup.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1037 secs
+elapsed time:  0 min, 0.1201 secs

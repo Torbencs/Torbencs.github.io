@@ -12,20 +12,17 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
-	processing begun of mesh:  MOUNTAIN backup.001
-		processing begun of material:  snow
-		processing begun of material:  snow shadow
-		processing begun of multimaterial:  landingpagestairs.Multimaterial#0
-		num positions      :  2686
-		num normals        :  2686
+	processing begun of mesh:  Cylinder
+		processing begun of material:  wood
+		num positions      :  40
+		num normals        :  40
 		num tangents       :  0
-		num uvs            :  0
+		num uvs            :  80
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  2748
-		WARNING: # of 0 area faces found:  2
+		num indices        :  48
 ========= Writing of JSON file started =========
-	writing mesh:  MOUNTAIN backup.001
+	writing mesh:  Cylinder
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1037 secs
+elapsed time:  0 min, 0.0249 secs

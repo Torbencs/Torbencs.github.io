@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-7.929985, 30.7, -9.726), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-6.929985, 30.7, -9), scene); 
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(-9.933531,29.5,-7.50017)); 
         // Camera controls
@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
         light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 1.2;
+        light_hemi.intensity = 1;
    
        
 
@@ -59,10 +59,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
-        var treeMeshTask = assetsManager.addMeshTask("","", "models/tree.babylon");
-        var snowboardMeshTask = assetsManager.addMeshTask("","", "models/snowboard.babylon");
-        snowboardMeshTask.onSuccess = task => {
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.babylon");
+       
+        
+        mountainMeshTask.onSuccess = task => {
         makeLog();
         function makeLog(){
         terrain = task.loadedMeshes[0];
@@ -71,48 +71,33 @@ window.addEventListener('DOMContentLoaded', function(){
         //Terrain
         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
+        let t = 3;
+        let t1 = -2;
+
         let anim_terrain_keys = [];
-        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111, 28.1855, -5.3026)}); 
-        anim_terrain_keys.push({ frame: 180, value: new BABYLON.Vector3(-10.84881272,30.39903015, -10.18902)});
+        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.1855+(2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
+        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,30.1855+( t), -5.3026-(4.8864 * t))});
         anim_terrain.setKeys(anim_terrain_keys);
        
         terrain.animations = [];
         
-        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 180, false, 1.3, ()=>{
+        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.4, ()=>{
             makeLog();
         });
         };
 
         scene.registerBeforeRender(()=>{
             
-            if (terrain && terrain.intersectsMesh(box, true)) {
+           /* if (terrain && terrain.intersectsMesh(box, true)) {
                 console.log('touch')
                  logmove.pause();
-             }
+             } */
          })
          
          
         };
 
-        treeMeshTask.onSuccess = task => {
-            makeTree();
-            function makeTree(){
-            tree = task.loadedMeshes[0];
-            
-            //Terrain
-            let anim_tree = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-    
-            let anim_tree_keys = [];
-            anim_tree_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.64807479, 28.972061, -3.41248)});
-            anim_tree_keys.push({ frame: 180, value: new BABYLON.Vector3(-12.384976664, 31.9615294, -9.575506)});
-            anim_tree.setKeys(anim_tree_keys);
-           
-            
-            logmove = scene.beginDirectAnimation(tree, [anim_tree], 0, 180, false, 0.8, ()=>{
-                makeTree();
-            });
-            };
-        }
+        
         
         assetsManager.load();
 
