@@ -60,9 +60,17 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.babylon");
-       
+        
+
+        
         
         mountainMeshTask.onSuccess = task => {
+
+        let i;
+        for(i=1; i < task.loadedMeshes.length; i++){
+            console.log(task.loadedMeshes[i].name);
+            task.loadedMeshes[0].addChild(task.loadedMeshes[i]);
+        };
         makeLog();
         function makeLog(){
         terrain = task.loadedMeshes[0];
@@ -71,29 +79,38 @@ window.addEventListener('DOMContentLoaded', function(){
         //Terrain
         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
-        let t = 3;
-        let t1 = -2;
+        let t = 7;
+        let t1 = -1.4;
 
         let anim_terrain_keys = [];
-        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.1855+(2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
-        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,30.1855+( t), -5.3026-(4.8864 * t))});
+        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
+        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,30.49 + ( t), -5.3026-(4.8864 * t))});
         anim_terrain.setKeys(anim_terrain_keys);
        
         terrain.animations = [];
         
-        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.4, ()=>{
+        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.9, ()=>{
             makeLog();
-        });
+        }); 
         };
 
-        scene.registerBeforeRender(()=>{
+        let obstacle = [];
+        let b;
+        for (b=1; b < task.loadedMeshes.length; b++){
+            obstacle.push(task.loadedMeshes[b])
+        };
             
-           /* if (terrain && terrain.intersectsMesh(box, true)) {
-                console.log('touch')
-                 logmove.pause();
-             } */
-         })
-         
+        scene.registerBeforeRender(()=>{
+            let j;
+            for (j=0; j < obstacle.length; j++){
+                if (obstacle[j].intersectsMesh(box, true)){
+                    console.log('hit')
+                };
+            };
+            
+        });
+        
+        
          
         };
 

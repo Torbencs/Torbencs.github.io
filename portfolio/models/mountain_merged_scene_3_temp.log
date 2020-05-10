@@ -12,42 +12,38 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
-	processing begun of mesh:  Cube
-		processing begun of material:  Material
-		num positions      :  30
-		num normals        :  30
-		num tangents       :  0
-		num uvs            :  60
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  36
 	processing begun of mesh:  mountain
 		processing begun of material:  snow
-			WARNING: unsupported node type(ShaderNodeAddShader) will trigger baking
-			bake time:  0 min, 0.6938 secs
-		Custom split normals with tangents being used
-		num positions      :  2330
-		num normals        :  2330
-		num tangents       :  9320
-		num uvs            :  4660
+		num positions      :  2359
+		num normals        :  2359
+		num tangents       :  0
+		num uvs            :  0
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  2388
 		WARNING: # of 0 area faces found:  2
-	processing begun of mesh:  Cube.001
-		processing begun of material:  Material
-		registered as also a user of material:  Material
-		num positions      :  30
-		num normals        :  30
+	processing begun of mesh:  Cube
+		WARNING: No materials have been assigned: 
+		num positions      :  29
+		num normals        :  29
 		num tangents       :  0
-		num uvs            :  60
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  Cube.001
+		WARNING: No materials have been assigned: 
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  36
 ========= Writing of JSON file started =========
-	writing mesh:  Cube
 	writing mesh:  mountain
+	writing mesh:  Cube
 	writing mesh:  Cube.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.0065 secs
+elapsed time:  0 min, 0.1352 secs
