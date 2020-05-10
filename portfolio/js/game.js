@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', function(){
        
         terrain.animations = [];
         
-        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.9, ()=>{
+        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
             makeLog();
         }); 
         };
