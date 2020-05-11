@@ -157,8 +157,8 @@ window.addEventListener('DOMContentLoaded', function(){
             var keys = [];
             keys.push({ frame: 0, value: 30 });
             keys.push({ frame: 8, value: 30.6 });
-            keys.push({ frame: 12, value: 30.6 });
-            keys.push({ frame: 20, value: 30 });
+            keys.push({ frame: 14, value: 30.6 });
+            keys.push({ frame: 22, value: 30 });
             a.setKeys(keys);
             
             var easingFunction = new BABYLON.CircleEase();
@@ -166,7 +166,7 @@ window.addEventListener('DOMContentLoaded', function(){
             a.setEasingFunction(easingFunction);
             
             
-            scene.beginDirectAnimation(cam, [a],0, 20, false, 0.55, ()=>{
+            scene.beginDirectAnimation(cam, [a],0, 22, false, 0.55, ()=>{
                 anim_jump_ended = true;
             } );
         } 

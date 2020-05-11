@@ -20,13 +20,13 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  snow.001
 		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#0
 		Custom split normals with tangents being used
-		num positions      :  9993
-		num normals        :  9993
-		num tangents       :  39972
-		num uvs            :  19986
+		num positions      :  10011
+		num normals        :  10011
+		num tangents       :  40044
+		num uvs            :  20022
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  10407
+		num indices        :  10410
 		WARNING: # of 0 area faces found:  14
 	processing begun of mesh:  obstacle
 		processing begun of material:  wood.001
@@ -223,16 +223,18 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num indices        :  138
 	processing begun of mesh:  Icosphere
 		processing begun of material:  Material.002
-		num positions      :  60
-		num normals        :  60
+		processing begun of material:  snow
+		registered as also a user of material:  snow
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#15
+		num positions      :  82
+		num normals        :  82
 		num tangents       :  0
-		num uvs            :  120
+		num uvs            :  164
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  60
+		num indices        :  84
 	processing begun of mesh:  Icosphere.001
 		processing begun of material:  Material.002
-		registered as also a user of material:  Material.002
 		num positions      :  60
 		num normals        :  60
 		num tangents       :  0
@@ -244,7 +246,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  snow
 		processing begun of material:  Material.002
 		registered as also a user of material:  snow
-		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#15
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#16
 		num positions      :  207
 		num normals        :  207
 		num tangents       :  0
@@ -256,7 +258,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  snow
 		processing begun of material:  Material.002
 		registered as also a user of material:  snow
-		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#16
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#17
 		num positions      :  207
 		num normals        :  207
 		num tangents       :  0
@@ -264,6 +266,150 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  210
+	processing begun of mesh:  mountain.001
+		processing begun of material:  snow
+		processing begun of material:  Material.003
+		registered as also a user of material:  snow
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#18
+		Custom split normals with tangents being used
+		num positions      :  157
+		num normals        :  157
+		num tangents       :  628
+		num uvs            :  314
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  165
+	processing begun of mesh:  Cylinder
+		processing begun of material:  Material.004
+		processing begun of material:  wood.001
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#19
+		num positions      :  188
+		num normals        :  188
+		num tangents       :  0
+		num uvs            :  376
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  198
+	processing begun of mesh:  Cylinder.001
+		processing begun of material:  Material.004
+		processing begun of material:  wood.001
+		registered as also a user of material:  Material.004
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#20
+		num positions      :  188
+		num normals        :  188
+		num tangents       :  0
+		num uvs            :  376
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  198
+	processing begun of mesh:  Cylinder.002
+		processing begun of material:  Material.004
+		processing begun of material:  wood.001
+		registered as also a user of material:  Material.004
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#21
+		num positions      :  188
+		num normals        :  188
+		num tangents       :  0
+		num uvs            :  376
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  198
+	processing begun of mesh:  Cylinder.003
+		processing begun of material:  Material.006
+		num positions      :  224
+		num normals        :  224
+		num tangents       :  0
+		num uvs            :  448
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  234
+	processing begun of mesh:  Cylinder.004
+		processing begun of material:  Material.006
+		registered as also a user of material:  Material.006
+		num positions      :  224
+		num normals        :  224
+		num tangents       :  0
+		num uvs            :  448
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  234
+	processing begun of mesh:  Cylinder.005
+		processing begun of material:  Material.006
+		registered as also a user of material:  Material.006
+		num positions      :  209
+		num normals        :  209
+		num tangents       :  0
+		num uvs            :  418
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  213
+	processing begun of mesh:  Icosphere.002
+		processing begun of material:  Material.002
+		processing begun of material:  snow
+		registered as also a user of material:  snow
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#22
+		num positions      :  83
+		num normals        :  83
+		num tangents       :  0
+		num uvs            :  166
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  84
+	processing begun of mesh:  Icosphere.003
+		processing begun of material:  Material.002
+		registered as also a user of material:  Material.002
+		num positions      :  60
+		num normals        :  60
+		num tangents       :  0
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  60
+	processing begun of mesh:  Icosphere.004
+		processing begun of material:  Material.002
+		registered as also a user of material:  Material.002
+		num positions      :  60
+		num normals        :  60
+		num tangents       :  0
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  60
+	processing begun of mesh:  Icosphere.005
+		processing begun of material:  Material.002
+		registered as also a user of material:  Material.002
+		num positions      :  60
+		num normals        :  60
+		num tangents       :  0
+		num uvs            :  120
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  60
+	processing begun of mesh:  Cylinder.006
+		processing begun of material:  snow
+		processing begun of material:  Material.008
+		registered as also a user of material:  snow
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#23
+		num positions      :  376
+		num normals        :  376
+		num tangents       :  0
+		num uvs            :  752
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  420
+	processing begun of mesh:  Cylinder.007
+		processing begun of material:  snow
+		processing begun of material:  Material.008
+		registered as also a user of material:  snow
+		registered as also a user of material:  Material.008
+		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#24
+		num positions      :  376
+		num normals        :  376
+		num tangents       :  0
+		num uvs            :  752
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  420
 ========= Writing of JSON file started =========
 	writing mesh:  mountain
 	writing mesh:  obstacle
@@ -284,6 +430,19 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Icosphere.001
 	writing mesh:  Sphere
 	writing mesh:  Sphere.001
+	writing mesh:  mountain.001
+	writing mesh:  Cylinder
+	writing mesh:  Cylinder.001
+	writing mesh:  Cylinder.002
+	writing mesh:  Cylinder.003
+	writing mesh:  Cylinder.004
+	writing mesh:  Cylinder.005
+	writing mesh:  Icosphere.002
+	writing mesh:  Icosphere.003
+	writing mesh:  Icosphere.004
+	writing mesh:  Icosphere.005
+	writing mesh:  Cylinder.006
+	writing mesh:  Cylinder.007
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.7719 secs
+elapsed time:  0 min, 2.7756 secs
