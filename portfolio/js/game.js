@@ -128,8 +128,9 @@ window.addEventListener('DOMContentLoaded', function(){
             if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
 
                         console.log(pointerInfo.pickInfo.pickedPoint);
-                        if(anim_jump_ended == true){
-                            anim_jump_ended = false;
+                        
+                        if(box.position.y < 30.3){
+                            
                             cameraJump();
                         }
                         
@@ -156,9 +157,10 @@ window.addEventListener('DOMContentLoaded', function(){
             
             // Animation keys
             var keys = [];
-            keys.push({ frame: 0, value: cam.position.y });
-            keys.push({ frame: 13, value: cam.position.y + 0.5 });
-            keys.push({ frame: 25, value: cam.position.y });
+            keys.push({ frame: 0, value: 30 });
+            keys.push({ frame: 8, value: 30.6 });
+            keys.push({ frame: 12, value: 30.6 });
+            keys.push({ frame: 20, value: 30 });
             a.setKeys(keys);
             
             var easingFunction = new BABYLON.CircleEase();
@@ -166,7 +168,7 @@ window.addEventListener('DOMContentLoaded', function(){
             a.setEasingFunction(easingFunction);
             
             
-            scene.beginDirectAnimation(cam, [a],0, 25, false, 0.35, ()=>{
+            scene.beginDirectAnimation(cam, [a],0, 20, false, 0.55, ()=>{
                 anim_jump_ended = true;
             } );
         } 
