@@ -50,9 +50,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.5, width: 0.2, depth: 0.2} ,scene);
         box.position = new BABYLON.Vector3(-9.758738, 30, -8.740); 
 
-        /*let log = BABYLON.MeshBuilder.CreateBox("Log",{height: 0.2, width: 0.3, depth: 0.8} ,scene);
-        log.position = new BABYLON.Vector3(-15.758738, 50, -6.740);
-        log.rotation.y = 2.6; */
+        
         
         let terrain,logmove,tree;
         
@@ -79,12 +77,12 @@ window.addEventListener('DOMContentLoaded', function(){
         //Terrain
         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
-        let t = 7;
-        let t1 = -1.4;
+        let t = 2.5;
+        let t1 = -5.9;
 
         let anim_terrain_keys = [];
         anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
-        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,30.49 + ( t), -5.3026-(4.8864 * t))});
+        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,27.75, -5.3026-(4.8864 * t))});
         anim_terrain.setKeys(anim_terrain_keys);
        
         terrain.animations = [];
