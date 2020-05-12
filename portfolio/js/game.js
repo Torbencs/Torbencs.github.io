@@ -49,6 +49,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.5, width: 0.2, depth: 0.2} ,scene);
         box.position = new BABYLON.Vector3(-9.758738, 30, -8.740); 
+        box.visibility = 0;
 
         
         
@@ -58,9 +59,17 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.babylon");
-        
+        var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.glb");
 
-        
+        snowboardMeshTask.onSuccess = task => {
+        task.loadedMeshes[0].position = new BABYLON.Vector3(-9.758738, 29.76, -8.740); 
+        let i;
+        for(i=0; i < task.loadedMeshes.length; i++){
+            console.log(task.loadedMeshes[i].name);
+            box.addChild(task.loadedMeshes[i]);
+        };
+
+        }
         
         mountainMeshTask.onSuccess = task => {
 
