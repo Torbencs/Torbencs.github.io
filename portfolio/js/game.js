@@ -59,17 +59,24 @@ window.addEventListener('DOMContentLoaded', function(){
         //Model positioning
         var assetsManager = new BABYLON.AssetsManager(scene);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.babylon");
-        var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.glb");
+        var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
 
         snowboardMeshTask.onSuccess = task => {
-        task.loadedMeshes[0].position = new BABYLON.Vector3(-9.758738, 29.76, -8.740); 
+        
+
         let i;
         for(i=0; i < task.loadedMeshes.length; i++){
-            console.log(task.loadedMeshes[i].name);
+            task.loadedMeshes[i].position = new BABYLON.Vector3(-9.758738, 29.76, -8.740); 
+            task.loadedMeshes[i].rotation.y = 2.1;
+            task.loadedMeshes[i].rotation.z = 0.2;
             box.addChild(task.loadedMeshes[i]);
         };
-
         }
+       
+
+    
+      
+
         
         mountainMeshTask.onSuccess = task => {
 
@@ -137,7 +144,10 @@ window.addEventListener('DOMContentLoaded', function(){
                         console.log(pointerInfo.pickInfo.pickedPoint);
                         
                         if(box.position.y < 30.3){
+                            let skeleton = scene.getSkeletonByName("Armature");
+                            //scene.stopAnimation(skeleton);
                             
+                            skeleton.beginAnimation("jump", false, 3);
                             cameraJump();
                         }
                         
@@ -145,9 +155,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }
     });
 
-   
-	
-        
+    
         
 
 
