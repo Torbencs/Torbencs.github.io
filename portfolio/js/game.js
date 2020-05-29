@@ -147,7 +147,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             let skeleton = scene.getSkeletonByName("Armature");
                             //scene.stopAnimation(skeleton);
                             
-                            skeleton.beginAnimation("jump", false, 3);
+                            skeleton.beginAnimation("jump", false, 2);
                             cameraJump();
                         }
                         
