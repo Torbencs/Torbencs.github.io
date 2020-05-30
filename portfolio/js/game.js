@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let sizeY = window.innerHeight;
     let click = 0;
   
+    let score = 0;
   
 
     // get the canvas DOM element
@@ -66,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         let i;
         for(i=0; i < task.loadedMeshes.length; i++){
-            task.loadedMeshes[i].position = new BABYLON.Vector3(-9.758738, 29.6, -8.740); 
+            task.loadedMeshes[i].position = new BABYLON.Vector3(-9.758738, 29.65, -8.740); 
             task.loadedMeshes[i].rotation.y = 2.18;
             task.loadedMeshes[i].rotation.z = 0.2;
             box.addChild(task.loadedMeshes[i]);
@@ -110,6 +111,8 @@ window.addEventListener('DOMContentLoaded', function(){
         
         logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
             makeLog();
+            alert(score);
+            score = 0;
         }); 
         };
 
@@ -124,6 +127,7 @@ window.addEventListener('DOMContentLoaded', function(){
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                     console.log('hit')
+                    score++
                 };
             };
             
