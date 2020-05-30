@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-6.929985, 30.7, -9), scene); 
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(-9.933531,29.5,-7.50017)); 
+        camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
         // Camera controls
         camera.attachControl(canvas, true);
         
@@ -66,12 +66,16 @@ window.addEventListener('DOMContentLoaded', function(){
 
         let i;
         for(i=0; i < task.loadedMeshes.length; i++){
-            task.loadedMeshes[i].position = new BABYLON.Vector3(-9.758738, 29.76, -8.740); 
-            task.loadedMeshes[i].rotation.y = 2.1;
+            task.loadedMeshes[i].position = new BABYLON.Vector3(-9.758738, 29.6, -8.740); 
+            task.loadedMeshes[i].rotation.y = 2.18;
             task.loadedMeshes[i].rotation.z = 0.2;
             box.addChild(task.loadedMeshes[i]);
         };
-        }
+
+        let skeleton = scene.getSkeletonByName("Armature");
+        skeleton.beginAnimation("idle", true, 2);
+                          
+        };
        
 
     
@@ -92,9 +96,10 @@ window.addEventListener('DOMContentLoaded', function(){
         
         //Terrain
         let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-
-        let t = 2.5;
-        let t1 = -5.9;
+        
+        let t1 = -5.8;
+        let t = 2.6;
+        
 
         let anim_terrain_keys = [];
         anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
@@ -147,7 +152,9 @@ window.addEventListener('DOMContentLoaded', function(){
                             let skeleton = scene.getSkeletonByName("Armature");
                             //scene.stopAnimation(skeleton);
                             
-                            skeleton.beginAnimation("jump", false, 2);
+                            skeleton.beginAnimation("jump", false, 2, ()=>{
+                                skeleton.beginAnimation("idle", true, 2)
+                            });
                             cameraJump();
                         }
                         
@@ -174,8 +181,8 @@ window.addEventListener('DOMContentLoaded', function(){
             var keys = [];
             keys.push({ frame: 0, value: 30 });
             keys.push({ frame: 8, value: 30.6 });
-            keys.push({ frame: 14, value: 30.6 });
-            keys.push({ frame: 22, value: 30 });
+            keys.push({ frame: 16, value: 30.6 });
+            keys.push({ frame: 23, value: 30 });
             a.setKeys(keys);
             
             var easingFunction = new BABYLON.CircleEase();
@@ -183,7 +190,7 @@ window.addEventListener('DOMContentLoaded', function(){
             a.setEasingFunction(easingFunction);
             
             
-            scene.beginDirectAnimation(cam, [a],0, 22, false, 0.55, ()=>{
+            scene.beginDirectAnimation(cam, [a],0, 23, false, 0.55, ()=>{
                 anim_jump_ended = true;
             } );
         } 
