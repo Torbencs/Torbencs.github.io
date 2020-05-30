@@ -156,10 +156,12 @@ window.addEventListener('DOMContentLoaded', function(){
                             let skeleton = scene.getSkeletonByName("Armature");
                             //scene.stopAnimation(skeleton);
                             
-                            skeleton.beginAnimation("jump", false, 2, ()=>{
+                            skeleton.beginAnimation("jump", false, 1.8, ()=>{
                                 skeleton.beginAnimation("idle", true, 2)
                             });
                             cameraJump();
+
+
                         }
                         
                     
@@ -220,7 +222,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.5)
+    engine.setHardwareScalingLevel(0.5)
     
   
     
