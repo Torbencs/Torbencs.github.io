@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         
-        let terrain,logmove,tree;
+        
         
 
         //Model positioning
@@ -73,8 +73,7 @@ window.addEventListener('DOMContentLoaded', function(){
             box.addChild(task.loadedMeshes[i]);
         };
 
-        let skeleton = scene.getSkeletonByName("Armature");
-        skeleton.beginAnimation("idle", true, 2);
+        
                           
         };
        
@@ -84,95 +83,65 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         mountainMeshTask.onSuccess = task => {
-
+        let terrain,mountainAnimatable,snowboarderIdleAnimatable;
+        
         let i;
         for(i=1; i < task.loadedMeshes.length; i++){
             console.log(task.loadedMeshes[i].name);
             task.loadedMeshes[0].addChild(task.loadedMeshes[i]);
         };
-        makeLog();
-        function makeLog(){
+        
         terrain = task.loadedMeshes[0];
-        
-        
-        //Terrain
-        let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-        
         let t1 = -5.8;
         let t = 2.6;
-        
 
-        let anim_terrain_keys = [];
-        anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
-        anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,27.75, -5.3026-(4.8864 * t))});
-        anim_terrain.setKeys(anim_terrain_keys);
-       
-        terrain.animations = [];
+        terrain.position = new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))
         
-        logmove = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
-            makeLog();
-            alert(score);
-            score = 0;
-        }); 
-        };
-
-        let obstacle = [];
-        let b;
-        for (b=1; b < task.loadedMeshes.length; b++){
-            obstacle.push(task.loadedMeshes[b])
-        };
-            
-        scene.registerBeforeRender(()=>{
-            let j;
-            for (j=0; j < obstacle.length; j++){
-                if (obstacle[j].intersectsMesh(box, true)){
-                    console.log('hit')
-                    score++
-                };
-            };
-            
-        });
-        
-        
-         
-        };
-
-        
-        
-        assetsManager.load();
-
-       
-
-         
-      
-   
+        //Jump click event listener
         let anim_jump_ended = true;
-        scene.onPointerObservable.add((pointerInfo) => {
-            if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
-
-                        console.log(pointerInfo.pickInfo.pickedPoint);
-                        
-                        if(box.position.y < 30.3){
-                            let skeleton = scene.getSkeletonByName("Armature");
-                            //scene.stopAnimation(skeleton);
-                            
-                            skeleton.beginAnimation("jump", false, 1.8, ()=>{
-                                skeleton.beginAnimation("idle", true, 2)
-                            });
-                            cameraJump();
-
-
-                        }
-                        
-                    
-            }
-    });
+        
 
     
+
+        makeLog();
+        function makeLog(){
         
+        //Terrain
+            let anim_terrain = new BABYLON.Animation("terrain_anim", "position", 60,BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+            
+            let anim_terrain_keys = [];
+            anim_terrain_keys.push({ frame: 0, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t1) ,30.3 + (2.2135299999999987 * t1), -5.3026-(4.8864 * t1))}); 
+            anim_terrain_keys.push({ frame: 280, value: new BABYLON.Vector3(-7.5875111-(3.2613009 * t) ,27.75, -5.3026-(4.8864 * t))});
+            anim_terrain.setKeys(anim_terrain_keys);
+        
+            terrain.animations = [];
+            
+            mountainAnimatable = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
+                //makeLog();
+                alert(score);
+                score = 0;
+            }); 
 
+            
+            scene.onPointerObservable.add((pointerInfo) => {
+                if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
+    
+                            console.log(pointerInfo.pickInfo.pickedPoint);
+                            
+                            if(box.position.y < 30.3){
+                                
+                                //scene.stopAnimation(skeleton);
+                                cameraJump();
+    
+                            }
+                            
+                        
+                }
+        });
+            
+        };
 
-        var cameraJump = function() {
+        function cameraJump() { 
 		
             let cam = box;
             cam.animations = [];
@@ -196,13 +165,70 @@ window.addEventListener('DOMContentLoaded', function(){
             a.setEasingFunction(easingFunction);
             
             
-            scene.beginDirectAnimation(cam, [a],0, 23, false, 0.55, ()=>{
+            let cameraJumpAnimatable = scene.beginDirectAnimation(cam, [a],0, 23, false, 0.55, ()=>{
                 anim_jump_ended = true;
-            } );
-        } 
+            });
+            
+            let skeleton = scene.getSkeletonByName("Armature");
+            let snowboarderJumpAnimatable = skeleton.beginAnimation("jump", false, 1.8, ()=>{
+                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            });
+
+            scene1.onKeyboardObservable.add((kbInfo) => {
+                switch (kbInfo.type) {
+                    case BABYLON.KeyboardEventTypes.KEYDOWN:
+                        //snowboarderJumpAnimatable.speedRatio = 1;
+                        //cameraJumpAnimatable.speedRatio = 0.32;
+                        mountainAnimatable.pause();
+                        mountainAnimatable.reset();
+                        if (snowboarderIdleAnimatable){
+                            snowboarderIdleAnimatable.pause();
+                        };
+                        break;
+                    
+                    
+                }
+            });
 
 
+        };
 
+        let obstacle = [];
+        let b;
+        for (b=1; b < task.loadedMeshes.length; b++){
+            obstacle.push(task.loadedMeshes[b])
+        };
+            
+        scene.registerBeforeRender(()=>{
+            let j;
+            for (j=0; j < obstacle.length; j++){
+                if (obstacle[j].intersectsMesh(box, true)){
+                    console.log('hit')
+                    score++
+                    startJump = 0;
+                    
+                    mountainAnimatable.pause();
+                    mountainAnimatable.reset();
+                    if (snowboarderIdleAnimatable){
+                        snowboarderIdleAnimatable.pause();
+                    };
+                };
+            };
+            
+        });
+        
+        
+         
+        };
+
+        
+        
+        assetsManager.load();
+
+
+        
+
+       
         
         return scene;    
             };
@@ -222,7 +248,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
+    //engine.setHardwareScalingLevel(0.5)
     
   
     
