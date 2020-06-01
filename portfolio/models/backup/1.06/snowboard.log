@@ -1,0 +1,81 @@
+Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
+	processing begun of skeleton:  Armature, id:  0
+		processing begun of bone:  hip L, index:  0
+		processing begun of bone:  thigh L, index:  1
+		processing begun of bone:  shin L, index:  2
+		processing begun of bone:  knee L, index:  3
+		processing begun of bone:  heel L, index:  4
+		processing begun of bone:  thigh L.001, index:  5
+		processing begun of bone:  shin L.001, index:  6
+		processing begun of bone:  knee L.001, index:  7
+		processing begun of bone:  heel L.001, index:  8
+		processing begun of bone:  hip r, index:  9
+		processing begun of bone:  hip r.001, index:  10
+		processing begun of bone:  hip r.002, index:  11
+		processing begun of bone:  shoulder L, index:  12
+		processing begun of bone:  upper arm, index:  13
+		processing begun of bone:  hip r.005, index:  14
+		processing begun of bone:  hand L, index:  15
+		processing begun of bone:  hand move L, index:  16
+		processing begun of bone:  elbow l, index:  17
+		processing begun of bone:  hip r.003, index:  18
+		processing begun of bone:  hip r.004, index:  19
+		processing begun of bone:  hip r.006, index:  20
+		processing begun of bone:  hip r.007, index:  21
+		processing begun of bone:  pull R, index:  22
+		processing begun of bone:  elbow pull R, index:  23
+		processing begun of bone:  shin L.002, index:  24
+		processing begun of bone:  shin L.003, index:  25
+		processing action fall:  in[1 - 15], out[0 - 15]
+		processing action jump:  in[1 - 15], out[20 - 35]
+	processing begun of mesh:  Cube.001
+		processing begun of material:  dark
+		processing begun of material:  orange
+		processing begun of material:  white
+		processing begun of material:  jacket
+		processing begun of material:  skin
+		processing begun of material:  board
+		processing begun of multimaterial:  snowboard.Multimaterial#0
+		num positions      :  3400
+		num normals        :  3400
+		num tangents       :  0
+		num uvs            :  6800
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  3528
+	processing begun of mesh:  Cube.002
+		processing begun of material:  dark.001
+		processing begun of material:  orange.001
+		processing begun of material:  white.001
+		processing begun of material:  jacket.001
+		processing begun of material:  skin.001
+		processing begun of material:  board.001
+		processing begun of multimaterial:  snowboard.Multimaterial#1
+		num positions      :  228
+		num normals        :  228
+		num tangents       :  0
+		num uvs            :  456
+		num uvs2           :  0
+		num colors         :  912
+		num indices        :  252
+	processing begun of node:  Empty
+	processing begun of node:  Empty.001
+========= Writing of JSON file started =========
+	writing mesh:  Cube.001
+	writing mesh:  Cube.002
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.714 secs

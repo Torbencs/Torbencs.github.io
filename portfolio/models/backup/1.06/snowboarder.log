@@ -33,9 +33,8 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of bone:  Bone.018, index:  17
 		processing begun of bone:  foot, index:  18
 		processing begun of bone:  foot.001, index:  19
-		processing action fall:  in[0 - 36], out[0 - 36]
-		processing action idle:  in[0 - 36], out[50 - 86]
-		processing action jump:  in[0 - 36], out[100 - 136]
+		processing action idle:  in[0 - 36], out[0 - 36]
+		processing action jump:  in[0 - 36], out[50 - 86]
 	processing begun of mesh:  Cube.001
 		processing begun of material:  dark
 		processing begun of material:  orange
@@ -43,7 +42,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  jacket
 		processing begun of material:  skin
 		processing begun of material:  board
-		processing begun of multimaterial:  snowboard.Multimaterial#0
+		processing begun of multimaterial:  snowboarder.Multimaterial#0
 		num positions      :  3695
 		num normals        :  3695
 		num tangents       :  0
@@ -61,4 +60,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Cube.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.9749 secs
+elapsed time:  0 min, 1.8016 secs
