@@ -274,7 +274,10 @@ window.addEventListener('DOMContentLoaded', function(){
             button1.addEventListener("click", () => {
                 startScene();
                 startRun();
-                hits = 0;
+
+                let skeleton = scene.getSkeletonByName("Armature");
+                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+                
                 button1.remove();
             })
 
