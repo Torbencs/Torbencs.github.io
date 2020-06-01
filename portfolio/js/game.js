@@ -274,6 +274,7 @@ window.addEventListener('DOMContentLoaded', function(){
             button1.addEventListener("click", () => {
                 startScene();
                 startRun();
+                hits = 0;
                 button1.remove();
             })
 
