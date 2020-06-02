@@ -229,12 +229,12 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         
-        let skeleton = scene.getSkeletonByName('Armature');
+        
         
 
         //Collision
         scene.registerBeforeRender(()=>{
-            
+            let skeleton = scene.getSkeletonByName('Armature');
             let j;
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
@@ -246,15 +246,15 @@ window.addEventListener('DOMContentLoaded', function(){
                    //console.log('hit');
                    if (hits == 0){
                     
-                    // let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
-                    //     snowboarderFallAnimatable.reset();
-                    //     resetScene(snowboarderFallAnimatable);
-                    //     let el = document.getElementById('screen-whiteout');
-                    //     fadeIn(el,2000);             
-                    // });
-                    // window.setTimeout(()=>{
-                    //     fadeOut(400);
-                    // },900); 
+                    let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
+                        snowboarderFallAnimatable.reset();
+                        resetScene(snowboarderFallAnimatable);
+                        let el = document.getElementById('screen-whiteout');
+                        fadeIn(el,2000);             
+                    });
+                    window.setTimeout(()=>{
+                        fadeOut(400);
+                    },900); 
                     hits++
                     animRunning = true;
 
