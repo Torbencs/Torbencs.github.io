@@ -190,7 +190,7 @@ window.addEventListener('DOMContentLoaded', function(){
             animRunning = false;
             attempts++;
             let labelAttempts = document.getElementById('labelAttempts');
-            labelAttempts.textContent = `Attempts: ${attempts}`;
+            labelAttempts.textContent = attempts;
             
 
             mountainAnimatable.pause();
@@ -232,6 +232,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let skeleton = scene.getSkeletonByName('Armature');
         let hits = 0;
 
+        //Collision
         scene.registerBeforeRender(()=>{
             
             let j;
@@ -242,8 +243,9 @@ window.addEventListener('DOMContentLoaded', function(){
                    
                     
                    mountainAnimatable.speedRatio = 0.039;
-                   console.log('hit');
+                   //console.log('hit');
                    if (hits == 0){
+                    
                     let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
                         snowboarderFallAnimatable.reset();
                         resetScene(snowboarderFallAnimatable);
@@ -356,16 +358,25 @@ window.addEventListener('DOMContentLoaded', function(){
             scene.beginDirectAnimation(camera, [animCamera, animCameraTarget], 0, 400, false);
 
             var labelAttempts = document.createElement("div");
-            labelAttempts.style.top = "30px";
+            labelAttempts.style.top = "25px";
             labelAttempts.style.right = "20px";
-            labelAttempts.textContent = `Attempts: ${attempts}`;
-            labelAttempts.style.width = "150px"
-            labelAttempts.style.height = "80px"
+            labelAttempts.textContent = attempts;
+            labelAttempts.style.width = "110px"
+            labelAttempts.style.height = "40px"
             labelAttempts.classList.add('txt');
             labelAttempts.setAttribute("id", "labelAttempts");
             labelAttempts.style.position = "absolute";
         
             document.body.appendChild(labelAttempts);
+
+            let imgAttempts = document.createElement('img');
+            imgAttempts.src = "images/attempts.png";
+            imgAttempts.style.width = "48px";
+            imgAttempts.style.top = "29px";
+            imgAttempts.style.right = "55px";
+            imgAttempts.style.position = "absolute";
+            
+            document.body.appendChild(imgAttempts);
 
         }
 
