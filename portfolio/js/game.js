@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let click = 0;
     let animRunning = false;
     let score = 0;
+    let attempts = 0;
   
 
     // get the canvas DOM element
@@ -78,9 +79,6 @@ window.addEventListener('DOMContentLoaded', function(){
             task.loadedMeshes[i].rotation.z = 0.2;
             box.addChild(task.loadedMeshes[i]);
         };
-
-         
-                          
         };
        
 
@@ -188,8 +186,11 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         function resetScene(snowboarderFallAnimatable){
-            score++
+            score++;
             animRunning = false;
+            attempts++;
+            let labelAttempts = document.getElementById('labelAttempts');
+            labelAttempts.textContent = `Attempts: ${attempts}`;
             
 
             mountainAnimatable.pause();
@@ -216,7 +217,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
             button.addEventListener("click", () => {
                 startRun();
-                fadeIn(button, 700);
+                fadeIn(button, 200);
             })
             
         }
@@ -266,22 +267,19 @@ window.addEventListener('DOMContentLoaded', function(){
             
         });
         
-        
-
-
-        var button1 = document.createElement("button");
-            button1.style.top = "100px";
-            button1.style.right = "30px";
-            button1.textContent = "click";
-            button1.style.width = "100px"
-            button1.style.height = "100px"
+            var button1 = document.createElement("button");
+            button1.style.top = (window.innerHeight / 2) - 30 + "px";
+            button1.style.left = (window.innerWidth / 2) - 75 + "px";
+            button1.textContent = "Start";
+            button1.style.width = "150px"
+            button1.style.height = "60px"
         
             button1.setAttribute = ("id", "but1");
+            button1.classList.add('btn--action');
             button1.style.position = "absolute";
-            button1.style.color = "black";
         
             document.body.appendChild(button1);
-        
+            
             button1.addEventListener("click", () => {
                 startScene();
                 startRun();
@@ -328,7 +326,7 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             keysCamera.push({
-                frame: 200,
+                frame: 400,
                 value: new BABYLON.Vector3(-6.929985, 30.7, -9)
             });
 
@@ -348,14 +346,26 @@ window.addEventListener('DOMContentLoaded', function(){
             });
 
             keysCameraTarget.push({
-                frame: 200,
+                frame: 400,
                 value: new BABYLON.Vector3(-9.933531,29.9,-7.30017)
             });
 
             animCameraTarget.setKeys(keysCameraTarget);
             animCameraTarget.setEasingFunction(bezierEase2);
 
-            scene.beginDirectAnimation(camera, [animCamera, animCameraTarget], 0, 200, false);
+            scene.beginDirectAnimation(camera, [animCamera, animCameraTarget], 0, 400, false);
+
+            var labelAttempts = document.createElement("div");
+            labelAttempts.style.top = "30px";
+            labelAttempts.style.right = "20px";
+            labelAttempts.textContent = `Attempts: ${attempts}`;
+            labelAttempts.style.width = "150px"
+            labelAttempts.style.height = "80px"
+            labelAttempts.classList.add('txt');
+            labelAttempts.setAttribute("id", "labelAttempts");
+            labelAttempts.style.position = "absolute";
+        
+            document.body.appendChild(labelAttempts);
 
         }
 

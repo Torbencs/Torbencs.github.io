@@ -34,9 +34,10 @@ body { position: relative;}
 outline:none;
 text-decoration:none;
 border:none;
-
-font-weight: 700;
-font-size: 1.5rem;
+font-family: Dosis;
+font-weight: 800;
+font-size: 1.8rem;
+letter-spacing: 0.1rem;
 text-decoration: none;
 text-align: center;
 transition: all .5s ease; 
@@ -46,11 +47,29 @@ display: block;
 
 border-radius: 1.5rem;
 background-color: #faca1f;
-color: #fff;
+color: rgba(255, 255, 255, 0.896);
 transition: all .5s ease 0s; 
 box-shadow: 0 8px #faa61f;
+
+-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .btn--action:active {
 box-shadow: 0 5px #f0932b;
 transform: translateY(5px);
+
+
+}
+
+.txt{
+font-family: Dosis;
+font-weight: 800;
+font-size: 1.2rem;
+letter-spacing: 0.1rem;
+color: rgba(255, 255, 255, 0.924);
 }
