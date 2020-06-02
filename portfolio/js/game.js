@@ -242,19 +242,19 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                    
                     
-                   //mountainAnimatable.speedRatio = 0.039;
+                   mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
                     
-                    let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
-                        snowboarderFallAnimatable.reset();
-                        resetScene(snowboarderFallAnimatable);
-                        let el = document.getElementById('screen-whiteout');
-                        fadeIn(el,2000);             
-                    });
-                    window.setTimeout(()=>{
-                        fadeOut(400);
-                    },900); 
+                    // let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
+                    //     snowboarderFallAnimatable.reset();
+                    //     resetScene(snowboarderFallAnimatable);
+                    //     let el = document.getElementById('screen-whiteout');
+                    //     fadeIn(el,2000);             
+                    // });
+                    // window.setTimeout(()=>{
+                    //     fadeOut(400);
+                    // },900); 
                     hits++
                     animRunning = true;
 
