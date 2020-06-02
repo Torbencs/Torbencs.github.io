@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let animRunning = false;
     let score = 0;
     let attempts = 0;
-  
+    let hits = 0;
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -123,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             mountainAnimatable = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
                 //startRun();
-                alert(score);
+                //Start camera move animation into scene 3 and snowboarder stop animation
                 score = 0;
             }); 
 
@@ -230,7 +230,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         let skeleton = scene.getSkeletonByName('Armature');
-        let hits = 0;
+        
 
         //Collision
         scene.registerBeforeRender(()=>{
