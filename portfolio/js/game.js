@@ -190,6 +190,7 @@ window.addEventListener('DOMContentLoaded', function(){
             score++
             animRunning = false;
             
+
             mountainAnimatable.pause();
             snowboarderIdleAnimatable.pause();
             mountainAnimatable.reset();
@@ -226,29 +227,33 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         
-       
         let skeleton = scene.getSkeletonByName('Armature');
         let hits = 0;
+
         scene.registerBeforeRender(()=>{
             
             let j;
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                 
-                   startJump = 0;
+                    startJump = 0;
+                   
                     
                    mountainAnimatable.speedRatio = 0.034;
                    console.log('hit');
                    if (hits == 0){
                     let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.8, ()=>{
                         snowboarderFallAnimatable.reset();
-                        resetScene(snowboarderFallAnimatable);
-                        
-                        
+                        resetScene(snowboarderFallAnimatable);               
                     });
+                    window.setTimeout(()=>{
+                        fadeIn(whiteScreen,400);
+                    },1000); 
                     hits++
                     animRunning = true;
-                   }
+
+                
+                   };
                    
                    
                     
@@ -258,6 +263,9 @@ window.addEventListener('DOMContentLoaded', function(){
             
         });
         
+        
+
+
         var button1 = document.createElement("button");
             button1.style.top = "100px";
             button1.style.right = "30px";
@@ -298,7 +306,10 @@ window.addEventListener('DOMContentLoaded', function(){
                 
             }
         });
-        
+        //White screen
+        var whiteScreen = document.createElement("div");
+        whiteScreen.classList.add('screen-whiteout');
+        document.body.appendChild(whiteScreen);
          
         };
 
@@ -349,7 +360,25 @@ window.addEventListener('DOMContentLoaded', function(){
 
         }
 
-       
+        function fadeIn(el, time) {
+            el.style.opacity = 0;
+
+            el.style.height = '1000px';
+            el.style.width = '3000px';
+            el.style.display = 'block';
+          
+            var last = +new Date();
+            var tick = function() {
+              el.style.opacity = +el.style.opacity + (new Date() - last) / time;
+              last = +new Date();
+          
+              if (+el.style.opacity < 1) {
+                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+              }
+            };
+          
+            tick();
+          }
         
         return scene;    
             };

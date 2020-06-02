@@ -1,0 +1,215 @@
+/* Greetings traveler.. while you're lurking here you may as well make yourself 
+useful and take this sword incase you find any bugs on your journey */
+
+@font-face {
+    font-family: 'poppinssemibold';
+    src: url('../fonts/poppins-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/poppins-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'extended';
+    src: url('../fonts/Untitled2.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+p {
+    margin: 0;
+}
+
+.font {
+    position: absolute;
+    left: -0.56em;
+    font-family: 'extended';
+    font-size: 5em;
+}
+.font2 {
+    font-family: 'extended';
+    font-size: 30em;
+    
+}
+.container {
+    width: 100%;
+    /*background-color: #fff;*/ 
+    
+    background-color: #acdef3;
+    overflow: hidden;
+}
+.container--interactive {
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.scene-wrapper {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    min-height: 30em;
+    margin: auto;
+}
+
+.menu-wrapper {
+    right: 0;
+    position: absolute;
+    top: 3em;
+}
+
+.menu {
+    margin-top: 5px;
+    margin-right: 2px;
+    
+}
+
+.menu__icon {
+    position: relative;
+    content: '';
+    width: 2.4vw;
+    height: 0.34vw;
+    min-width: 43px;
+    min-height: 6px;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
+}
+
+.menu__icon:before {
+    position: absolute;
+    content: '';
+    width: 2.4vw;
+    height: 0.34vw;
+    min-width: 43px;
+    min-height: 6px;
+    left: 0;
+    bottom: 0.8em;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
+   
+}
+.menu__icon:after {
+    position: absolute;
+    content: '';
+    width: 2.4vw;
+    height: 0.34vw;
+    min-width: 43px;
+    min-height: 6px;
+    top: 0.8em;
+    left: 0;
+    background: rgba(82, 229, 255, 0.1);
+    -moz-box-shadow:    inset 2px -2px 5px #53e5ff;
+    -webkit-box-shadow: inset 2px -2px 5px #53e5ff;
+    box-shadow:         inset 2px -2px 5px #53e5ff;
+}
+
+
+.main-content {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+}
+
+.section-heading {
+    position: absolute;
+    display: table;
+    left: -9vw;
+    bottom: calc(-10vw - 40px);
+    transform: rotate(270deg);
+}
+
+.section-heading__text--extended {
+    position: relative;
+    display: inline-block;
+    font-family: 'extended';
+    font-size: 37vw;
+    color: rgba(82, 229, 255, 0.1);
+    text-shadow: -5px -4px 5px #53e5ff, 0px 0px 0px #216593, 0px 0px 3px #53e5ff;
+}
+
+.section-heading__text--regular {
+    display: inline-block;
+    position: relative;
+    left: -3.07em;
+    top: -4.6em;
+    font-family: 'poppinssemibold';
+    font-size: 5.5vw;
+    color: rgba(82, 229, 255, 0.1);
+    text-shadow: -5px -4px 5px #53e5ff, 0px 0px 0px #216593, 0px 0px 3px #53e5ff;    
+}
+
+.text--blue {
+    color: rgba(55, 64, 81, 0.35);
+    text-shadow: -5px -4px 5px #374051, 0px 0px 0px #216593, 0px 0px 3px #374051;
+}
+
+/* Don't show shadows when selecting text */
+
+.section-heading__text::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+.section-heading__text::selection { background: #5af; color: #fff; text-shadow: none; }
+
+#renderCanvas {
+    width   : 100%;
+    height  : 100%;
+    touch-action: none;
+    border: none;
+    
+}
+
+#renderCanvas:focus {
+    outline: none;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: rgba(93, 92, 92, 0); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    font-family: poppinssemibold;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
