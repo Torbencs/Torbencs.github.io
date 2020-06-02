@@ -242,7 +242,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                    
                     
-                   mountainAnimatable.speedRatio = 0.039;
+                   //mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
                     
