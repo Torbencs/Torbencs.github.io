@@ -23,11 +23,12 @@ window.addEventListener('DOMContentLoaded', function(){
         var scene = new BABYLON.Scene(engine);
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
-            
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-7.929985, 31.7, -7), scene); 
+        
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.384175270, 31.7, -8.819799186), scene); 
         camera.minZ = 0.1;
+        
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
-        camera.setTarget(new BABYLON.Vector3(-9.758738, 29.65, -8.740));
+        camera.setTarget(new BABYLON.Vector3(-9.262761637 , 29.65, -9.041590 ));
         
         // Camera controls
         camera.attachControl(canvas, true);
@@ -201,21 +202,21 @@ window.addEventListener('DOMContentLoaded', function(){
             },1000);
 
             var button = document.createElement("button");
-            button.style.top = "100px";
-            button.style.right = "30px";
-            button.textContent = "click";
-            button.style.width = "100px"
-            button.style.height = "100px"
+            button.style.top = (window.innerHeight / 2) - 30 + "px";
+            button.style.left = (window.innerWidth / 2) - 75 + "px";
+            button.textContent = "Retry";
+            button.style.width = "150px"
+            button.style.height = "60px"
         
             button.setAttribute = ("id", "but");
+            button.classList.add('btn--action');
             button.style.position = "absolute";
-            button.style.color = "black";
         
             document.body.appendChild(button);
         
             button.addEventListener("click", () => {
                 startRun();
-                button.remove();
+                fadeIn(button, 700);
             })
             
         }
@@ -245,7 +246,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
                         snowboarderFallAnimatable.reset();
                         resetScene(snowboarderFallAnimatable);
-                        fadeIn(2000);             
+                        let el = document.getElementById('screen-whiteout');
+                        fadeIn(el,2000);             
                     });
                     window.setTimeout(()=>{
                         fadeOut(400);
@@ -342,7 +344,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
             keysCameraTarget.push({
                 frame: 0,
-                value: new BABYLON.Vector3(-9.758738, 29.65, -8.740)
+                value: new BABYLON.Vector3(-9.262761637 , 29.65, -9.041590 )
             });
 
             keysCameraTarget.push({
@@ -388,8 +390,8 @@ window.addEventListener('DOMContentLoaded', function(){
             tick();
           }
 
-          function fadeIn(time) {
-            let el = document.getElementById('screen-whiteout');
+          function fadeIn(el, time) {
+            
             el.style.opacity = 1;
          
             var last = +new Date();
@@ -408,6 +410,17 @@ window.addEventListener('DOMContentLoaded', function(){
             }, time + 100)
           }
         
+
+          scene.onPointerObservable.add((pointerInfo) => {
+            if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
+    
+                        console.log(pointerInfo.pickInfo.pickedPoint);
+                       
+                        
+                    
+            }
+    });
+
         return scene;    
             };
 
@@ -434,7 +447,7 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('resize', function(){
         engine.resize();
     });
-
+    
     
     
     });

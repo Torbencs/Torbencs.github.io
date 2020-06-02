@@ -19,3 +19,38 @@ body { position: relative;}
     overflow: hidden;
 }
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
+ * {
+	 box-sizing: border-box;
+}
+ *::before, *::after {
+	 box-sizing: border-box;
+}
+ 
+
+.btn--action{
+outline:none;
+text-decoration:none;
+border:none;
+
+font-weight: 700;
+font-size: 1.5rem;
+text-decoration: none;
+text-align: center;
+transition: all .5s ease; 
+
+display: block;
+
+
+border-radius: 1.5rem;
+background-color: #faca1f;
+color: #fff;
+transition: all .5s ease 0s; 
+box-shadow: 0 8px #faa61f;
+}
+.btn--action:active {
+box-shadow: 0 5px #f0932b;
+transform: translateY(5px);
+}
