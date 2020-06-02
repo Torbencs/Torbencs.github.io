@@ -245,7 +245,7 @@ window.addEventListener('DOMContentLoaded', function(){
                    mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
-                    
+                    alert('if hits loop');
                     let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
                         snowboarderFallAnimatable.reset();
                         resetScene(snowboarderFallAnimatable);
