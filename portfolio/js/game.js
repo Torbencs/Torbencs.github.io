@@ -239,13 +239,13 @@ window.addEventListener('DOMContentLoaded', function(){
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                 
-                    startJump = 0;
+                    
                    
                     
                    mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
-                    alert('if hits loop');
+                    
                     let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
                         snowboarderFallAnimatable.reset();
                         resetScene(snowboarderFallAnimatable);
