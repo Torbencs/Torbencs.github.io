@@ -1,3 +1,4 @@
+body { position: relative;}
 #renderCanvas {
     width   : 100%;
     height  : 100%;
@@ -18,21 +19,3 @@
     overflow: hidden;
 }
 
-.screen-whiteout {
-	display: none;
-    height: 1000px;
-    width: 2000px;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    background: white;
-}
-
-.screen-whiteout.is-visible {
-    display: block;
-    height: 1000px;
-    width: 2000px;
-    
-}

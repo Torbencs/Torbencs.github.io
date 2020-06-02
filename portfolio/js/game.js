@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-6.929985, 32.7, -8), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-7.929985, 31.7, -7), scene); 
         camera.minZ = 0.1;
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
         camera.setTarget(new BABYLON.Vector3(-9.758738, 29.65, -8.740));
@@ -239,16 +239,17 @@ window.addEventListener('DOMContentLoaded', function(){
                     startJump = 0;
                    
                     
-                   mountainAnimatable.speedRatio = 0.034;
+                   mountainAnimatable.speedRatio = 0.039;
                    console.log('hit');
                    if (hits == 0){
-                    let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.8, ()=>{
+                    let snowboarderFallAnimatable = skeleton.beginAnimation('fall', false, 0.9, ()=>{
                         snowboarderFallAnimatable.reset();
-                        resetScene(snowboarderFallAnimatable);               
+                        resetScene(snowboarderFallAnimatable);
+                        fadeIn(2000);             
                     });
                     window.setTimeout(()=>{
-                        fadeIn(whiteScreen,400);
-                    },1000); 
+                        fadeOut(400);
+                    },900); 
                     hits++
                     animRunning = true;
 
@@ -306,10 +307,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 
             }
         });
-        //White screen
-        var whiteScreen = document.createElement("div");
-        whiteScreen.classList.add('screen-whiteout');
-        document.body.appendChild(whiteScreen);
          
         };
 
@@ -360,13 +357,24 @@ window.addEventListener('DOMContentLoaded', function(){
 
         }
 
-        function fadeIn(el, time) {
+        function fadeOut(time) {
+            //White screen
+            var el = document.createElement("div");
+            
+            
             el.style.opacity = 0;
-
-            el.style.height = '1000px';
-            el.style.width = '3000px';
+            el.style.top = '0px';
+            el.style.left = '0px';
+            el.style.position = 'absolute';
+            el.style.height = window.innerWidth + 'px';
+            el.style.width = window.innerWidth + 'px';
             el.style.display = 'block';
-          
+            el.style.background = '#fff';
+            el.style.overflow = 'hidden';
+            el.setAttribute("id", "screen-whiteout");
+            
+            document.body.appendChild(el);
+
             var last = +new Date();
             var tick = function() {
               el.style.opacity = +el.style.opacity + (new Date() - last) / time;
@@ -378,6 +386,26 @@ window.addEventListener('DOMContentLoaded', function(){
             };
           
             tick();
+          }
+
+          function fadeIn(time) {
+            let el = document.getElementById('screen-whiteout');
+            el.style.opacity = 1;
+         
+            var last = +new Date();
+            var tick = function() {
+              el.style.opacity = +el.style.opacity - (new Date() - last) / time;
+              last = +new Date();
+          
+              if (+el.style.opacity > 0) {
+                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+              }
+            };
+          
+            tick();
+            window.setTimeout(()=>{
+                el.remove();
+            }, time + 100)
           }
         
         return scene;    

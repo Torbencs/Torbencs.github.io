@@ -22,14 +22,14 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood
 		processing begun of multimaterial:  mountain_merged_scene_3.Multimaterial#0
 		Custom split normals with tangents being used
-		num positions      :  12424
-		num normals        :  12424
-		num tangents       :  49696
-		num uvs            :  24848
+		num positions      :  12040
+		num normals        :  12040
+		num tangents       :  48160
+		num uvs            :  24080
 		num uvs2           :  0
 		num colors         :  0
-		num indices        :  12930
-		WARNING: # of 0 area faces found:  50
+		num indices        :  12525
+		WARNING: # of 0 area faces found:  47
 	processing begun of mesh:  Cylinder
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
@@ -345,10 +345,10 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	processing begun of mesh:  Cylinder.013
 		processing begun of material:  Material.006
 		registered as also a user of material:  Material.006
-		num positions      :  227
-		num normals        :  227
+		num positions      :  224
+		num normals        :  224
 		num tangents       :  0
-		num uvs            :  454
+		num uvs            :  448
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  234
@@ -497,4 +497,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Icosphere.010
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.9944 secs
+elapsed time:  0 min, 2.7571 secs
