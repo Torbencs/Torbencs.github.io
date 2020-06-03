@@ -310,7 +310,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
                 keysCameraTargetEnd.push({
                     frame: 100,
-                    value: new BABYLON.Vector3(-9.463078468,30.01099740,-8.56246478)
+                    value: new BABYLON.Vector3(-9.463078468,29.91099740,-8.26246478)
                 });
     
                 animCameraTargetEnd.setKeys(keysCameraTargetEnd);
@@ -319,7 +319,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 scene.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 100, false);
                 window.setTimeout(()=>{
                     let skeleton = scene.getSkeletonByName("Armature");
-                    snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 0.75);
+                    snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 0.8);
 
                     window.setTimeout(()=>{
                         fadeOut(350);

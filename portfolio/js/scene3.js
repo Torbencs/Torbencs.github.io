@@ -63,8 +63,7 @@ var createScene3 = function () {
 
     
     assetsManager.load();
-    
-    var bezierEase = new BABYLON.BezierCurveEase(.4,.1,.3,.9);
+    var bezierEase = new BABYLON.BezierCurveEase(.41,.08,.55,1);
 
         let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
         let keysCameraLandingPos = [];
@@ -76,10 +75,19 @@ var createScene3 = function () {
 
         keysCameraLandingPos.push({
         frame: 500,
-        value: new BABYLON.Vector3(-8.12078903 ,33.5, -2.278661083)
+        value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
         });
 
-        let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
+        keysCameraLandingPos.push({
+        frame: 560,
+        value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
+        });
+
+        keysCameraLandingPos.push({
+        frame: 730,
+        value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
+        });
+        let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
         animCameraLandingPos.setKeys(keysCameraLandingPos);
         animCameraLandingPos.setEasingFunction(bezierEase2);
 
@@ -93,10 +101,20 @@ var createScene3 = function () {
         frame: 0,
         value: new BABYLON.Vector3(25.25,29.02,-4.8)
         });
-
+        
         keysCameraLandingTarget.push({
         frame: 150,
-        value: new BABYLON.Vector3(-12.4023117,36,-15.2198993),
+        value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
+        });
+
+        keysCameraLandingTarget.push({
+        frame: 500,
+        value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
+        });
+
+        keysCameraLandingTarget.push({
+        frame: 750,
+        value: new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 )
         });
 
 
@@ -104,7 +122,7 @@ var createScene3 = function () {
         animCameraLandingTarget.setKeys(keysCameraLandingTarget);
         animCameraLandingTarget.setEasingFunction(bezierEase);
 
-        scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 500, false, 0.6);
+        scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6);
     
     
   
