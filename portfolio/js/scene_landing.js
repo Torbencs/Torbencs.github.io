@@ -514,9 +514,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
-                        scene.beginAnimation(heliMesh, 0, 150, false, 0.4, ()=>{
-                            //currentScene = 3;
-                        });
+                        scene.beginAnimation(heliMesh, 0, 150, false, 0.4);
+                        window.setTimeout(()=>{
+                            currentScene = 3;
+                        },6000)
 
 
                     
@@ -670,12 +671,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         //Model positioning
        
-        var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_2.glb");
-        
-    
-        
-        assetsManager.load();
+       
         var bezierEase = new BABYLON.BezierCurveEase(.41,.08,.55,1);
     
             let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
