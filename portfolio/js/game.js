@@ -26,11 +26,11 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
         
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.384175270, 31.7, -8.819799186), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.273084616, 31.7, -10.0018), scene); 
         camera.minZ = 0.1;
         
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
-        camera.setTarget(new BABYLON.Vector3(-9.262761637 , 29.65, -9.041590 ));
+        camera.setTarget(new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 ));
         
         // Camera controls
         camera.attachControl(canvas, true);
@@ -323,6 +323,15 @@ window.addEventListener('DOMContentLoaded', function(){
 
                     window.setTimeout(()=>{
                         fadeOut(350);
+
+                        function launchIOSQuick LookAR() {
+                            const anchor = document.createElement('a');
+                            anchor.setAttribute('rel', 'ar');
+                            anchor.appendChild(document.createElement('img'));
+                            anchor.setAttribute('href', "models/file.usdz");
+                            anchor.click();
+                          }
+
                     },1300);
 
                 },800);
@@ -388,7 +397,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
             keysCameraTarget.push({
                 frame: 0,
-                value: new BABYLON.Vector3(-9.262761637 , 29.65, -9.041590 )
+                value: new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324)
             });
 
             keysCameraTarget.push({
@@ -416,8 +425,8 @@ window.addEventListener('DOMContentLoaded', function(){
             let imgAttempts = document.createElement('img');
             imgAttempts.src = "images/attempts.png";
             imgAttempts.style.width = "48px";
-            imgAttempts.style.top = "29px";
-            imgAttempts.style.right = "55px";
+            imgAttempts.style.top = "26px";
+            imgAttempts.style.right = "57px";
             imgAttempts.style.position = "absolute";
             
             document.body.appendChild(imgAttempts);

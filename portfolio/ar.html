@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Torben Schlawe</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Dosis:700,800|Quicksand:700">
+
+
+
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  
+ 
+
+  <script src="js/fulltilt.min.js"></script>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+  
+  <p>stuff</p>
+ 
+  <button
+      onclick="launchIOSQuickLookAR('https://developer.apple.com/augmented-reality/quick-look/models/biplane/toy_biplane.usdz')">Press</button>
+     
+  <script>
+
+      
+function launchIOSQuickLookAR(usdzSrc) {
+  const anchor = document.createElement("a");
+  anchor.setAttribute("rel", "ar");
+  anchor.appendChild(document.createElement("img"));
+  anchor.setAttribute("href", usdzSrc);
+  anchor.click();
+}
+
+
+  </script>
+</body>
+</html>
