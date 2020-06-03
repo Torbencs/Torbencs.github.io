@@ -456,16 +456,6 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num uvs2           :  0
 		num colors         :  0
 		num indices        :  60
-	processing begun of mesh:  jump
-		processing begun of material:  Material.008
-		registered as also a user of material:  Material.008
-		num positions      :  5645
-		num normals        :  5645
-		num tangents       :  0
-		num uvs            :  11290
-		num uvs2           :  0
-		num colors         :  0
-		num indices        :  8160
 ========= Writing of JSON file started =========
 	writing mesh:  0001
 	writing mesh:  Cylinder
@@ -505,7 +495,6 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Icosphere.009
 	writing mesh:  obstacle.005
 	writing mesh:  Icosphere.010
-	writing mesh:  jump
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 3.2153 secs
+elapsed time:  0 min, 1.5029 secs
