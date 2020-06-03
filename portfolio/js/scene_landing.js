@@ -515,7 +515,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false, 0.4, ()=>{
-                            currentScene = 3;
+                            //currentScene = 3;
                         });
 
 
