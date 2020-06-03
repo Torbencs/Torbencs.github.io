@@ -6,8 +6,7 @@ window.addEventListener('DOMContentLoaded', function(){
     let animRunning = false;
     let score = 0;
     let attempts = 0;
-    let hits = 0;
-    let endHits = 0;
+  
 
     // get the canvas DOM element
     var canvas = document.getElementById('renderCanvas');
@@ -106,14 +105,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let anim_jump_ended = true;
         let firstJump = true;
         
-        //Add box to check for end of scene collission
-        let endBox = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.42, width: 1, depth: 0.84} ,scene);
-        endBox.position = new BABYLON.Vector3(20.79827270, 18.342038725, 36.211586642); 
-        endBox.rotation.x = 1.75;
-        endBox.rotation.y = .67;
-        endBox.rotation.z = 0;
-        endBox.visibility = 0;
-        task.loadedMeshes[0].addChild(endBox);
+
     
 
         
@@ -131,7 +123,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             mountainAnimatable = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
                 //startRun();
-                //Start camera move animation into scene 3 and snowboarder stop animation
+                alert(score);
                 score = 0;
             }); 
 
@@ -237,17 +229,17 @@ window.addEventListener('DOMContentLoaded', function(){
         };
 
         
-        
-        
+        let skeleton = scene.getSkeletonByName('Armature');
+        let hits = 0;
 
         //Collision
         scene.registerBeforeRender(()=>{
-            let skeleton = scene.getSkeletonByName('Armature');
+            
             let j;
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                 
-                    
+                    startJump = 0;
                    
                     
                    mountainAnimatable.speedRatio = 0.039;
@@ -274,59 +266,7 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                 };
             };
-            //End box collision
-            if (box.intersectsMesh(endBox, true) && endHits == 0){
-                endHits++;
-
-                mountainAnimatable.speedRatio = 0.04;
-                //End of scene camera animations
-                let animCameraEnd = new BABYLON.Animation("cameraPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-                let keysCameraEnd = [];
-    
-                keysCameraEnd.push({
-                    frame: 0,
-                    value: camera.position
-                });
-    
-                keysCameraEnd.push({
-                    frame: 100,
-                    value: new BABYLON.Vector3(-8.6596561555, 29.41155507, -8.039254)
-                });
-    
-                let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
-                animCameraEnd.setKeys(keysCameraEnd);
-                animCameraEnd.setEasingFunction(bezierEase2);
-    
-                
-    
-                //Camera target animation
-                let animCameraTargetEnd = new BABYLON.Animation("cameralandingTargetAnimation", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-                let keysCameraTargetEnd = [];
-    
-                keysCameraTargetEnd.push({
-                    frame: 0,
-                    value: new BABYLON.Vector3(-9.933531,29.9,-7.30017 )
-                });
-    
-                keysCameraTargetEnd.push({
-                    frame: 100,
-                    value: new BABYLON.Vector3(-9.463078468,30.01099740,-8.56246478)
-                });
-    
-                animCameraTargetEnd.setKeys(keysCameraTargetEnd);
-                animCameraTargetEnd.setEasingFunction(bezierEase2);
-    
-                scene.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 100, false);
-                window.setTimeout(()=>{
-                    let skeleton = scene.getSkeletonByName("Armature");
-                    snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 0.75);
-
-                    window.setTimeout(()=>{
-                        fadeOut(350);
-                    },1300);
-
-                },800);
-            }
+            
         });
         
             var button1 = document.createElement("button");
@@ -352,7 +292,23 @@ window.addEventListener('DOMContentLoaded', function(){
                 button1.remove();
             })
 
-        
+        scene1.onKeyboardObservable.add((kbInfo) => {
+            switch (kbInfo.type) {
+                case BABYLON.KeyboardEventTypes.KEYDOWN:
+                    //snowboarderJumpAnimatable.speedRatio = 1;
+                    //cameraJumpAnimatable.speedRatio = 0.32;
+                    
+                    startRun();
+                    if (firstJump){
+                        startScene();
+                        
+                    }
+                    firstJump = false;
+                    break;
+                
+                
+            }
+        });
          
         };
 
