@@ -400,7 +400,6 @@ window.addEventListener('DOMContentLoaded', function(){
                     
                         if (pythagorean(heliMesh.position.x,heliMesh.position.z,landingPad.x,landingPad.z) < 0.6){
                             landingTimer.start();
-                            document.getElementById('text_1').innerHTML = Math.floor(landingTimer.currentTime * 0.001);
 
                            
                             if (landingTimer.currentTime < lastTime - 60 && meshNumber < 19){
@@ -623,10 +622,10 @@ window.addEventListener('DOMContentLoaded', function(){
     
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.3,28, 2), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(38.211,18.40,8.0507));
+        camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
         camera.maxZ = 500;        
         
        
