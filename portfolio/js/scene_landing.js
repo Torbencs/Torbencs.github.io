@@ -515,6 +515,8 @@ window.addEventListener('DOMContentLoaded', function(){
                         scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
                         scene.beginAnimation(heliMesh, 0, 150, false, 0.4);
+
+
                     
                     };//Landing animation
                 }; //If rotation
@@ -609,16 +611,17 @@ window.addEventListener('DOMContentLoaded', function(){
     //Call the createScene function
     var scene1 = createScene1();
     var scene2 = createScene2();
+    var scene3 = createScene3();
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
-        } 
-        //scene2.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
+    //     } 
+        scene3.render();
     });
     
     //Mobile quality

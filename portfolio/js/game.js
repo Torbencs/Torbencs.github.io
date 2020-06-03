@@ -324,13 +324,13 @@ window.addEventListener('DOMContentLoaded', function(){
                     window.setTimeout(()=>{
                         fadeOut(350);
 
-                        function launchIOSQuick LookAR() {
-                            const anchor = document.createElement('a');
-                            anchor.setAttribute('rel', 'ar');
-                            anchor.appendChild(document.createElement('img'));
-                            anchor.setAttribute('href', "models/file.usdz");
-                            anchor.click();
-                          }
+                    
+                        const anchor = document.createElement("a");
+                        anchor.setAttribute("rel", "ar");
+                        anchor.appendChild(document.createElement("img"));
+                        anchor.setAttribute("href", 'https://developer.apple.com/augmented-reality/quick-look/models/biplane/toy_biplane.usdz');
+                        anchor.click();
+                          
 
                     },1300);
 
