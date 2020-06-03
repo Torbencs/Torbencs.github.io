@@ -75,8 +75,8 @@ var createScene3 = function () {
         });
 
         keysCameraLandingPos.push({
-        frame: 600,
-        value: new BABYLON.Vector3(-9.02238859,38, -9.02238859)
+        frame: 500,
+        value: new BABYLON.Vector3(-8.12078903 ,33.5, -2.278661083)
         });
 
         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -104,7 +104,7 @@ var createScene3 = function () {
         animCameraLandingTarget.setKeys(keysCameraLandingTarget);
         animCameraLandingTarget.setEasingFunction(bezierEase);
 
-        scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 600, false, 0.6);
+        scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 500, false, 0.6);
     
     
   

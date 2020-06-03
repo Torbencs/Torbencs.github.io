@@ -325,11 +325,11 @@ window.addEventListener('DOMContentLoaded', function(){
                         fadeOut(350);
 
                     
-                        const anchor = document.createElement("a");
-                        anchor.setAttribute("rel", "ar");
-                        anchor.appendChild(document.createElement("img"));
-                        anchor.setAttribute("href", 'https://developer.apple.com/augmented-reality/quick-look/models/biplane/toy_biplane.usdz');
-                        anchor.click();
+                        // const anchor = document.createElement("a");
+                        // anchor.setAttribute("rel", "ar");
+                        // anchor.appendChild(document.createElement("img"));
+                        // anchor.setAttribute("href", 'https://developer.apple.com/augmented-reality/quick-look/models/biplane/toy_biplane.usdz');
+                        // anchor.click();
                           
 
                     },1300);

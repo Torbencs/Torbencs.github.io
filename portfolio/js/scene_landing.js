@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function(){
    
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
-        lightSphere1.position = light_spot_r2.position;
+        lightSphere1.position = new BABYLON.Vector3(-8.6565837,36, 13.0086459);
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
 
@@ -271,7 +271,7 @@ window.addEventListener('DOMContentLoaded', function(){
    
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
-        lightSphere1.position = light_spot_r2.position;
+        lightSphere1.position = new BABYLON.Vector3(-9.12078903 ,36, -1.278661083);
         lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
 
