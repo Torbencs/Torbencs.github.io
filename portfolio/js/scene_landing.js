@@ -614,11 +614,6 @@ window.addEventListener('DOMContentLoaded', function(){
     //Scene 3
     var createScene3 = function () {
 
-        //Camera move animations
-        var canvas = document.getElementById('renderCanvas');
-        
-        // load the 3D engine
-        var engine = new BABYLON.Engine(canvas, true);
         
     
     
@@ -664,12 +659,12 @@ window.addEventListener('DOMContentLoaded', function(){
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
        
-        var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
+        var assetsManager3 = new BABYLON.AssetsManager(scene);
+        var mountainMeshTask3 = assetsManager3.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
         
 
         
-        assetsManager.load();
+        assetsManager3.load();
     
         //Model positioning
        
