@@ -626,9 +626,6 @@ window.addEventListener('DOMContentLoaded', function(){
         var scene = new BABYLON.Scene(engine);
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
-        var gravityVector = new BABYLON.Vector3(-.05, -1, -0.3);
-        var physicsPlugin = new BABYLON.CannonJSPlugin();
-        scene.enablePhysics(gravityVector, physicsPlugin);
     
             
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene);
@@ -667,7 +664,12 @@ window.addEventListener('DOMContentLoaded', function(){
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
        
+        var assetsManager = new BABYLON.AssetsManager(scene);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
         
+
+        
+        assetsManager.load();
     
         //Model positioning
        
