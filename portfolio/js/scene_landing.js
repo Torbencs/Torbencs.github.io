@@ -552,7 +552,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.770281804,28, 0.52387028603)), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.770281804,28, 0.52387028603), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
@@ -604,7 +604,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603))
+            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603)
             });
     
             keysCameraAfterLandingPos.push({
@@ -683,8 +683,8 @@ window.addEventListener('DOMContentLoaded', function(){
             
         //     button1.remove();
         // });
-        // currentScene = 4;
-        //     });
+         currentScene = 4;
+           });
         
 
        
