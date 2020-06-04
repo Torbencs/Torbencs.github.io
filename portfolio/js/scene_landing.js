@@ -427,7 +427,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(24.58403194696,28, -0.1610233)
+                            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -552,7 +552,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.3,28, 2), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.770281804,28, 0.52387028603)), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
@@ -604,7 +604,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(29.3,28, 2)
+            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603))
             });
     
             keysCameraAfterLandingPos.push({
@@ -619,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 730,
-            value: new BABYLON.Vector3(8.67129591, 31.7, -9.8745280)
+            value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
             });
             let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
             animCameraAfterLandingPos.setKeys(keysCameraAfterLandingPos);
@@ -674,18 +674,17 @@ window.addEventListener('DOMContentLoaded', function(){
     
         document.body.appendChild(button1);
         
-        button1.addEventListener("click", () => {
-            startScene();
-            startRun();
+        // button1.addEventListener("click", () => {
+        //     startScene();
+        //     startRun();
 
-            let skeleton = scene.getSkeletonByName("Armature");
-            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+        //     let skeleton = scene.getSkeletonByName("Armature");
+        //     snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
             
-            button1.remove();
-        });
-
-        currentScene = 4;
-            });
+        //     button1.remove();
+        // });
+        // currentScene = 4;
+        //     });
         
 
        
@@ -709,7 +708,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
         
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(8.67129591, 31.7, -9.8745280), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.273084616, 31.7, -10.0018), scene); 
         camera.minZ = 0.1;
         
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
