@@ -791,7 +791,7 @@ window.addEventListener('DOMContentLoaded', function(){
         // light_spot_r.intensity = 1;
         // light_spot_l.intensity = 1
         // light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 1;
+        light_hemi.intensity = 0.1;
    
        
 
