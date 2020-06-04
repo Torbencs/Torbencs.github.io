@@ -656,10 +656,10 @@ window.addEventListener('DOMContentLoaded', function(){
             animCameraLandingTarget.setKeys(keysCameraLandingTarget);
             animCameraLandingTarget.setEasingFunction(bezierEase);
     
-            //scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
-                currentScene = 4;
-                button1.style.display = 'block';
-            });
+            // scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
+            //     currentScene = 4;
+            //     button1.style.display = 'block';
+            // });
         
 
        
