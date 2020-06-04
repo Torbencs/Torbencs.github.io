@@ -257,6 +257,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
+
+        
+
         heliMeshTask.onSuccess = task => {
             heliMesh = task.loadedMeshes[0];
             heliMesh.name = "work";
@@ -555,7 +558,6 @@ window.addEventListener('DOMContentLoaded', function(){
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
         camera.maxZ = 500;        
         
-       
         //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
         
     
@@ -654,7 +656,7 @@ window.addEventListener('DOMContentLoaded', function(){
             animCameraLandingTarget.setKeys(keysCameraLandingTarget);
             animCameraLandingTarget.setEasingFunction(bezierEase);
     
-            scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
+            //scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
                 currentScene = 4;
                 button1.style.display = 'block';
             });
