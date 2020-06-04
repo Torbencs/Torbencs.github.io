@@ -670,15 +670,15 @@ window.addEventListener('DOMContentLoaded', function(){
         
             document.body.appendChild(button1);
             
-            button1.addEventListener("click", () => {
-                startScene();
-                startRun();
+            // button1.addEventListener("click", () => {
+            //     startScene();
+            //     startRun();
     
-                let skeleton = scene.getSkeletonByName("Armature");
-                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            //     let skeleton = scene.getSkeletonByName("Armature");
+            //     snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
                 
-                button1.remove();
-            });
+            //     button1.remove();
+            // });
 
             });
         
