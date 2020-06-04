@@ -658,8 +658,8 @@ window.addEventListener('DOMContentLoaded', function(){
     
             scene.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
                 currentScene = 4;
-                let but1 = document.getElementById('but1');
-                but1.style.display = 'block';
+                //let but1 = document.getElementById('but1');
+                //but1.style.display = 'block';
             });
         
 
