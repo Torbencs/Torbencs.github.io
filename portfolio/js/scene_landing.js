@@ -676,29 +676,29 @@ window.addEventListener('DOMContentLoaded', function(){
         let endHits = 0;
     
                     
-            //Create Start button
-            var button1 = document.createElement("button");
-            button1.style.top = (window.innerHeight / 2) - 30 + "px";
-            button1.style.left = (window.innerWidth / 2) - 75 + "px";
-            button1.textContent = "Start";
-            button1.style.width = "150px";
-            button1.style.height = "60px";
+            // //Create Start button
+            // var button1 = document.createElement("button");
+            // button1.style.top = (window.innerHeight / 2) - 30 + "px";
+            // button1.style.left = (window.innerWidth / 2) - 75 + "px";
+            // button1.textContent = "Start";
+            // button1.style.width = "150px";
+            // button1.style.height = "60px";
         
-            button1.setAttribute = ("id", "but1");
-            button1.classList.add('btn--action');
-            button1.style.position = "absolute";
+            // button1.setAttribute = ("id", "but1");
+            // button1.classList.add('btn--action');
+            // button1.style.position = "absolute";
         
-            document.body.appendChild(button1);
+            // document.body.appendChild(button1);
             
-            button1.addEventListener("click", () => {
-                startScene();
-                startRun();
+            // button1.addEventListener("click", () => {
+            //     startScene();
+            //     startRun();
 
-                let skeleton = scene.getSkeletonByName("Armature");
-                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            //     let skeleton = scene.getSkeletonByName("Armature");
+            //     snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
                 
-                button1.remove();
-            });
+            //     button1.remove();
+            // });
             
        
     
