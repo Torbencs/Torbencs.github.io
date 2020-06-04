@@ -599,67 +599,67 @@ window.addEventListener('DOMContentLoaded', function(){
        
         var bezierEase = new BABYLON.BezierCurveEase(.41,.08,.55,1);
     
-            let animCameraLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-            let keysCameraLandingPos = [];
+            let animCameraAfterLandingPos = new BABYLON.Animation("cameralandingPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysCameraAfterLandingPos = [];
     
-            keysCameraLandingPos.push({
+            keysCameraAfterLandingPos.push({
             frame: 0,
             value: new BABYLON.Vector3(29.3,28, 2)
             });
     
-            keysCameraLandingPos.push({
+            keysCameraAfterLandingPos.push({
             frame: 500,
             value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
             });
     
-            keysCameraLandingPos.push({
+            keysCameraAfterLandingPos.push({
             frame: 560,
             value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
             });
     
-            keysCameraLandingPos.push({
+            keysCameraAfterLandingPos.push({
             frame: 730,
             value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
             });
             let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
-            animCameraLandingPos.setKeys(keysCameraLandingPos);
-            animCameraLandingPos.setEasingFunction(bezierEase2);
+            animCameraAfterLandingPos.setKeys(keysCameraLandingPos);
+            animCameraAfterLandingPos.setEasingFunction(bezierEase2);
     
     
             //Target animation
     
-            let animCameraLandingTarget = new BABYLON.Animation("cameralandingTargetAnimation", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
-            let keysCameraLandingTarget = [];
+            let animCameraAfterLandingTarget = new BABYLON.Animation("cameralandingTargetAnimation", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysCameraAfterLandingTarget = [];
     
-            keysCameraLandingTarget.push({
+            keysCameraAfterLandingTarget.push({
             frame: 0,
             value: new BABYLON.Vector3(23,29.02,-2.55)
             });
             
-            keysCameraLandingTarget.push({
+            keysCameraAfterLandingTarget.push({
             frame: 150,
             value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
             });
     
-            keysCameraLandingTarget.push({
+            keysCameraAfterLandingTarget.push({
             frame: 500,
             value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
             });
     
-            keysCameraLandingTarget.push({
+            keysCameraAfterLandingTarget.push({
             frame: 750,
             value: new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 )
             });
     
     
     
-            animCameraLandingTarget.setKeys(keysCameraLandingTarget);
-            animCameraLandingTarget.setEasingFunction(bezierEase);
+            animCameraAfterLandingTarget.setKeys(keysCameraLandingTarget);
+            animCameraAfterLandingTarget.setEasingFunction(bezierEase);
     
-            // scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
-            //     currentScene = 4;
-            //     button1.style.display = 'block';
-            // });
+            scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
+                currentScene = 4;
+                button1.style.display = 'block';
+            });
         
 
        
