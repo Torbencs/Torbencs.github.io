@@ -262,7 +262,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
 
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
+        //var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
         
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
@@ -658,12 +658,12 @@ window.addEventListener('DOMContentLoaded', function(){
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
        
-        var assetsManager3 = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask3 = assetsManager3.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
+        var assetsManager = new BABYLON.AssetsManager(scene);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
         
 
         
-        assetsManager3.load();
+        assetsManager.load();
     
         //Model positioning
        
@@ -754,8 +754,6 @@ window.addEventListener('DOMContentLoaded', function(){
     //Scene 4
     var createScene4 = function () {
         
-        let sizeX = window.innerWidth;
-        let sizeY = window.innerHeight;
         let click = 0;
         let animRunning = false;
         let score = 0;
