@@ -1241,26 +1241,26 @@ window.addEventListener('DOMContentLoaded', function(){
             };
     
     //Call the createScene function
-    var scene1 = createScene1();
-    var scene2 = createScene2();
-    var scene3 = createScene3();
+    // var scene1 = createScene1();
+    // var scene2 = createScene2();
+    // var scene3 = createScene3();
     var scene4 = createScene4();
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
-        } else if (currentScene === 3){
-            scene2.dispose();
-            scene3.render();
-        } else if (currentScene === 4){
-            scene3.dispose();
-            scene4.render();
-        }
-        //scene3.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
+    //     } else if (currentScene === 3){
+    //         scene2.dispose();
+    //         scene3.render();
+    //     } else if (currentScene === 4){
+    //         scene3.dispose();
+    //         scene4.render();
+    //     }
+        scene4.render();
     });
     
     //Mobile quality
