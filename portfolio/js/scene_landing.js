@@ -655,6 +655,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 830, false, 0.6, ()=>{
                 currentScene = 4;
+                startBtn();
             });
         
 
@@ -976,6 +977,30 @@ window.addEventListener('DOMContentLoaded', function(){
         
         assetsManager.load();
 
+        function startBtn(){
+            var button1 = document.createElement("button");
+            button1.style.top = (window.innerHeight / 2) - 30 + "px";
+            button1.style.left = (window.innerWidth / 2) - 75 + "px";
+            button1.textContent = "Start";
+            button1.style.width = "150px"
+            button1.style.height = "60px"
+        
+            button1.setAttribute = ("id", "but1");
+            button1.classList.add('btn--action');
+            button1.style.position = "absolute";
+        
+            document.body.appendChild(button1);
+            
+            button1.addEventListener("click", () => {
+                startScene();
+                startRun();
+    
+                let skeleton = scene.getSkeletonByName("Armature");
+                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+                
+                button1.remove();
+            });
+        };
 
         function startScene(){
             //Camera pos animation
@@ -1127,7 +1152,6 @@ window.addEventListener('DOMContentLoaded', function(){
         } else if (currentScene === 4){
             scene3.dispose();
             scene4.render();
-            startBtn();
         }
         //scene4.render();
     });
@@ -1146,30 +1170,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
     });
 
-    function startBtn(){
-        var button1 = document.createElement("button");
-        button1.style.top = (window.innerHeight / 2) - 30 + "px";
-        button1.style.left = (window.innerWidth / 2) - 75 + "px";
-        button1.textContent = "Start";
-        button1.style.width = "150px"
-        button1.style.height = "60px"
     
-        button1.setAttribute = ("id", "but1");
-        button1.classList.add('btn--action');
-        button1.style.position = "absolute";
-    
-        document.body.appendChild(button1);
-        
-        button1.addEventListener("click", () => {
-            startScene();
-            startRun();
-
-            let skeleton = scene.getSkeletonByName("Armature");
-            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-            
-            button1.remove();
-        });
-    };
 
     let onAskButtonClicked = function() {
         DeviceOrientationEvent.requestPermission().then(response => {
