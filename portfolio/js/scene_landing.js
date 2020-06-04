@@ -547,7 +547,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var scene = new BABYLON.Scene(engine);
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
-    
+        
             
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.3,28, 2), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
@@ -631,7 +631,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraLandingTarget.push({
             frame: 0,
-            value: new BABYLON.Vector3(25.25,29.02,-4.8)
+            value: new BABYLON.Vector3(23,29.02,-2.55)
             });
             
             keysCameraLandingTarget.push({
