@@ -18,34 +18,6 @@ window.addEventListener('DOMContentLoaded', function(){
     // createScene function that creates and returns the scene
     var createScene1 = function () {
         currentScene = 1;
-
-        //Camera move animations
-        BABYLON.ArcRotateCamera.prototype.spinTo = function (whichprop, targetval, speed) {
-            var ease = new BABYLON.SineEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, whichprop, speed, 120, this[whichprop], targetval, 0, ease);
-        };
-
-        BABYLON.UniversalCamera.prototype.moveTargetTo = function (newPos, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at5', this, 'cameraDirection', speed, 120, this.cameraDirection, newPos, 0, ease);
-        };
-
-        BABYLON.ArcRotateCamera.prototype.moveRadiusTo = function (newVal, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, 'radius', speed, 120, this.radius, newVal, 0, ease);
-        }
-
-        BABYLON.UniversalCamera.prototype.movePosiTo = function (newPos, speed, callback) {
-            var ease = new BABYLON.SineEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease, callback);
-        }
-    
-        
-
     
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
@@ -201,43 +173,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
     //Scene 2
-    var createScene2 = function () {
-
-        //Camera move animations
-        BABYLON.ArcRotateCamera.prototype.spinTo = function (whichprop, targetval, speed) {
-            var ease = new BABYLON.SineEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, whichprop, speed, 120, this[whichprop], targetval, 0, ease);
-        };
-
-        BABYLON.ArcRotateCamera.prototype.moveTargetTo = function (newPos, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at5', this, 'target', speed, 120, this.target, newPos, 0, ease);
-        };
-
-        BABYLON.ArcRotateCamera.prototype.moveRadiusTo = function (newVal, speed) {
-            var ease = new BABYLON.CubicEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, 'radius', speed, 120, this.radius, newVal, 0, ease);
-        }
-
-        BABYLON.ArcRotateCamera.prototype.movePosiTo = function (newPos, speed) {
-            var ease = new BABYLON.SineEase();
-            ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
-            BABYLON.Animation.CreateAndStartAnimation('at4', this, 'position', speed, 120, this.position, newPos, 0, ease);
-        }
-    
-        
-
-    
+    var createScene2 = function () {    
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
 
-        var gravityVector = new BABYLON.Vector3(-.05, -1, -0.3);
-        var physicsPlugin = new BABYLON.CannonJSPlugin();
-        scene.enablePhysics(gravityVector, physicsPlugin);
     
             
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene);
@@ -592,20 +532,6 @@ window.addEventListener('DOMContentLoaded', function(){
             }
     });
         
-      
-    
-    /* GRAIN and ANTI ALI        
-        
-        var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
-        pipeline.grainEnabled = true;
-        pipeline.grain.intensity = 4;
-        //pipeline.samples = 3;
-        
-    
-        var kernel = 4;	
-        var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
-        */
-     
        
     return scene;
     }
@@ -731,21 +657,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 currentScene = 4;
             });
         
-        
-      
-    
-    /* GRAIN and ANTI ALI        
-        
-        var pipeline = new BABYLON.DefaultRenderingPipeline("", true, scene);
-        pipeline.grainEnabled = true;
-        pipeline.grain.intensity = 4;
-        //pipeline.samples = 3;
-        
-    
-        var kernel = 4;	
-        var postProcess0 = new BABYLON.BlurPostProcess("Horizontal blur", new BABYLON.Vector2(1.0, 0), kernel, 1.0, camera);
-        */
-     
+
        
     return scene;
     }
@@ -753,7 +665,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     //Scene 4
     var createScene4 = function () {
-        
+
         let click = 0;
         let animRunning = false;
         let score = 0;
@@ -774,23 +686,9 @@ window.addEventListener('DOMContentLoaded', function(){
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
         camera.setTarget(new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 ));
         
-        // Camera controls
-        camera.attachControl(canvas, true);
-        
-        //Lights
-        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
-    
-        // var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
-        // var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
-        // var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
-
-        
 
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 40, 3), scene);
-        
-        // light_spot_r.intensity = 1;
-        // light_spot_l.intensity = 1
-        // light_spot_r2.intensity = 1.4;
+   
         light_hemi.intensity = 1;
    
        
@@ -824,10 +722,6 @@ window.addEventListener('DOMContentLoaded', function(){
         };
         };
        
-
-    
-      
-
         
         mountainMeshTask.onSuccess = task => {
         let terrain,mountainAnimatable,snowboarderIdleAnimatable;
@@ -978,10 +872,7 @@ window.addEventListener('DOMContentLoaded', function(){
             obstacle.push(task.loadedMeshes[b])
         };
 
-        
-        
-        
-
+      
         //Collision
         scene.registerBeforeRender(()=>{
             let skeleton = scene.getSkeletonByName('Armature');
@@ -989,9 +880,6 @@ window.addEventListener('DOMContentLoaded', function(){
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                 
-                    
-                   
-                    
                    mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
@@ -1080,29 +968,6 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
         
-            var button1 = document.createElement("button");
-            button1.style.top = (window.innerHeight / 2) - 30 + "px";
-            button1.style.left = (window.innerWidth / 2) - 75 + "px";
-            button1.textContent = "Start";
-            button1.style.width = "150px"
-            button1.style.height = "60px"
-        
-            button1.setAttribute = ("id", "but1");
-            button1.classList.add('btn--action');
-            button1.style.position = "absolute";
-        
-            document.body.appendChild(button1);
-            
-            button1.addEventListener("click", () => {
-                startScene();
-                startRun();
-
-                let skeleton = scene.getSkeletonByName("Armature");
-                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-                
-                button1.remove();
-            })
-
         
          
         };
@@ -1241,37 +1106,36 @@ window.addEventListener('DOMContentLoaded', function(){
             };
     
     //Call the createScene function
-    // var scene1 = createScene1();
-    // var scene2 = createScene2();
-    // var scene3 = createScene3();
+    var scene1 = createScene1();
+    var scene2 = createScene2();
+    var scene3 = createScene3();
     var scene4 = createScene4();
+    
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    // if (currentScene === 1 ){
-    //         scene1.render();
-    //     } else if (currentScene === 2){
-    //         scene1.dispose();
-    //         scene2.render();
-    //     } else if (currentScene === 3){
-    //         scene2.dispose();
-    //         scene3.render();
-    //     } else if (currentScene === 4){
-    //         scene3.dispose();
-    //         scene4.render();
-    //     }
-        scene4.render();
+    if (currentScene === 1 ){
+            scene1.render();
+            
+        } else if (currentScene === 2){
+            scene1.dispose();
+            scene2.render();
+           
+        } else if (currentScene === 3){
+            scene2.dispose();
+            scene3.render();
+        } else if (currentScene === 4){
+            scene3.dispose();
+            scene4.render();
+            startBtn();
+        }
+        //scene4.render();
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
-    
-  
-    
-    
+    //engine.setHardwareScalingLevel(0.5)
     
 
-    
     
     //Add the canvas/window resize event handler
     window.addEventListener('resize', function(){
@@ -1281,6 +1145,31 @@ window.addEventListener('DOMContentLoaded', function(){
     
     
     });
+
+    function startBtn(){
+        var button1 = document.createElement("button");
+        button1.style.top = (window.innerHeight / 2) - 30 + "px";
+        button1.style.left = (window.innerWidth / 2) - 75 + "px";
+        button1.textContent = "Start";
+        button1.style.width = "150px"
+        button1.style.height = "60px"
+    
+        button1.setAttribute = ("id", "but1");
+        button1.classList.add('btn--action');
+        button1.style.position = "absolute";
+    
+        document.body.appendChild(button1);
+        
+        button1.addEventListener("click", () => {
+            startScene();
+            startRun();
+
+            let skeleton = scene.getSkeletonByName("Armature");
+            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            
+            button1.remove();
+        });
+    };
 
     let onAskButtonClicked = function() {
         DeviceOrientationEvent.requestPermission().then(response => {
