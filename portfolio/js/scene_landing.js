@@ -786,12 +786,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
 
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 30, 3), scene);
+        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 40, 3), scene);
         
         // light_spot_r.intensity = 1;
         // light_spot_l.intensity = 1
         // light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 0.1;
+        light_hemi.intensity = 1;
    
        
 
