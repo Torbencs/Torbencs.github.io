@@ -622,7 +622,7 @@ window.addEventListener('DOMContentLoaded', function(){
             value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
             });
             let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
-            animCameraAfterLandingPos.setKeys(keysCameraLandingPos);
+            animCameraAfterLandingPos.setKeys(keysCameraAfterLandingPos);
             animCameraAfterLandingPos.setEasingFunction(bezierEase2);
     
     
@@ -653,10 +653,10 @@ window.addEventListener('DOMContentLoaded', function(){
     
     
     
-            animCameraAfterLandingTarget.setKeys(keysCameraLandingTarget);
+            animCameraAfterLandingTarget.setKeys(keysCameraAfterLandingTarget);
             animCameraAfterLandingTarget.setEasingFunction(bezierEase);
     
-            scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
+            scene.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
                 currentScene = 4;
                 button1.style.display = 'block';
             });
