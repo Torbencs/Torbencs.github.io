@@ -619,7 +619,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 730,
-            value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
+            value: new BABYLON.Vector3(8.67129591, 31.7, -9.8745280)
             });
             let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
             animCameraAfterLandingPos.setKeys(keysCameraAfterLandingPos);
@@ -657,7 +657,7 @@ window.addEventListener('DOMContentLoaded', function(){
             animCameraAfterLandingTarget.setEasingFunction(bezierEase);
     
             scene.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
-                currentScene = 4;
+                
                 
                 //Create Start button
         var button1 = document.createElement("button");
@@ -683,6 +683,8 @@ window.addEventListener('DOMContentLoaded', function(){
             
             button1.remove();
         });
+
+        currentScene = 4;
             });
         
 
@@ -707,7 +709,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
         
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.273084616, 31.7, -10.0018), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(8.67129591, 31.7, -9.8745280), scene); 
         camera.minZ = 0.1;
         
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
