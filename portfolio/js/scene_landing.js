@@ -666,7 +666,6 @@ window.addEventListener('DOMContentLoaded', function(){
         button1.textContent = "Start";
         button1.style.width = "150px";
         button1.style.height = "60px";
-        button1.style.display = 'none';
     
         button1.setAttribute = ("id", "but1");
         button1.classList.add('btn--action');
@@ -674,15 +673,15 @@ window.addEventListener('DOMContentLoaded', function(){
     
         document.body.appendChild(button1);
         
-        // button1.addEventListener("click", () => {
-        //     startScene();
-        //     startRun();
+        button1.addEventListener("click", () => {
+            startScene();
+            startRun();
 
-        //     let skeleton = scene.getSkeletonByName("Armature");
-        //     snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            let skeleton = scene.getSkeletonByName("Armature");
+            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
             
-        //     button1.remove();
-        // });
+            button1.remove();
+        });
          currentScene = 4;
            });
         
