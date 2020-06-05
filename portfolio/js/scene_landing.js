@@ -427,7 +427,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603)
+                            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -552,7 +552,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(23.770281804,28, 0.52387028603), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(24.63419644,28, 0.392745106639), scene);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
@@ -604,7 +604,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(23.770281804,28, 0.52387028603)
+            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639)
             });
     
             keysCameraAfterLandingPos.push({
@@ -704,7 +704,7 @@ window.addEventListener('DOMContentLoaded', function(){
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
         light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 1;
+        light_hemi.intensity = 1.2;
    
        
 
@@ -750,8 +750,8 @@ window.addEventListener('DOMContentLoaded', function(){
         var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
         button.width = 0.2;
         button.height = "40px";
-        button.color = "white";
-        button.background = "green";
+        button.color = "Start";
+        button.background = "Yellow";
         button.onPointerClickObservable.add(()=>{
             startScene();
             startRun();
@@ -960,7 +960,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 });
     
                 keysCameraEnd.push({
-                    frame: 100,
+                    frame: 90,
                     value: new BABYLON.Vector3(-8.6596561555, 29.41155507, -8.039254)
                 });
     
@@ -980,20 +980,20 @@ window.addEventListener('DOMContentLoaded', function(){
                 });
     
                 keysCameraTargetEnd.push({
-                    frame: 100,
+                    frame: 90,
                     value: new BABYLON.Vector3(-9.463078468,29.91099740,-8.26246478)
                 });
     
                 animCameraTargetEnd.setKeys(keysCameraTargetEnd);
                 animCameraTargetEnd.setEasingFunction(bezierEase2);
     
-                scene.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 100, false);
+                scene.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 90, false);
                 window.setTimeout(()=>{
                     let skeleton = scene.getSkeletonByName("Armature");
-                    snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 0.8);
+                    snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 1);
 
                     window.setTimeout(()=>{
-                        fadeOut(350);
+                        fadeOut(300);
 
                     
                         const anchor = document.createElement("a");
@@ -1003,7 +1003,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         anchor.click();
                           
 
-                    },1300);
+                    },1000);
 
                 },800);
             }
@@ -1171,7 +1171,8 @@ window.addEventListener('DOMContentLoaded', function(){
             scene3.dispose();
             scene4.render();
         }
-        //scene4.render();
+        // scene1.dispose();
+        // scene3.render();
     });
     
     //Mobile quality
