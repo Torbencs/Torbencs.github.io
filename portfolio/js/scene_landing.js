@@ -44,12 +44,12 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
 
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
+        var light_hemi1 = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 10, 3), scene);
         
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
         light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 1.2;
+        light_hemi1.intensity = 1.2;
    
         //Light visual helpers
         var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
@@ -667,42 +667,15 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
     //Scene 4
-    var createScene4 = function () {
+   
+    var createScene4 = function(){
         let click = 0;
         let animRunning = false;
         let score = 0;
         let attempts = 0;
         let hits = 0;
         let endHits = 0;
-    
-
-
-            // //Create Start button
-            // var button1 = document.createElement("button");
-            // button1.style.top = (window.innerHeight / 2) - 30 + "px";
-            // button1.style.left = (window.innerWidth / 2) - 75 + "px";
-            // button1.textContent = "Start";
-            // button1.style.width = "150px";
-            // button1.style.height = "60px";
         
-            // button1.setAttribute = ("id", "but1");
-            // button1.classList.add('btn--action');
-            // button1.style.position = "absolute";
-        
-            // document.body.appendChild(button1);
-            
-            // button1.addEventListener("click", () => {
-            //     startScene();
-            //     startRun();
-
-            //     let skeleton = scene.getSkeletonByName("Armature");
-            //     snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-                
-            //     button1.remove();
-            // });
-            
-       
-    
         // Scene and Physics
         var scene = new BABYLON.Scene(engine);
         scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
@@ -714,9 +687,23 @@ window.addEventListener('DOMContentLoaded', function(){
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
         camera.setTarget(new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 ));
         
+        // Camera controls
+        camera.attachControl(canvas, true);
+        
+        //Lights
+        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
+    
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
+        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
+        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
 
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 40, 3), scene);
-   
+        
+
+        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
+        
+        light_spot_r.intensity = 1;
+        light_spot_l.intensity = 1
+        light_spot_r2.intensity = 1.4;
         light_hemi.intensity = 1;
    
        
@@ -739,8 +726,6 @@ window.addEventListener('DOMContentLoaded', function(){
         var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
 
         snowboardMeshTask.onSuccess = task => {
-
-        x
         
         
         let i;
@@ -752,9 +737,29 @@ window.addEventListener('DOMContentLoaded', function(){
         };
         };
        
+
+    
+      
+
         
         mountainMeshTask.onSuccess = task => {
         let terrain,mountainAnimatable,snowboarderIdleAnimatable;
+
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
+        button.width = 0.2;
+        button.height = "40px";
+        button.color = "white";
+        button.background = "green";
+        button.onPointerClickObservable.add(()=>{
+            startScene();
+            startRun();
+            
+            advancedTexture.dispose();
+        })
+        advancedTexture.addControl(button); 
+
         
         let i;
         for(i=1; i < task.loadedMeshes.length; i++){
@@ -780,25 +785,7 @@ window.addEventListener('DOMContentLoaded', function(){
         endBox.rotation.z = 0;
         endBox.visibility = 0;
         task.loadedMeshes[0].addChild(endBox);
-
-        //Add button            
-        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
-        button.width = 0.2;
-        button.height = "40px";
-        button.color = "white";
-        button.background = "green";
-        button.onPointerClickObservable.add(function() {
-            startScene();
-            startRun();
-
-            let skeleton = scene.getSkeletonByName("Armature");
-            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-            advancedTexture.dispose();
-        });
-        
-        advancedTexture.addControl(button); 
+    
 
         
         function startRun(){
@@ -920,7 +907,10 @@ window.addEventListener('DOMContentLoaded', function(){
             obstacle.push(task.loadedMeshes[b])
         };
 
-      
+        
+        
+        
+
         //Collision
         scene.registerBeforeRender(()=>{
             let skeleton = scene.getSkeletonByName('Armature');
@@ -928,6 +918,9 @@ window.addEventListener('DOMContentLoaded', function(){
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
                 
+                    
+                   
+                    
                    mountainAnimatable.speedRatio = 0.039;
                    //console.log('hit');
                    if (hits == 0){
@@ -1016,6 +1009,29 @@ window.addEventListener('DOMContentLoaded', function(){
             }
         });
         
+            var button1 = document.createElement("button");
+            button1.style.top = (window.innerHeight / 2) - 30 + "px";
+            button1.style.left = (window.innerWidth / 2) - 75 + "px";
+            button1.textContent = "Start";
+            button1.style.width = "150px"
+            button1.style.height = "60px"
+        
+            button1.setAttribute = ("id", "but1");
+            button1.classList.add('btn--action');
+            button1.style.position = "absolute";
+        
+            document.body.appendChild(button1);
+            
+            button1.addEventListener("click", () => {
+                startScene();
+                startRun();
+
+                let skeleton = scene.getSkeletonByName("Armature");
+                snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+                
+                button1.remove();
+            })
+
         
          
         };
@@ -1152,6 +1168,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         return scene;    
             };
+
     
     //Call the createScene function
     var scene1 = createScene1();
@@ -1162,20 +1179,20 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    // if (currentScene === 1 ){
-    //         scene1.render();
-    //     } else if (currentScene === 2){
-    //         scene1.dispose();
-    //         scene2.render();
+    if (currentScene === 1 ){
+            scene1.render();
+        } else if (currentScene === 2){
+            scene1.dispose();
+            scene2.render();
            
-    //     } else if (currentScene === 3){
-    //         scene2.dispose();
-    //         scene3.render();
-    //     } else if (currentScene === 4){
-    //         scene3.dispose();
-    //         scene4.render();
-    //     }
-        scene4.render();
+        } else if (currentScene === 3){
+            scene2.dispose();
+            scene3.render();
+        } else if (currentScene === 4){
+            scene3.dispose();
+            scene4.render();
+        }
+        //scene4.render();
     });
     
     //Mobile quality
