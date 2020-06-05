@@ -675,24 +675,8 @@ window.addEventListener('DOMContentLoaded', function(){
         let hits = 0;
         let endHits = 0;
     
-        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
-        button.width = 0.2;
-        button.height = "40px";
-        button.color = "white";
-        button.background = "green";
-        advancedTexture.addControl(button); 
-        button.onPointerDownObservable.add(function() {
-            startScene();
-            startRun();
 
-            let skeleton = scene.getSkeletonByName("Armature");
-            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-            button.dispose();
-        });
-
-        
             // //Create Start button
             // var button1 = document.createElement("button");
             // button1.style.top = (window.innerHeight / 2) - 30 + "px";
@@ -755,6 +739,24 @@ window.addEventListener('DOMContentLoaded', function(){
         var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
 
         snowboardMeshTask.onSuccess = task => {
+
+        //Add button            
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
+        button.width = 0.2;
+        button.height = "40px";
+        button.color = "white";
+        button.background = "green";
+        advancedTexture.addControl(button); 
+        button.onPointerDownObservable.add(function() {
+            startScene();
+            startRun();
+
+            let skeleton = scene.getSkeletonByName("Armature");
+            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            button.dispose();
+        });
         
         
         let i;
