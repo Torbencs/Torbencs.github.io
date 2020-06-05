@@ -740,24 +740,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         snowboardMeshTask.onSuccess = task => {
 
-        //Add button            
-        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
-        button.width = 0.2;
-        button.height = "40px";
-        button.color = "white";
-        button.background = "green";
-        button.onPointerDownObservable.add(function() {
-            startScene();
-            startRun();
-
-            let skeleton = scene.getSkeletonByName("Armature");
-            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-            advancedTexture.dispose();
-        });
-        
-        advancedTexture.addControl(button); 
+        x
         
         
         let i;
@@ -798,7 +781,24 @@ window.addEventListener('DOMContentLoaded', function(){
         endBox.visibility = 0;
         task.loadedMeshes[0].addChild(endBox);
 
-          
+        //Add button            
+        var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
+        button.width = 0.2;
+        button.height = "40px";
+        button.color = "white";
+        button.background = "green";
+        button.onPointerClickObservable.add(function() {
+            startScene();
+            startRun();
+
+            let skeleton = scene.getSkeletonByName("Armature");
+            snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
+            advancedTexture.dispose();
+        });
+        
+        advancedTexture.addControl(button); 
 
         
         function startRun(){
@@ -1162,20 +1162,20 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
            
-        } else if (currentScene === 3){
-            scene2.dispose();
-            scene3.render();
-        } else if (currentScene === 4){
-            scene3.dispose();
-            scene4.render();
-        }
-        //scene4.render();
+    //     } else if (currentScene === 3){
+    //         scene2.dispose();
+    //         scene3.render();
+    //     } else if (currentScene === 4){
+    //         scene3.dispose();
+    //         scene4.render();
+    //     }
+        scene4.render();
     });
     
     //Mobile quality
