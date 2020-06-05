@@ -748,15 +748,16 @@ window.addEventListener('DOMContentLoaded', function(){
         button.height = "40px";
         button.color = "white";
         button.background = "green";
-        advancedTexture.addControl(button); 
         button.onPointerDownObservable.add(function() {
             startScene();
             startRun();
 
             let skeleton = scene.getSkeletonByName("Armature");
             snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
-            button.dispose();
+            advancedTexture.dispose();
         });
+        
+        advancedTexture.addControl(button); 
         
         
         let i;
