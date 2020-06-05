@@ -1166,8 +1166,7 @@ window.addEventListener('DOMContentLoaded', function(){
             scene2.dispose();
             scene3.render();
         } else if (currentScene === 4){
-            scene1.dispose();
-            scene2.dispose();
+            
             scene3.dispose();
             scene4.render();
         }
