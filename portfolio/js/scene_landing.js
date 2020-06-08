@@ -533,6 +533,7 @@ window.addEventListener('DOMContentLoaded', function(){
     //Scene 3
     var createScene3 = function () {
 
+        let snowboarderMesh;
         
     
     
@@ -578,14 +579,19 @@ window.addEventListener('DOMContentLoaded', function(){
     
        
         var assetsManager = new BABYLON.AssetsManager(scene3);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
-        
-
-        
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/scene_3.glb");
+        var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder_scene_3.babylon");
+             
         assetsManager.load();
     
         //Model positioning
-       
+       snowboardMeshTask.onSuccess = task => {
+           snowboarderMesh = task.loadedMeshes[0];
+           task.loadedMeshes[0].position = new BABYLON.Vector3(-12.81225816, 34.7563176345, -14.80271683217);
+           task.loadedMeshes[0].rotation.y = 0.6; 
+
+
+       }
        
         var bezierEase = new BABYLON.BezierCurveEase(.41,.08,.55,1);
     
@@ -598,19 +604,11 @@ window.addEventListener('DOMContentLoaded', function(){
             });
     
             keysCameraAfterLandingPos.push({
-            frame: 500,
+            frame: 400,
             value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
             });
     
-            keysCameraAfterLandingPos.push({
-            frame: 560,
-            value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
-            });
-    
-            keysCameraAfterLandingPos.push({
-            frame: 730,
-            value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
-            });
+           
             let bezierEase2 = new BABYLON.BezierCurveEase(.34,.16,.05,.85);
             animCameraAfterLandingPos.setKeys(keysCameraAfterLandingPos);
             animCameraAfterLandingPos.setEasingFunction(bezierEase2);
@@ -627,30 +625,95 @@ window.addEventListener('DOMContentLoaded', function(){
             });
             
             keysCameraAfterLandingTarget.push({
-            frame: 150,
-            value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
+            frame: 400,
+            value: new BABYLON.Vector3(-12.4023117,35.4,-15.2198993)
             });
     
-            keysCameraAfterLandingTarget.push({
-            frame: 500,
-            value: new BABYLON.Vector3(-12.4023117,36,-15.2198993)
-            });
-    
-            keysCameraAfterLandingTarget.push({
-            frame: 750,
-            value: new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 )
-            });
-    
+           
     
     
             animCameraAfterLandingTarget.setKeys(keysCameraAfterLandingTarget);
-            animCameraAfterLandingTarget.setEasingFunction(bezierEase);
+            animCameraAfterLandingTarget.setEasingFunction(bezierEase2);
     
-            scene3.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
-                currentScene = 4;
-            });
+           
         
 
+            ///
+            //Animation into scene 4
+            
+    
+            let animCameraAfterSnowboarderPos = new BABYLON.Animation("cameraSnowboarderPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysCameraAfterSnowboarderPos = [];
+    
+           
+            keysCameraAfterSnowboarderPos.push({
+            frame: 0,
+            value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
+            });
+    
+            keysCameraAfterSnowboarderPos.push({
+            frame: 300,
+            value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
+            });
+            animCameraAfterSnowboarderPos.setKeys(keysCameraAfterSnowboarderPos);
+            animCameraAfterSnowboarderPos.setEasingFunction(bezierEase2);
+    
+    
+            //Target animation
+    
+            let animCameraAfterSnowboarderTarget = new BABYLON.Animation("cameralandingTargetAnimation", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysCameraAfterSnowboarderTarget = [];
+    
+           
+            keysCameraAfterSnowboarderTarget.push({
+            frame: 0,
+            value: new BABYLON.Vector3(-12.4023117,35.4,-15.2198993)
+            });
+    
+            keysCameraAfterSnowboarderTarget.push({
+            frame: 200,
+            value: new BABYLON.Vector3(-9.57924162818 , 29, -8.817296324 )
+            });
+    
+            animCameraAfterSnowboarderTarget.setKeys(keysCameraAfterSnowboarderTarget);
+            animCameraAfterSnowboarderTarget.setEasingFunction(bezierEase);
+            
+
+            //Snowboarder movement animation
+            let animSnowboarderPos = new BABYLON.Animation("SnowboarderPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysSnowboarderPos = [];
+    
+           
+            keysSnowboarderPos.push({
+            frame: 0,
+            value: new BABYLON.Vector3(-12.81225816, 34.7563176345, -14.80271683217)
+            });
+    
+            keysSnowboarderPos.push({
+            frame: 300,
+            value: new BABYLON.Vector3(-9.758738, 29.65, -8.740)
+            });
+            animSnowboarderPos.setKeys(keysSnowboarderPos);
+            animSnowboarderPos.setEasingFunction(bezierEase);
+
+            //Begin scene animations
+            scene3.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 500, false, 0.8, ()=>{
+
+                let skeleton = scene3.getSkeletonByName("Armature");
+                console.log(skeleton);
+                let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1, ()=>{
+                    scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 350, false, 0.6, ()=>{
+                        
+                    });
+                    if(snowboarderMesh){
+                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos], 0, 300, false, 0.6, ()=>{
+                            currentScene = 4;
+                        });
+                    };
+                });
+            });
+    
+            
        
     return scene3;
     }
@@ -1136,22 +1199,27 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
            
-        } else if (currentScene === 3){
-            scene2.dispose();
-            scene3.render();
-        } else if (currentScene === 4){
+    //     } else if (currentScene === 3){
+    //         scene2.dispose();
+    //         scene3.render();
+    //     } else if (currentScene === 4){
             
-            scene3.dispose();
-            scene4.render();
-        }
+    //         scene3.dispose();
+    //         scene4.render();
+    //     }
         // scene1.dispose();
-     // scene1.render();
+        
+     scene3.render();
+     if (currentScene == 4){
+         scene3.dispose();
+         scene4.render();
+     }
     });
     
     //Mobile quality
