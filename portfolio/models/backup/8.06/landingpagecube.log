@@ -1,0 +1,49 @@
+Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
+	processing begun of mesh:  Plane
+		WARNING: No materials have been assigned: 
+		num positions      :  4
+		num normals        :  4
+		num tangents       :  0
+		num uvs            :  8
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  6
+	processing begun of mesh:  Text
+		WARNING: No materials have been assigned: 
+		num positions      :  1557
+		num normals        :  1557
+		num tangents       :  0
+		num uvs            :  3114
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  2148
+	WARNING: The following object (type - FONT) is not currently exportable thus ignored: hey-copy
+	processing begun of mesh:  Cube
+		WARNING: No materials have been assigned: 
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+========= Writing of JSON file started =========
+	writing mesh:  Plane
+	writing mesh:  Text
+	writing mesh:  Cube
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.4186 secs

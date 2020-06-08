@@ -21,13 +21,13 @@ window.addEventListener('DOMContentLoaded', function(){
         
 
         // Scene and Physics
-        var scene = new BABYLON.Scene(engine);
-        scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+        var scene1 = new BABYLON.Scene(engine);
+        scene1.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(32.70,10, 24.137), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,80,70), scene1);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(40.06,29.02,8.89));
+        camera.setTarget(new BABYLON.Vector3(0,24,0));
         camera.maxZ = 500;      
 
         
@@ -35,35 +35,34 @@ window.addEventListener('DOMContentLoaded', function(){
         // Camera controls
         camera.attachControl(canvas, true);
         
+        var ground = BABYLON.Mesh.CreateGround("ground1",132, 132, 2, scene1);
+       
+        ground.rotation.y = Math.PI;
+        ground.position.y = 11.3;
+        ground.position.x = -5;
+        ground.position.z = -10.8;
+        
+        // Create and tweak the background material.
+        // var backgroundMaterial = new BABYLON.BackgroundMaterial("backgroundMaterial", scene1);
+        // backgroundMaterial.diffuseTexture = new BABYLON.Texture("images/baked-alpha.png", scene1);
+        // backgroundMaterial.diffuseTexture.hasAlpha = true;
+        // ground.material = backgroundMaterial;
+
+
         //Lights
-        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
+        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene1);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
+      
 
-        
-
-        var light_hemi1 = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 10, 3), scene);
-        
-        light_spot_r.intensity = 1;
-        light_spot_l.intensity = 1
-        light_spot_r2.intensity = 1.4;
+        var light_hemi1 = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 1, 1), scene1);
         light_hemi1.intensity = 1.2;
+       
    
-        //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
-        lightSphere1.position = new BABYLON.Vector3(-8.6565837,36, 13.0086459);
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
-        lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
-
-     
-        
 
         //Model positioning
        
-        var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_1.glb");
+        var assetsManager = new BABYLON.AssetsManager(scene1);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/scene_1.glb");
         //var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
 
         mountainMeshTask.onSuccess = task => {
@@ -75,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         
-        scene.onPointerObservable.add((pointerInfo) => {
+        scene1.onPointerObservable.add((pointerInfo) => {
             switch (pointerInfo.type) {
                 case BABYLON.PointerEventTypes.POINTERDOWN:
                     
@@ -102,51 +101,61 @@ window.addEventListener('DOMContentLoaded', function(){
 
         keysPosition.push({
         frame: 0,
-        value: new BABYLON.Vector3(3.33016,14, -7.457)
+        value: new BABYLON.Vector3(0,70, 180)
         });
 
         keysTarget.push({
         frame: 0,
-        value: new BABYLON.Vector3(14.57387,12.615,9.7957)
-        });  
-
-        keysPosition.push({
-        frame: 350,
-        value: new BABYLON.Vector3(7,45,67)
+        value: new BABYLON.Vector3(0,70,0)
         });
 
+       
+
         keysTarget.push({
-        frame: 350,
-        value: new BABYLON.Vector3(0,21,0)
+        frame: 250,
+        value: new BABYLON.Vector3(0,70,0)
         });
 
         keysPosition.push({
-        frame: 400,
-        value: new BABYLON.Vector3(7,45,67)
+        frame: 300,
+        value: new BABYLON.Vector3(0,90,90)
         });
 
         keysTarget.push({
-        frame: 400,
-        value: new BABYLON.Vector3(0,21,0)
+        frame: 300,
+        value: new BABYLON.Vector3(0,32,0)
+        });
+        
+
+
+        keysPosition.push({
+        frame: 550,
+        value: new BABYLON.Vector3(0,50,40)
         });
 
         keysTarget.push({
-        frame: 410,
-        value: new BABYLON.Vector3(0,21,0)
+        frame: 450,
+        value: new BABYLON.Vector3(-39.34272594,11.3000001907,9.308567653)
+        });
+
+
+
+
+        keysTarget.push({
+        frame: 650,
+        value: new BABYLON.Vector3(-1.438602761972,43.4259063288,-19.62121916)
+        });
+
+
+        keysTarget.push({
+        frame: 750,
+        value: new BABYLON.Vector3(25.25,29.02,-4.8)
         });
 
         keysPosition.push({
-        frame: 470,
-        value: new BABYLON.Vector3(29.258,18, 15.243)
+        frame: 850,
+        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
         });
-
-
-        keysTarget.push({
-        frame: 470,
-        value: new BABYLON.Vector3(38.211,18.40,8.0507)
-        });
-
-
 
       
       
@@ -165,45 +174,46 @@ window.addEventListener('DOMContentLoaded', function(){
     
         var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
     
-        scene.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
+        scene1.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
             currentScene = 2;
+            scene2Started = true;
         });
        
-        return scene;    
+        return scene1;    
             };
 
 
     //Scene 2
     var createScene2 = function () {
         // Scene and Physics
-        var scene = new BABYLON.Scene(engine);
-        scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+        var scene2 = new BABYLON.Scene(engine);
+        scene2.clearColor = new BABYLON.Color4(0, 0, 0, 0);
 
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene);
-        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene2);
+        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene2);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(38.211,18.40,8.0507));
         camera.maxZ = 500;        
         
        
-        //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
+        //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene2);
         
     
         // Camera controls
         camera.attachControl(canvas, true);
         
         //Lights
-        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
+        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene2);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene2);       
+        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene2);
+        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene2);
 
         
 
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
+        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 1), scene2);
         
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
@@ -211,48 +221,28 @@ window.addEventListener('DOMContentLoaded', function(){
         light_hemi.intensity = 1.2;
    
         //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
+        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene2);
         lightSphere1.position = new BABYLON.Vector3(-9.12078903 ,36, -1.278661083);
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
+        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene2);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
 
        
-        //Shadows
-        shadowGenerator = new BABYLON.ShadowGenerator(1024, light_spot_r2);
-        //Switch to test different shadow configs
-        let shadow_options = 1;
-        switch (shadow_options) {
-            case 1:
-                shadowGenerator.bias = 0.00002;
-                shadowGenerator.usePoissonSampling = true;
-                //shadowGenerator.useBlurExponentialShadowMap = true;
-                shadowGenerator.frustumEdgeFalloff = 2;
-                shadowGenerator.darkness = 0;
-                break;
-            case 2:
-                shadowGenerator.bias = 0.000018;
-                shadowGenerator.usePoissonSampling = true;
-                //shadowGenerator.useBlurExponentialShadowMap = true;
-                shadowGenerator.frustumEdgeFalloff = 2.7;
-                shadowGenerator.darkness = 0.3;
-                break;
-    
-        };
+        
         
 
         //Model positioning
        
-        var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_2.glb");
+        var assetsManager = new BABYLON.AssetsManager(scene2);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/scene_2.glb");
         var heliMeshTask = assetsManager.addMeshTask("heli", "", "models/helicopter.glb");
 
         mountainMeshTask.onSuccess = task => {
             mountainMesh = task.loadedMeshes[0];
-           /* let i;
+            let i;
             for (i=0; i < task.loadedMeshes.length;i++){
                 console.log(task.loadedMeshes[i].name)
             }
-*/
+
 
 
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
@@ -272,20 +262,20 @@ window.addEventListener('DOMContentLoaded', function(){
             
             let landingPad = {x:23,y:29.02,z:-2.55};
             
-            var landingTimer = new Timer(2200, scene, ()=>{
+            var landingTimer = new Timer(2200, scene2, ()=>{
                 landingStarted = true;
             });
 
-            var matLetterGreen = new BABYLON.StandardMaterial("myMaterial", scene);                          
+            var matLetterGreen = new BABYLON.StandardMaterial("myMaterial", scene2);                          
             matLetterGreen.diffuseColor = new BABYLON.Color3(1, 0.184, 0);
 
-            var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene);                          
+            var matLetterWhite = new BABYLON.StandardMaterial("myMaterial", scene2);                          
             matLetterWhite.diffuseColor = new BABYLON.Color3(1, 1, 1);
 
           
 
            
-            scene.registerBeforeRender( () => {
+            scene2.registerBeforeRender( () => {
                 //Initiate landing timer
 
                
@@ -347,7 +337,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                            
                             if (landingTimer.currentTime < lastTime - 60 && meshNumber < 19){
-                                let mesh = scene.getMeshByName(meshNumber.toString());
+                                let mesh = scene2.getMeshByName(meshNumber.toString());
                             
                                 mesh.material = matLetterGreen;
                                 meshNumber++;
@@ -360,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function(){
                             meshNumber = 0;
                             let i;
                             for (i=0; i<19; i++){
-                                let mesh = scene.getMeshByName(i.toString());
+                                let mesh = scene2.getMeshByName(i.toString());
                                 mesh.material = matLetterWhite;
                             };
                         };
@@ -455,9 +445,9 @@ window.addEventListener('DOMContentLoaded', function(){
                         animCameraLandingTarget.setKeys(keysCameraLandingTarget);
                         animCameraLandingTarget.setEasingFunction(bezierEase);
 
-                        scene.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
+                        scene2.beginDirectAnimation(camera, [animCameraLandingPos,animCameraLandingTarget], 0, 200, false);
                         landingAnimStarted = true;
-                        scene.beginAnimation(heliMesh, 0, 150, false, 0.4);
+                        scene2.beginAnimation(heliMesh, 0, 150, false, 0.4);
                         window.setTimeout(()=>{
                             currentScene = 3;
                         },6000)
@@ -523,21 +513,21 @@ window.addEventListener('DOMContentLoaded', function(){
         var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
     
         
-        scene.beginDirectAnimation(camera,[animationTarget, animationPosition], 0, maxFrame, false, 0.35, ()=>{
+        scene2.beginDirectAnimation(camera,[animationTarget, animationPosition], 0, maxFrame, false, 0.35, ()=>{
             scene2Started = true;
         }); 
         
-        scene.onPointerObservable.add((pointerInfo) => {
-            switch (pointerInfo.type) {
-                case BABYLON.PointerEventTypes.POINTERDOWN:
+        // scene2.onPointerObservable.add((pointerInfo) => {
+        //     switch (pointerInfo.type) {
+        //         case BABYLON.PointerEventTypes.POINTERDOWN:
                     
-                        console.log(pointerInfo.pickInfo.pickedPoint);
+        //                 console.log(pointerInfo.pickInfo.pickedPoint);
                     
-            }
-    });
+        //     }
+    //});
         
        
-    return scene;
+    return scene2;
     }
 
     //Scene 3
@@ -547,33 +537,33 @@ window.addEventListener('DOMContentLoaded', function(){
     
     
         // Scene and Physics
-        var scene = new BABYLON.Scene(engine);
-        scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+        var scene3 = new BABYLON.Scene(engine);
+        scene3.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(24.63419644,28, 0.392745106639), scene);
-        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(24.63419644,28, 0.392745106639), scene3);
+        //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene3);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
         camera.maxZ = 500;        
         
-        //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene);
+        //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene3);
         
     
         // Camera controls
         camera.attachControl(canvas, true);
         
         //Lights
-        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
+        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene3);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene3);       
+        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene3);
+        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene3);
     
         
     
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
+        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 1), scene3);
         
         light_spot_r.intensity = 1;
         light_spot_l.intensity = 1
@@ -581,13 +571,13 @@ window.addEventListener('DOMContentLoaded', function(){
         light_hemi.intensity = 1.2;
     
         //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene);
+        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene3);
         lightSphere1.position = light_spot_r2.position;
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene);
+        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene3);
         lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
        
-        var assetsManager = new BABYLON.AssetsManager(scene);
+        var assetsManager = new BABYLON.AssetsManager(scene3);
         var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.glb");
         
 
@@ -656,13 +646,13 @@ window.addEventListener('DOMContentLoaded', function(){
             animCameraAfterLandingTarget.setKeys(keysCameraAfterLandingTarget);
             animCameraAfterLandingTarget.setEasingFunction(bezierEase);
     
-            scene.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
+            scene3.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 830, false, 0.6, ()=>{
                 currentScene = 4;
             });
         
 
        
-    return scene;
+    return scene3;
     }
 
 
@@ -677,11 +667,11 @@ window.addEventListener('DOMContentLoaded', function(){
         let endHits = 0;
         
         // Scene and Physics
-        var scene = new BABYLON.Scene(engine);
-        scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+        var scene4 = new BABYLON.Scene(engine);
+        scene4.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     
         
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.273084616, 31.7, -10.0018), scene); 
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(-8.273084616, 31.7, -10.0018), scene4); 
         camera.minZ = 0.1;
         
         //camera.setTarget(new BABYLON.Vector3(-9.933531,29.9,-7.30017)); 
@@ -691,24 +681,14 @@ window.addEventListener('DOMContentLoaded', function(){
         camera.attachControl(canvas, true);
         
         //Lights
-        // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene);
 
         
-
-        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene);
-        
-        light_spot_r.intensity = 1;
-        light_spot_l.intensity = 1
-        light_spot_r2.intensity = 1.4;
-        light_hemi.intensity = 1.2;
+        var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 10, 3), scene4);
    
        
 
-        let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.42, width: 0.2, depth: 0.54} ,scene);
+        let box = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.42, width: 0.2, depth: 0.54} ,scene4);
         box.position = new BABYLON.Vector3(-9.5858738, 30, -8.740); 
         box.rotation.x = 1.75;
         box.rotation.y = .67;
@@ -721,8 +701,8 @@ window.addEventListener('DOMContentLoaded', function(){
         
 
         //Model positioning
-        var assetsManager = new BABYLON.AssetsManager(scene);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_3.babylon");
+        let assetsManager = new BABYLON.AssetsManager(scene4);
+        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_4.babylon");
         var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
 
         snowboardMeshTask.onSuccess = task => {
@@ -778,7 +758,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let firstJump = true;
         
         //Add box to check for end of scene collission
-        let endBox = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.42, width: 1, depth: 0.84} ,scene);
+        let endBox = BABYLON.MeshBuilder.CreateBox("Box",{height: 0.42, width: 1, depth: 0.84} ,scene4);
         endBox.position = new BABYLON.Vector3(20.79827270, 18.342038725, 36.211586642); 
         endBox.rotation.x = 1.75;
         endBox.rotation.y = .67;
@@ -800,18 +780,18 @@ window.addEventListener('DOMContentLoaded', function(){
         
             terrain.animations = [];
             
-            mountainAnimatable = scene.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
+            mountainAnimatable = scene4.beginDirectAnimation(terrain, [anim_terrain], 0, 280, false, 0.25, ()=>{
                 //startRun();
                 //Start camera move animation into scene 3 and snowboarder stop animation
                 score = 0;
             }); 
 
-            let skeleton = scene.getSkeletonByName("Armature");
+            let skeleton = scene4.getSkeletonByName("Armature");
             let snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
             
 
             
-            scene.onPointerObservable.add((pointerInfo) => {
+            scene4.onPointerObservable.add((pointerInfo) => {
                 if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
     
                             console.log(pointerInfo.pickInfo.pickedPoint);
@@ -854,11 +834,11 @@ window.addEventListener('DOMContentLoaded', function(){
             a.setEasingFunction(easingFunction);
             
             
-            let cameraJumpAnimatable = scene.beginDirectAnimation(cam, [a],0, 23, false, 0.55, ()=>{
+            let cameraJumpAnimatable = scene4.beginDirectAnimation(cam, [a],0, 23, false, 0.55, ()=>{
                 anim_jump_ended = true;
             });
             
-            let skeleton = scene.getSkeletonByName("Armature");
+            let skeleton = scene4.getSkeletonByName("Armature");
             let snowboarderJumpAnimatable = skeleton.beginAnimation("jump", false, 1.8, ()=>{
                 snowboarderIdleAnimatable = skeleton.beginAnimation("idle", true, 2);
             });
@@ -912,8 +892,8 @@ window.addEventListener('DOMContentLoaded', function(){
         
 
         //Collision
-        scene.registerBeforeRender(()=>{
-            let skeleton = scene.getSkeletonByName('Armature');
+        scene4.registerBeforeRender(()=>{
+            let skeleton = scene4.getSkeletonByName('Armature');
             let j;
             for (j=0; j < obstacle.length; j++){
                 if (obstacle[j].intersectsMesh(box, true)){
@@ -987,9 +967,9 @@ window.addEventListener('DOMContentLoaded', function(){
                 animCameraTargetEnd.setKeys(keysCameraTargetEnd);
                 animCameraTargetEnd.setEasingFunction(bezierEase2);
     
-                scene.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 90, false);
+                scene4.beginDirectAnimation(camera, [animCameraEnd, animCameraTargetEnd], 0, 90, false);
                 window.setTimeout(()=>{
-                    let skeleton = scene.getSkeletonByName("Armature");
+                    let skeleton = scene4.getSkeletonByName("Armature");
                     snowboarderEndAnimatable = skeleton.beginAnimation("end", false, 1);
 
                     window.setTimeout(()=>{
@@ -1056,7 +1036,7 @@ window.addEventListener('DOMContentLoaded', function(){
             animCameraTarget.setKeys(keysCameraTarget);
             animCameraTarget.setEasingFunction(bezierEase2);
 
-            scene.beginDirectAnimation(camera, [animCamera, animCameraTarget], 0, 400, false);
+            scene4.beginDirectAnimation(camera, [animCamera, animCameraTarget], 0, 400, false);
 
             var labelAttempts = document.createElement("div");
             labelAttempts.style.top = "25px";
@@ -1133,17 +1113,17 @@ window.addEventListener('DOMContentLoaded', function(){
           }
         
 
-          scene.onPointerObservable.add((pointerInfo) => {
-            if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
+        //   scene4.onPointerObservable.add((pointerInfo) => {
+        //     if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN){
     
-                        console.log(pointerInfo.pickInfo.pickedPoint);
+        //                 console.log(pointerInfo.pickInfo.pickedPoint);
                        
                         
                     
-            }
-    });
+        //     }
+    //});
 
-        return scene;    
+        return scene4;    
             };
 
     
@@ -1171,7 +1151,7 @@ window.addEventListener('DOMContentLoaded', function(){
             scene4.render();
         }
         // scene1.dispose();
-        // scene3.render();
+     // scene1.render();
     });
     
     //Mobile quality
