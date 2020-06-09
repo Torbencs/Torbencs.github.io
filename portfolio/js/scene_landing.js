@@ -549,6 +549,7 @@ window.addEventListener('DOMContentLoaded', function(){
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
         camera.maxZ = 500;        
         
+        
         //var camera = new BABYLON.FreeCamera("freeCam", new BABYLON.Vector3( 0, 5, 4), scene3);
         
     
@@ -588,9 +589,10 @@ window.addEventListener('DOMContentLoaded', function(){
        snowboardMeshTask.onSuccess = task => {
            snowboarderMesh = task.loadedMeshes[0];
            task.loadedMeshes[0].position = new BABYLON.Vector3(-12.81225816, 34.7563176345, -14.80271683217);
-           task.loadedMeshes[0].rotation.y = 0.6; 
+           task.loadedMeshes[0].rotation.y = 0.6;
 
-
+           
+           
        }
        
         var bezierEase = new BABYLON.BezierCurveEase(.41,.08,.55,1);
@@ -600,11 +602,13 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639)
+            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639),
+            outTangent: new BABYLON.Vector3(0, -0.01, 0)
             });
     
             keysCameraAfterLandingPos.push({
-            frame: 400,
+            frame: 500,
+            inTangent: new BABYLON.Vector3(0.1, 0, 0),
             value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
             });
     
@@ -623,7 +627,14 @@ window.addEventListener('DOMContentLoaded', function(){
             frame: 0,
             value: new BABYLON.Vector3(23,29.02,-2.55)
             });
+
+            keysCameraAfterLandingTarget.push({
+            frame: 80,
+            value: new BABYLON.Vector3(23,29.02,-2.55)
+            });
+            //qwer
             
+
             keysCameraAfterLandingTarget.push({
             frame: 400,
             value: new BABYLON.Vector3(-12.4023117,35.4,-15.2198993)
@@ -696,23 +707,41 @@ window.addEventListener('DOMContentLoaded', function(){
             animSnowboarderPos.setKeys(keysSnowboarderPos);
             animSnowboarderPos.setEasingFunction(bezierEase);
 
+            //Snowboarder rotation
+            let animSnowboarderRot = new BABYLON.Animation("SnowboarderPositionAnimation", "rotation", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
+            let keysSnowboarderRot = [];
+    
+           
+            keysSnowboarderRot.push({
+            frame: 0,
+            value: new BABYLON.Vector3(0, 0.6, 0)
+            });
+    
+            keysSnowboarderRot.push({
+            frame: 300,
+            value: new BABYLON.Vector3(0.2, 0.6, 0)
+            });
+            animSnowboarderRot.setKeys(keysSnowboarderRot);
+            animSnowboarderRot.setEasingFunction(bezierEase);
+
+
+
             //Begin scene animations
             scene3.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 500, false, 0.8, ()=>{
 
                 let skeleton = scene3.getSkeletonByName("Armature");
                 console.log(skeleton);
-                let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1, ()=>{
-                    scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 350, false, 0.6, ()=>{
-                        
-                    });
-                    if(snowboarderMesh){
-                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos], 0, 300, false, 0.6, ()=>{
+                let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1); 
+                    window.setTimeout(()=>{
+                        scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.45);
+                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.6, ()=>{
                             currentScene = 4;
                         });
-                    };
-                });
+                    
+                },1100);
             });
     
+            
             
        
     return scene3;
@@ -1199,27 +1228,28 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    // if (currentScene === 1 ){
-    //         scene1.render();
-    //     } else if (currentScene === 2){
-    //         scene1.dispose();
-    //         scene2.render();
+    if (currentScene === 1 ){
+            scene1.render();
+        } else if (currentScene === 2){
+            scene1.dispose();
+            scene2.render();
            
-    //     } else if (currentScene === 3){
-    //         scene2.dispose();
-    //         scene3.render();
-    //     } else if (currentScene === 4){
+        } else if (currentScene === 3){
+            scene2.dispose();
+            scene3.render();
+        } else if (currentScene === 4){
             
-    //         scene3.dispose();
-    //         scene4.render();
-    //     }
-        // scene1.dispose();
+            scene3.dispose();
+            scene4.render();
+        }
+      
         
-     scene3.render();
-     if (currentScene == 4){
-         scene3.dispose();
-         scene4.render();
-     }
+    //  scene3.render();
+     
+    //  if (currentScene == 4){
+    //      scene3.dispose();
+    //      scene4.render();
+    //  }
     });
     
     //Mobile quality

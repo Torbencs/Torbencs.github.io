@@ -33,7 +33,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of bone:  Bone.018, index:  17
 		processing begun of bone:  foot, index:  18
 		processing begun of bone:  foot.001, index:  19
-		processing action start:  in[0 - 38], out[0 - 38]
+		processing action start:  in[0 - 72], out[0 - 72]
 	processing begun of mesh:  Cube.001
 		processing begun of material:  dark
 		processing begun of material:  orange
@@ -59,4 +59,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Cube.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.5179 secs
+elapsed time:  0 min, 2.6171 secs
