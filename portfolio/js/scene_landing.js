@@ -35,12 +35,12 @@ window.addEventListener('DOMContentLoaded', function(){
         // Camera controls
         camera.attachControl(canvas, true);
         
-        var ground = BABYLON.Mesh.CreateGround("ground1",132, 132, 2, scene1);
+        // var ground = BABYLON.Mesh.CreateGround("ground1",132, 132, 2, scene1);
        
-        ground.rotation.y = Math.PI;
-        ground.position.y = 11.3;
-        ground.position.x = -5;
-        ground.position.z = -10.8;
+        // ground.rotation.y = Math.PI;
+        // ground.position.y = 11.3;
+        // ground.position.x = -5;
+        // ground.position.z = -10.8;
         
         // Create and tweak the background material.
         // var backgroundMaterial = new BABYLON.BackgroundMaterial("backgroundMaterial", scene1);
@@ -129,34 +129,26 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
         keysPosition.push({
-        frame: 550,
-        value: new BABYLON.Vector3(0,50,40)
+        frame: 650,
+        value: new BABYLON.Vector3(0,50,29)
         });
 
         keysTarget.push({
-        frame: 450,
-        value: new BABYLON.Vector3(-39.34272594,11.3000001907,9.308567653)
+        frame: 400,
+        value: new BABYLON.Vector3(-39.34272594,11.3000001907,9.308567653),
+        outTangent: new BABYLON.Vector3(0, 0.6, 0)
         });
-
 
 
 
         keysTarget.push({
         frame: 650,
-        value: new BABYLON.Vector3(-1.438602761972,43.4259063288,-19.62121916)
+        inTangent: new BABYLON.Vector3(0, 0, 0),
+        value: new BABYLON.Vector3(0,4.39613229,0)
         });
 
 
-        keysTarget.push({
-        frame: 750,
-        value: new BABYLON.Vector3(25.25,29.02,-4.8)
-        });
-
-        keysPosition.push({
-        frame: 850,
-        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
-        });
-
+        
       
       
 
@@ -191,10 +183,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
     
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(29.258,18, 15.243), scene2);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(0,50,29), scene2);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene2);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(38.211,18.40,8.0507));
+        camera.setTarget(new BABYLON.Vector3(0,4.39613229,0));
         camera.maxZ = 500;        
         
        
@@ -207,26 +199,12 @@ window.addEventListener('DOMContentLoaded', function(){
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene2);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene2);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene2);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene2);
 
         
 
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 1), scene2);
-        
-        light_spot_r.intensity = 1;
-        light_spot_l.intensity = 1
-        light_spot_r2.intensity = 1.4;
         light_hemi.intensity = 1.2;
    
-        //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene2);
-        lightSphere1.position = new BABYLON.Vector3(-9.12078903 ,36, -1.278661083);
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene2);
-        lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
-
-       
         
         
 
@@ -462,16 +440,57 @@ window.addEventListener('DOMContentLoaded', function(){
         
         assetsManager.load();
 
+        //Camera Animation
+        var keysTarget = [];
+        var keysPosition = [];
+        let ease = new BABYLON.BezierCurveEase(.54,0,.66,1);
+
+
+        keysTarget.push({
+        frame: 0,
+        value: new BABYLON.Vector3(0,4.39613229,0)
+        });
+
        
-        
-        // scene2.onPointerObservable.add((pointerInfo) => {
-        //     switch (pointerInfo.type) {
-        //         case BABYLON.PointerEventTypes.POINTERDOWN:
-                    
-        //                 console.log(pointerInfo.pickInfo.pickedPoint);
-                    
-        //     }
-    //});
+        keysPosition.push({
+        frame: 0,
+        value: camera.position
+        });
+
+
+
+        keysTarget.push({
+        frame: 85,
+        value: new BABYLON.Vector3(25.25,29.02,-4.8)
+        });
+
+        keysPosition.push({
+        frame: 115,
+        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
+        });
+
+        //Landing and end of scene
+
+
+
+        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationTarget.setKeys(keysTarget);
+        animationTarget.setEasingFunction(ease);
+        //camera.animations.push(animationTarget);
+
+        var animationPosition = new BABYLON.Animation("animationPosition", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+        animationPosition.setKeys(keysPosition);
+        animationPosition.setEasingFunction(ease);
+        //camera.animations.push(animationPosition);
+
+        var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
+
+
+        scene2.beginDirectAnimation(camera,[animationTarget, animationPosition], 0, maxFrame, false, 0.35, ()=>{
+            scene2Started = true;
+        }); 
+       
+    
         
        
     return scene2;
@@ -1191,7 +1210,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
       
         
-    //   scene3.render();
+      //scene1.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
