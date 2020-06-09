@@ -462,60 +462,7 @@ window.addEventListener('DOMContentLoaded', function(){
         
         assetsManager.load();
 
-        //Camera Animation
-        var keysTarget = [];
-        var keysPosition = [];
-        let ease = new BABYLON.BezierCurveEase(.54,0,.66,1);
-        
-        
-        keysTarget.push({
-        frame: 0,
-        value: new BABYLON.Vector3(38.211,18.40,8.0507)
-        });
-
-        keysTarget.push({
-        frame: 8,
-        value: new BABYLON.Vector3(38.211,18.40,8.0507)
-        });
-
-
-        keysPosition.push({
-        frame: 0,
-        value: new BABYLON.Vector3(29.258,18, 15.243)
-        });
-
        
-
-        keysTarget.push({
-        frame: 85,
-        value: new BABYLON.Vector3(25.25,29.02,-4.8)
-        });
-
-        keysPosition.push({
-        frame: 115,
-        value: new BABYLON.Vector3(23.616, 42.1837, 2.203311)
-        });
-
-        //Landing and end of scene
-
-        
-        
-        var animationTarget = new BABYLON.Animation("animationTarget", "lockedTarget", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-        animationTarget.setKeys(keysTarget);
-        animationTarget.setEasingFunction(ease);
-        //camera.animations.push(animationTarget);
-    
-        var animationPosition = new BABYLON.Animation("animationPosition", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-        animationPosition.setKeys(keysPosition);
-        animationPosition.setEasingFunction(ease);
-        //camera.animations.push(animationPosition);
-    
-        var maxFrame = Math.max(keysTarget[keysTarget.length - 1].frame, keysPosition[keysPosition.length - 1].frame);
-    
-        
-        scene2.beginDirectAnimation(camera,[animationTarget, animationPosition], 0, maxFrame, false, 0.35, ()=>{
-            scene2Started = true;
-        }); 
         
         // scene2.onPointerObservable.add((pointerInfo) => {
         //     switch (pointerInfo.type) {
@@ -1244,7 +1191,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
       
         
-    //  scene3.render();
+    //   scene3.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
