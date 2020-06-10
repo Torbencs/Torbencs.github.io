@@ -787,7 +787,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me v1.4");
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me v1.5");
         button.width = 0.2;
         button.height = "40px";
         button.color = "Start";
@@ -1221,7 +1221,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    //engine.setHardwareScalingLevel(0.5)
+    engine.setHardwareScalingLevel(0.5)
     
 
     
