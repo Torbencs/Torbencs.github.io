@@ -760,7 +760,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         //Model positioning
         let assetsManager = new BABYLON.AssetsManager(scene4);
-        var mountainMeshTask = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_4.babylon");
+        var mountainMeshTask4 = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_4.babylon");
         var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
 
         snowboardMeshTask.onSuccess = task => {
@@ -780,7 +780,7 @@ window.addEventListener('DOMContentLoaded', function(){
       
 
         
-        mountainMeshTask.onSuccess = task => {
+        mountainMeshTask4.onSuccess = task => {
         let terrain,mountainAnimatable,snowboarderIdleAnimatable;
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
@@ -1210,7 +1210,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
       
         
-      //scene1.render();
+      //scene4.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
