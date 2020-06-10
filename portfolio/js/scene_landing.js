@@ -1194,23 +1194,23 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    // if (currentScene === 1 ){
-    //         scene1.render();
-    //     } else if (currentScene === 2){
-    //         scene1.dispose();
-    //         scene2.render();
+    if (currentScene === 1 ){
+            scene1.render();
+        } else if (currentScene === 2){
+            scene1.dispose();
+            scene2.render();
            
-    //     } else if (currentScene === 3){
-    //         scene2.dispose();
-    //         scene3.render();
-    //     } else if (currentScene === 4){
+        } else if (currentScene === 3){
+            scene2.dispose();
+            scene3.render();
+        } else if (currentScene === 4){
             
-    //         scene3.dispose();
-    //         scene4.render();
-    //     }
+            scene3.dispose();
+            scene4.render();
+        }
       
         
-      scene4.render();
+      //scene4.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
