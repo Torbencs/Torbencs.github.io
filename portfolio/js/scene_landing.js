@@ -699,9 +699,11 @@ window.addEventListener('DOMContentLoaded', function(){
                 console.log(skeleton);
                 let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1); 
                     window.setTimeout(()=>{
-                        scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.45);
-                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.6, ()=>{
+                        scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.45, ()=>{
                             currentScene = 4;
+                        });
+                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.6, ()=>{
+                            
                         });
                     
                 },1100);
@@ -785,7 +787,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me v1.1");
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me v1.3");
         button.width = 0.2;
         button.height = "40px";
         button.color = "Start";
