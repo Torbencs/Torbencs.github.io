@@ -33,6 +33,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	processing begun of mesh:  Cylinder
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#1
 		num positions      :  188
 		num normals        :  188
@@ -45,6 +46,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#2
 		num positions      :  188
 		num normals        :  188
@@ -111,6 +113,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#5
 		num positions      :  188
 		num normals        :  188
@@ -123,6 +126,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#6
 		num positions      :  188
 		num normals        :  188
@@ -135,6 +139,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#7
 		num positions      :  188
 		num normals        :  188
@@ -147,6 +152,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#8
 		num positions      :  188
 		num normals        :  188
@@ -159,6 +165,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#9
 		num positions      :  188
 		num normals        :  188
@@ -181,6 +188,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		num indices        :  84
 	processing begun of mesh:  Icosphere.001
 		processing begun of material:  Material.002
+		registered as also a user of material:  Material.002
 		num positions      :  60
 		num normals        :  60
 		num tangents       :  0
@@ -191,6 +199,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	processing begun of mesh:  Icosphere.002
 		processing begun of material:  Material.002
 		processing begun of material:  snow.001
+		registered as also a user of material:  Material.002
 		registered as also a user of material:  snow.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#11
 		num positions      :  84
@@ -254,6 +263,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#12
 		num positions      :  340
 		num normals        :  340
@@ -266,6 +276,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		registered as also a user of material:  wood.002
 		registered as also a user of material:  wood lightest
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#13
@@ -280,6 +291,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		registered as also a user of material:  wood.002
 		registered as also a user of material:  wood lightest
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#14
@@ -294,6 +306,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		registered as also a user of material:  wood.002
 		registered as also a user of material:  wood lightest
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#15
@@ -308,6 +321,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		registered as also a user of material:  wood.002
 		registered as also a user of material:  wood lightest
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#16
@@ -322,6 +336,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  snow.001
 		processing begun of material:  Material.002
 		registered as also a user of material:  snow.001
+		registered as also a user of material:  Material.002
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#17
 		num positions      :  207
 		num normals        :  207
@@ -334,6 +349,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  snow.001
 		processing begun of material:  Material.002
 		registered as also a user of material:  snow.001
+		registered as also a user of material:  Material.002
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#18
 		num positions      :  207
 		num normals        :  207
@@ -356,6 +372,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#19
 		num positions      :  188
 		num normals        :  188
@@ -368,6 +385,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#20
 		num positions      :  188
 		num normals        :  188
@@ -380,6 +398,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#21
 		num positions      :  188
 		num normals        :  188
@@ -392,6 +411,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#22
 		num positions      :  188
 		num normals        :  188
@@ -404,6 +424,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  Material.004
 		processing begun of material:  wood.001
 		registered as also a user of material:  Material.004
+		registered as also a user of material:  wood.001
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#23
 		num positions      :  188
 		num normals        :  188
@@ -436,6 +457,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  wood.001
 		processing begun of material:  wood.002
 		processing begun of material:  wood lightest
+		registered as also a user of material:  wood.001
 		registered as also a user of material:  wood.002
 		registered as also a user of material:  wood lightest
 		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#24
@@ -497,4 +519,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 	writing mesh:  Icosphere.010
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 3.9938 secs
+elapsed time:  0 min, 3.9454 secs
