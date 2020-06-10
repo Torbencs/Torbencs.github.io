@@ -759,11 +759,11 @@ window.addEventListener('DOMContentLoaded', function(){
         
 
         //Model positioning
-        let assetsManager = new BABYLON.AssetsManager(scene4);
-        var mountainMeshTask4 = assetsManager.addMeshTask("", "", "models/mountain_merged_scene_4.babylon");
-        var snowboardMeshTask = assetsManager.addMeshTask("", "", "models/snowboarder.babylon");
+        let assetsManager4 = new BABYLON.AssetsManager(scene4);
+        var mountainMeshTask4 = assetsManager4.addMeshTask("", "", "models/mountain_merged_scene_4.babylon");
+        var snowboardMeshTask4 = assetsManager4.addMeshTask("", "", "models/snowboarder.babylon");
 
-        snowboardMeshTask.onSuccess = task => {
+        snowboardMeshTask4.onSuccess = task => {
         
         
         let i;
@@ -785,7 +785,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
+        var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me v1.1");
         button.width = 0.2;
         button.height = "40px";
         button.color = "Start";
@@ -1053,7 +1053,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
         
         
-        assetsManager.load();
+        assetsManager4.load();
 
 
         function startScene(){
