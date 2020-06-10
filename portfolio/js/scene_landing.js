@@ -6,6 +6,9 @@ window.addEventListener('DOMContentLoaded', function(){
     let landingStarted,landingAnimStarted,currentScene,scene2Started;
     let lastTime = 2200;
     let meshNumber = 0;
+    var scene2;
+    var scene3;
+    var scene4;
   
 
     // get the canvas DOM element
@@ -170,7 +173,7 @@ window.addEventListener('DOMContentLoaded', function(){
             currentScene = 2;
             scene2Started = true;
         });
-       
+        scene2 = createScene2();
         return scene1;    
             };
 
@@ -492,7 +495,7 @@ window.addEventListener('DOMContentLoaded', function(){
        
     
         
-       
+    scene3 = createScene3();
     return scene2;
     }
 
@@ -709,7 +712,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             
             
-       
+    scene4 = createScene4();
     return scene3;
     }
 
@@ -788,7 +791,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var button = BABYLON.GUI.Button.CreateSimpleButton("but", "Click Me");
         button.width = 0.2;
         button.height = "40px";
-        button.color = "Start";
+        button.color = "Start v1";
         button.background = "Yellow";
         button.onPointerClickObservable.add(()=>{
             startScene();
@@ -1187,9 +1190,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
     //Call the createScene function
     var scene1 = createScene1();
-    var scene2 = createScene2();
-    var scene3 = createScene3();
-    var scene4 = createScene4();
+    
     
     //Run the render loop
 
