@@ -719,11 +719,10 @@ window.addEventListener('DOMContentLoaded', function(){
             scene3.beginDirectAnimation(camera, [animCameraAfterLandingPos,animCameraAfterLandingTarget], 0, 500, false, 0.8, ()=>{
 
                 let skeleton = scene3.getSkeletonByName("Armature");
-                console.log(skeleton);
                 let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1); 
                     window.setTimeout(()=>{
                         scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.45, ()=>{
-                            currentScene = 4;
+                            window.setTimeout( () => currentScene = 4),500;
                         });
                         scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.6, ()=>{
                             
