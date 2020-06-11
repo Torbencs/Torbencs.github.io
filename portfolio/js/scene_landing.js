@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', function(){
             var overlay = document.createElement("div");
                 
                 
-            overlay.style.top = '0px';
+            overlay.style.top = '30px';
             overlay.style.left = '0px';
             overlay.style.position = 'absolute';
             overlay.style.height = window.innerHeight + 'px';
