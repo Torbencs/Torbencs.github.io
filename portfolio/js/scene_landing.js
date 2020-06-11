@@ -417,7 +417,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(20.63419644,27, 0.392745106639)
+                            value: new BABYLON.Vector3(20.63419644,29, 0.392745106639)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -531,7 +531,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(22.63419644,27, 0.392745106639), scene3);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(20.63419644,29, 0.392745106639), scene3);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene3);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
@@ -590,7 +590,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(22.63419644,27, 0.392745106639),
+            value: new BABYLON.Vector3(20.63419644,29, 0.392745106639),
             outTangent: new BABYLON.Vector3(0, -0.01, 0)
             });
     
@@ -1200,23 +1200,23 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
            
-        } else if (currentScene === 3){
-            scene2.dispose();
-            scene3.render();
-        } else if (currentScene === 4){
+    //     } else if (currentScene === 3){
+    //         scene2.dispose();
+    //         scene3.render();
+    //     } else if (currentScene === 4){
             
-            scene3.dispose();
-            scene4.render();
-        }
+    //         scene3.dispose();
+    //         scene4.render();
+    //     }
       
         
-      //scene3.render();
+      scene3.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
