@@ -436,7 +436,7 @@ window.addEventListener('DOMContentLoaded', function(){
                         });
 
                         keysCameraLandingTarget.push({
-                            frame: 120,
+                            frame: 130,
                             value: new BABYLON.Vector3(23,29.3,-2.55),
                         });
 
@@ -534,7 +534,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(20.63419644,29, 0.392745106639), scene3);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene3);
         camera.minZ = 0.1;
-        camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
+        camera.setTarget(new BABYLON.Vector3(23,29.3,-2.55));
         camera.maxZ = 500;        
         
         
