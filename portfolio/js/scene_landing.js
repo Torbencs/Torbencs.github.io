@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', function(){
             overlay.style.overflow = 'hidden';
             overlay.setAttribute("id", "overlay");
             
-            document.body.appendChild(overlay);
+            //document.body.appendChild(overlay);
 
             let h1Intro3 = document.createElement('h1');
             h1Intro3.classList.add('intro-text');
@@ -547,7 +547,7 @@ window.addEventListener('DOMContentLoaded', function(){
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene3);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(4, 25, 18), new BABYLON.Vector3(0, -1,-1), Math.PI/2, 2, scene3);       
+        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-8.5409569763,50,15), new BABYLON.Vector3(0, -1,-1), Math.PI/7, 9, scene3);       
         var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene3);
         var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene3);
     
@@ -555,16 +555,17 @@ window.addEventListener('DOMContentLoaded', function(){
     
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 1), scene3);
         
-        light_spot_r.intensity = 1;
+        light_spot_r.intensity = 3.5;
         light_spot_l.intensity = 1
         light_spot_r2.intensity = 1.4;
         light_hemi.intensity = 1.2;
     
         //Light visual helpers
-        var lightSphere1 = BABYLON.Mesh.CreateSphere("sphere", 16, 3, scene3);
-        lightSphere1.position = light_spot_r2.position;
-        lightSphere1.material = new BABYLON.StandardMaterial("light2", scene3);
-        lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
+        // var lightSphere1 = BABYLON.Mesh.CreatePlane("sphere", 16, scene3);
+        // lightSphere1.position = new BABYLON.Vector3(-5.628851427,30,-9.1802340);
+        // lightSphere1.rotation.x = Math.PI/2;
+        // lightSphere1.material = new BABYLON.StandardMaterial("light2", scene3);
+        //lightSphere1.material.emissiveColor = new BABYLON.Color3(1, 1, 0);
     
        
         var assetsManager = new BABYLON.AssetsManager(scene3);
@@ -1200,28 +1201,28 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    if (currentScene === 1 ){
-            scene1.render();
-        } else if (currentScene === 2){
-            scene1.dispose();
-            scene2.render();
+    // if (currentScene === 1 ){
+    //         scene1.render();d
+    //     } else if (currentScene === 2){
+    //         scene1.dispose();
+    //         scene2.render();
            
-        } else if (currentScene === 3){
-            scene2.dispose();
-            scene3.render();
-        } else if (currentScene === 4){
+    //     } else if (currentScene === 3){
+    //         scene2.dispose();
+    //         scene3.render();
+    //     } else if (currentScene === 4){
             
-            scene3.dispose();
-            scene4.render();
-        }
+    //         scene3.dispose();
+    //         scene4.render();
+    //     }
       
         
-      //scene3.render();
+      scene3.render();
      
-    //  if (currentScene == 4){
-    //      scene3.dispose();
-    //      scene4.render();
-    //  }
+     if (currentScene == 4){
+         scene3.dispose();
+         scene4.render();
+     }
     });
     
     //Mobile quality
