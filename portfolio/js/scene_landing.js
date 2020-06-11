@@ -51,8 +51,28 @@ window.addEventListener('DOMContentLoaded', function(){
 
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene1);
-    
-      
+        
+
+            var overlay = document.createElement("div");
+                
+                
+            overlay.style.top = '0px';
+            overlay.style.left = '0px';
+            overlay.style.position = 'absolute';
+            overlay.style.height = window.innerHeight + 'px';
+            overlay.style.width = window.innerWidth + 'px';
+            overlay.style.display = 'block';
+            overlay.style.textAlign = 'center';
+            overlay.style.overflow = 'hidden';
+            overlay.setAttribute("id", "overlay");
+            
+            document.body.appendChild(overlay);
+
+            let h1Intro3 = document.createElement('h1');
+            h1Intro3.classList.add('intro-text');
+            h1Intro3.innerHTML = 'I believe the future of the web is...';
+            overlay.appendChild(h1Intro3);
+       
 
         var light_hemi1 = new BABYLON.HemisphericLight("hemiLight1", new BABYLON.Vector3(0, 1, 1), scene1);
         light_hemi1.intensity = 1.2;
@@ -169,6 +189,7 @@ window.addEventListener('DOMContentLoaded', function(){
         scene1.beginAnimation(camera, 0, maxFrame, false, 0.35, ()=>{
             currentScene = 2;
             scene2Started = true;
+            fadeIn(document.getElementById('overlay'), 800);
         });
        
         return scene1;    
@@ -221,7 +242,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 console.log(task.loadedMeshes[i].name)
             }
 
-
+            
+            
 
             //mountainMesh.scaling = new BABYLON.Vector3(0.1, 0.1,0.1);
         }
@@ -395,7 +417,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
                         keysCameraLandingPos.push({
                             frame: 200,
-                            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639)
+                            value: new BABYLON.Vector3(22.63419644,27, 0.392745106639)
                         });
 
                         let bezierEase2 = new BABYLON.BezierCurveEase(.22,1,.84,1);
@@ -509,7 +531,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
         
             
-        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(24.63419644,28, 0.392745106639), scene3);
+        var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(22.63419644,27, 0.392745106639), scene3);
         //var camera = new BABYLON.UniversalCamera("Camera", new BABYLON.Vector3(27.1, 30, 4), scene3);
         camera.minZ = 0.1;
         camera.setTarget(new BABYLON.Vector3(23,29.02,-2.55));
@@ -568,7 +590,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
             keysCameraAfterLandingPos.push({
             frame: 0,
-            value: new BABYLON.Vector3(24.63419644,28, 0.392745106639),
+            value: new BABYLON.Vector3(22.63419644,27, 0.392745106639),
             outTangent: new BABYLON.Vector3(0, -0.01, 0)
             });
     
@@ -1152,25 +1174,7 @@ window.addEventListener('DOMContentLoaded', function(){
             tick();
           }
 
-          function fadeIn(el, time) {
-            
-            el.style.opacity = 1;
-         
-            var last = +new Date();
-            var tick = function() {
-              el.style.opacity = +el.style.opacity - (new Date() - last) / time;
-              last = +new Date();
           
-              if (+el.style.opacity > 0) {
-                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-              }
-            };
-          
-            tick();
-            window.setTimeout(()=>{
-                el.remove();
-            }, time + 100)
-          }
         
 
         //   scene4.onPointerObservable.add((pointerInfo) => {
@@ -1212,7 +1216,7 @@ window.addEventListener('DOMContentLoaded', function(){
         }
       
         
-      //scene4.render();
+      //scene3.render();
      
     //  if (currentScene == 4){
     //      scene3.dispose();
@@ -1221,7 +1225,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
     //Mobile quality
-    engine.setHardwareScalingLevel(0.5)
+    //engine.setHardwareScalingLevel(0.5)
     
 
     
@@ -1229,11 +1233,42 @@ window.addEventListener('DOMContentLoaded', function(){
     window.addEventListener('resize', function(){
         engine.resize();
     });
+    }); //Onload
 
-    
-    
-    });
+    function fadeIn(el, time) {
+            
+        el.style.opacity = 1;
+     
+        var last = +new Date();
+        var tick = function() {
+          el.style.opacity = +el.style.opacity - (new Date() - last) / time;
+          last = +new Date();
+      
+          if (+el.style.opacity > 0) {
+            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+          }
+        };
+      
+        tick();
+        window.setTimeout(()=>{
+            el.remove();
+        }, time + 100)
+      }
 
+      function fadeOutEl(el, time) {
+            
+        var last = +new Date();
+            var tick = function() {
+              el.style.opacity = +el.style.opacity + (new Date() - last) / time;
+              last = +new Date();
+          
+              if (+el.style.opacity < 1) {
+                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+              }
+            };
+          
+            tick();
+      }
     
 
     let onAskButtonClicked = function() {
