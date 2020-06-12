@@ -592,12 +592,12 @@ window.addEventListener('DOMContentLoaded', function(){
             keysCameraAfterLandingPos.push({
             frame: 0,
             value: new BABYLON.Vector3(22.63419644,29, 0.392745106639),
-            outTangent: new BABYLON.Vector3(0, -0.01, 0)
+            outTangent: new BABYLON.Vector3(0, 0, 0)
             });
     
             keysCameraAfterLandingPos.push({
             frame: 500,
-            inTangent: new BABYLON.Vector3(0.1, 0, 0),
+            inTangent: new BABYLON.Vector3(0, -0.1, 0),
             value: new BABYLON.Vector3(-8.4629191 ,35.5, -10.9129811883)
             });
     
