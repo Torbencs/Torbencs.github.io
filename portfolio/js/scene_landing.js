@@ -547,17 +547,14 @@ window.addEventListener('DOMContentLoaded', function(){
         //Lights
         // Old - var light_spot = new BABYLON.SpotLight("spotLight", new BABYLON.Vector3(-2, 20, 15), new BABYLON.Vector3(6, -9 ,-9), Math.PI, 20, scene3);
     
-        var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-8.5409569763,50,15), new BABYLON.Vector3(0, -1,-1), Math.PI/7, 9, scene3);       
-        var light_spot_l = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(25, 17, 10), new BABYLON.Vector3(-4, -1, -1), Math.PI/2, 2, scene3);
-        var light_spot_r2 = new BABYLON.SpotLight("spotLightL", new BABYLON.Vector3(18, 20, 5), new BABYLON.Vector3(-1, -1, -1), Math.PI/2, 2, scene3);
+        //var light_spot_r = new BABYLON.SpotLight("spotLightR", new BABYLON.Vector3(-8.5409569763,50,15), new BABYLON.Vector3(0, -1,0), Math.PI/2, 1, scene3);       
     
         
     
         var light_hemi = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 1, 1), scene3);
         
-        light_spot_r.intensity = 3.5;
-        light_spot_l.intensity = 1
-        light_spot_r2.intensity = 1.4;
+        //light_spot_r.intensity = 100.5;
+       
         light_hemi.intensity = 1.2;
     
         //Light visual helpers
@@ -640,7 +637,8 @@ window.addEventListener('DOMContentLoaded', function(){
 
             ///
             //Animation into scene 4
-            
+            var easingFunction = new BABYLON.SineEase();
+            easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEIN);
     
             let animCameraAfterSnowboarderPos = new BABYLON.Animation("cameraSnowboarderPositionAnimation", "position", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
             let keysCameraAfterSnowboarderPos = [];
@@ -652,11 +650,12 @@ window.addEventListener('DOMContentLoaded', function(){
             });
     
             keysCameraAfterSnowboarderPos.push({
-            frame: 300,
+            frame: 200,
             value: new BABYLON.Vector3(-8.273084616, 31.7, -10.0018)
             });
             animCameraAfterSnowboarderPos.setKeys(keysCameraAfterSnowboarderPos);
-            animCameraAfterSnowboarderPos.setEasingFunction(bezierEase2);
+            let bezierEase3 = new BABYLON.BezierCurveEase(.37,.16,.73,.73);
+            animCameraAfterSnowboarderPos.setEasingFunction(bezierEase3);
     
     
             //Target animation
@@ -676,7 +675,9 @@ window.addEventListener('DOMContentLoaded', function(){
             });
     
             animCameraAfterSnowboarderTarget.setKeys(keysCameraAfterSnowboarderTarget);
-            animCameraAfterSnowboarderTarget.setEasingFunction(bezierEase);
+            
+          
+            animCameraAfterSnowboarderTarget.setEasingFunction(bezierEase3);
             
 
             //Snowboarder movement animation
@@ -694,7 +695,8 @@ window.addEventListener('DOMContentLoaded', function(){
             value: new BABYLON.Vector3(-9.758738, 29.65, -8.740)
             });
             animSnowboarderPos.setKeys(keysSnowboarderPos);
-            animSnowboarderPos.setEasingFunction(bezierEase);
+            
+            animSnowboarderPos.setEasingFunction(bezierEase3);
 
             //Snowboarder rotation
             let animSnowboarderRot = new BABYLON.Animation("SnowboarderPositionAnimation", "rotation", 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);               
@@ -721,14 +723,14 @@ window.addEventListener('DOMContentLoaded', function(){
                 let skeleton = scene3.getSkeletonByName("Armature");
                 let snowboarderIdleAnimatable = skeleton.beginAnimation("start", false, 1); 
                     window.setTimeout(()=>{
-                        scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.45, ()=>{
-                            window.setTimeout( () => currentScene = 4),500;
-                        });
-                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.6, ()=>{
+                        scene3.beginDirectAnimation(camera, [animCameraAfterSnowboarderPos,animCameraAfterSnowboarderTarget], 0, 550, false, 0.6, ()=>{
                             
                         });
+                        scene3.beginDirectAnimation(snowboarderMesh, [animSnowboarderPos, animSnowboarderRot], 0, 300, false, 0.8, ()=>{
+                            currentScene = 4;
+                        });
                     
-                },1100);
+                },400);
             });
     
             
@@ -820,7 +822,7 @@ window.addEventListener('DOMContentLoaded', function(){
             
             advancedTexture.dispose();
         })
-        advancedTexture.addControl(button); 
+        //advancedTexture.addControl(button); 
 
         
         let i;
@@ -1200,28 +1202,28 @@ window.addEventListener('DOMContentLoaded', function(){
     //Run the render loop
 
     engine.runRenderLoop(function(){
-    // if (currentScene === 1 ){
-    //         scene1.render();d
-    //     } else if (currentScene === 2){
-    //         scene1.dispose();
-    //         scene2.render();
+    if (currentScene === 1 ){
+            scene1.render();
+        } else if (currentScene === 2){
+            scene1.dispose();
+            scene2.render();
            
-    //     } else if (currentScene === 3){
-    //         scene2.dispose();
-    //         scene3.render();
-    //     } else if (currentScene === 4){
+        } else if (currentScene === 3){
+            scene2.dispose();
+            scene3.render();
+        } else if (currentScene === 4){
             
-    //         scene3.dispose();
-    //         scene4.render();
-    //     }
+            scene3.dispose();
+            scene4.render();
+        }
       
         
-      scene3.render();
+    //   scene3.render();
      
-     if (currentScene == 4){
-         scene3.dispose();
-         scene4.render();
-     }
+    //  if (currentScene == 4){
+    //      scene3.dispose();
+    //      scene4.render();
+    //  }
     });
     
     //Mobile quality

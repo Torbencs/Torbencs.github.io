@@ -192,7 +192,7 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
 		processing begun of material:  mountain base rock.001
 		processing begun of material:  snow shadow.001
 		processing begun of material:  text.001
-		processing begun of multimaterial:  mountain_merged_scene_4.Multimaterial#0
+		processing begun of multimaterial:  mountain_merged_scene_41.Multimaterial#0
 		num positions      :  5027
 		num normals        :  5027
 		num tangents       :  0
@@ -242,4 +242,4 @@ Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
     self.alpha = bpyNode.image.file_format not in NON_ALPHA_FORMATS
 ERROR:  'NoneType' object has no attribute 'file_format'
 ========= end of processing =========
-elapsed time:  0 min, 1.5045 secs
+elapsed time:  0 min, 1.7194 secs
