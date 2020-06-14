@@ -9,13 +9,13 @@
         dot_flag = false;
 
     var x = "black",
-        y = 1;
+        y = 10;
     
     function init() {
         canvas = document.getElementById('can');
         ctx = canvas.getContext("2d");
-        canvas.width = 300; //window.innerWidth;
-        canvas.height = 300; //window.innerHeight; 
+        canvas.width = 500; //window.innerWidth;
+        canvas.height = 500; //window.innerHeight; 
         w = canvas.width;
         h = canvas.height;
     
@@ -26,17 +26,17 @@
             findxy('down', e)
         }, false);
         canvas.addEventListener("touchend", function (e) {
-            findxy('up', e)
+            findxy('up', e);
+
+            let img = canvas.toDataURL();
+
+            Tesseract.recognize(img,'eng').then(({data: { text }})=>{
+                alert(text);
+            })
+
         }, false);
         canvas.addEventListener("touchend", function (e) {
             findxy('out', e);
-
-            
-        let img = canvas.toDataURL();
-
-        Tesseract.recognize(img,'eng').then(({data: { text }})=>{
-            alert(text);
-        })
         
         }, false);
     }
