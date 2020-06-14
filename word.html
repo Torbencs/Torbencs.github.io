@@ -1,192 +1,84 @@
 <html>
-<head>
-<title>Sketchpad</title>
+    <script type="text/javascript">
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
 
-<script type="text/javascript">
-    // Variables for referencing the canvas and 2dcanvas context
-    var canvas,ctx;
-
-    // Variables to keep track of the mouse position and left-button status 
-    var mouseX,mouseY,mouseDown=0;
-
-    // Variables to keep track of the touch position
-    var touchX,touchY;
-
-    // Draws a dot at a specific position on the supplied canvas name
-    // Parameters are: A canvas context, the x position, the y position, the size of the dot
-    function drawDot(ctx,x,y,size) {
-        // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
-        r=0; g=0; b=0; a=255;
-
-        // Select a fill style
-        ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-
-        // Draw a filled circle
+    var x = "black",
+        y = 2;
+    
+    function init() {
+        canvas = document.getElementById('can');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+    
+        canvas.addEventListener("touchmove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("touchstart", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("touchend", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("touchend", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    
+    
+    
+    function draw() {
         ctx.beginPath();
-        ctx.arc(x, y, size, 0, Math.PI*2, true); 
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
         ctx.closePath();
-        ctx.fill();
-    } 
-
-    // Clear the canvas context using the canvas width and height
-    function clearCanvas(canvas,ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
-
-    // Keep track of the mouse button being pressed and draw a dot at current location
-    function sketchpad_mouseDown() {
-        mouseDown=1;
-        drawDot(ctx,mouseX,mouseY,2);
-    }
-
-    // Keep track of the mouse button being released
-    function sketchpad_mouseUp() {
-        mouseDown=0;
-    }
-
-    // Keep track of the mouse position and draw a dot if mouse button is currently pressed
-    function sketchpad_mouseMove(e) { 
-        // Update the mouse co-ordinates when moved
-        getMousePos(e);
-
-        // Draw a dot if the mouse button is currently being pressed
-        if (mouseDown==1) {
-            drawDot(ctx,mouseX,mouseY,2);
+    
+   
+    
+    
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.touches['0'].clientX - canvas.offsetLeft;
+            currY = e.touches['0'].clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
         }
-    }
-
-    // Get the current mouse position relative to the top-left of the canvas
-    function getMousePos(e) {
-        if (!e)
-            var e = event;
-
-        if (e.offsetX) {
-            mouseX = e.offsetX;
-            mouseY = e.offsetY;
+        if (res == 'up' || res == "out") {
+            flag = false;
         }
-        else if (e.layerX) {
-            mouseX = e.layerX;
-            mouseY = e.layerY;
-        }
-     }
-
-    // Draw something when a touch start is detected
-    function sketchpad_touchStart() {
-        // Update the touch co-ordinates
-        getTouchPos();
-
-        drawDot(ctx,touchX,touchY,2);
-
-        // Prevents an additional mousedown event being triggered
-        event.preventDefault();
-    }
-
-    // Draw something and prevent the default scrolling when touch movement is detected
-    function sketchpad_touchMove(e) { 
-        // Update the touch co-ordinates
-        getTouchPos(e);
-
-        // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawDot(ctx,touchX,touchY,2); 
-
-        // Prevent a scrolling action as a result of this touchmove triggering.
-        event.preventDefault();
-    }
-
-    // Get the touch position relative to the top-left of the canvas
-    // When we get the raw values of pageX and pageY below, they take into account the scrolling on the page
-    // but not the position relative to our target div. We'll adjust them using "target.offsetLeft" and
-    // "target.offsetTop" to get the correct values in relation to the top left of the canvas.
-    function getTouchPos(e) {
-        if (!e)
-            var e = event;
-
-        if(e.touches) {
-            if (e.touches.length == 1) { // Only deal with one finger
-                var touch = e.touches[0]; // Get the information for finger #1
-                touchX=touch.pageX-touch.target.offsetLeft;
-                touchY=touch.pageY-touch.target.offsetTop;
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.touches['0'].clientX - canvas.offsetLeft;
+                currY = e.touches['0'].clientY - canvas.offsetTop;
+                draw();
             }
         }
     }
-
-
-    // Set-up the canvas and add our event handlers after the page has loaded
-    function init() {
-        // Get the specific canvas element from the HTML document
-        canvas = document.getElementById('sketchpad');
-
-        // If the browser supports the canvas tag, get the 2d drawing context for this canvas
-        if (canvas.getContext)
-            ctx = canvas.getContext('2d');
-
-        // Check that we have a valid context to draw on/with before adding event handlers
-        if (ctx) {
-            // React to mouse events on the canvas, and mouseup on the entire document
-            canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
-            canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
-            window.addEventListener('mouseup', sketchpad_mouseUp, false);
-
-            // React to touch events on the canvas
-            canvas.addEventListener('touchstart', sketchpad_touchStart, false);
-            canvas.addEventListener('touchmove', sketchpad_touchMove, false);
-        }
-    }
-</script>
-
-<style>
-/* Some CSS styling */
-#sketchpadapp {
-    /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.leftside {
-    float:left;
-    width:220px;
-    height:285px;
-    background-color:#def;
-    padding:10px;
-    border-radius:4px;
-}
-.rightside {
-    float:left;
-    margin-left:10px;
-}
-#sketchpad {
-    float:left;
-    height:300px;
-    width:400px;
-    border:2px solid #888;
-    border-radius:4px;
-    position:relative; /* Necessary for correct mouse co-ords in Firefox */
-}
-#clearbutton {
-    font-size: 15px;
-    padding: 10px;
-    -webkit-appearance: none;
-    background: #eee;
-    border: 1px solid #888;
-}
-</style>
-</head>
-
-<body onload="init()">
-    <div id="sketchpadapp">
-        <div class="leftside">
-             Touchscreen and mouse support HTML5 canvas sketchpad.<br/><br/>
-             Draw something by tapping or dragging.<br/><br/>
-             Works on iOS, Android and desktop/laptop touchscreens using Chrome/Firefox/Safari.<br/><br/>
-             <input type="submit" value="Clear Sketchpad" id="clearbutton" onclick="clearCanvas(canvas,ctx);">
-        </div>
-        <div class="rightside">
-            <canvas id="sketchpad" height="300" width="400">
-            </canvas>
-        </div>
-    </div>
-</body>
-</html>
+    </script>
+    <body onload="init()">
+        <canvas id="can" width="400" height="400" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
+      
+    </body>
+    </html>
