@@ -28,12 +28,6 @@
         canvas.addEventListener("touchend", function (e) {
             findxy('up', e);
 
-            let img = canvas.toDataURL();
-
-            Tesseract.recognize(img,'eng').then(({data: { text }})=>{
-                alert(text);
-            })
-
         }, false);
         canvas.addEventListener("touchend", function (e) {
             findxy('out', e);
@@ -88,12 +82,20 @@
         }
     }
 
- 
+ function rec(){
+     let img = canvas.toDataURL();
+
+     Tesseract.recognize(img, 'eng').then(( {data:{text}} )=>{
+         alert(text)
+     })
+
+ }
         
  
     </script>
     <body onload="init()">
         <canvas id="can" style="touch-action: none;border: 2px solid;"></canvas>
+        <button onclick="rec()">Click</button>
       
     </body>
     </html>
