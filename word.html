@@ -8,11 +8,13 @@
         dot_flag = false;
 
     var x = "black",
-        y = 2;
+        y = 4;
     
     function init() {
         canvas = document.getElementById('can');
         ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight; 
         w = canvas.width;
         h = canvas.height;
     
@@ -78,7 +80,7 @@
     }
     </script>
     <body onload="init()">
-        <canvas id="can" width="400" height="400" style="position:absolute;top:10%;left:10%;border:2px solid; touch-action: none;"></canvas>
+        <canvas id="can" style="position:absolute;top:10%;left:10%;border:2px solid; touch-action: none;"></canvas>
       
     </body>
     </html>
