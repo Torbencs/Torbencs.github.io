@@ -9,13 +9,13 @@
         dot_flag = false;
 
     var x = "black",
-        y = 30;
+        y = 1;
     
     function init() {
         canvas = document.getElementById('can');
         ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight; 
+        canvas.width = 300; //window.innerWidth;
+        canvas.height = 300; //window.innerHeight; 
         w = canvas.width;
         h = canvas.height;
     
@@ -29,7 +29,15 @@
             findxy('up', e)
         }, false);
         canvas.addEventListener("touchend", function (e) {
-            findxy('out', e)
+            findxy('out', e);
+
+            
+        let img = canvas.toDataURL();
+
+        Tesseract.recognize(img,'eng').then(({data: { text }})=>{
+            alert(text);
+        })
+        
         }, false);
     }
     
@@ -80,17 +88,12 @@
         }
     }
 
-    window.setTimeout(()=>{
-        let img = canvas.toDataURL();
-
-        Tesseract.recognize(img,'eng').then(({data: { text }})=>{
-            alert(text);
-        })
+ 
         
-    },700);
+ 
     </script>
     <body onload="init()">
-        <canvas id="can" style="touch-action: none;"></canvas>
+        <canvas id="can" style="touch-action: none;border: 2px solid;"></canvas>
       
     </body>
     </html>
